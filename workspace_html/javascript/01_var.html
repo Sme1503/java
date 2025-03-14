@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 한 줄 주석
+        /* 범위 주석 */
+        console.log("hello world");
+
+        // 변수 타입 선언
+        var a = 10;
+        console.log("" + a);
+
+        // 변수 타입 없이 선언
+        b = 11;
+        console.log("b : ", b)
+
+        let c = 12;
+        console.log(c)
+
+        const d = 13;
+        console.error(d);
+
+        let e;
+        console.log(e);
+        console.log("" + e);
+
+        // // 선언되지않은 f 사용
+        // console.log(f); // 에러가 발생하면 자바스크립트가 멈춘다.
+        console.log("hello");
+
+        // 자바스크립트는 인터프리터 방식이다. (한 줄씩 실행)
+
+        // 같은 변수명으로 재선언이 가능하다.
+        var a = 20;
+        b = 21;
+        console.log(a, b);
+
+        // 변수 선언을 let이나 const로 하면 같은 변수명으로 재선언이 불가하다.
+        // let c = 22;
+        // const d = 23;
+
+        // 변수의 값 변경
+        c = 22;
+        console.log(c);
+
+        // const로 선언하면 변수의 값을 변경할 수 없다.
+        // d = 23;
+
+        c = "문\"자";
+        c = '문\"자';
+        console.log(c);
+
+        console.log(typeof c);
+        console.log(typeof d, d);
+
+        c = "13";
+        console.log(c == d);   // == : 타입과 관계없이 값만 같은지 비교
+        console.log(c != d);
+        console.log(c === d);  // === : 타입과 값이 같은지 비교    
+        console.log(c !== d);  // !== : ===의 부정
+
+        c += 1;
+        console.log(c);
+
+        let a1, a2, a3;
+        if (a1 === undefined) {
+            console.log("a1의 값을 넣으세요", typeof a1);
+        }
+        if (typeof a1 == "undefined") {
+            console.log("a1의 값을 넣으세요");
+        }
+
+        const g = "12.34";
+        console.log(1, g + 5);
+        console.log(2, Number(g) + 5);
+        console.log(3, parseInt(g) + 5);
+
+        const h = "문자";
+        console.log(h * 5);     // NaN : Not a Number
+        console.log(isNaN(h));
+
+        console.log(5 / 0);
+        console.log(isFinite(5 / 0));
+
+        console.log("이전")
+        alert("alert\n글씨");
+        console.log("이후")
+        
+        const result1 = confirm("잔짜 ㄱ?");
+        console.log(result1);
+        const result2 = prompt("메세지\n다음줄");
+        console.log(result2);
+
+        console.log("입력한 글씨는 " + result2 + "입니다.");
+        console.log(`입력한 글씨는 ${result2}입니다.`);
+
+        let sum;
+        for(i = 0; i <=10; i++){
+            sum += i;
+        }
+        console.log(sum);
+        </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

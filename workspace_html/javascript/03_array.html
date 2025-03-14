@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 배열은 변수의 집합
+        // 한번에 몽땅 만들어서 index로 관리할 수 있는 변수의 집합
+
+        // 배열 변수를 만드는 가장 쉬운 방법
+        let arr = [];
+
+        // 두번째 방법
+        let arr2 = new Array();
+
+        // 값을 미리 알고 있을 때
+        arr = [1,2,3];
+        arr = new Array(1,2,3);
+
+        console.log("arr[0]", arr[0]);
+        
+        arr[1] = 20;
+        console.log("arr[1]", arr[1]);
+        
+        console.log("arr", arr);
+        console.log("arr : "+ arr);
+        
+        arr[10] = 10;
+        console.log("arr", arr);
+        console.log("arr[20] : "+ arr[20]);
+        // console.log("a", a);
+
+        arr["name"] = "이름";
+        console.log("arr" , arr);
+        console.log('arr["name"]', arr["name"]);
+
+        console.log("arr.length", arr.length);
+
+        const str = "휴먼교육센터";
+        console.log("str[1]", str[1]);
+        console.log("str.length", str.length);
+
+        for(let i = 0; i<str.length; i++){
+            console.log(str[i]);
+        }
+        
+        for(i = 0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        let 액션 = ['헬다이버2', '엘든링', '사펑', '콜옵'];
+        let 롤플레잉 = ['발더3', '호구와트', '스토커2'];
+        let 전략 = ['발트로', '토탈워', '메타포', '스텔라리스'];
+
+        let 스팀 = [액션, 롤플레잉, 전략];
+
+        for(i = 0; i<스팀.length; i++){
+            for(let j =0; j<스팀[i].length; j++){
+                console.log(스팀[i][j]);
+            }
+        }
+
+        // 배열 초기화
+        arr = [];
+        arr = [1,3,2,5,4,2];
+
+        // 자바 스크립트에서 배열을 자바의 ArrayList처럼 메소드 사용하기
+        
+        // push() - 마지막에 하나 추가
+        // 자동으로 배열의 크기도 증가
+        // 자바의 ArrayList의 add와 같음
+        arr.push(10);
+        console.log(arr);
+        
+        // unshift() - 맨 앞에 하나 추가
+        arr.unshift(11);
+        console.log(arr);
+        
+        // pop() - 마지막 인덱스에 있는 값을 제거하면서 저장한다.
+        let pop = arr.pop();
+        console.log("pop : ", pop);
+        console.log(arr);
+        
+        // shift() - 맨 앞에 있는 값을 제거하면서 저장한다.
+        let shift = arr.shift();
+        console.log(arr);
+        console.log("shift : ", shift);
+        
+        // reverse() - 배열의 순서를 거꾸로 바꾼다.
+        arr.reverse();
+        console.log(arr);
+        
+        // sort() - 배열의 값을 오름차순으로 정렬한다. 내림차순은 불가
+        arr.sort();
+        console.log(arr);
+        
+        
+        // [1, 2, 2, 3, 4, 5]
+        // splice() - (시작 인덱스, 개수)
+        // splice() - (시작 인덱스) - 마지막까지
+        let splice = arr.splice(2, 3);
+        console.log("arr : ", arr);
+        console.log("splice : ", splice);
+        
+        // [1, 2, 5]
+        // 음수 인덱스는 뒤에서부터 시작
+        let splice2 = arr.splice(-2);
+        console.log("arr : ", arr);
+        console.log("splice2 : ", splice2);
+        
+        arr = [1,2,3,4,5];
+        // splice() - 배열의 값을 추출함과 동시에 추출한 자리에 새로운 값을 넣을 수도 있다.
+        // 3번째 전달인자의 값을 넣음.
+        let s = arr.splice(1,2, '둘');
+        console.log("arr : ", arr);
+        console.log("s : ", s);
+        
+        // join() - 배열을 모두 문자열로 변경
+        // 전달인자가 없을 경우 - ","로 표시
+        // 전달인자가 있을 경우 - 그것으로 연결
+        let join = arr.join();
+        let join2 = arr.join('-');
+        console.log("arr : ", arr);
+        console.log("join : ", join);
+        console.log("join2 : ", join2);
+        
+        // split() - 문자열에 있는 split() 전달인자의 문자를 제거해서 배열로 만든다.
+        let split = join2.split("-");
+        console.log("split : ", split);
+        
+        arr = [1,2,3,4,5];
+        
+        // slice() - (시작 인덱스, 종료 인덱스) - 시작 인덱스부터 종료 인덱스 바로 앞까지의 값을 복사한다.
+        // ctrl + c
+        let slice = arr.slice(1,3);
+        console.log("arr : ", arr);
+        console.log("slice : ", slice);
+
+        // concat() - 서로 다른 배열의 값을 합쳐서 하나의 배열로 만든다.
+        let concat = arr.concat(slice);
+        console.log("arr : ", arr);
+        console.log("slice : ", slice);
+        console.log("concat : ", concat);
+        
+        // toString() - 문자열로 바꾼다.
+        console.log(arr.toString());
+        console.log(""+ arr);
+        
+        let idx = arr.indexOf(4);
+        console.log(idx)            // 4의 인덱스인 3 출력
+        
+        console.log("-----------------------------");
+        let str2 = "오늘 점심시간에 점심 뭐먹지?";
+        console.log("str2.length",str2.length);
+        console.log('str2.indexOf("점심") : ',str2.indexOf("점심"));
+        // 같은 값이 여러개일 경우 첫번째 만나는 요소의 인덱스만 리턴
+        // 만나는 인덱스가 없으면 -1을 리턴
+        console.log('str2.indexOf("저녁") : ',str2.indexOf("저녁"));
+        
+        </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .menubox {
+            display: flex;
+            /* width: 100vw;
+            height: 50px; */
+            border: 1px solid red;
+        }
+
+        .menu {
+            width: 220px;
+            height: 40px;
+            margin: 3px;
+            padding: 1px;
+            border: 1px solid blue;
+            text-align: center;
+        }
+
+        .menubtn {
+            width: 220px;
+            height: 40px;
+        }
+
+        .menubox2 {
+            display: none;
+            width: 1000px;
+            flex-wrap: wrap;
+        }
+
+        .menu2 {
+            border: 1px solid blue;
+            text-align: center;
+            width: 220px;
+            height: 40px;
+            margin: 3px;
+            padding: 1px;
+            align-content: stretch;
+            
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .comment {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+    </style>
+    
+</head>
+<body>
+    <div>
+        
+        <div class="menubox">
+            <div class="menu"><button id="btn1" class="menubtn">menu1</button></div>
+            <div class="menu"><button id="btn2" class="menubtn">menu2</button></div>
+            <div class="menu"><button id="btn3" class="menubtn">menu3</button></div>
+            <div class="menu"><button id="btn4" class="menubtn">menu4</button></div>
+            <div class="menu"><button id="btn5" class="menubtn">menu5</button></div>
+        </div>
+        <div class="menubox2">
+            <div class="menu2">1</div>
+            <div class="menu2">2</div>
+            <div class="menu2">3</div>
+            <div class="menu2">4</div>
+            <div class="menu2">5</div>
+            <div class="menu2">6</div>
+            <div class="menu2">7</div>
+            <div class="menu2">8</div>
+            <div class="menu2">9</div>
+            <div class="menu2">10</div>
+            <div class="menu2">11</div>
+            <div class="menu2">12</div>
+            <div class="menu2">13</div>
+            <div class="menu2">14</div>
+            <div class="menu2">15</div>
+            <div class="menu2">16</div>
+        </div>
+        <div>
+            <ul class="comment">
+                <li class="comment-form">
+                    <form id="commentf">
+                        <h4>댓글 <span></span></h4>
+                        <span class="ps_box">
+                            <input type="text" name="content" class="int">
+                        </span>
+                        <input type="submit" class="subbtn" value="등록">
+                    </form>
+                </li>
+                <li id="comment-list"></li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const menubox2 = document.querySelector('.menubox2');
+        const menu = document.querySelector('.menubox');
+        menu.addEventListener('click', function(e) {
+            if(e.target && e.target.nodeName === 'BUTTON') {
+                menubox2.style.display = 'flex';
+            }
+        })
+
+        const cobtn = document.querySelector("#commentf");
+        const list = [];
+
+        function commentbtn(e) {
+            e.preventDefault();
+            const input = e.target.content.value;
+            list.push(input.value);
+            drawing();
+            e.target.reset();
+        }
+
+        cobtn.addEventListener("submit", commentbtn);
+
+        const commentList = document.querySelector("#comment-list");
+
+        function createRow(content) {
+            const ul = document.createElement("ul");
+            const li = document.createElement("li");
+
+            ul.append(li);
+
+            ul.setAttribute("class", "commnet-row");
+            li.setAttribute("class", "comment-content");
+
+            li.innerHTML = content;
+
+            return ul;
+        }
+
+        function drawing() {
+            commentList.innerHTML = "";
+            for(let i=0; i<list.length; i++){
+                const row = createRow(list[i].content);
+                commentList.append(row);
+            }
+        }
+        
+    </script>
+</body>
+</html>

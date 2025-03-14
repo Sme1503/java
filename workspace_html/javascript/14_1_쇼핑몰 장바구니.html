@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'javascript/14_쇼핑몰.html');
+        xhr.send();
+
+        xhr.onload = function(){
+            if(xhr.status == 200){
+                console.log(xhr.responseText);
+                document.getElementById('d1').innerHTML = xhr.responseText;
+            } else{
+                console.log(`[${xhr.status}] : ${xhr.statusText}`);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id ="d1">
+        전체
+        <div>
+            장바구니에 추가 할 때마다 div생성 체크박스의 체크 여부로 결제 가능 상품 확인
+            결제 버튼을 누르면 결제 총액 표시
+        </div>
+    </div>
+</body>
+</html>

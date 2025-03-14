@@ -1,0 +1,97 @@
+body {
+    border: 1px solid red;
+    margin: 0;
+}
+.first {
+    /* border: 1px solid green; */
+    /* margin-top: 50px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    margin-left: 20px; */
+
+    /* 순서 - 위 오른쪽 아래 왼쪽 */
+    /* margin: 50px 40px 30px 20px; */
+    /* 3개일때  위 오른쪽+왼쪽 아래 */
+    margin: 50px 30px 20px;
+    /* 2개일때 위+아래 오른쪽+왼쪽 */
+    margin: 50px 30px;
+    /* 1개일때 */
+    margin: 30px;
+
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: red;
+
+    border-right: 2px dotted green;
+
+    border-bottom: 5px dashed blue;
+
+    border-left: 7px solid yellow;
+
+    border: 3px solid rgb(77, 180, 180);
+
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+
+    padding: 50px;
+
+    /* width, height는 기본적으로 컨텐츠의 너비와 높이 */
+    width: 50%;
+    height: 200px;
+    background-color: rebeccapurple;
+}
+    
+    .second {
+         /* border: 1px solid green; */
+    /* margin-top: 50px;
+    margin-right: 40px;
+    margin-bottom: 30px;
+    margin-left: 20px; */
+
+    /* 순서 - 위 오른쪽 아래 왼쪽 */
+    /* margin: 50px 40px 30px 20px; */
+    /* 3개일때  위 오른쪽+왼쪽 아래 */
+    margin: 50px 30px 20px;
+    /* 2개일때 위+아래 오른쪽+왼쪽 */
+    margin: 50px 30px;
+    /* 1개일때 */
+    margin: 30px;
+
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-top-color: red;
+
+    border-right: 2px dotted green;
+
+    border-bottom: 5px dashed blue;
+
+    border-left: 7px solid yellow;
+
+    border: 3px solid rgb(77, 180, 180);
+
+    padding-top: 20px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+
+    padding: 50px;
+
+    /* width, height는 기본적으로 컨텐츠의 너비와 높이 */
+    width: 50%;
+    height: 200px;
+    background-color: rebeccapurple;
+
+    /* width와 height를  border까지 확장*/
+    box-sizing: border-box;
+}
+
+.profile img{
+    border: 1px solid red;
+    width: 200px;
+    height: 200px;
+
+    border-radius: 20px;
+    
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .p {
+            border: 1px solid red;
+            width: 100px;
+            margin: 10px;
+            height: 100px;
+        }
+
+        /* overflow */
+        /* hidden - 부모를 벗어나는 내용을 가려줌 */
+        .p.hidden {
+            overflow: hidden;
+        }
+
+        /* overflow */
+        /* scroll - 벗어난 것을 볼 수 있도록 스크롤 ui제공, 벗어난게 없어도 제공한다. 일관된 디자인을 유지할 수 있다. */
+        .p.scroll {
+            overflow: scroll;
+        }
+
+        /* overflow */
+        /* auto - 벗어난게 있을 때만 스크롤 제공 */
+        .p.auto {
+            overflow: auto;
+        }
+
+        .nowrap {
+            border: 1px solid red;
+            width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            overflow: auto;
+        }
+
+        .nowrap div {
+            border: 1px solid red;
+            width: 100px;
+            display: inline-block;
+            margin: 5px;
+            
+        }
+
+    </style>
+</head>
+<body>
+    <div class="p hidden">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum repudiandae dicta vitae alias deleniti nulla provident quisquam, maxime error facilis beatae nobis voluptas exercitationem id quod officiis illo libero atque!
+    </div>
+
+    <div class="p scroll">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum repudiandae dicta vitae alias deleniti nulla provident quisquam, maxime error facilis beatae nobis voluptas exercitationem id quod officiis illo libero atque!
+    </div>
+
+    <div class="p auto">
+        Lorem
+    </div>
+
+    <div class="nowrap">
+        <div>항목1</div>
+        <div>항목2</div>
+        <div>항목3</div>
+        <div>항목4</div>
+        <div>항목5</div>
+    </div>
+</body>
+</html>

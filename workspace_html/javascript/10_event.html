@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        // 이벤트 처리 방법1
+        window.addEventListener("load", init);
+
+
+        // 이벤트 처리 방법2
+        // window.onload = function(){
+        //     init();
+        // }
+
+
+
+        function init() {
+            const btn1 = document.querySelector("#btn1");
+            console.log("btn1 : ", btn1);
+        }
+
+        function btn1click() {
+            //debugger;
+            console.log("버튼1 클릭");
+        }
+
+    </script>
+</head>
+
+<!-- <body onload="javascript:init()"> // 이벤트 처리 방법3-->
+<body>
+    <button type="button" id="btn1" onclick="btn1click()">버튼1</button>
+
+    
+</body>
+</html>

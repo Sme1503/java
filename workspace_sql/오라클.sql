@@ -774,6 +774,82 @@ select * from chap10hw_emp;
 
 
 
+create table menu (
+    menunum number(4) not null,
+    menuname varchar(10) not null,
+    menuprice number(5) not null,
+    primary key (menunum)
+);
+
+create table eating_house (
+    num number(5) not null,
+    name varchar(10) not null,
+    address varchar(20) not null,
+    callnum varchar(12) not null,
+    primary key (num),
+    foreign key (menunum) references menu(menunum)
+);
+
+create table user (
+    usernum number(4) not null,
+    userid varchar(20) not null,
+    useraddress varchar(20) not null,
+    usercallnum varchar(13) not null,
+    primary key (usernum)
+);
+
+create table order (
+    ordernum number(4) not null,
+    request varchar(40) null,
+    allpay number(5) not null,
+    packdeli varchar(10) not null,
+    paystatus number(1) not null,
+    orderdate date not null,
+    primary key (ordernum),
+    foreign key (usernum) references user(usernum),
+    foreign key (num, menunum) references eating_house(num, menunum)
+);
+
+select * from order;
+
+create table todo (
+    todo_id number primary key,
+    todo varchar2(4000) not null,
+    create_date date not null,
+    modify_date date,
+    done char(1) not null
+);
+
+create sequence seq_todo;
+
+select * from todo;
+
+insert into todo values ( seq_todo.nextval,'test', sysdate, null, 'N'); 
+commit;
+
+update todo set done = 'y' where todo_id = 4;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

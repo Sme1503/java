@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="asset/position.css">
+</head>
+
+<body id="top">
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="sticky">
+        스티키 : 메뉴1 메뉴2
+    </div>
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child relative">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child absolute">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="parent relative">
+        <div>
+            위 div
+        </div>
+        <div class="child absolute">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="parent">
+        <div>
+            위 div
+        </div>
+        <div class="child absolute-bottom">
+            자식<br>
+            다음줄
+        </div>
+        <div>
+            아래 div
+        </div>
+    </div>
+
+    <div class="fixed">
+        <button>
+            <a href="#top">맨 위로</a>
+        </button>
+    </div>
+
+    <div class="parent">
+        <div class="relative z1">
+            1번
+        </div>
+        <div class="relative z2">
+            2번
+        </div>
+        <div class="relative z3">
+            3번
+        </div>
+    </div>
+
+    <!-- 메인메뉴 : 항상 보임
+         서브메뉴 : 안보이다가 메인메뉴에 마우스 올리면 보임
+                   배경색 변경. 메인메뉴에 살짝 걸친 상태 -->
+    <ul class="main">
+        <il>
+            메인 메뉴
+            <ul class="sub">
+                <li>서브 메뉴1</li>
+                <li>서브 메뉴2</li>
+                <li>서브 메뉴3</li>
+            </ul>
+        </il>
+    </ul>
+
+    <div class="p1">
+        부모박스
+        <div class="c1">
+            자식박스
+        </div>
+    </div>
+
+</body>
+
+</html>

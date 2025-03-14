@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+
+        .table {
+            display: table;
+        }
+        .table .td {
+            border: 1px solid red;
+            display: table-cell;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            /* line-height: 100px; */
+            /* 테이블일 때는 버티칼 얼라인을 쓸 수 있다. */
+            vertical-align: middle;
+        }
+        /* 인라인 안에는 인라인 블럭이나 블럭을 넣지 않는게 좋다. */
+
+        .fake_div {
+            display: inline;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="hide">
+        숨겨질 div
+    </div>
+
+    <div class="table">
+        <div class="td">
+            글씨
+        </div>
+    </div>
+
+    <div class="fake_div">
+        div1
+    </div>
+    <div class="fake_div">
+        div2
+    </div>
+</body>
+</html>

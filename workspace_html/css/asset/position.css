@@ -1,0 +1,130 @@
+body {
+    height: 2000px;
+}
+div {
+    border: 1px solid red;
+}
+
+.parent {
+    width: 100px;
+    margin: 20px;
+    background-color: green;
+    color: white;
+}
+
+.child {
+    background: rgba(00, 00, 255, 0.5);
+    width: 90px;
+}
+
+/* 원래 위치를 기준으로 이동, 원래의 내 공간은 남아있다. */
+.relative {
+    position: relative;
+    /* top: 50%;
+    left: 50%; */
+    top: 10px;
+    left: -20px;
+    /* top: 0;
+    left: 0; */
+}
+
+/* 조상 요소 중에서 포지션이 static(기본값)이 아닌 것을 기준으로 0.0이다.*/
+/* 새로운 층이 생긴다. */
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* top: 50%;
+    left: 50%; */
+    /* top: 250px;
+    left: 150px; */
+}
+
+.absolute-bottom {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    
+}
+
+/* 브라우저(viewport)의 해당 위치에 고정. 스크롤과 관계 없다. */
+.fixed {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+}
+
+/* 원래 보이는 상태에서는 효과가 없고 스크롤을 내려서 안보이게될 때 fixed처럼 작동한다. */
+.sticky {
+    position: sticky;
+    top: 20px;
+}
+
+.z1 {
+    background-color: hotpink;
+    top: 20px;
+    left: 20px;
+
+    /* z-index: 1; */
+}
+
+.z2 {
+    background-color: brown;
+    top: -10px;
+    left: -20px;
+
+    /* z-index: 2; */
+}
+
+.z3 {
+    background-color: black;
+    color: white;
+    top: -20px;
+    left: 50px;
+
+    /* z-index: 3999; */
+}
+
+/* 포지션을 쓰는 경우 기본적으로 늦게 나온 태그가 위에 보이게 된다. */
+/* z-index에 높은 값을 주면 높은 z-index가 앞에 보이게 된다. */
+/* z-index의 기본값은 0 */
+.relative:hover {
+    z-index: 99;
+}
+
+ul.main {
+    background: yellowgreen;
+
+}
+
+ul.main ul.sub {
+    display: none;
+}
+
+ul.main:hover ul.sub {
+    display: block;
+}
+
+ul.main ul.sub.li:hover {
+    background: pink;
+}
+
+.p1 {
+    width: 200px;
+    height: 150px;
+
+    position: relative;
+}
+
+.p1 .c1 {
+    width: 70px;
+    height: 50px;
+
+    position: absolute;
+    top: calc(150px/2 - 50px/2);
+    left: calc(50% - (70px/2));
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+    
+</head>
+<body >
+    <h1 id="title">DOM 연습</h1>
+
+    <div id="view">첫번째 #view</div>
+    <div id="view">두번째 #view</div>
+
+    <div class="div2">첫번째 .div</div>
+    <div class="div2">두번째 .div</div>
+
+    <div id="parent">
+        <div class="child div2">안쪽 div</div>
+        <div class="child">안쪽 div</div>
+    </div>
+
+    <img class="human" src="https://th.bing.com/th/id/OIP.WeZT8xBBitn5Sum3lPnIJAHaGB?w=223&h=181&c=7&r=0&o=5&pid=1.7" alt="">
+
+    <script>
+
+        // document는 html문서 전체를 뜻한다.
+        // getElementById : 속성 id의 값을 이용해 dom을 가져온다.
+        let title = document.getElementById("title");
+        console.log(title);
+
+        console.log("-------------------");
+        let qs2 = document.querySelector(".div2");
+
+        let qsa3 = document.querySelectorAll(".div2asdfd");
+        console.log(qsa3);
+
+        let qsa4 = document.querySelectorAll("body");
+        console.log(qsa4);
+
+        let child1 = document.querySelector("#parent .div2");
+        console.log(child1);
+        // parentNode : 부모 DOM으로 이동
+        let parent1 = child1.parentNode;
+        console.log(parent1);
+        
+        // classList : 클래스를 배열 형식으로 돌려줌
+        console.log(child1.classList);
+        // classList.add() : 클래스 추가
+        child1.classList.add("red");
+        // 클래스는 중복해서 추가되지않는다.
+        child1.classList.add("red");
+
+        // 해당 클래스 삭제
+        child1.classList.remove("red");
+        child1.classList.remove("red2");
+
+        // toggle : 있으면 remove, 없으면 add
+        child1.classList.toggle("red");
+        child1.classList.toggle("red");
+
+        let isRed = child1.classList.contains("red");
+        console.log(isRed);
+
+        // toggle 구현 - toggle 사용금지.
+        // red 클래스가 있으면 red 삭제
+        // red 클래스가 없으면 red 추가
+        if(isRed){
+            child1.classList.remove("red");
+        } else {
+            child1.classList.add("red");
+        }
+
+        // className : 모든 클래스를 문자로 돌려준다.
+        console.log(child1.className);
+        // 값을 지정하는 class의 값을 덮어쓴다.
+        child1.className = "blue";
+
+        // css 선택자 중에 속성으로 선택하는 거로 querySelector 사용해보기
+        let select = document.querySelector("[id=title]");
+        console.log(select);
+        // contains 구현
+        function contains(element, name){
+            for(let i=0; i<element.classList.length; i++){
+                if(element.classList[i] == name){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        console.log( "결과 : ",contains(child1, "blue"));
+        
+        let img = document.getElementsByTagName("img");
+        console.log(img);
+        console.log(img[0]);
+        console.log(img[0].classList);
+
+        let isSrc = img[0].hasAttribute("src");
+        console.log(isSrc);
+        isSrc = img[0].hasAttribute("readonly");
+        console.log(isSrc);
+        
+        let src = img[0].getAttribute("src");
+        console.log(src);
+
+        // 속성이 없으면 null
+        src = img[0].getAttribute("readonly");
+        console.log(src);
+        
+        img[0].setAttribute("data-human", "1강의실");
+        img[0].setAttribute("data-human", "10강의실");
+        img[0].setAttribute("src", "https://th.bing.com/th/id/OIP.WeZT8xBBitn5Sum3lPnIJAHaGB?w=223&h=181&c=7&r=0&o=5&pid=1.7");
+
+        img[0].removeAttribute("data-human");
+        
+    </script>
+</body>
+</html>
