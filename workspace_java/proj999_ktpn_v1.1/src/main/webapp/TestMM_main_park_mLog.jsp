@@ -133,41 +133,54 @@
 										<table class="material-table">
 											<thead>
 												<tr>
-													<th scope="col" class="material-th">삭제체크</th>
+<!-- 													<th scope="col" class="material-th">삭제체크</th> -->
+													<th scope="col" class="material-th">번호</th>
 													<th scope="col" class="material-th">원자재코드</th>
 													<th scope="col" class="material-th">원자재명</th>
 													<th scope="col" class="material-th">기준 수량</th>
-													<th scope="col" class="material-th">현재 수량</th>
+													<th scope="col" class="material-th">변동 수량</th>
+													<th scope="col" class="material-th">변동 후 수량</th>
 													<th scope="col" class="material-th">주문필요</th>
+													<th scope="col" class="material-th">입고/출고</th>
+													<th scope="col" class="material-th">작업자</th>
 													<th scope="col" class="material-th">위치</th>
-													<th scope="col" class="material-th">수정</th>
-													
+													<th scope="col" class="material-th">변동 일자</th>	
+													<th scope="col" class="material-th">입력 일자</th> 
+													<th scope="col" class="material-th">비고</th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="Mdata" items="${materialList }">
+												<c:forEach var="mLogdata" items="${mlogList }">
 
 													<tr>
-														<form method="post" action="컨트롤러">
-															<td><input type="checkbox" name="deleteCheck"
-																value="Y"></td>
-															<td id="Mcode" class="material-td Mcode">${Mdata.MTRL_CD }</td>
-															<td id="Mname" class="material-td">${Mdata.MTRL_NM }</td>
-															<td id="Msntea" class="material-td">${Mdata.STN_CNT }</td>
-															<td id="Mcurea" class="material-td">${Mdata.CRNT_AFTR_CNT }</td>
-															<td id="Morder" class="material-td">${Mdata.ORDR_RQRD_YN }</td>
-															<td id="Mloc" class="material-td">${Mdata.MTRL_LOC_NM }</td>
-
-															<td id="Mbutton" class="material-td">
-																<input type="hidden" name="command" value="update"> 
-																<input type="submit" value="수정">
-
-																<button type="button" class="btn_main_update">
-																	<a class="btn_text_color"
-																		href="./TestMM_update_park.html">수정</a>
-																</button>
+												
+<!-- 															<td><input type="checkbox" name="deleteCheck" -->
+<!-- 																value="Y"></td> -->
+															<td id="Msn" class="material-td">${mLogdata.SN }</td>
+															<td id="Mcode" class="material-td Mcode">${mLogdata.MTRL_CD }</td>
+															<td id="Mname" class="material-td">${mLogdata.MTRL_NM }</td>
+															<td id="Msntea" class="material-td">${mLogdata.STN_CNT }</td>
+															<td id="Msntea" class="material-td">${mLogdata.CRNT_CNT }</td>
+															<td id="Mcurea" class="material-td">${mLogdata.CRNT_AFTR_CNT }</td>
+															<td id="Morder" class="material-td">${mLogdata.ORDR_RQRD_YN }</td>
+<%-- 															<td id="Morder" class="material-td">${mLogdata.IOB_SE_CD }</td> --%>
+															<td id="Morder" class="material-td">
+																<c:choose>
+																	<c:when test="${mLogdata.IOB_SE_CD eq 'i'}">
+																		입고
+																	</c:when>
+																	<c:when test="${mLogdata.IOB_SE_CD ne 'i'}">
+																		출고
+																	</c:when>
+																</c:choose>
 															</td>
-														</form>
+															
+															<td id="Morder" class="material-td">${mLogdata.WORK_NM }</td>
+															<td id="Mloc" class="material-td">${mLogdata.MTRL_LOC_NM }</td>
+															<td id="Mloc" class="material-td">${mLogdata.CHNG_DT }</td>
+															<td id="Mloc" class="material-td">${mLogdata.REG_DTTM }</td>
+															<td id="Mloc" class="material-td">${mLogdata.RMRK }</td>
+
 													</tr>
 												</c:forEach>
 
@@ -175,17 +188,6 @@
 											</tbody>
 
 										</table>
-
-										<form method="post" action="컨트롤러">
-											<input type="hidden" name="command" value="order"> <input
-												type="submit" value="거래처">
-
-											<button type="button" class="btn_main_order">
-												<a class="btn_text_color" href="./TestMM_order_park.html">주문정보</a>
-											</button>
-										</form>
-
-
 
 									</div>
 

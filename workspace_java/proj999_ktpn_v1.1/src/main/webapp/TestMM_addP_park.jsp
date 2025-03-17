@@ -86,9 +86,9 @@
 
                                     <div class="flex_child">
 
-                                        <div class="item i_color">원자재코드</div>
-                                        <div class="item i_color">원자재이름</div>
-<!--                                         <div class="item i_color">기준수량</div> -->
+                                        <div class="item i_color">생산코드</div>
+                                        <div class="item i_color">완제품코드</div>
+                                        <div class="item i_color">완제품이름</div>
                                         <div class="item i_color">입력수량</div>
                                         <div class= i_color"item">입고/출고</div>
                                         <div class= i_color"item">작업자</div>
@@ -103,6 +103,12 @@
                                      <div class="flex_child new_input">
                                     	<form action="컨트롤러" method="post">
                                     	
+                                    		<select name="Pcode">
+                                    			<c:forEach var = "pcode" items = "${pcodeList }">
+                                    				<option value="${pcode.MT_MNG_CD }">${pcode.MT_MNG_CD }</option>
+                                    			</c:forEach>
+                                    		</select>
+                                    	
                                     		<select name="code">
                                     			<c:forEach var = "code" items = "${codeList }">
                                     				<option value="${code.MT_MNG_CD }">${code.MT_MNG_CD }</option>
@@ -115,7 +121,7 @@
                                     			</c:forEach>
                                     		</select>
                                     		
-                                 			<input class="item Mea" type="text" name="ea" value="" placeholder="수량(EA) 입력" />
+                                 			<input class="item Mea" type="text" name="ea" value="${pcode.PROD_QNTT }" />${pcode.PROD_QNTT }
                                  			
                                     		<select name="inNout">
                                     			<option value="i">입고</option>
@@ -129,15 +135,15 @@
                                     		</select>
                                     		
                                     		<select name="warehouse">
-                                    			<option value="warehouse1">M창고1</option>
-                                    			<option value="warehouse2">M창고2</option>
-                                    			<option value="warehouse3">M창고3</option>
+                                    			<option value="warehouse1">P창고1</option>
+                                    			<option value="warehouse2">P창고2</option>
+                                    			<option value="warehouse3">P창고3</option>
                                     		
                                     		</select>
                                     		
                                  			<input class="item" id="date" name="date" type="date" />
                                  			
-                                 			<input class="item note" type="text" name="note" value="" placeholder="입력하세요" />
+                                 			<input class="item note" type="text" name="note" value="" placeholder="입력" />
                                  			
                                  			<input type="hidden" name="command" value="insert">
 											<input type="submit" value="추가">

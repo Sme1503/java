@@ -49,7 +49,7 @@
             <div class="menu">작업관리</div>
             <div class="menu">생산관리</div>
             <div class="menu">생산리포팅</div>
-            <div class="menu">자재관리</div>
+            <div class="menu">재고관리</div>
             <div class="menu">품질관리</div>
         </div>
     </div>
@@ -98,9 +98,10 @@
                                                 <div class="div_report_item_QA">3. 품목명</div>
                                                 <div class="div_report_item_QA">4. 작업자</div>
                                                 <div class="div_report_item_QA">5. 생산일</div>
-                                                <div class="div_report_item_QA">6. 투입량</div>
+                                                <div class="div_report_item_QA">6. 지시수량</div>
                                                 <div class="div_report_item_QA">7. 생산량</div>
-                                                <div class="div_report_item_QA">8. 검수자</div>
+                                                <div class="div_report_item_QA">8. 불량률</div>
+                                                <div class="div_report_item_QA">9. 검수자</div>
 
 
                                             </div>
