@@ -104,6 +104,7 @@
                                     	<form action="컨트롤러" method="post">
                                     	
                                     		<select name="Pcode">
+                                    			<option value="default" selected="selected">선택</option>
                                     			<c:forEach var = "pcode" items = "${pcodeList }">
                                     				<option value="${pcode.MT_MNG_CD }">${pcode.MT_MNG_CD }</option>
                                     			</c:forEach>

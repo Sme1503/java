@@ -132,3 +132,31 @@ MERGE INTO TB_FS_1000MT T
         ON (T.FNSH_CODE = S.ITEM_CD)
    WHEN MATCHED THEN
               UPDATE SET T.CRNT_AFTR_CNT = (T.CRNT_AFTR_CNT + S.PROD_QNTT);
+              
+alter table TB_FS_1000HT add PROD_CD VARCHAR2(100);   
+              
+alter table TB_FS_1000HT add constraint fk_prod_cd
+foreign key(PROD_CD) references TB_PR_1100MT(PROD_CD);
+
+
+select * from TB_PR_1100MT;
+
+
+// 로그 테이블에서 마지막에 입력한 잘못된 로그의 바로 이전 로그 찾기
+select a.*
+  from (
+        select a.*, rownum as rn
+          from TB_MR_1000HT a
+         where a.MTRL_CD = 'M0004'
+        order by a.sn desc
+      ) a
+ where a.rn = 2;
+ 
+select * from TB_FS_1000HT;
+select * from TB_QA_1100DT;
+select * from TB_QA_1000DT;
+
+select * from TB_MR_1000HT;
+
+insert into TB_MR_1000HT
+values (SQ_MR_1000HT.NEXTVAL, 'M0004', '염화비닐', 1000, 1000, 'y', 'i', '김철수', 'm창고', '없음', sysdate, 1500, to_char(sysdate, 'yyyymmdd'));

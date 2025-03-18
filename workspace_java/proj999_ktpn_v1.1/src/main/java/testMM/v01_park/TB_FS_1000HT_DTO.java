@@ -7,6 +7,7 @@ public class TB_FS_1000HT_DTO {
 	// 완제품 로그 테이블
 	
 	private int SN;						// 순번
+	private String PROD_CD;					// 생산코드
 	private String FNSH_CODE;           	// 완제품코드
 	private String FNSHD_ITEM_NM;       	// 완제품명
 	private int CRNT_CNT;               	// 변동수량
@@ -23,6 +24,12 @@ public class TB_FS_1000HT_DTO {
 	}
 	public void setSN(int sN) {
 		SN = sN;
+	}
+	public String getPROD_CD() {
+		return PROD_CD;
+	}
+	public void setPROD_CD(String pROD_CD) {
+		PROD_CD = pROD_CD;
 	}
 	public String getFNSH_CODE() {
 		return FNSH_CODE;
@@ -85,13 +92,13 @@ public class TB_FS_1000HT_DTO {
 		REG_DTTM = rEG_DTTM;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "TB_FS_1000HT_DTO [SN=" + SN + ", FNSH_CODE=" + FNSH_CODE + ", FNSHD_ITEM_NM=" + FNSHD_ITEM_NM
-				+ ", CRNT_CNT=" + CRNT_CNT + ", CRNT_AFTR_CNT=" + CRNT_AFTR_CNT + ", CHNG_DT=" + CHNG_DT
+		return "TB_FS_1000HT_DTO [SN=" + SN + ", PROD_CD=" + PROD_CD + ", FNSH_CODE=" + FNSH_CODE + ", FNSHD_ITEM_NM="
+				+ FNSHD_ITEM_NM + ", CRNT_CNT=" + CRNT_CNT + ", CRNT_AFTR_CNT=" + CRNT_AFTR_CNT + ", CHNG_DT=" + CHNG_DT
 				+ ", IOB_SE_CD=" + IOB_SE_CD + ", WORK_NM=" + WORK_NM + ", FNSHL_LOC_NM=" + FNSHL_LOC_NM + ", RMRK="
 				+ RMRK + ", REG_DTTM=" + REG_DTTM + "]";
 	}
-	
-	
+
 }

@@ -114,7 +114,7 @@
 											<tr>
 												<form method="post" action="컨트롤러">
 
-													<td id="Mcode" class="material-td Mcode">
+													<td id="Mcode" class="material-td Mcode">셀렉트, 대신 기본값 -선택- -> 출고때 사용
 														<input type="text" value="${pList.FNSH_CODE }" readonly="readonly">${pList.FNSH_CODE }
 													</td>
 													

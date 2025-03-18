@@ -209,7 +209,7 @@
 													<tr>
 														<th>9. 검수자</th>
 														<td>
-															<select name="worker" required="required">
+															<select name="tester" required="required">
                                     							<c:forEach var = "worker" items = "${workerList }">
                                     								<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
                                     							</c:forEach>

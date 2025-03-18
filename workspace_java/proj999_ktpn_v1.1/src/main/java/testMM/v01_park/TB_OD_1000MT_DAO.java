@@ -151,7 +151,7 @@ public class TB_OD_1000MT_DAO {
 
 	public int updateDealCompany(TB_OD_1000MT_DTO dto) {
 
-		System.out.println("TB_QA_1000DT updateDealCompany 실행");
+		System.out.println("TB_OD_1000MT updateDealCompany 실행");
 
 		int result = -1;
 
@@ -196,7 +196,7 @@ public class TB_OD_1000MT_DAO {
 
 	public int deleteDealCompany(TB_OD_1000MT_DTO dto) {
 		
-		System.out.println("TB_QA_1000DT deleteDealCompany 실행");
+		System.out.println("TB_OD_1000MT deleteDealCompany 실행");
 
 		int result = -1;
 	
