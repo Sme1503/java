@@ -116,17 +116,7 @@
 
 								</div>
 
-								<!-- 추후 추가 할 내용 
-                                         원자재 테이블, 완제품 테이블을 만들어서
-                                         메뉴에서 원자재, 완제품 버튼을 누르면 해당하는 테이블이 화면에 출력
-                                         ex) 원자재(기본화면, 강조 표시)   완제품
-                                             자재코드   자재명   수량 ... ... ...
-                                             AA-dd-01 염화비닐  1000 ... ...
-
-                                             원자재            완제품(클릭, 강조 표시)
-                                             품목코드     품목명     수량 ... ... ... 
-                                             aa-dd-cc   싹싹지우개   1000 ... ...  
-                                    -->
+								
 
 								<div>
 									<div id="show_table1">
@@ -157,8 +147,8 @@
 <!-- 																value="Y"></td> -->
 															<td id="PSN" class="material-td">${pLogdata.SN }</td>
 															<td id="Pcode" class="material-td Mcode">${pLogdata.PROD_CD }</td>
-															<td id="Pcode" class="material-td Mcode">${pLogdata.FNSH_CODE }</td>
-															<td id="Pname" class="material-td">${pLogdata.FNSHD_ITEM_NM }</td>
+															<td id="Pcode" class="material-td Mcode">${pLogdata.Fnsh_code }</td>
+															<td id="Pname" class="material-td">${pLogdata.Fnshd_item_nm }</td>
 															<td id="Psntea" class="material-td">${pLogdata.CRNT_CNT }</td>
 															<td id="Pcurea" class="material-td">${pLogdata.CRNT_AFTR_CNT }</td>
 <%-- 															<td id="Ploc" class="material-td">${pLogdata.IOB_SE_CD }</td> --%>
@@ -174,10 +164,10 @@
 															</td>
 															
 															<td id="Ploc" class="material-td">${pLogdata.WORK_NM }</td>
-															<td id="Ploc" class="material-td">${pLogdata.FNSHL_LOC_NM }</td>
+															<td id="Ploc" class="material-td">${pLogdata.Fnshl_loc_nm }</td>
 															<td id="Ploc" class="material-td">${pLogdata.CHNG_DT }</td>
 															<td id="Ploc" class="material-td">${pLogdata.REG_DTTM }</td>
-															<td id="Ploc" class="material-td">${pLogdata.RMRK }</td>
+															<td id="Ploc" class="material-td">${pLogdata.Rmrk }</td>
 													</tr>
 												</c:forEach>
 
@@ -189,47 +179,7 @@
 
 									</div>
 
-									<div id="show_table2" class="hide">
-										<table class="material-table product-table">
-											<thead>
-												<tr>
-													<th scope="col" class="material-th product-th">삭제체크</th>
-													<th scope="col" class="material-th product-th">완제품코드</th>
-													<th scope="col" class="material-th product-th">완제품명</th>
-													<th scope="col" class="material-th product-th">수량</th>
-													<th scope="col" class="material-th product-th">재고위치</th>
-													<th scope="col" class="material-th product-th">수정</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="Pdata" items="${productList }">
-
-													<tr>
-														<td><input type="checkbox" name="deleteCheck"
-															value="Y"></td>
-														<td id="Pcode" class="material-td Mcode product-td">${Pdata.FNSH_CODE }</td>
-														<td id="Pname" class="material-td product-td">${Pdata.FNSH_NM }</td>
-														<td id="Pcurea" class="material-td product-td">${Pdata.CRNT_AFTR_CNT }</td>
-														<td id="Ploc" class="material-td product-td">${Pdata.FNSH_LOC_NM }</td>
-
-														<td id="Mbutton" class="material-td product-td">
-															<input type="hidden" name="command" value="update">
-															<input type="submit" value="수정">
-
-															<button type="button" class="btn_main_update">
-																<a class="btn_text_color"
-																	href="./TestMM_update_park.html">수정</a>
-															</button>
-														</td>
-													</tr>
-												</c:forEach>
-
-
-											</tbody>
-
-										</table>
-
-									</div>
+									
 
 									<div class="div_none">
 										<!-- 빈 공간 -->
@@ -237,19 +187,12 @@
 
 									<div class="div_button">
 										<button type="button" id="btn_main_add">
-											<a class="btn_text_color" href="TestMM_add_park.html">추가</a>
+											<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a>
 										</button>
-										<button type="button" id="btn_main_delete">
-											<a class="btn_text_color" href="TestMM_delete_park.html">삭제</a>
-										</button>
+										
 									</div>
 
-									<!-- 자재코드 입력하면 자재명이 자동으로 입력
-                                        수량은 기존에 있는것과 연동
-                                        주문 필요도 입력창에선 없고 결과창에만 표시 -->
-
-									<!-- 히스토리 항목 추가 -->
-
+									
 									<!-- 페이지 번호 -->
 									<div class="flex_page">
 										<div class="item_page pre_page">

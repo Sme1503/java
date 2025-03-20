@@ -6,94 +6,96 @@ public class TB_QA_1100DT_DTO {
 
 	// 생산코드빼고 생산 부분이 없는 QA리포트 테이블 // 생산 코드로 생산테이블과 조인해서 조회
 	
-	private String PROD_CD;					   // 생산코드
-	private String ITEM_CD;                   // 품목코드
-	private String ITEM_NM;                   // 품목명
-	private String CHCKR_NM;                  // 검수자명
-	private Date CHCKR_DTTM;                  // 검수일시
-	private int STRTH_VAL;                    // 강도값
-	private int SZ_VAL;                       // 크기값
-	private String CLRL_VAL;                  // 색상값
-	private int QLTY_VAL;                     // 픔질값
-	private String FAIL_CAUS_DESC;            // 불합격사유내용
-	private String RMRK;                      // 비고
+	private String prod_cd;					   // 생산코드
+	private String item_cd;                   // 품목코드
+	private String item_nm;                   // 품목명
+	private String chckr_nm;                  // 검수자명
+	private Date   chckr_dttm;                  // 검수일시
+	private int    strth_val;                    // 강도값
+	private int    sz_val;                       // 크기값
+	private String Clrl_val;                  // 색상값
+	private int    qlty_val;                     // 픔질값
+	private String fail_caus_desc;            // 불합격사유내용
+	private String rmrk;                      // 비고
 	
 	
-	public String getPROD_CD() {
-		return PROD_CD;
+	public String getProd_cd() {
+		return prod_cd;
 	}
-	public void setPROD_CD(String pROD_CD) {
-		PROD_CD = pROD_CD;
+	public void setProd_cd(String prod_cd) {
+		this.prod_cd = prod_cd;
 	}
-	public String getITEM_CD() {
-		return ITEM_CD;
+	public String getItem_cd() {
+		return item_cd;
 	}
-	public void setITEM_CD(String iTEM_CD) {
-		ITEM_CD = iTEM_CD;
+	public void setItem_cd(String item_cd) {
+		this.item_cd = item_cd;
 	}
-	public String getITEM_NM() {
-		return ITEM_NM;
+	public String getItem_nm() {
+		return item_nm;
 	}
-	public void setITEM_NM(String iTEM_NM) {
-		ITEM_NM = iTEM_NM;
+	public void setItem_nm(String item_nm) {
+		this.item_nm = item_nm;
 	}
-	public String getCHCKR_NM() {
-		return CHCKR_NM;
+	public String getChckr_nm() {
+		return chckr_nm;
 	}
-	public void setCHCKR_NM(String cHCKR_NM) {
-		CHCKR_NM = cHCKR_NM;
+	public void setChckr_nm(String chckr_nm) {
+		this.chckr_nm = chckr_nm;
 	}
-	public Date getCHCKR_DTTM() {
-		return CHCKR_DTTM;
+	public Date getChckr_dttm() {
+		return chckr_dttm;
 	}
-	public void setCHCKR_DTTM(Date cHCKR_DTTM) {
-		CHCKR_DTTM = cHCKR_DTTM;
+	public void setChckr_dttm(Date chckr_dttm) {
+		this.chckr_dttm = chckr_dttm;
 	}
-	public int getSTRTH_VAL() {
-		return STRTH_VAL;
+	public int getStrth_val() {
+		return strth_val;
 	}
-	public void setSTRTH_VAL(int sTRTH_VAL) {
-		STRTH_VAL = sTRTH_VAL;
+	public void setStrth_val(int strth_val) {
+		this.strth_val = strth_val;
 	}
-	public int getSZ_VAL() {
-		return SZ_VAL;
+	public int getSz_val() {
+		return sz_val;
 	}
-	public void setSZ_VAL(int sZ_VAL) {
-		SZ_VAL = sZ_VAL;
+	public void setSz_val(int sz_val) {
+		this.sz_val = sz_val;
 	}
-	public String getCLRL_VAL() {
-		return CLRL_VAL;
+	public String getClrl_val() {
+		return Clrl_val;
 	}
-	public void setCLRL_VAL(String cLRL_VAL) {
-		CLRL_VAL = cLRL_VAL;
+	public void setClrl_val(String Clrl_val) {
+		this.Clrl_val = Clrl_val;
 	}
-	public int getQLTY_VAL() {
-		return QLTY_VAL;
+	public int getQlty_val() {
+		return qlty_val;
 	}
-	public void setQLTY_VAL(int qLTY_VAL) {
-		QLTY_VAL = qLTY_VAL;
+	public void setQlty_val(int qlty_val) {
+		this.qlty_val = qlty_val;
 	}
-	public String getFAIL_CAUS_DESC() {
-		return FAIL_CAUS_DESC;
+	public String getFail_caus_desc() {
+		return fail_caus_desc;
 	}
-	public void setFAIL_CAUS_DESC(String fAIL_CAUS_DESC) {
-		FAIL_CAUS_DESC = fAIL_CAUS_DESC;
+	public void setFail_caus_desc(String fail_caus_desc) {
+		this.fail_caus_desc = fail_caus_desc;
 	}
-	public String getRMRK() {
-		return RMRK;
+	public String getRmrk() {
+		return rmrk;
 	}
-	public void setRMRK(String rMRK) {
-		RMRK = rMRK;
+	public void setRmrk(String rmrk) {
+		this.rmrk = rmrk;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "TB_QA_1100DT_DTO [PROD_CD=" + PROD_CD + ", ITEM_CD=" + ITEM_CD + ", ITEM_NM=" + ITEM_NM + ", CHCKR_NM="
-				+ CHCKR_NM + ", CHCKR_DTTM=" + CHCKR_DTTM + ", STRTH_VAL=" + STRTH_VAL + ", SZ_VAL=" + SZ_VAL
-				+ ", CLRL_VAL=" + CLRL_VAL + ", QLTY_VAL=" + QLTY_VAL + ", FAIL_CAUS_DESC=" + FAIL_CAUS_DESC + ", RMRK="
-				+ RMRK + "]";
+		return "TB_QA_1100DT_DTO [prod_cd=" + prod_cd + ", item_cd=" + item_cd + ", item_nm=" + item_nm + ", chckr_nm="
+				+ chckr_nm + ", chckr_dttm=" + chckr_dttm + ", strth_val=" + strth_val + ", sz_val=" + sz_val
+				+ ", Clrl_val=" + Clrl_val + ", qlty_val=" + qlty_val + ", fail_caus_desc=" + fail_caus_desc + ", rmrk="
+				+ rmrk + "]";
 	}
+	
+	
 	
 	
 }

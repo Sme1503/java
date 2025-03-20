@@ -49,19 +49,19 @@ public class TB_MR_1000HT_DAO {
 			while (rs.next()) {
 				TB_MR_1000HT_DTO dto = new TB_MR_1000HT_DTO();
 
-				dto.setSN(rs.getInt("SN"));
-				dto.setMTRL_CD(rs.getString("MTRL_CD"));
-				dto.setMTRL_NM(rs.getString("MTRL_NM"));
-				dto.setSTN_CNT(rs.getInt("STN_CNT"));
-				dto.setCRNT_CNT(rs.getInt("CRNT_CNT"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setCHNG_DT(rs.getString("CHNG_DT"));
-				dto.setIOB_SE_CD(rs.getString("IOB_SE_CD"));
-				dto.setORDR_RQRD_YN(rs.getString("ORDR_RQRD_YN"));
-				dto.setWORK_NM(rs.getString("WORK_NM"));
-				dto.setMTRL_CD_NM(rs.getString("MTRL_CD_NM"));
-				dto.setRMRK(rs.getString("RMRK"));
-				dto.setREG_DTTM(rs.getDate("REG_DTTM"));
+				dto.setSn(rs.getString("SN"));
+				dto.setMtrl_cd(rs.getString("MTRL_CD"));
+				dto.setMtrl_nm(rs.getString("MTRL_NM"));
+				dto.setStn_cnt(rs.getInt("STN_CNT"));
+				dto.setCrnt_cnt(rs.getInt("CRNT_CNT"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setChng_dt(rs.getString("CHNG_DT"));
+				dto.setIob_se_cd(rs.getString("IOB_SE_CD"));
+				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
+				dto.setWork_nm(rs.getString("WORK_NM"));
+				dto.setMtrl_cd_nm(rs.getString("MTRL_CD_NM"));
+				dto.setRmrk(rs.getString("RMRK"));
+				dto.setReg_dttm(rs.getDate("REG_DTTM"));
 				
 				list.add(dto);
 				System.out.println("조회 중");
@@ -119,19 +119,19 @@ public class TB_MR_1000HT_DAO {
 			while (rs.next()) {
 				TB_MR_1000HT_DTO dto = new TB_MR_1000HT_DTO();
 
-				dto.setSN(rs.getInt("SN"));
-				dto.setMTRL_CD(rs.getString("MTRL_CD"));
-				dto.setMTRL_NM(rs.getString("MTRL_NM"));
-				dto.setSTN_CNT(rs.getInt("STN_CNT"));
-				dto.setCRNT_CNT(rs.getInt("CRNT_CNT"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setCHNG_DT(rs.getString("CHNG_DT"));
-				dto.setIOB_SE_CD(rs.getString("IOB_SE_CD"));
-				dto.setORDR_RQRD_YN(rs.getString("ORDR_RQRD_YN"));
-				dto.setWORK_NM(rs.getString("WORK_NM"));
-				dto.setMTRL_CD_NM(rs.getString("MTRL_CD_NM"));
-				dto.setRMRK(rs.getString("RMRK"));
-				dto.setREG_DTTM(rs.getDate("REG_DTTM"));
+				dto.setSn(rs.getString("SN"));
+				dto.setMtrl_cd(rs.getString("MTRL_CD"));
+				dto.setMtrl_nm(rs.getString("MTRL_NM"));
+				dto.setStn_cnt(rs.getInt("STN_CNT"));
+				dto.setCrnt_cnt(rs.getInt("CRNT_CNT"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setChng_dt(rs.getString("CHNG_DT"));
+				dto.setIob_se_cd(rs.getString("IOB_SE_CD"));
+				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
+				dto.setWork_nm(rs.getString("WORK_NM"));
+				dto.setMtrl_cd_nm(rs.getString("MTRL_CD_NM"));
+				dto.setRmrk(rs.getString("Rmrk"));
+				dto.setReg_dttm(rs.getDate("REG_DTTM"));
 				
 				list.add(dto);
 				System.out.println("조회 중");
@@ -171,20 +171,20 @@ public class TB_MR_1000HT_DAO {
 			// SQL 준비
 			// 원자재 로그 테이블에 데이터 삽입
 			String query = "insert into TB_MR_1000HT (SN, MTRL_CD, MTRL_NM, STN_CNT, CRNT_CNT, ORDR_RQRD_YN, IOB_SE_CD,";
-				   query += " WORK_NM, MTRL_CD_NM, RMRK, REG_DTTM, CRNT_AFTR_CNT, CHNG_DT) ";
-				   query += " values ('M'||LPAD(SQ_MR_1000HT.NEXTVAL, 4, '0'), ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, to_char(sysdate, 'yyyymmdd')) ";
+				   query += " WORK_NM, MTRL_CD_NM, Rmrk, REG_DTTM, CRNT_AFTR_CNT, CHNG_DT) ";
+				   query += " values (SQ_MR_1000HT.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?, ?, sysdate, ?, to_char(sysdate, 'yyyymmdd')) ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, dto.getMTRL_CD());
-			ps.setString(2, dto.getMTRL_NM());
-			ps.setInt(3, dto.getSTN_CNT());
-			ps.setInt(4, dto.getCRNT_CNT());
-			ps.setString(5, dto.getORDR_RQRD_YN());
-			ps.setString(6, dto.getIOB_SE_CD());
-			ps.setString(7, dto.getWORK_NM());
-			ps.setString(8, dto.getMTRL_CD_NM());
-			ps.setString(9, dto.getRMRK());
-			ps.setInt(10, dto.getCRNT_AFTR_CNT());
+			ps.setString(1, dto.getMtrl_cd());
+			ps.setString(2, dto.getMtrl_nm());
+			ps.setInt(3, dto.getStn_cnt());
+			ps.setInt(4, dto.getCrnt_cnt());
+			ps.setString(5, dto.getOrdr_rqrd_yn());
+			ps.setString(6, dto.getIob_se_cd());
+			ps.setString(7, dto.getWork_nm());
+			ps.setString(8, dto.getMtrl_cd_nm());
+			ps.setString(9, dto.getRmrk());
+			ps.setInt(10, dto.getCrnt_aftr_cnt());
 			
 
 			// SQL 실행 및 결과 확보
@@ -229,13 +229,13 @@ public class TB_MR_1000HT_DAO {
 			// SQL 준비
 			// 원자재 로그 테이블에 데이터 수정
 			String query =  " update TB_MR_1000HT from ";
-				   query += " set RMRK = ? ";
+				   query += " set Rmrk = ? ";
 				   query += " where SN = ? and MTRL_CD = ? ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, dto.getRMRK());
-			ps.setInt(2, dto.getSN());
-			ps.setString(3, dto.getMTRL_CD());
+			ps.setString(1, dto.getRmrk());
+			ps.setString(2, dto.getSn());
+			ps.setString(3, dto.getMtrl_cd());
 			
 
 			// SQL 실행 및 결과 확보

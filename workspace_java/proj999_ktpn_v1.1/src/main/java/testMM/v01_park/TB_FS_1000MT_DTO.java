@@ -4,43 +4,46 @@ public class TB_FS_1000MT_DTO {
 
 	// 완제품 현재 재고 테이블
 	
-	private String FNSH_CODE;            // 완제품 코드
-	private String FNSH_NM;              // 완제품명
-	private int CRNT_AFTR_CNT;           // 변동 후 수량
-	private String FNSH_LOC_NM;          // 완제품 위치
+	private String fnsh_code;            // 완제품 코드
+	private String fnsh_nm;              // 완제품명
+	private int    crnt_aftr_cnt;           // 변동 후 수량
+	private String fnsh_loc_nm;          // 완제품 위치
 	
 	
-	public String getFNSH_CODE() {
-		return FNSH_CODE;
+	public String getFnsh_code() {
+		return fnsh_code;
 	}
-	public void setFNSH_CODE(String fNSH_CODE) {
-		FNSH_CODE = fNSH_CODE;
+	public void setFnsh_code(String fnsh_code) {
+		this.fnsh_code = fnsh_code;
 	}
-	public String getFNSH_NM() {
-		return FNSH_NM;
+	public String getFnsh_nm() {
+		return fnsh_nm;
 	}
-	public void setFNSH_NM(String fNSH_NM) {
-		FNSH_NM = fNSH_NM;
+	public void setFnsh_nm(String fnsh_nm) {
+		this.fnsh_nm = fnsh_nm;
 	}
-	public String getFNSH_LOC_NM() {
-		return FNSH_LOC_NM;
+	public int getCrnt_aftr_cnt() {
+		return crnt_aftr_cnt;
 	}
-	public void setFNSH_LOC_NM(String fNSH_LOC_NM) {
-		FNSH_LOC_NM = fNSH_LOC_NM;
+	public void setCrnt_aftr_cnt(int crnt_aftr_cnt) {
+		this.crnt_aftr_cnt = crnt_aftr_cnt;
 	}
-	public int getCRNT_AFTR_CNT() {
-		return CRNT_AFTR_CNT;
+	public String getFnsh_loc_nm() {
+		return fnsh_loc_nm;
 	}
-	public void setCRNT_AFTR_CNT(int cRNT_AFTR_CNT) {
-		CRNT_AFTR_CNT = cRNT_AFTR_CNT;
+	public void setFnsh_loc_nm(String fnsh_loc_nm) {
+		this.fnsh_loc_nm = fnsh_loc_nm;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "TB_FS_1000MT_DTO [FNSH_CODE=" + FNSH_CODE + ", FNSH_NM=" + FNSH_NM + ", FNSH_LOC_NM=" + FNSH_LOC_NM
-				+ ", CRNT_AFTR_CNT=" + CRNT_AFTR_CNT + "]";
+		return "TB_FS_1000MT_DTO [fnsh_code=" + fnsh_code + ", fnsh_nm=" + fnsh_nm + ", crnt_aftr_cnt=" + crnt_aftr_cnt
+				+ ", fnsh_loc_nm=" + fnsh_loc_nm + "]";
 	}
+	
+	
+	
 	
 	
 }

@@ -88,16 +88,16 @@ public class IMController extends HttpServlet {
 				list = Mtable_dao.selectCurrentM(code); // 원자재 현황 테이블에서 입력한 원자재코드의 데이터 조회
 
 				if (list.size() == 0) { // 데이터가 없으면 insert
-					Mtable_dto.setMTRL_CD(code);
-					Mtable_dto.setMTRL_NM(name);
-					Mtable_dto.setSTN_CNT(1000);
-					Mtable_dto.setCRNT_AFTR_CNT(0 + EA);
-					Mtable_dto.setMTRL_LOC_NM(warehouse);
+					Mtable_dto.setMtrl_cd(code);
+					Mtable_dto.setMtrl_nm(name);
+					Mtable_dto.setStn_cnt(1000);
+					Mtable_dto.setCrnt_aftr_cnt(0 + EA);
+					Mtable_dto.setMtrl_loc_nm(warehouse);
 
-					if (Mtable_dto.getCRNT_AFTR_CNT() <= Mtable_dto.getSTN_CNT()) { // 현재 수량이 기준 수량과 같거나 작으면
-						Mtable_dto.setORDR_RQRD_YN("Y"); // 주문 필요 여부가 Y
+					if (Mtable_dto.getCrnt_aftr_cnt() <= Mtable_dto.getStn_cnt()) { // 현재 수량이 기준 수량과 같거나 작으면
+						Mtable_dto.setOrdr_rqrd_yn("Y"); // 주문 필요 여부가 Y
 					} else {
-						Mtable_dto.setORDR_RQRD_YN("N"); // 주문 필요 여부가 N
+						Mtable_dto.setOrdr_rqrd_yn("N"); // 주문 필요 여부가 N
 					}
 
 					ex = Mtable_dao.insertCurrentM(Mtable_dto);
@@ -108,16 +108,16 @@ public class IMController extends HttpServlet {
 				} else { // 데이터가 있으면 update
 					Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 					System.out.println("수정 전 데이터: " + Mtable_dto.toString());
-//					Mtable_dto.setMTRL_CD(code);
-//					Mtable_dto.setMTRL_NM(name);
-//					Mtable_dto.setSTN_CNT(1000);
-//					Mtable_dto.getCRNT_AFTR_CNT();
-					Mtable_dto.setCRNT_AFTR_CNT(Mtable_dto.getCRNT_AFTR_CNT() + EA);
-					Mtable_dto.setMTRL_LOC_NM(warehouse);
-					if (Mtable_dto.getCRNT_AFTR_CNT() <= Mtable_dto.getSTN_CNT()) { // 현재 수량이 기준 수량과 같거나 작으면
-						Mtable_dto.setORDR_RQRD_YN("Y"); // 주문 필요 여부가 Y
+//					Mtable_dto.setMtrl_cd(code);
+//					Mtable_dto.setMtrl_nm(name);
+//					Mtable_dto.setStn_cnt(1000);
+//					Mtable_dto.getCrnt_aftr_cnt();
+					Mtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt() + EA);
+					Mtable_dto.setMtrl_loc_nm(warehouse);
+					if (Mtable_dto.getCrnt_aftr_cnt() <= Mtable_dto.getStn_cnt()) { // 현재 수량이 기준 수량과 같거나 작으면
+						Mtable_dto.setOrdr_rqrd_yn("Y"); // 주문 필요 여부가 Y
 					} else {
-						Mtable_dto.setORDR_RQRD_YN("N"); // 주문 필요 여부가 N
+						Mtable_dto.setOrdr_rqrd_yn("N"); // 주문 필요 여부가 N
 					}
 
 					ex = Mtable_dao.updateCurrentM(Mtable_dto);
@@ -137,22 +137,22 @@ public class IMController extends HttpServlet {
 				} else { // 데이터가 있으면 update
 					Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 					System.out.println("수정 전 데이터: " + Mtable_dto.toString());
-//					Mtable_dto.setMTRL_CD(code);
-//					Mtable_dto.setMTRL_NM(name);
-//					Mtable_dto.setSTN_CNT(1000);
-//					Mtable_dto.getCRNT_AFTR_CNT();
-					Mtable_dto.setCRNT_AFTR_CNT(Mtable_dto.getCRNT_AFTR_CNT() - EA);
-					Mtable_dto.setMTRL_LOC_NM(warehouse);
-					if (Mtable_dto.getCRNT_AFTR_CNT() <= Mtable_dto.getSTN_CNT()) { // 현재 수량이 기준 수량과 같거나 작으면
-						Mtable_dto.setORDR_RQRD_YN("Y"); // 주문 필요 여부가 Y
+//					Mtable_dto.setMtrl_cd(code);
+//					Mtable_dto.setMtrl_nm(name);
+//					Mtable_dto.setStn_cnt(1000);
+//					Mtable_dto.getCrnt_aftr_cnt();
+					Mtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt() - EA);
+					Mtable_dto.setMtrl_loc_nm(warehouse);
+					if (Mtable_dto.getCrnt_aftr_cnt() <= Mtable_dto.getStn_cnt()) { // 현재 수량이 기준 수량과 같거나 작으면
+						Mtable_dto.setOrdr_rqrd_yn("Y"); // 주문 필요 여부가 Y
 					} else {
-						Mtable_dto.setORDR_RQRD_YN("N"); // 주문 필요 여부가 N
+						Mtable_dto.setOrdr_rqrd_yn("N"); // 주문 필요 여부가 N
 					}
 					System.out.println("수정 후 데이터: " + Mtable_dto.toString());
 
-					if (Mtable_dto.getCRNT_AFTR_CNT() < 0) { // 현재 수량이 0보다 작으면
+					if (Mtable_dto.getCrnt_aftr_cnt() < 0) { // 현재 수량이 0보다 작으면
 						System.out.println("오류! 출고할 수량이 현재 수량보다 큽니다.");
-					} else if (Mtable_dto.getCRNT_AFTR_CNT() >= 0) { // 현재 수량이 0보다 크면
+					} else if (Mtable_dto.getCrnt_aftr_cnt() >= 0) { // 현재 수량이 0보다 크면
 						ex = Mtable_dao.updateCurrentM(Mtable_dto);
 						System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
 					} else { // 현재 수량이 0이면
@@ -163,18 +163,18 @@ public class IMController extends HttpServlet {
 				}
 			}
 
-			MLogtable_dto.setMTRL_CD(Mtable_dto.getMTRL_CD());
-			MLogtable_dto.setMTRL_NM(Mtable_dto.getMTRL_NM());
-			MLogtable_dto.setSTN_CNT(Mtable_dto.getSTN_CNT());
-			MLogtable_dto.setCRNT_CNT(EA);
-			MLogtable_dto.setCRNT_AFTR_CNT(Mtable_dto.getCRNT_AFTR_CNT());
-			MLogtable_dto.setORDR_RQRD_YN(Mtable_dto.getORDR_RQRD_YN());
-			MLogtable_dto.setIOB_SE_CD(io);
-			MLogtable_dto.setWORK_NM(worker);
-//			MLogtable_dto.setREG_DTTM();
-			MLogtable_dto.setCHNG_DT(date);
-			MLogtable_dto.setRMRK(note);
-			MLogtable_dto.setMTRL_CD_NM(Mtable_dto.getMTRL_LOC_NM());
+			MLogtable_dto.setMtrl_cd(Mtable_dto.getMtrl_cd());
+			MLogtable_dto.setMtrl_nm(Mtable_dto.getMtrl_nm());
+			MLogtable_dto.setStn_cnt(Mtable_dto.getStn_cnt());
+			MLogtable_dto.setCrnt_cnt(EA);
+			MLogtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt());
+			MLogtable_dto.setOrdr_rqrd_yn(Mtable_dto.getOrdr_rqrd_yn());
+			MLogtable_dto.setIob_se_cd(io);
+			MLogtable_dto.setWork_nm(worker);
+//			MLogtable_dto.setReg_dttm();
+			MLogtable_dto.setChng_dt(date);
+			MLogtable_dto.setRmrk(note);
+			MLogtable_dto.setMtrl_cd_nm(Mtable_dto.getMtrl_loc_nm());
 
 			ex = MLogtable_dao.insertMlog(MLogtable_dto);
 			System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
@@ -198,16 +198,16 @@ public class IMController extends HttpServlet {
 				list = Mtable_dao.selectCurrentM(code); // 원자재 현황 테이블에서 입력한 원자재코드의 데이터 조회
 
 				if (list.size() == 0) { // 데이터가 없으면 insert
-					Mtable_dto.setMTRL_CD(code);
-					Mtable_dto.setMTRL_NM(name);
-					Mtable_dto.setSTN_CNT(1000);
-					Mtable_dto.setCRNT_AFTR_CNT(0 + EA);
-					Mtable_dto.setMTRL_LOC_NM(warehouse);
+					Mtable_dto.setMtrl_cd(code);
+					Mtable_dto.setMtrl_nm(name);
+					Mtable_dto.setStn_cnt(1000);
+					Mtable_dto.setCrnt_aftr_cnt(0 + EA);
+					Mtable_dto.setMtrl_loc_nm(warehouse);
 
-					if (Mtable_dto.getCRNT_AFTR_CNT() <= Mtable_dto.getSTN_CNT()) { // 현재 수량이 기준 수량과 같거나 작으면
-						Mtable_dto.setORDR_RQRD_YN("Y"); // 주문 필요 여부가 Y
+					if (Mtable_dto.getCrnt_aftr_cnt() <= Mtable_dto.getStn_cnt()) { // 현재 수량이 기준 수량과 같거나 작으면
+						Mtable_dto.setOrdr_rqrd_yn("Y"); // 주문 필요 여부가 Y
 					} else {
-						Mtable_dto.setORDR_RQRD_YN("N"); // 주문 필요 여부가 N
+						Mtable_dto.setOrdr_rqrd_yn("N"); // 주문 필요 여부가 N
 					}
 					System.out.println("입력 후" + Mtable_dto.toString());
 
@@ -217,16 +217,16 @@ public class IMController extends HttpServlet {
 				} else { // 데이터가 있으면 update
 					Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 					System.out.println("수정 전" + Mtable_dto.toString());
-//					Mtable_dto.setMTRL_CD(code);
-//					Mtable_dto.setMTRL_NM(name);
-//					Mtable_dto.setSTN_CNT(1000);
-//					Mtable_dto.getCRNT_AFTR_CNT();
-					Mtable_dto.setCRNT_AFTR_CNT(Mtable_dto.getCRNT_AFTR_CNT() + EA);
-					Mtable_dto.setMTRL_LOC_NM(warehouse);
-					if (Mtable_dto.getCRNT_AFTR_CNT() <= Mtable_dto.getSTN_CNT()) { // 현재 수량이 기준 수량과 같거나 작으면
-						Mtable_dto.setORDR_RQRD_YN("Y"); // 주문 필요 여부가 Y
+//					Mtable_dto.setMtrl_cd(code);
+//					Mtable_dto.setMtrl_nm(name);
+//					Mtable_dto.setStn_cnt(1000);
+//					Mtable_dto.getCrnt_aftr_cnt();
+					Mtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt() + EA);
+					Mtable_dto.setMtrl_loc_nm(warehouse);
+					if (Mtable_dto.getCrnt_aftr_cnt() <= Mtable_dto.getStn_cnt()) { // 현재 수량이 기준 수량과 같거나 작으면
+						Mtable_dto.setOrdr_rqrd_yn("Y"); // 주문 필요 여부가 Y
 					} else {
-						Mtable_dto.setORDR_RQRD_YN("N"); // 주문 필요 여부가 N
+						Mtable_dto.setOrdr_rqrd_yn("N"); // 주문 필요 여부가 N
 					}
 					System.out.println("수정 후" + Mtable_dto.toString());
 
@@ -246,22 +246,22 @@ public class IMController extends HttpServlet {
 				} else { // 데이터가 있으면
 					Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 					System.out.println("수정 전" + Mtable_dto.toString());
-//					Mtable_dto.setMTRL_CD(code);
-//					Mtable_dto.setMTRL_NM(name);
-//					Mtable_dto.setSTN_CNT(1000);
-//					Mtable_dto.getCRNT_AFTR_CNT();
-					Mtable_dto.setCRNT_AFTR_CNT(Mtable_dto.getCRNT_AFTR_CNT() - EA);
-					Mtable_dto.setMTRL_LOC_NM(warehouse);
-					if (Mtable_dto.getCRNT_AFTR_CNT() <= Mtable_dto.getSTN_CNT()) { // 현재 수량이 기준 수량과 같거나 작으면
-						Mtable_dto.setORDR_RQRD_YN("Y"); // 주문 필요 여부가 Y
+//					Mtable_dto.setMtrl_cd(code);
+//					Mtable_dto.setMtrl_nm(name);
+//					Mtable_dto.setStn_cnt(1000);
+//					Mtable_dto.getCrnt_aftr_cnt();
+					Mtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt() - EA);
+					Mtable_dto.setMtrl_loc_nm(warehouse);
+					if (Mtable_dto.getCrnt_aftr_cnt() <= Mtable_dto.getStn_cnt()) { // 현재 수량이 기준 수량과 같거나 작으면
+						Mtable_dto.setOrdr_rqrd_yn("Y"); // 주문 필요 여부가 Y
 					} else {
-						Mtable_dto.setORDR_RQRD_YN("N"); // 주문 필요 여부가 N
+						Mtable_dto.setOrdr_rqrd_yn("N"); // 주문 필요 여부가 N
 					}
 					System.out.println("수정 후" + Mtable_dto.toString());
 
-					if (Mtable_dto.getCRNT_AFTR_CNT() < 0) { // 현재 수량이 0보다 작으면
+					if (Mtable_dto.getCrnt_aftr_cnt() < 0) { // 현재 수량이 0보다 작으면
 						System.out.println("오류! 출고할 수량이 현재 수량보다 큽니다.");
-					} else if (Mtable_dto.getCRNT_AFTR_CNT() >= 0) { // 현재 수량이 0이거나 0보다 크면
+					} else if (Mtable_dto.getCrnt_aftr_cnt() >= 0) { // 현재 수량이 0이거나 0보다 크면
 						ex = Mtable_dao.updateCurrentM(Mtable_dto);
 						System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
 					} else { // 현재 수량이 0이면
@@ -272,18 +272,18 @@ public class IMController extends HttpServlet {
 				}
 			}
 
-			MLogtable_dto.setMTRL_CD(Mtable_dto.getMTRL_CD());
-			MLogtable_dto.setMTRL_NM(Mtable_dto.getMTRL_NM());
-			MLogtable_dto.setSTN_CNT(Mtable_dto.getSTN_CNT());
-			MLogtable_dto.setCRNT_CNT(EA);
-			MLogtable_dto.setCRNT_AFTR_CNT(Mtable_dto.getCRNT_AFTR_CNT());
-			MLogtable_dto.setORDR_RQRD_YN(Mtable_dto.getORDR_RQRD_YN());
-			MLogtable_dto.setIOB_SE_CD(io);
-			MLogtable_dto.setWORK_NM(worker);
-//			MLogtable_dto.setREG_DTTM();
-			MLogtable_dto.setCHNG_DT(date);
-			MLogtable_dto.setRMRK(note);
-			MLogtable_dto.setMTRL_CD_NM(Mtable_dto.getMTRL_LOC_NM());
+			MLogtable_dto.setMtrl_cd(Mtable_dto.getMtrl_cd());
+			MLogtable_dto.setMtrl_nm(Mtable_dto.getMtrl_nm());
+			MLogtable_dto.setStn_cnt(Mtable_dto.getStn_cnt());
+			MLogtable_dto.setCrnt_cnt(EA);
+			MLogtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt());
+			MLogtable_dto.setOrdr_rqrd_yn(Mtable_dto.getOrdr_rqrd_yn());
+			MLogtable_dto.setIob_se_cd(io);
+			MLogtable_dto.setWork_nm(worker);
+//			MLogtable_dto.setReg_dttm();
+			MLogtable_dto.setChng_dt(date);
+			MLogtable_dto.setRmrk(note);
+			MLogtable_dto.setMtrl_cd_nm(Mtable_dto.getMtrl_loc_nm());
 
 			ex = MLogtable_dao.insertMlog(MLogtable_dto);
 			System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
@@ -294,7 +294,7 @@ public class IMController extends HttpServlet {
 			
 			int ex = 0;
 			
-//			Mtable_dto.setMTRL_CD(code);
+//			Mtable_dto.setMtrl_cd(code);
 //			ex = Mtable_dao.deleteCurrentM(Mtable_dto);
 //			System.out.println("원자재 현황테이블에 " + ex + "행이 삭제되었습니다");
 //			
@@ -309,7 +309,7 @@ public class IMController extends HttpServlet {
 			// 잘못 입력한 로그 찾기
 			list = MLogtable_dao.selectLastMLog(code, 1);
 			MLogtable_dto = (TB_MR_1000HT_DTO) list.get(0);
-			MLogtable_dto.setRMRK("데이터 입력이 잘못되었음");
+			MLogtable_dto.setRmrk("데이터 입력이 잘못되었음");
 			
 			// 잘못 입력한 로그의 비고 데이터 수정
 			ex = MLogtable_dao.updateMlog(MLogtable_dto);
@@ -319,14 +319,14 @@ public class IMController extends HttpServlet {
 //			Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 			
 			MLogtable_dto = (TB_MR_1000HT_DTO) list.get(0);
-			MLogtable_dto.setRMRK("이전 로그로 롤백 ");
+			MLogtable_dto.setRmrk("이전 로그로 롤백 ");
 			
-			Mtable_dto.setMTRL_CD(MLogtable_dto.getMTRL_CD());
-			Mtable_dto.setMTRL_NM(MLogtable_dto.getMTRL_NM());
-			Mtable_dto.setSTN_CNT(MLogtable_dto.getSTN_CNT());
-			Mtable_dto.setORDR_RQRD_YN(MLogtable_dto.getORDR_RQRD_YN());
-			Mtable_dto.setMTRL_LOC_NM(MLogtable_dto.getMTRL_CD_NM());
-			Mtable_dto.setCRNT_AFTR_CNT(MLogtable_dto.getCRNT_AFTR_CNT());
+			Mtable_dto.setMtrl_cd(MLogtable_dto.getMtrl_cd());
+			Mtable_dto.setMtrl_nm(MLogtable_dto.getMtrl_nm());
+			Mtable_dto.setStn_cnt(MLogtable_dto.getStn_cnt());
+			Mtable_dto.setOrdr_rqrd_yn(MLogtable_dto.getOrdr_rqrd_yn());
+			Mtable_dto.setMtrl_loc_nm(MLogtable_dto.getMtrl_cd_nm());
+			Mtable_dto.setCrnt_aftr_cnt(MLogtable_dto.getCrnt_aftr_cnt());
 			
 			
 			System.out.println("잘못 입력된 로그 이전의 로그값- 정상 로그 : 원자재 현황부분 " + Mtable_dto.toString());
@@ -338,12 +338,59 @@ public class IMController extends HttpServlet {
 			// 롤백하는 로그 데이터 다시 삽입하기
 			ex = MLogtable_dao.insertMlog(MLogtable_dto);
 			System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
+		} else if("mLog".equals(command)) {
+			
+			list = MLogtable_dao.selectMLog();
+			
+			for(int i=0; i<list.size(); i++) {
+				MLogtable_dto = (TB_MR_1000HT_DTO) list.get(i);
+				
+				System.out.println("MLogtable_dto : " + MLogtable_dto.toString());
+				System.out.println();
+			}
+			
+			request.setAttribute("mLogList", list);
+			
+			String url = "/TestMM_main_park_mLog.jsp";
+
+			request.getRequestDispatcher(url).forward(request, response);
+		} else if("move_update_Page".equals(command)) {
+			
+			// 작업자 list = 작업자dao.select;
+			// request.setAttribute("작업자 list", 작업자 list);
+			
+			String code = request.getParameter("code");
+			String name = request.getParameter("name");
+			
+			Mtable_dto.setMtrl_cd(code);
+			Mtable_dto.setMtrl_nm(name);
+			
+			list.add(Mtable_dto);
+			
+			request.setAttribute("mList", list);
+			
+			String url = "/TestMM_main_park_mLog.jsp";
+
+			request.getRequestDispatcher(url).forward(request, response);
+		} else if("move_add_Page".equals(command)) {
+			
+			// 작업자 list = 작업자dao.select;
+			// request.setAttribute("작업자 list", 작업자 list);
+			
+			// 기준관리 list = 기준관리dao.select(원자재); >> 원자재코드와 원자재명이 있다
+			// request.setAttribute("기준관리 list", 기준관리 list);
+			
+			String url = "/TestMM_add_park.jsp";
+
+			request.getRequestDispatcher(url).forward(request, response);
 		}
+		
+		
 
-		doGet(request, response);
+//		doGet(request, response);
 
-		String url = "imcon";
-		response.sendRedirect(url);
+//		String url = "imcon";
+//		response.sendRedirect(url);
 
 	}
 

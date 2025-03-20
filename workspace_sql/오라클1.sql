@@ -143,6 +143,7 @@ select * from TB_PR_1100MT;
 
 
 // 로그 테이블에서 마지막에 입력한 잘못된 로그의 바로 이전 로그 찾기
+// 2가 아니라 1로 하면 마지막에 입력한 잘못된 로그
 select a.*
   from (
         select a.*, rownum as rn
@@ -160,3 +161,50 @@ select * from TB_MR_1000HT;
 
 insert into TB_MR_1000HT
 values (SQ_MR_1000HT.NEXTVAL, 'M0004', '염화비닐', 1000, 1000, 'y', 'i', '김철수', 'm창고', '없음', sysdate, 1500, to_char(sysdate, 'yyyymmdd'));
+
+select * from TB_QA_1100DT;
+insert into TB_QA_1100DT(PROD_CD, ITEM_CD, ITEM_NM) values ('S0001', 'ss-01', '싹싹지우개');
+
+// 품질 테이블에 데이터 삽입
+insert into TB_QA_1100DT(PROD_CD, ITEM_CD, ITEM_NM) values ('S0002', 'ss-01', '싹싹지우개');
+insert into TB_QA_1100DT(PROD_CD, ITEM_CD, ITEM_NM) values ('S0003', 'ss-01', '싹싹지우개');
+insert into TB_QA_1100DT(PROD_CD, ITEM_CD, ITEM_NM) values ('S0004', 'ss-01', '싹싹지우개');
+
+// 품질 테이블에 데이터 삭제
+delete from TB_QA_1100DT where PROD_CD = 'S0002' or PROD_CD = 'S0003' or PROD_CD = 'S0004';
+commit;
+
+select * from TB_PR_1100MT;
+update TB_PR_1100MT 
+set ITEM_NM = '싹싹지우개', ITEM_CD = 'ss-01'
+where PROD_CD = 'S0001';
+
+// 생산 테이블에 불량률 컬럼 추가
+alter table TB_PR_1100MT add DFC_RT NUMBER;
+
+// 생산 테이블과 품질 테이블 조인
+select * 
+  from TB_QA_1100DT qa
+     , TB_PR_1100MT pr 
+ where qa.PROD_CD = pr.PROD_CD and qa.ITEM_CD = pr.ITEM_CD and qa.ITEM_NM = pr.ITEM_NM;
+
+// 조인한 테이블에서 생산코드가 'S0001'인 데이터 조회, 서브쿼리 안에 *을 쓰면 컬럼의 정의가 애매하다는 오류가 떠서 테이블.컬럼을 해야한다
+select j.* 
+  from (
+        select *    // qa.prod_cd, ... 표시할 값을 지정해야한다
+         from TB_QA_1100DT qa, TB_PR_1100MT pr 
+        where qa.PROD_CD = pr.PROD_CD ) j
+ where j.PROD_CD = 'S0001';
+
+// 조인한 테이블에서 생산코드가 'S0001'인 데이터 조회,  *만 쓰면 조인할 때 쓴 컬럼이 중복되서 나온다
+  select *
+   from TB_QA_1100DT qa, TB_PR_1100MT pr 
+ where qa.PROD_CD = pr.PROD_CD
+   and qa.PROD_CD = 'S0001';
+
+// 조인한 테이블에서 생산코드가 'S0001'인 데이터 조회, 테이블.컬럼을 쓴 조인 쿼리문 
+   select pr.PROD_CD, pr.ITEM_CD, pr.ITEM_NM, pr.WORK_NM, pr.PROD_END_TIME, pr.INDC_QNTT, pr.PROD_QNTT, pr.DFC_RT,
+          qa.CHCKR_NM, qa.CHCKR_DTTM, qa.STRTH_VAL, qa.SZ_VAL, qa.CLRL_VAL, qa.QLTY_VAL, qa.FAIL_CAUS_DESC, qa.RMRK
+   from TB_QA_1100DT qa, TB_PR_1100MT pr 
+ where qa.PROD_CD = pr.PROD_CD
+   and qa.PROD_CD = 'S0001';

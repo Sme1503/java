@@ -44,7 +44,7 @@ public class TB_QA_1000DT_DAO {
 			if ("mainQa".equals(web)) {
 
 				// 생산일순으로 정렬해서 일부 컬럼만 조회
-				query = " select PROD_CD, ITEM_CD, ITEM_NM, STRTH_VAL, SZ_VAL, CLRL_VAL, QLTY_VAL ";
+				query = " select PROD_CD, ITEM_CD, ITEM_NM, STRTH_VAL, SZ_VAL, Clrl_val, Qlty_val ";
 				query += " from TB_QA_1000DT order by PROD_END_TIME asc ";
 
 				ps = con.prepareStatement(query);
@@ -54,14 +54,14 @@ public class TB_QA_1000DT_DAO {
 				while (rs.next()) {
 					TB_QA_1000DT_DTO dto = new TB_QA_1000DT_DTO();
 
-					dto.setPROD_CD(rs.getString("PROD_CD"));
-					dto.setITEM_CD(rs.getString("ITEM_CD"));
-					dto.setITEM_NM(rs.getString("ITEM_NM"));
-					dto.setSTRTH_VAL(rs.getInt("STRTH_VAL"));
-					dto.setSZ_VAL(rs.getInt("SZ_VAL"));
-					dto.setCLRL_VAL(rs.getString("CLRL_VAL"));
-					dto.setQLTY_VAL(rs.getInt("QLTY_VAL"));
-					dto.setCHCKR_NM(rs.getString("CHCKR_NM"));
+					dto.setProd_cd(rs.getString("PROD_CD"));
+					dto.setItem_cd(rs.getString("ITEM_CD"));
+					dto.setItem_nm(rs.getString("ITEM_NM"));
+					dto.setStrth_val(rs.getInt("STRTH_VAL"));
+					dto.setSz_val(rs.getInt("SZ_VAL"));
+					dto.setClrl_val(rs.getString("Clrl_val"));
+					dto.setQlty_val(rs.getInt("Qlty_val"));
+					dto.setChckr_nm(rs.getString("CHCKR_NM"));
 
 					list.add(dto);
 					System.out.println("조회 중");
@@ -81,22 +81,22 @@ public class TB_QA_1000DT_DAO {
 				while (rs.next()) {
 					TB_QA_1000DT_DTO dto = new TB_QA_1000DT_DTO();
 
-					dto.setPROD_CD(rs.getString("PROD_CD"));
-					dto.setITEM_CD(rs.getString("ITEM_CD"));
-					dto.setITEM_NM(rs.getString("ITEM_NM"));
-					dto.setWORK_NM(rs.getString("WORK_NM"));
-					dto.setPROD_END_TIME(rs.getString("PROD_END_TIME"));
-					dto.setINDC_QNTT(rs.getInt("INDC_QNTT"));
-					dto.setPROD_QNTT(rs.getInt("PROD_QNTT"));
-					dto.setDFC_RT(rs.getInt("DFC_RT"));
-					dto.setCHCKR_NM(rs.getString("CHCKR_NM"));
-					dto.setCHCKR_DTTM(rs.getDate("CHCKR_DTTM"));
-					dto.setSTRTH_VAL(rs.getInt("STRTH_VAL"));
-					dto.setSZ_VAL(rs.getInt("SZ_VAL"));
-					dto.setCLRL_VAL(rs.getString("CLRL_VAL"));
-					dto.setQLTY_VAL(rs.getInt("QLTY_VAL"));
-					dto.setFAIL_CAUS_DESC(rs.getString("FAIL_CAUS_DESC"));
-					dto.setRMRK(rs.getString("RMRK"));
+					dto.setProd_cd(rs.getString("PROD_CD"));
+					dto.setItem_cd(rs.getString("ITEM_CD"));
+					dto.setItem_nm(rs.getString("ITEM_NM"));
+					dto.setWork_nm(rs.getString("WORK_NM"));
+					dto.setProd_end_time(rs.getString("PROD_END_TIME"));
+					dto.setIndc_qntt(rs.getInt("INDC_QNTT"));
+					dto.setProd_qntt(rs.getInt("PROD_QNTT"));
+					dto.setDfc_rt(rs.getInt("DFC_RT"));
+					dto.setChckr_nm(rs.getString("CHCKR_NM"));
+					dto.setChckr_dttm(rs.getDate("Chckr_dttm"));
+					dto.setStrth_val(rs.getInt("STRTH_VAL"));
+					dto.setSz_val(rs.getInt("SZ_VAL"));
+					dto.setClrl_val(rs.getString("Clrl_val"));
+					dto.setQlty_val(rs.getInt("Qlty_val"));
+					dto.setFail_caus_desc(rs.getString("Fail_caus_desc"));
+					dto.setRmrk(rs.getString("Rmrk"));
 
 					list.add(dto);
 					System.out.println("조회 중");
@@ -186,21 +186,21 @@ public class TB_QA_1000DT_DAO {
 			// SQL 준비
 			// 생산코드가 ?인 것의 컬럼 데이터 값 수정
 			String query = " update TB_QA_1000DT ";
-			query += " set CHCKR_NM = ?, CHCKR_DTTM = ?, STRTH_VAL = ?, SZ_VAL = ?, CLRL_VAL = ?, QLTY_VAL = ?, FAIL_CAUS_DESC = ?, RMRK = ? ";
+			query += " set CHCKR_NM = ?, Chckr_dttm = ?, STRTH_VAL = ?, SZ_VAL = ?, Clrl_val = ?, Qlty_val = ?, Fail_caus_desc = ?, Rmrk = ? ";
 			query += " where PROD_CD = ? ";
 
 			PreparedStatement ps = con.prepareStatement(query);
 
 			// 물음표에 값을 넣어라
-			ps.setString(1, dto.getCHCKR_NM());
-			ps.setDate(2, dto.getCHCKR_DTTM());
-			ps.setInt(3, dto.getSTRTH_VAL());
-			ps.setInt(4, dto.getSZ_VAL());
-			ps.setString(5, dto.getCLRL_VAL());
-			ps.setInt(6, dto.getQLTY_VAL());
-			ps.setString(7, dto.getFAIL_CAUS_DESC());
-			ps.setString(8, dto.getRMRK());
-			ps.setString(9, dto.getPROD_CD());
+			ps.setString(1, dto.getChckr_nm());
+			ps.setDate(2, dto.getChckr_dttm());
+			ps.setInt(3, dto.getStrth_val());
+			ps.setInt(4, dto.getSz_val());
+			ps.setString(5, dto.getClrl_val());
+			ps.setInt(6, dto.getQlty_val());
+			ps.setString(7, dto.getFail_caus_desc());
+			ps.setString(8, dto.getRmrk());
+			ps.setString(9, dto.getProd_cd());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행
@@ -252,7 +252,7 @@ public class TB_QA_1000DT_DAO {
 			
 			PreparedStatement ps = con.prepareStatement(query);
 			// 첫번째 물음표에 값을 넣어라
-			ps.setString(1, dto.getPROD_CD());
+			ps.setString(1, dto.getProd_cd());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행

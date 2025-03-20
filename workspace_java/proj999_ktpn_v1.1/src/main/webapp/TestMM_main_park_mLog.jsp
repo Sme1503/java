@@ -89,9 +89,9 @@
 
 								<!-- 원자재 테이블과 완제품 테이블 구분 -->
 								<div class="select_table">
-									<div class="select_table1">원자재</div>
+									<div class="select_table1">원자재 로그</div>
 
-									<div class="select_table2">완제품</div>
+<!-- 									<div class="select_table2">완제품</div> -->
 								</div>
 
 								<div class="select_input_search-btn">
@@ -116,21 +116,9 @@
 
 								</div>
 
-								<!-- 추후 추가 할 내용 
-                                         원자재 테이블, 완제품 테이블을 만들어서
-                                         메뉴에서 원자재, 완제품 버튼을 누르면 해당하는 테이블이 화면에 출력
-                                         ex) 원자재(기본화면, 강조 표시)   완제품
-                                             자재코드   자재명   수량 ... ... ...
-                                             AA-dd-01 염화비닐  1000 ... ...
-
-                                             원자재            완제품(클릭, 강조 표시)
-                                             품목코드     품목명     수량 ... ... ... 
-                                             aa-dd-cc   싹싹지우개   1000 ... ...  
-                                    -->
-
 								<div>
 									<div id="show_table1">
-										<table class="material-table">
+										<table class="material-table table_sticky">
 											<thead>
 												<tr>
 <!-- 													<th scope="col" class="material-th">삭제체크</th> -->
@@ -150,36 +138,36 @@
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="mLogdata" items="${mlogList }">
+												<c:forEach var="mLogdata" items="${mLogList }">
 
 													<tr>
 												
 <!-- 															<td><input type="checkbox" name="deleteCheck" -->
 <!-- 																value="Y"></td> -->
-															<td id="Msn" class="material-td">${mLogdata.SN }</td>
-															<td id="Mcode" class="material-td Mcode">${mLogdata.MTRL_CD }</td>
-															<td id="Mname" class="material-td">${mLogdata.MTRL_NM }</td>
-															<td id="Msntea" class="material-td">${mLogdata.STN_CNT }</td>
-															<td id="Msntea" class="material-td">${mLogdata.CRNT_CNT }</td>
-															<td id="Mcurea" class="material-td">${mLogdata.CRNT_AFTR_CNT }</td>
-															<td id="Morder" class="material-td">${mLogdata.ORDR_RQRD_YN }</td>
+															<td id="Msn" class="material-td">${mLogdata.sn }</td>
+															<td id="Mcode" class="material-td Mcode">${mLogdata.mtrl_cd }</td>
+															<td id="Mname" class="material-td">${mLogdata.mtrl_nm }</td>
+															<td id="Msntea" class="material-td">${mLogdata.stn_cnt }</td>
+															<td id="Msntea" class="material-td">${mLogdata.crnt_cnt }</td>
+															<td id="Mcurea" class="material-td">${mLogdata.crnt_aftr_cnt }</td>
+															<td id="Morder" class="material-td">${mLogdata.ordr_rqrd_yn }</td>
 <%-- 															<td id="Morder" class="material-td">${mLogdata.IOB_SE_CD }</td> --%>
 															<td id="Morder" class="material-td">
 																<c:choose>
-																	<c:when test="${mLogdata.IOB_SE_CD eq 'i'}">
+																	<c:when test="${mLogdata.iob_se_cd eq 'i'}">
 																		입고
 																	</c:when>
-																	<c:when test="${mLogdata.IOB_SE_CD ne 'i'}">
+																	<c:when test="${mLogdata.iob_se_cd ne 'i'}">
 																		출고
 																	</c:when>
 																</c:choose>
 															</td>
 															
-															<td id="Morder" class="material-td">${mLogdata.WORK_NM }</td>
-															<td id="Mloc" class="material-td">${mLogdata.MTRL_LOC_NM }</td>
-															<td id="Mloc" class="material-td">${mLogdata.CHNG_DT }</td>
-															<td id="Mloc" class="material-td">${mLogdata.REG_DTTM }</td>
-															<td id="Mloc" class="material-td">${mLogdata.RMRK }</td>
+															<td id="Morder" class="material-td">${mLogdata.work_nm }</td>
+															<td id="Mloc" class="material-td">${mLogdata.mtrl_cd_nm }</td>
+															<td id="Mloc" class="material-td">${mLogdata.chng_dt }</td>
+															<td id="Mloc" class="material-td">${mLogdata.reg_dttm }</td>
+															<td id="Mloc" class="material-td">${mLogdata.rmrk }</td>
 
 													</tr>
 												</c:forEach>
@@ -191,47 +179,7 @@
 
 									</div>
 
-									<div id="show_table2" class="hide">
-										<table class="material-table product-table">
-											<thead>
-												<tr>
-													<th scope="col" class="material-th product-th">삭제체크</th>
-													<th scope="col" class="material-th product-th">완제품코드</th>
-													<th scope="col" class="material-th product-th">완제품명</th>
-													<th scope="col" class="material-th product-th">수량</th>
-													<th scope="col" class="material-th product-th">재고위치</th>
-													<th scope="col" class="material-th product-th">수정</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach var="Pdata" items="${productList }">
-
-													<tr>
-														<td><input type="checkbox" name="deleteCheck"
-															value="Y"></td>
-														<td id="Pcode" class="material-td Mcode product-td">${Pdata.FNSH_CODE }</td>
-														<td id="Pname" class="material-td product-td">${Pdata.FNSH_NM }</td>
-														<td id="Pcurea" class="material-td product-td">${Pdata.CRNT_AFTR_CNT }</td>
-														<td id="Ploc" class="material-td product-td">${Pdata.FNSH_LOC_NM }</td>
-
-														<td id="Mbutton" class="material-td product-td">
-															<input type="hidden" name="command" value="update">
-															<input type="submit" value="수정">
-
-															<button type="button" class="btn_main_update">
-																<a class="btn_text_color"
-																	href="./TestMM_update_park.html">수정</a>
-															</button>
-														</td>
-													</tr>
-												</c:forEach>
-
-
-											</tbody>
-
-										</table>
-
-									</div>
+									
 
 									<div class="div_none">
 										<!-- 빈 공간 -->
@@ -239,11 +187,9 @@
 
 									<div class="div_button">
 										<button type="button" id="btn_main_add">
-											<a class="btn_text_color" href="TestMM_add_park.html">추가</a>
+											<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a>
 										</button>
-										<button type="button" id="btn_main_delete">
-											<a class="btn_text_color" href="TestMM_delete_park.html">삭제</a>
-										</button>
+										
 									</div>
 
 									<!-- 자재코드 입력하면 자재명이 자동으로 입력

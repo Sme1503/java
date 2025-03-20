@@ -79,14 +79,14 @@ public class TB_OD_1000MT_DAO {
 			while (rs.next()) {
 				TB_OD_1000MT_DTO dto = new TB_OD_1000MT_DTO();
 
-				dto.setCSTMR_CODE(rs.getString("CSTMR_CODE"));
-				dto.setCMP_NM(rs.getString("CMP_NM"));
-				dto.setMNGR_NM(rs.getString("MNGR_NM"));
-				dto.setTEL_NO(rs.getString("TEL_NO"));
-				dto.setTRN_ITM_ITEM_NM(rs.getString("TRN_ITM_ITEM_NM"));
-				dto.setREG_DT(rs.getString("REG_DT"));
-				dto.setMOD_DT(rs.getString("MOD_DT"));
-
+				dto.setCstmr_code(rs.getString("CSTMR_CODE"));
+				dto.setCmp_nm(rs.getString("CMP_NM"));
+				dto.setMngr_nm(rs.getString("MNGR_NM"));
+				dto.setTel_no(rs.getString("TEL_NO"));
+				dto.setTrn_itm_item_nm(rs.getString("TRN_ITM_ITEM_NM"));
+				dto.setReg_dt(rs.getString("REG_DT"));
+				dto.setMod_dt(rs.getString("MOD_DT"));
+				
 				list.add(dto);
 				System.out.println("조회 중");
 			}
@@ -127,7 +127,7 @@ public class TB_OD_1000MT_DAO {
 
 			PreparedStatement ps = con.prepareStatement(query);
 			// 첫번째 물음표에 값을 넣어라
-			ps.setString(1, dto.getCMP_NM());
+			ps.setString(1, dto.getCmp_nm());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행
@@ -172,7 +172,7 @@ public class TB_OD_1000MT_DAO {
 
 			PreparedStatement ps = con.prepareStatement(query);
 			// 첫번째 물음표에 값을 넣어라
-			ps.setString(1, dto.getCMP_NM());
+			ps.setString(1, dto.getCmp_nm());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행
@@ -219,7 +219,7 @@ public class TB_OD_1000MT_DAO {
 
 			PreparedStatement ps = con.prepareStatement(query);
 			// 첫번째 물음표에 값을 넣어라
-			ps.setString(1, dto.getCMP_NM());
+			ps.setString(1, dto.getCmp_nm());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행

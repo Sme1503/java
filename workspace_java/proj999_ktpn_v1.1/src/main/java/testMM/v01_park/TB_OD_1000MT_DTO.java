@@ -6,65 +6,66 @@ public class TB_OD_1000MT_DTO {
 	// 거래처 테이블
 	
 	
-	private String CSTMR_CODE;					// 거래처 코드
-	private String CMP_NM;						// 회사명			
-	private String MNGR_NM;						// 담당자명
-	private String TEL_NO;						// 연락처번호
-	private String TRN_ITM_ITEM_NM;				// 거래품목명
-	private String REG_DT;						// 입력일자
-	private String MOD_DT;						// 수정일자
+	private String cstmr_code;					// 거래처 코드
+	private String cmp_nm;						// 회사명			
+	private String mngr_nm;						// 담당자명
+	private String tel_no;						// 연락처번호
+	private String trn_itm_item_nm;				// 거래품목명
+	private String reg_dt;						// 입력일자
+	private String mod_dt;						// 수정일자
 	
-	
-	public String getCSTMR_CODE() {
-		return CSTMR_CODE;
+	public String getCstmr_code() {
+		return cstmr_code;
 	}
-	public void setCSTMR_CODE(String cSTMR_CODE) {
-		CSTMR_CODE = cSTMR_CODE;
+	public void setCstmr_code(String cstmr_code) {
+		this.cstmr_code = cstmr_code;
 	}
-	public String getCMP_NM() {
-		return CMP_NM;
+	public String getCmp_nm() {
+		return cmp_nm;
 	}
-	public void setCMP_NM(String cMP_NM) {
-		CMP_NM = cMP_NM;
+	public void setCmp_nm(String cmp_nm) {
+		this.cmp_nm = cmp_nm;
 	}
-	public String getMNGR_NM() {
-		return MNGR_NM;
+	public String getMngr_nm() {
+		return mngr_nm;
 	}
-	public void setMNGR_NM(String mNGR_NM) {
-		MNGR_NM = mNGR_NM;
+	public void setMngr_nm(String mngr_nm) {
+		this.mngr_nm = mngr_nm;
 	}
-	public String getTEL_NO() {
-		return TEL_NO;
+	public String getTel_no() {
+		return tel_no;
 	}
-	public void setTEL_NO(String tEL_NO) {
-		TEL_NO = tEL_NO;
+	public void setTel_no(String tel_no) {
+		this.tel_no = tel_no;
 	}
-	public String getTRN_ITM_ITEM_NM() {
-		return TRN_ITM_ITEM_NM;
+	public String getTrn_itm_item_nm() {
+		return trn_itm_item_nm;
 	}
-	public void setTRN_ITM_ITEM_NM(String tRN_ITM_ITEM_NM) {
-		TRN_ITM_ITEM_NM = tRN_ITM_ITEM_NM;
+	public void setTrn_itm_item_nm(String trn_itm_item_nm) {
+		this.trn_itm_item_nm = trn_itm_item_nm;
 	}
-	public String getREG_DT() {
-		return REG_DT;
+	public String getReg_dt() {
+		return reg_dt;
 	}
-	public void setREG_DT(String rEG_DT) {
-		REG_DT = rEG_DT;
+	public void setReg_dt(String reg_dt) {
+		this.reg_dt = reg_dt;
 	}
-	public String getMOD_DT() {
-		return MOD_DT;
+	public String getMod_dt() {
+		return mod_dt;
 	}
-	public void setMOD_DT(String mOD_DT) {
-		MOD_DT = mOD_DT;
+	public void setMod_dt(String mod_dt) {
+		this.mod_dt = mod_dt;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "TB_OD_1000MT_DTO [CSTMR_CODE=" + CSTMR_CODE + ", CMP_NM=" + CMP_NM + ", MNGR_NM=" + MNGR_NM
-				+ ", TEL_NO=" + TEL_NO + ", TRN_ITM_ITEM_NM=" + TRN_ITM_ITEM_NM + ", REG_DT=" + REG_DT + ", MOD_DT="
-				+ MOD_DT + "]";
+		return "TB_OD_1000MT_DTO [cstmr_code=" + cstmr_code + ", cmp_nm=" + cmp_nm + ", mngr_nm=" + mngr_nm
+				+ ", tel_no=" + tel_no + ", trn_itm_item_nm=" + trn_itm_item_nm + ", reg_dt=" + reg_dt + ", mod_dt="
+				+ mod_dt + "]";
 	}
+	
+	
 	
 	
 }

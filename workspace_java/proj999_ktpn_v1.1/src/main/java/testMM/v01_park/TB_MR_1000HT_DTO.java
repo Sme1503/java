@@ -6,108 +6,111 @@ public class TB_MR_1000HT_DTO {
 	
 	// 원자재 로그 테이블
 	
-	private int SN;					// 순번
-	private String MTRL_CD;				// 원자재코드
-	private String MTRL_NM;            // 원자재명
-	private int STN_CNT;               // 기준수량
-	private int CRNT_CNT;              // 변동수량
-	private int CRNT_AFTR_CNT;         // 변동 후 수량
-	private String CHNG_DT;            // 변동일자	
-	private String IOB_SE_CD;          // 변동(입출고)구분코드
-	private String ORDR_RQRD_YN;       // 주문필요여부
-	private String WORK_NM;            // 작업자명
-	private String MTRL_CD_NM;         // 원자재위치명
-	private String RMRK;               // 비고
-	private Date REG_DTTM;             // 입력일시
+	private String sn;					// 순번
+	private String mtrl_cd;				// 원자재코드
+	private String mtrl_nm;            // 원자재명
+	private int    stn_cnt;               // 기준수량
+	private int    crnt_cnt;              // 변동수량
+	private int    crnt_aftr_cnt;         // 변동 후 수량
+	private String chng_dt;            // 변동일자	
+	private String iob_se_cd;          // 변동(입출고)구분코드
+	private String ordr_rqrd_yn;       // 주문필요여부
+	private String work_nm;            // 작업자명
+	private String mtrl_cd_nm;         // 원자재위치명
+	private String rmrk;               // 비고
+	private Date   reg_dttm;             // 입력일시
 	
 	
-	public int getSN() {
-		return SN;
+	
+	public String getSn() {
+		return sn;
 	}
-	public void setSN(int sN) {
-		SN = sN;
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
-	public String getMTRL_CD() {
-		return MTRL_CD;
+	public String getMtrl_cd() {
+		return mtrl_cd;
 	}
-	public void setMTRL_CD(String mTRL_CD) {
-		MTRL_CD = mTRL_CD;
+	public void setMtrl_cd(String mtrl_cd) {
+		this.mtrl_cd = mtrl_cd;
 	}
-	public String getMTRL_NM() {
-		return MTRL_NM;
+	public String getMtrl_nm() {
+		return mtrl_nm;
 	}
-	public void setMTRL_NM(String mTRL_NM) {
-		MTRL_NM = mTRL_NM;
+	public void setMtrl_nm(String mtrl_nm) {
+		this.mtrl_nm = mtrl_nm;
 	}
-	public int getSTN_CNT() {
-		return STN_CNT;
+	public int getStn_cnt() {
+		return stn_cnt;
 	}
-	public void setSTN_CNT(int sTN_CNT) {
-		STN_CNT = sTN_CNT;
+	public void setStn_cnt(int stn_cnt) {
+		this.stn_cnt = stn_cnt;
 	}
-	public int getCRNT_CNT() {
-		return CRNT_CNT;
+	public int getCrnt_cnt() {
+		return crnt_cnt;
 	}
-	public void setCRNT_CNT(int cRNT_CNT) {
-		CRNT_CNT = cRNT_CNT;
+	public void setCrnt_cnt(int crnt_cnt) {
+		this.crnt_cnt = crnt_cnt;
 	}
-	public String getORDR_RQRD_YN() {
-		return ORDR_RQRD_YN;
+	public int getCrnt_aftr_cnt() {
+		return crnt_aftr_cnt;
 	}
-	public void setORDR_RQRD_YN(String oRDR_RQRD_YN) {
-		ORDR_RQRD_YN = oRDR_RQRD_YN;
+	public void setCrnt_aftr_cnt(int crnt_aftr_cnt) {
+		this.crnt_aftr_cnt = crnt_aftr_cnt;
 	}
-	public String getIOB_SE_CD() {
-		return IOB_SE_CD;
+	public String getChng_dt() {
+		return chng_dt;
 	}
-	public void setIOB_SE_CD(String iOB_SE_CD) {
-		IOB_SE_CD = iOB_SE_CD;
+	public void setChng_dt(String chng_dt) {
+		this.chng_dt = chng_dt;
 	}
-	public String getWORK_NM() {
-		return WORK_NM;
+	public String getIob_se_cd() {
+		return iob_se_cd;
 	}
-	public void setWORK_NM(String wORK_NM) {
-		WORK_NM = wORK_NM;
+	public void setIob_se_cd(String iob_se_cd) {
+		this.iob_se_cd = iob_se_cd;
 	}
-	public String getMTRL_CD_NM() {
-		return MTRL_CD_NM;
+	public String getOrdr_rqrd_yn() {
+		return ordr_rqrd_yn;
 	}
-	public void setMTRL_CD_NM(String mTRL_CD_NM) {
-		MTRL_CD_NM = mTRL_CD_NM;
+	public void setOrdr_rqrd_yn(String ordr_rqrd_yn) {
+		this.ordr_rqrd_yn = ordr_rqrd_yn;
 	}
-	public String getRMRK() {
-		return RMRK;
+	public String getWork_nm() {
+		return work_nm;
 	}
-	public void setRMRK(String rMRK) {
-		RMRK = rMRK;
+	public void setWork_nm(String work_nm) {
+		this.work_nm = work_nm;
 	}
-	public Date getREG_DTTM() {
-		return REG_DTTM;
+	public String getMtrl_cd_nm() {
+		return mtrl_cd_nm;
 	}
-	public void setREG_DTTM(Date rEG_DTTM) {
-		REG_DTTM = rEG_DTTM;
+	public void setMtrl_cd_nm(String mtrl_cd_nm) {
+		this.mtrl_cd_nm = mtrl_cd_nm;
 	}
-	public int getCRNT_AFTR_CNT() {
-		return CRNT_AFTR_CNT;
+	public String getRmrk() {
+		return rmrk;
 	}
-	public void setCRNT_AFTR_CNT(int cRNT_AFTR_CNT) {
-		CRNT_AFTR_CNT = cRNT_AFTR_CNT;
+	public void setRmrk(String rmrk) {
+		this.rmrk = rmrk;
 	}
-	public String getCHNG_DT() {
-		return CHNG_DT;
+	public Date getReg_dttm() {
+		return reg_dttm;
 	}
-	public void setCHNG_DT(String cHNG_DT) {
-		CHNG_DT = cHNG_DT;
+	public void setReg_dttm(Date reg_dttm) {
+		this.reg_dttm = reg_dttm;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "TB_MR_1000HT_DTO [SN=" + SN + ", MTRL_CD=" + MTRL_CD + ", MTRL_NM=" + MTRL_NM + ", STN_CNT=" + STN_CNT
-				+ ", CRNT_CNT=" + CRNT_CNT + ", ORDR_RQRD_YN=" + ORDR_RQRD_YN + ", IOB_SE_CD=" + IOB_SE_CD
-				+ ", WORK_NM=" + WORK_NM + ", MTRL_CD_NM=" + MTRL_CD_NM + ", RMRK=" + RMRK + ", REG_DTTM=" + REG_DTTM
-				+ ", CRNT_AFTR_CNT=" + CRNT_AFTR_CNT + ", CHNG_DT=" + CHNG_DT + "]";
+		return "TB_MR_1000HT_DTO [sn=" + sn + ", mtrl_cd=" + mtrl_cd + ", mtrl_nm=" + mtrl_nm + ", stn_cnt=" + stn_cnt
+				+ ", crnt_cnt=" + crnt_cnt + ", crnt_aftr_cnt=" + crnt_aftr_cnt + ", chng_dt=" + chng_dt
+				+ ", iob_se_cd=" + iob_se_cd + ", ordr_rqrd_yn=" + ordr_rqrd_yn + ", work_nm=" + work_nm
+				+ ", mtrl_cd_nm=" + mtrl_cd_nm + ", rmrk=" + rmrk + ", reg_dttm=" + reg_dttm + "]";
 	}
+	
+	
 	
 	
 }

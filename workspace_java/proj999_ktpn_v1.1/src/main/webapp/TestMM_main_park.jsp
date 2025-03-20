@@ -111,8 +111,46 @@
 											value="" max="2999-12-31" , min="1970-01-01"> <input
 											type="submit" class="submit" value="검색">
 
-
 									</form>
+									
+									<div class="div_form_order">
+										<form method="post" action="dealcomp">
+											<input type="hidden" name="command" value="order"> 
+<!-- 											<input type="submit" value="거래처"> -->
+										
+											
+											<button type="submit" class="btn_main_order btn_text_color">
+												거래처
+<!-- 												<a class="btn_text_color" href="./TestMM_order_park.jsp">거래처</a> -->
+											</button>
+										</form>
+									</div>
+									
+									<div class="div_form_order">
+										<form method="post" action="imcon">
+<!-- 											<input type="hidden" name="command" value="mLog">  -->
+<!-- 											<input type="submit" value="거래처"> -->
+										
+											
+											<button name="command" value="mLog" type="submit" class="btn_main_order btn_text_color">
+												원자재로그
+ 												
+											</button>
+										</form>
+									</div>
+									
+									<div class="div_form_order">
+										<form method="post" action="impcon">
+											<input type="hidden" name="command" value="pLog"> 
+<!-- 											<input type="submit" value="거래처"> -->
+										
+											
+											<button type="submit" class="btn_main_order btn_text_color">
+												완제품로그
+ 												
+											</button>
+										</form>
+									</div>
 
 								</div>
 
@@ -133,7 +171,7 @@
 										<table class="material-table">
 											<thead>
 												<tr>
-													<th scope="col" class="material-th">삭제체크</th>
+<!-- 													<th scope="col" class="material-th">삭제체크</th> -->
 													<th scope="col" class="material-th">원자재코드</th>
 													<th scope="col" class="material-th">원자재명</th>
 													<th scope="col" class="material-th">기준 수량</th>
@@ -148,23 +186,46 @@
 												<c:forEach var="Mdata" items="${materialList }">
 
 													<tr>
-														<form method="post" action="컨트롤러">
+														<form method="post" action="imcon">
 															<td><input type="checkbox" name="deleteCheck"
 																value="Y"></td>
-															<td id="Mcode" class="material-td Mcode">${Mdata.MTRL_CD }</td>
-															<td id="Mname" class="material-td">${Mdata.MTRL_NM }</td>
-															<td id="Msntea" class="material-td">${Mdata.STN_CNT }</td>
-															<td id="Mcurea" class="material-td">${Mdata.CRNT_AFTR_CNT }</td>
-															<td id="Morder" class="material-td">${Mdata.ORDR_RQRD_YN }</td>
-															<td id="Mloc" class="material-td">${Mdata.MTRL_LOC_NM }</td>
+															
+															<td id="Mcode" class="material-td Mcode">
+																<input type="hidden" name="code" value="${Mdata.mtrl_cd }">
+															${Mdata.mtrl_cd }
+															</td>
+															
+															<td id="Mname" class="material-td">
+															<input type="hidden" name="name" value="${Mdata.mtrl_nm }">
+															${Mdata.mtrl_nm }</td>
+															
+															<td id="Msntea" class="material-td">
+															<input type="hidden" name="sntea" value="${Mdata.stn_cnt }">
+															${Mdata.stn_cnt }</td>
+															
+															<td id="Mcurea" class="material-td">
+															<input type="hidden" name="ea" value="${Mdata.crnt_aftr_cnt }">
+															${Mdata.crnt_aftr_cnt }</td>
+															
+															<td id="Morder" class="material-td">
+															<input type="hidden" name="order" value="${Mdata.ordr_rqrd_yn }">
+															${Mdata.ordr_rqrd_yn }</td>
+															
+															<td id="Mloc" class="material-td">
+															<input type="hidden" name="loc" value="${Mdata.mtrl_loc_nm }">
+															${Mdata.mtrl_loc_nm }</td>
 
 															<td id="Mbutton" class="material-td">
-																<input type="hidden" name="command" value="update"> 
-																<input type="submit" value="수정">
+<!-- 																<input type="hidden" name="command" value="update">  -->
+<!-- 																<input type="submit" value="수정"> -->
 
-																<button type="button" class="btn_main_update">
-																	<a class="btn_text_color"
-																		href="./TestMM_update_park.html">수정</a>
+<!-- 																<button type="button" class="btn_main_update"> -->
+<!-- 																	<a class="btn_text_color" -->
+<!-- 																		href="./TestMM_update_park.jsp">수정</a> -->
+<!-- 																</button> -->
+																
+																<button name="command" value="move_update_Page" type="submit" class="btn_main_update">
+																	수정
 																</button>
 															</td>
 														</form>
@@ -176,16 +237,43 @@
 
 										</table>
 
-										<form method="post" action="컨트롤러">
-											<input type="hidden" name="command" value="order"> <input
-												type="submit" value="거래처">
+										<div class="div_none">
+										<!-- 빈 공간 -->
+										</div>
 
-											<button type="button" class="btn_main_order">
-												<a class="btn_text_color" href="./TestMM_order_park.html">주문정보</a>
+										<div class="div_form_order">
+										<form method="post" action="imcon">
+											<input type="hidden" name="command" value="undo"> 
+<!-- 											<input type="submit" value="거래처"> -->
+										
+											
+											<button type="submit" class="btn_main_order btn_text_color">
+												입력취소(undo)
+ 												
 											</button>
 										</form>
-
-
+										</div>
+										
+										
+										<div class="div_button">
+										<form method="post" action="imcon">
+											<button name="command" value="move_add_Page" type="submit" id="btn_main_add">
+												추가
+											</button>
+										</form>
+										
+										
+										
+<!-- 										<button type="button" id="btn_main_add"> -->
+<!-- 											<a class="btn_text_color" href="TestMM_add_park.jsp">추가</a> -->
+<!-- 										</button> -->
+				
+<!-- 										<button type="button" id="btn_main_delete"> -->
+												
+<!-- 											<a class="btn_text_color" href="TestMM_delete_park.jsp">삭제</a> -->
+<!-- 										</button> -->
+								
+										</div>
 
 									</div>
 
@@ -193,7 +281,7 @@
 										<table class="material-table product-table">
 											<thead>
 												<tr>
-													<th scope="col" class="material-th product-th">삭제체크</th>
+<!-- 													<th scope="col" class="material-th product-th">삭제체크</th> -->
 													<th scope="col" class="material-th product-th">완제품코드</th>
 													<th scope="col" class="material-th product-th">완제품명</th>
 													<th scope="col" class="material-th product-th">수량</th>
@@ -205,22 +293,44 @@
 												<c:forEach var="Pdata" items="${productList }">
 
 													<tr>
-														<td><input type="checkbox" name="deleteCheck"
-															value="Y"></td>
-														<td id="Pcode" class="material-td Mcode product-td">${Pdata.FNSH_CODE }</td>
-														<td id="Pname" class="material-td product-td">${Pdata.FNSH_NM }</td>
-														<td id="Pcurea" class="material-td product-td">${Pdata.CRNT_AFTR_CNT }</td>
-														<td id="Ploc" class="material-td product-td">${Pdata.FNSH_LOC_NM }</td>
+													
+														<form method="post" action="impcon">
+														
+														
+															<td><input type="checkbox" name="deleteCheck"
+																value="Y"></td>
+															
+															<td id="Pcode" class="material-td Mcode product-td">
+																<input type="hidden" name="code" value="${Pdata.fnsh_code }">
+																${Pdata.fnsh_code }
+															</td>
+														
+															<td id="Pname" class="material-td product-td">
+																<input type="hidden" name="code" value="${Pdata.fnsh_nm }">
+																${Pdata.fnsh_nm }
+															</td>
+														
+															<td id="Pcurea" class="material-td product-td">
+																<input type="hidden" name="code" value="${Pdata.crnt_aftr_cnt }">
+																${Pdata.crnt_aftr_cnt }
+															</td>
+														
+															<td id="Ploc" class="material-td product-td">
+																<input type="hidden" name="code" value="${Pdata.fnsh_loc_nm }">
+																${Pdata.fnsh_loc_nm }
+															</td>
 
-														<td id="Mbutton" class="material-td product-td">
-															<input type="hidden" name="command" value="update">
-															<input type="submit" value="수정">
+															<td id="Mbutton" class="material-td product-td">
+																<input type="hidden" name="command" value="move_updateP_Page">
+																<input type="submit" value="수정">
 
-															<button type="button" class="btn_main_update">
-																<a class="btn_text_color"
-																	href="./TestMM_update_park.html">수정</a>
-															</button>
-														</td>
+<!-- 															<button type="button" class="btn_main_update"> -->
+<!-- 																<a class="btn_text_color" -->
+<!-- 																	href="./TestMM_update_park.jsp">수정</a> -->
+<!-- 															</button> -->
+															</td>
+														
+														</form>
 													</tr>
 												</c:forEach>
 
@@ -228,6 +338,44 @@
 											</tbody>
 
 										</table>
+										
+										<div class="div_none">
+										<!-- 빈 공간 -->
+										</div>
+										
+										<div class="div_form_order">
+		
+											<form method="post" action="impcon">
+												<input type="hidden" name="command" value="undo"> 
+<!-- 												<input type="submit" value="거래처"> -->
+										
+											
+												<button type="submit" class="btn_main_order btn_text_color">
+													입력취소(undo)
+ 												
+												</button>
+											</form>
+										</div>
+										
+										
+										<div class="div_button">
+										
+										<form method="post" action="impcon">
+											<button name="command" value="move_addP_Page" type="submit" id="btn_main_add">
+												추가
+											</button>
+										</form>
+										
+<!-- 										<button type="button" id="btn_main_add"> -->
+<!-- 											<a class="btn_text_color" href="TestMM_add_park.jsp">추가</a> -->
+<!-- 										</button> -->
+				
+<!-- 										<button type="button" id="btn_main_delete"> -->
+												
+<!-- 											<a class="btn_text_color" href="TestMM_delete_park.jsp">삭제</a> -->
+<!-- 										</button> -->
+								
+										</div>
 
 									</div>
 
@@ -235,14 +383,6 @@
 										<!-- 빈 공간 -->
 									</div>
 
-									<div class="div_button">
-										<button type="button" id="btn_main_add">
-											<a class="btn_text_color" href="TestMM_add_park.html">추가</a>
-										</button>
-										<button type="button" id="btn_main_delete">
-											<a class="btn_text_color" href="TestMM_delete_park.html">삭제</a>
-										</button>
-									</div>
 
 									<!-- 자재코드 입력하면 자재명이 자동으로 입력
                                         수량은 기존에 있는것과 연동

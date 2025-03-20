@@ -52,8 +52,8 @@ public class testProduct_DAO {
 			while (rs.next()) {
 				testProduct_DTO dto = new testProduct_DTO();
 
-				dto.setPROD_CD(rs.getString("PROD_CD"));
-				dto.setPROD_QNTT(rs.getInt("PROD_QNTT"));
+				dto.setProd_cd(rs.getString("PROD_CD"));
+				dto.setProd_qntt(rs.getInt("PROD_QNTT"));
 
 				list.add(dto);
 				System.out.println("조회 중");
@@ -96,7 +96,7 @@ public class testProduct_DAO {
 					+ " from TB_PR_1100MT where PROD_END_YN = 'Y' where PROD_CD like ?";
 			// 생산이 완료된 생산코드의 생산량 출력,  1개 나옴
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, dto.getPROD_CD());
+			ps.setString(1, dto.getProd_cd());
 
 			
 	
@@ -109,8 +109,8 @@ public class testProduct_DAO {
 			while (rs.next()) {
 				//testProduct_DTO dto = new testProduct_DTO();
 
-				dto.setPROD_CD(rs.getString("PROD_CD"));
-				dto.setPROD_QNTT(rs.getInt("PROD_QNTT"));
+				dto.setProd_cd(rs.getString("PROD_CD"));
+				dto.setProd_qntt(rs.getInt("PROD_QNTT"));
 
 				list.add(dto);
 				System.out.println("조회 중");

@@ -1,6 +1,7 @@
 package testMM.v01_park;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DealCompanyController
  */
-@WebServlet("/DealComp")
+@WebServlet("/dealcomp")
 public class DealCompanyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,7 +26,7 @@ public class DealCompanyController extends HttpServlet {
 		System.out.println("/DealComp doGet실행");
 		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
@@ -47,25 +48,25 @@ public class DealCompanyController extends HttpServlet {
 //			
 //		}
 		
-		String company_name = "null1";
-		System.out.println("company name : " + company_name);
-		
-		TB_OD_1000MT_DTO dto = new TB_OD_1000MT_DTO();
-		dto.setCMP_NM(company_name);
-		
-		// 삽입
-		int result = tb_OD_1000MT_DAO.insertDealCompany(dto);
-		System.out.println("result : " + result);
-		System.out.println();
-		
-		company_name = "null123";
-		System.out.println("company name : " + company_name);
-		dto.setCMP_NM(company_name);
-		
-		// 수정
-		result = tb_OD_1000MT_DAO.updateDealCompany(dto);
-		System.out.println("result : " + result);
-		System.out.println();
+//		String company_name = "null1";
+//		System.out.println("company name : " + company_name);
+//		
+//		TB_OD_1000MT_DTO dto = new TB_OD_1000MT_DTO();
+//		dto.setCMP_NM(company_name);
+//		
+//		// 삽입
+//		int result = tb_OD_1000MT_DAO.insertDealCompany(dto);
+//		System.out.println("result : " + result);
+//		System.out.println();
+//		
+//		company_name = "null123";
+//		System.out.println("company name : " + company_name);
+//		dto.setCMP_NM(company_name);
+//		
+//		// 수정
+//		result = tb_OD_1000MT_DAO.updateDealCompany(dto);
+//		System.out.println("result : " + result);
+//		System.out.println();
 		
 		// 삭제
 //		result = tb_OD_1000MT_DAO.deleteDealCompany(dto);
@@ -83,8 +84,36 @@ public class DealCompanyController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
+		List companyList = new ArrayList();
 		
-		doGet(request, response);
+		String command = request.getParameter("command");			// value =order
+		System.out.println("command : " + command);
+		
+		if("order".equals(command)) {
+			
+			TB_OD_1000MT_DAO odtabla_dao = new TB_OD_1000MT_DAO();
+			
+			companyList = odtabla_dao.selectDealCompany();
+			
+			for(int i=0; i<companyList.size(); i++) {
+				TB_OD_1000MT_DTO dto = new TB_OD_1000MT_DTO();
+				dto = (TB_OD_1000MT_DTO) companyList.get(i);
+				
+				System.out.println("dto.toString() : " + dto.toString());
+				System.out.println();
+			}
+			
+			request.setAttribute("companyList", companyList);
+			
+			String url = "/TestMM_order_park.jsp";
+
+			request.getRequestDispatcher(url).forward(request, response);
+		}
+		
+//		String url = "dealcomp";
+//		response.sendRedirect(url);
+		
+//		doGet(request, response);
 	}
 
 }

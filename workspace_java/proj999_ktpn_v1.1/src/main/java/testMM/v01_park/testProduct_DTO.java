@@ -8,16 +8,16 @@ public class testProduct_DTO {
 	private int PROD_QNTT;				// 생산량
 	private String PROD_END_YN;			// 생산 완료 여부 - 자바에서 필요없음
 	
-	public String getPROD_CD() {
+	public String getProd_cd() {
 		return PROD_CD;
 	}
-	public void setPROD_CD(String pROD_CD) {
+	public void setProd_cd(String pROD_CD) {
 		PROD_CD = pROD_CD;
 	}
 	public int getPROD_QNTT() {
 		return PROD_QNTT;
 	}
-	public void setPROD_QNTT(int pROD_QNTT) {
+	public void setProd_qntt(int pROD_QNTT) {
 		PROD_QNTT = pROD_QNTT;
 	}
 	public String getPROD_END_YN() {

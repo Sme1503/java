@@ -96,17 +96,15 @@
 											<th scope="col" class="order_th">거래품목</th>
 										</tr>
 										
-										<c:forEach var="company" items="companyList">
+										<c:forEach var="company" items="${companyList }">
 
 											<tr>
-												<td class="order_td">${company.CSTMR_CODE }</td>
-												<td class="order_td">${company.CMP_NM }</td>
-												<td class="order_td">${company.MNGR_NM }</td>
-												<td class="order_td">${company.TEL_NO }</td>
-												<td class="order_td">${company.TRN_ITM_ITEM_NM }</td>
+												<td class="order_td">${company.cstmr_code }</td>
+												<td class="order_td">${company.cmp_nm }</td>
+												<td class="order_td">${company.mngr_nm }</td>
+												<td class="order_td">${company.tel_no }</td>
+												<td class="order_td">${company.trn_itm_item_nm }</td>
 											</tr>
-
-
 
 										</c:forEach>
 
@@ -118,7 +116,7 @@
 
 									<div class="div_button">
 										<button type="button" id="btn_order_confirm">
-											<a class="btn_text_color" href="TestMM_main_park.html">확인</a>
+											<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a>
 										</button>
 									</div>
 

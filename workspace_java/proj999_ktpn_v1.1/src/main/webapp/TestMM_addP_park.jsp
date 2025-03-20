@@ -90,37 +90,60 @@
                                         <div class="item i_color">완제품코드</div>
                                         <div class="item i_color">완제품이름</div>
                                         <div class="item i_color">입력수량</div>
-                                        <div class= i_color"item">입고/출고</div>
-                                        <div class= i_color"item">작업자</div>
+                                        <div class="item i_color">입고/출고</div>
+                                        <div class="item i_color">작업자</div>
                                         <div class="item i_color">위치</div>
                                         <div class="item i_color">입력일</div>
-                                        <div class= i_color"item">비고</div>
+                                        <div class="item i_color">비고</div>
 <!--                                         <div class="item i_color">변동후 수량</div> -->
 <!--                                         <div class="item i_color">변동일</div> -->
                                     </div>
 
                                     <!-- 입력추가 버튼을 누르면 나오는 input 예시 -->
                                      <div class="flex_child new_input">
-                                    	<form action="컨트롤러" method="post">
+                                    	<form action="impcon" method="post">
                                     	
-                                    		<select name="Pcode">
+                                    		<select id="select1" name="Pcode">
                                     			<option value="default" selected="selected">선택</option>
                                     			<c:forEach var = "pcode" items = "${pcodeList }">
-                                    				<option value="${pcode.MT_MNG_CD }">${pcode.MT_MNG_CD }</option>
-                                    			</c:forEach>
-                                    		</select>
-                                    	
-                                    		<select name="code">
-                                    			<c:forEach var = "code" items = "${codeList }">
-                                    				<option value="${code.MT_MNG_CD }">${code.MT_MNG_CD }</option>
+                                    				<option value="${pcode.PROD_CD }"
+                                    						auto_icode="${pcode.ITEM_CD }"
+                                    						auto_iname="${pcode.ITEM_NM }">
+                                    				${pcode.PROD_CD }
+                                    				</option>
                                     			</c:forEach>
                                     		</select>
                                     		
-                                    		<select name="name">
-                                    			<c:forEach var = "code" items = "${codeList }">
-                                    				<option value="${code.MT_MNG_NM }">${code.MT_MNG_NM }</option>
-                                    			</c:forEach>
-                                    		</select>
+                                    		<script>
+                                    			// 셀렉트 박스의 옵션을 선택하면 다른 인풋에 값이 들어가는 함수
+                                    			function changePP() {
+                                    				var select1 = document.getElementById('select1');
+                                    				var select1_option = select1.options[select1.selectedIndex].value;
+                                    				
+                                    				var auto_icode = select1_option.getAttribute('auto_icode');
+                                    				document.getElementById('icode').value = auto_icode;
+                                    				
+                                    				var auto_iname = select1_option.getAttribute('auto_iname');
+                                    				document.getElementById('iname').value = auto_iname;
+                                    			}
+                                    			
+                                    		</script>
+                                    		
+                                    		<input class="item" type="text" id="icode" name="code" value="" readonly="readonly">
+
+                                    		<input class="item" type="text" id="iname" name="name" value="" readonly="readonly">
+                                    	
+<!--                                     		<select name="code"> -->
+<%--                                     			<c:forEach var = "code" items = "${codeList }"> --%>
+<%--                                     				<option value="${code.ITEM_CD }">${code.ITEM_CD }</option> --%>
+<%--                                     			</c:forEach> --%>
+<!--                                     		</select> -->
+
+<!--                                     		<select name="name"> -->
+<%--                                     			<c:forEach var = "code" items = "${codeList }"> --%>
+<%--                                     				<option value="${code.ITEM_NM }">${code.ITEM_NM }</option> --%>
+<%--                                     			</c:forEach> --%>
+<!--                                     		</select> -->
                                     		
                                  			<input class="item Mea" type="text" name="ea" value="${pcode.PROD_QNTT }" />${pcode.PROD_QNTT }
                                  			

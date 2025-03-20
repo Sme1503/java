@@ -52,7 +52,7 @@ public class testProductController extends HttpServlet {
 
 		for(int i=0; i<list1.size(); i++) {
 			testPdto = (testProduct_DTO) list1.get(i);
-			if( testPdto.getPROD_CD() != null && testPdto.getPROD_CD().equals(prod_cd) ) {
+			if( testPdto.getProd_cd() != null && testPdto.getProd_cd().equals(prod_cd) ) {
 				break;		// 생산코드가 prod_cd 인 객체 찾기
 			}
 		}

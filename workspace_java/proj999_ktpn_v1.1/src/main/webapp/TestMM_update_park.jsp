@@ -105,17 +105,17 @@
 										<tbody>
 											<!-- 											원자재테이블 조회한 값 = mList -->
 											<tr>
-												<form method="post" action="컨트롤러">
+												<form method="post" action="imcon">
 
 
 
 													<td id="Mcode" class="material-td Mcode"><input
-														type="text" name="mcode" value="${mList.MTRL_CD }"
-														readonly="readonly">${mList.MTRL_CD }</td>
+														type="text" name="mcode" value="${mList.mtrl_cd }"
+														readonly="readonly">${mList.mtrl_cd }</td>
 
 													<td id="Mname" class="material-td"><input type="text"
-														name="mname" value="${mList.MTRL_NM }" readonly="readonly">
-														${mList.MTRL_NM }
+														name="mname" value="${mList.mtrl_nm }" readonly="readonly">
+														${mList.mtrl_nm }
 													</td>
 
 													<td id="Mea" class="material-td"><input type="text"

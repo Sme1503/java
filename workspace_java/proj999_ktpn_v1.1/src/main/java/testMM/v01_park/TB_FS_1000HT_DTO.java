@@ -6,99 +6,102 @@ public class TB_FS_1000HT_DTO {
 
 	// 완제품 로그 테이블
 	
-	private int SN;						// 순번
-	private String PROD_CD;					// 생산코드
-	private String FNSH_CODE;           	// 완제품코드
-	private String FNSHD_ITEM_NM;       	// 완제품명
-	private int CRNT_CNT;               	// 변동수량
-	private int CRNT_AFTR_CNT;          	// 변동 후 수량
-	private String CHNG_DT;             	// 변동일자
-	private String IOB_SE_CD;           	// 변동(입출고)구분코드
-	private String WORK_NM;             	// 작업자명
-	private String FNSHL_LOC_NM;        	// 완제품위치명
-	private String RMRK;                	// 비고
-	private Date REG_DTTM;              	// 입력일시
+	private String sn;						// 순번
+	private String prod_cd;					// 생산코드
+	private String fnsh_code;           	// 완제품코드
+	private String fnshd_item_nm;       	// 완제품명
+	private int    crnt_cnt;               	// 변동수량
+	private int    crnt_aftr_cnt;          	// 변동 후 수량
+	private String chng_dt;             	// 변동일자
+	private String iob_se_cd;           	// 변동(입출고)구분코드
+	private String work_nm;             	// 작업자명
+	private String fnshl_loc_nm;        	// 완제품위치명
+	private String rmrk;                	// 비고
+	private Date   reg_dttm;              	// 입력일시
 	
-	public int getSN() {
-		return SN;
+	
+	
+	public String getSn() {
+		return sn;
 	}
-	public void setSN(int sN) {
-		SN = sN;
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
-	public String getPROD_CD() {
-		return PROD_CD;
+	public String getProd_cd() {
+		return prod_cd;
 	}
-	public void setPROD_CD(String pROD_CD) {
-		PROD_CD = pROD_CD;
+	public void setProd_cd(String prod_cd) {
+		this.prod_cd = prod_cd;
 	}
-	public String getFNSH_CODE() {
-		return FNSH_CODE;
+	public String getFnsh_code() {
+		return fnsh_code;
 	}
-	public void setFNSH_CODE(String fNSH_CODE) {
-		FNSH_CODE = fNSH_CODE;
+	public void setFnsh_code(String fnsh_code) {
+		this.fnsh_code = fnsh_code;
 	}
-	public String getFNSHD_ITEM_NM() {
-		return FNSHD_ITEM_NM;
+	public String getFnshd_item_nm() {
+		return fnshd_item_nm;
 	}
-	public void setFNSHD_ITEM_NM(String fNSHD_ITEM_NM) {
-		FNSHD_ITEM_NM = fNSHD_ITEM_NM;
+	public void setFnshd_item_nm(String fnshd_item_nm) {
+		this.fnshd_item_nm = fnshd_item_nm;
 	}
-	public int getCRNT_CNT() {
-		return CRNT_CNT;
+	public int getCrnt_cnt() {
+		return crnt_cnt;
 	}
-	public void setCRNT_CNT(int cRNT_CNT) {
-		CRNT_CNT = cRNT_CNT;
+	public void setCrnt_cnt(int crnt_cnt) {
+		this.crnt_cnt = crnt_cnt;
 	}
-	public int getCRNT_AFTR_CNT() {
-		return CRNT_AFTR_CNT;
+	public int getCrnt_aftr_cnt() {
+		return crnt_aftr_cnt;
 	}
-	public void setCRNT_AFTR_CNT(int cRNT_AFTR_CNT) {
-		CRNT_AFTR_CNT = cRNT_AFTR_CNT;
+	public void setCrnt_aftr_cnt(int crnt_aftr_cnt) {
+		this.crnt_aftr_cnt = crnt_aftr_cnt;
 	}
-	public String getCHNG_DT() {
-		return CHNG_DT;
+	public String getChng_dt() {
+		return chng_dt;
 	}
-	public void setCHNG_DT(String cHNG_DT) {
-		CHNG_DT = cHNG_DT;
+	public void setChng_dt(String chng_dt) {
+		this.chng_dt = chng_dt;
 	}
-	public String getIOB_SE_CD() {
-		return IOB_SE_CD;
+	public String getIob_se_cd() {
+		return iob_se_cd;
 	}
-	public void setIOB_SE_CD(String iOB_SE_CD) {
-		IOB_SE_CD = iOB_SE_CD;
+	public void setIob_se_cd(String iob_se_cd) {
+		this.iob_se_cd = iob_se_cd;
 	}
-	public String getWORK_NM() {
-		return WORK_NM;
+	public String getWork_nm() {
+		return work_nm;
 	}
-	public void setWORK_NM(String wORK_NM) {
-		WORK_NM = wORK_NM;
+	public void setWork_nm(String work_nm) {
+		this.work_nm = work_nm;
 	}
-	public String getFNSHL_LOC_NM() {
-		return FNSHL_LOC_NM;
+	public String getFnshl_loc_nm() {
+		return fnshl_loc_nm;
 	}
-	public void setFNSHL_LOC_NM(String fNSHL_LOC_NM) {
-		FNSHL_LOC_NM = fNSHL_LOC_NM;
+	public void setFnshl_loc_nm(String fnshl_loc_nm) {
+		this.fnshl_loc_nm = fnshl_loc_nm;
 	}
-	public String getRMRK() {
-		return RMRK;
+	public String getRmrk() {
+		return rmrk;
 	}
-	public void setRMRK(String rMRK) {
-		RMRK = rMRK;
+	public void setRmrk(String rmrk) {
+		this.rmrk = rmrk;
 	}
-	public Date getREG_DTTM() {
-		return REG_DTTM;
+	public Date getReg_dttm() {
+		return reg_dttm;
 	}
-	public void setREG_DTTM(Date rEG_DTTM) {
-		REG_DTTM = rEG_DTTM;
+	public void setReg_dttm(Date reg_dttm) {
+		this.reg_dttm = reg_dttm;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "TB_FS_1000HT_DTO [SN=" + SN + ", PROD_CD=" + PROD_CD + ", FNSH_CODE=" + FNSH_CODE + ", FNSHD_ITEM_NM="
-				+ FNSHD_ITEM_NM + ", CRNT_CNT=" + CRNT_CNT + ", CRNT_AFTR_CNT=" + CRNT_AFTR_CNT + ", CHNG_DT=" + CHNG_DT
-				+ ", IOB_SE_CD=" + IOB_SE_CD + ", WORK_NM=" + WORK_NM + ", FNSHL_LOC_NM=" + FNSHL_LOC_NM + ", RMRK="
-				+ RMRK + ", REG_DTTM=" + REG_DTTM + "]";
+		return "TB_FS_1000HT_DTO [sn=" + sn + ", prod_cd=" + prod_cd + ", fnsh_code=" + fnsh_code + ", fnshd_item_nm="
+				+ fnshd_item_nm + ", crnt_cnt=" + crnt_cnt + ", crnt_aftr_cnt=" + crnt_aftr_cnt + ", chng_dt=" + chng_dt
+				+ ", iob_se_cd=" + iob_se_cd + ", work_nm=" + work_nm + ", fnshl_loc_nm=" + fnshl_loc_nm + ", rmrk="
+				+ rmrk + ", reg_dttm=" + reg_dttm + "]";
 	}
-
+	
+	
 }

@@ -101,13 +101,19 @@
 
                                     <!-- 입력추가 버튼을 누르면 나오는 input 예시 -->
                                      <div class="flex_child new_input">
-                                    	<form action="컨트롤러" method="post">
-                                    	
+                                    	<form action="imcon" method="post">
+                                    		
+<!--                                     		원자재코드 선택하면 원자재명도 자동으로입력 
+												이미 추가된 원자재코드가 있으면 그 코드로는 새로운 추가 불가능하게 하기-->
                                     		<select name="code">
                                     			<c:forEach var = "code" items = "${codeList }">
                                     				<option value="${code.MT_MNG_CD }">${code.MT_MNG_CD }</option>
                                     			</c:forEach>
                                     		</select>
+                                    		
+                                    		<script>
+                                    			var 
+                                    		</script>
                                     		
                                     		<select name="name">
                                     			<c:forEach var = "code" items = "${codeList }">

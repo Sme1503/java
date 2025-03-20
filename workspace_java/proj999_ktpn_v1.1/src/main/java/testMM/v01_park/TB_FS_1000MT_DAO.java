@@ -48,10 +48,10 @@ public class TB_FS_1000MT_DAO {
 				TB_FS_1000MT_DTO dto = new TB_FS_1000MT_DTO();
 
 				
-				dto.setFNSH_CODE(rs.getString("FNSH_CODE"));
-				dto.setFNSH_NM(rs.getString("FNSH_NM"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setFNSH_LOC_NM(rs.getString("FNSH_LOC_NM"));
+				dto.setFnsh_code(rs.getString("Fnsh_code"));
+				dto.setFnsh_nm(rs.getString("Fnsh_nm"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setFnsh_loc_nm(rs.getString("Fnsh_loc_nm"));
 				
 				
 				list.add(dto);
@@ -88,7 +88,7 @@ public class TB_FS_1000MT_DAO {
 			Connection con = ds.getConnection();
 
 			// SQL 준비
-			String query = "select * from TB_FS_1000MT where FNSH_CODE like ? ";
+			String query = "select * from TB_FS_1000MT where Fnsh_code like ? ";
 			PreparedStatement ps = con.prepareStatement(query);
 			ps.setString(1, Pcode);
 
@@ -101,10 +101,10 @@ public class TB_FS_1000MT_DAO {
 			while (rs.next()) {
 				TB_FS_1000MT_DTO dto = new TB_FS_1000MT_DTO();
 
-				dto.setFNSH_CODE(rs.getString("FNSH_CODE"));
-				dto.setFNSH_NM(rs.getString("FNSH_NM"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setFNSH_LOC_NM(rs.getString("FNSH_LOC_NM"));
+				dto.setFnsh_code(rs.getString("Fnsh_code"));
+				dto.setFnsh_nm(rs.getString("Fnsh_nm"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setFnsh_loc_nm(rs.getString("Fnsh_loc_nm"));
 				
 				list.add(dto);
 				System.out.println("조회 중");
@@ -141,15 +141,15 @@ public class TB_FS_1000MT_DAO {
 
 			// SQL 준비
 			// 완제품 현황 테이블에 데이터 삽입
-			String query =  " insert into TB_FS_1000MT ( FNSH_CODE, FNSH_NM, CRNT_AFTR_CNT, FNSH_LOC_NM ";
+			String query =  " insert into TB_FS_1000MT ( Fnsh_code, Fnsh_nm, CRNT_AFTR_CNT, Fnsh_loc_nm ";
 				   query += " value (?, ?, ?, ?) ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
 			
-			ps.setString(1, dto.getFNSH_CODE());
-			ps.setString(2, dto.getFNSH_NM());
-			ps.setInt(3, dto.getCRNT_AFTR_CNT());
-			ps.setString(4, dto.getFNSH_LOC_NM());
+			ps.setString(1, dto.getFnsh_code());
+			ps.setString(2, dto.getFnsh_nm());
+			ps.setInt(3, dto.getCrnt_aftr_cnt());
+			ps.setString(4, dto.getFnsh_loc_nm());
 			
 			
 
@@ -196,15 +196,15 @@ public class TB_FS_1000MT_DAO {
 			// SQL 준비
 			// 완제품 현황 테이블에 데이터 삽입
 			String query =  " update TB_FS_1000MT ";
-				   query += " set CRNT_AFTR_CNT = ? and FNSH_LOC_NM = ? ";
-				   query += " where FNSH_CODE = ? ";
+				   query += " set CRNT_AFTR_CNT = ? and Fnsh_loc_nm = ? ";
+				   query += " where Fnsh_code = ? ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
 			
-//			ps.setString(2, dto.getFNSH_NM());
-			ps.setInt(1, dto.getCRNT_AFTR_CNT());
-			ps.setString(2, dto.getFNSH_LOC_NM());
-			ps.setString(3, dto.getFNSH_CODE());
+//			ps.setString(2, dto.getFnsh_nm());
+			ps.setInt(1, dto.getCrnt_aftr_cnt());
+			ps.setString(2, dto.getFnsh_loc_nm());
+			ps.setString(3, dto.getFnsh_code());
 			
 			
 
@@ -251,10 +251,10 @@ public class TB_FS_1000MT_DAO {
 			// SQL 준비
 			// 완제품 현황 테이블에 데이터 삽입
 			String query =  " delete TB_FS_1000MT ";
-				   query += " where FNSH_CODE = ? ";
+				   query += " where Fnsh_code = ? ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, dto.getFNSH_CODE());
+			ps.setString(1, dto.getFnsh_code());
 			
 			
 

@@ -47,12 +47,12 @@ public class TB_MR_1000MT_DAO {
 			while (rs.next()) {
 				TB_MR_1000MT_DTO dto = new TB_MR_1000MT_DTO();
 
-				dto.setMTRL_CD(rs.getString("MTRL_CD"));
-				dto.setMTRL_NM(rs.getString("MTRL_NM"));
-				dto.setSTN_CNT(rs.getInt("STN_CNT"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setORDR_RQRD_YN(rs.getString("ORDR_RQRD_YN"));
-				dto.setMTRL_LOC_NM(rs.getString("MTRL_CD_NM"));
+				dto.setMtrl_cd(rs.getString("MTRL_CD"));
+				dto.setMtrl_nm(rs.getString("MTRL_NM"));
+				dto.setStn_cnt(rs.getInt("STN_CNT"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
+				dto.setMtrl_loc_nm(rs.getString("MTRL_CD_NM"));
 
 				list.add(dto);
 				System.out.println("조회 중");
@@ -101,12 +101,12 @@ public class TB_MR_1000MT_DAO {
 			while (rs.next()) {
 				TB_MR_1000MT_DTO dto = new TB_MR_1000MT_DTO();
 
-				dto.setMTRL_CD(rs.getString("MTRL_CD"));
-				dto.setMTRL_NM(rs.getString("MTRL_NM"));
-				dto.setSTN_CNT(rs.getInt("STN_CNT"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setORDR_RQRD_YN(rs.getString("ORDR_RQRD_YN"));
-				dto.setMTRL_LOC_NM(rs.getString("MTRL_CD_NM"));
+				dto.setMtrl_cd(rs.getString("MTRL_CD"));
+				dto.setMtrl_nm(rs.getString("MTRL_NM"));
+				dto.setStn_cnt(rs.getInt("STN_CNT"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
+				dto.setMtrl_loc_nm(rs.getString("MTRL_CD_NM"));
 
 				list.add(dto);
 				System.out.println("조회 중");
@@ -150,15 +150,15 @@ public class TB_MR_1000MT_DAO {
 			query += " values ( ?, ?, ?, ?, ?, ?) ";
 
 			PreparedStatement ps = con.prepareStatement(query);
-			ps.setString(1, dto.getMTRL_CD());
-			ps.setString(2, dto.getMTRL_NM());
-			ps.setInt(3, dto.getSTN_CNT());
+			ps.setString(1, dto.getMtrl_cd());
+			ps.setString(2, dto.getMtrl_nm());
+			ps.setInt(3, dto.getStn_cnt());
 
-			ps.setString(4, dto.getORDR_RQRD_YN());
+			ps.setString(4, dto.getOrdr_rqrd_yn());
 
-			ps.setString(5, dto.getMTRL_LOC_NM());
+			ps.setString(5, dto.getMtrl_loc_nm());
 
-			ps.setInt(6, dto.getCRNT_AFTR_CNT());
+			ps.setInt(6, dto.getCrnt_aftr_cnt());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행
@@ -210,10 +210,10 @@ public class TB_MR_1000MT_DAO {
 
 			ps = con.prepareStatement(query);
 			// 물음표에 값을 넣어라
-			ps.setString(1, dto.getORDR_RQRD_YN());
-			ps.setString(2, dto.getMTRL_LOC_NM());
-			ps.setInt(3, dto.getCRNT_AFTR_CNT());
-			ps.setString(4, dto.getMTRL_CD());
+			ps.setString(1, dto.getOrdr_rqrd_yn());
+			ps.setString(2, dto.getMtrl_loc_nm());
+			ps.setInt(3, dto.getCrnt_aftr_cnt());
+			ps.setString(4, dto.getMtrl_cd());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행
@@ -261,7 +261,7 @@ public class TB_MR_1000MT_DAO {
 
 			PreparedStatement ps = con.prepareStatement(query);
 			// 첫번째 물음표에 값을 넣어라
-			ps.setString(1, dto.getMTRL_CD());
+			ps.setString(1, dto.getMtrl_cd());
 
 			// SQL 실행 및 결과 확보
 			// ResultSet executeQuery() : SQL 중 select 실행
@@ -315,12 +315,12 @@ public class TB_MR_1000MT_DAO {
 			while (rs.next()) {
 				TB_MR_1000MT_DTO dto = new TB_MR_1000MT_DTO();
 
-				dto.setMTRL_CD(rs.getString("MTRL_CD"));
-				dto.setMTRL_NM(rs.getString("MTRL_NM"));
-				dto.setSTN_CNT(rs.getInt("STN_CNT"));
-				dto.setCRNT_AFTR_CNT(rs.getInt("CRNT_AFTR_CNT"));
-				dto.setORDR_RQRD_YN(rs.getString("ORDR_RQRD_YN"));
-				dto.setMTRL_LOC_NM(rs.getString("MTRL_CD_NM"));
+				dto.setMtrl_cd(rs.getString("MTRL_CD"));
+				dto.setMtrl_nm(rs.getString("MTRL_NM"));
+				dto.setStn_cnt(rs.getInt("STN_CNT"));
+				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
+				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
+				dto.setMtrl_loc_nm(rs.getString("MTRL_CD_NM"));
 
 				list.add(dto);
 				System.out.println("조회 중");

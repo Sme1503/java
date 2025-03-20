@@ -91,56 +91,83 @@
 								<div class="t_con">
 									<form method="post" action="컨트롤러">
 									<div class="con_1">
-										테이블 행렬 바꿔서 표현
+										
 										<table>
 											<thead>
 												<tr>
+													<th>항목</th>
+													<th>내용</th>
+													
 													<th>항목</th>
 													<th>내용</th>
 												</tr>
 											</thead>
 
 											<tbody>
-
-												
+		
+<!-- 													생산내용과 품질내용 합친 조인 테이블 - QcList -->
 													<tr>
 														<th>1. 생산코드</th>
 														<td>${QcList.PROD_CD }</td>
+														
+														<th>9. 검수자</th>
+														<td>${QcList.CHCKR_NM }</td>
 													</tr>
 													
 													<tr>
 														<th>2. 품목코드</th>
 														<td>${QcList.ITEM_CD }</td>
+														
+														<th>10. 검수일</th>
+														<td>${QcList.Chckr_dttm }<td>
 													</tr>
 													
 													<tr>
 														<th>3. 품목명</th>
 														<td>${QcList.ITEM_NM }</td>
+														
+														<th>11. 강도값</th>
+														<td>${QcList.STRTH_VAL }</td>
 													</tr>
 													
 													<tr>
 														<th>4. 작업자</th>
 														<td>${QcList.WORK_NM }</td>
+														
+														<th>12. 크기값</th>
+														<td>${QcList.SZ_VAL }</td>
 													</tr>
 													
 													<tr>
 														<th>5. 생산완료시간</th>
 														<td>${QcList.PROD_END_TIME }</td>
+														
+														<th>13. 색상값</th>
+														<td>${QcList.Clrl_val }</td>
 													</tr>
 													
 													<tr>
 														<th>6. 지시수량</th>
 														<td>${QcList.INDC_QNTT }</td>
+														
+														<th>14. 품질값</th>
+														<td>${QcList.Qlty_val }</td>
 													</tr>
 													
 													<tr>
 														<th>7. 생산량</th>
 														<td>${QcList.PROD_QNTT }</td>
+														
+														<th>15. 불합격사유</th>
+														<td>${QcList.Fail_caus_desc }</td>
 													</tr>
 													
 													<tr>
 														<th>8. 불량률</th>
 														<td>${QcList.DFC_RT }</td>
+														
+														<th>16. 비고</th>
+														<td>${QcList.Rmrk }</td>
 													</tr>
 												
 											</tbody>
@@ -194,158 +221,7 @@
 
 
 									<div class="con_2">
-										테이블 행렬 바꿔서 표현
-										<table>
-											<thead>
-												<tr>
-													<th>항목</th>
-													<th>내용</th>
-												</tr>
-											</thead>
-
-											<tbody>
-
-												
-													<tr>
-														<th>9. 검수자</th>
-														<td>
-															<select name="tester" required="required">
-                                    							<c:forEach var = "worker" items = "${workerList }">
-                                    								<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
-                                    							</c:forEach>
-                                    						</select>
-														</td>
-													</tr>
-													
-													<tr>
-														<th>10. 검수일</th>
-														<td>
-															<input type="date" name="date" id="currentDate" required="required">
-														</td>
-													</tr>
-													
-													<tr>
-														<th>11. 강도값</th>
-														<td>
-															<select name="fiber" required="required">
-																<!-- <option value="fiber_select">선택</option> -->
-																<option value="fiber_1">1</option>
-																<option value="fiber_2">2</option>
-																<option value="fiber_3">3</option>
-																<option value="fiber_4">4</option>
-																<option value="fiber_5">5</option>
-																<option value="fiber_6">6</option>
-																<option value="fiber_7">7</option>
-																<option value="fiber_8">8</option>
-																<option value="fiber_9">9</option>
-																<option value="fiber_10" selected>10</option>
-															</select>
-														</td>
-													</tr>
-													
-													<tr>
-														<th>12. 크기값</th>
-														<td>
-															<select name="size" required="required">
-																<!-- <option value="size_select">선택</option> -->
-																<option value="size_1">1</option>
-																<option value="size_2">2</option>
-																<option value="size_3">3</option>
-																<option value="size_4">4</option>
-																<option value="size_5">5</option>
-																<option value="size_6">6</option>
-																<option value="size_7">7</option>
-																<option value="size_8">8</option>
-																<option value="size_9">9</option>
-																<option value="size_10" selected>10</option>
-															</select>
-														</td>
-													</tr>
-													
-													<tr>
-														<th>13. 색상값</th>
-														<td>
-															<input name="color" type="color" value="" placeholder="입력하세요">
-														</td>
-													</tr>
-													
-													<tr>
-														<th>14. 품질값</th>
-														<td>
-															<select name="erase" required="required">
-																<!-- <option value="erase_select">선택</option> -->
-																<option value="erase_1">1</option>
-																<option value="erase_2">2</option>
-																<option value="erase_3">3</option>
-																<option value="erase_4">4</option>
-																<option value="erase_5">5</option>
-																<option value="erase_6">6</option>
-																<option value="erase_7">7</option>
-																<option value="erase_8">8</option>
-																<option value="erase_9">9</option>
-																<option value="erase_10" selected>10</option>
-															</select>
-														</td>
-													</tr>
-													
-													<tr>
-														<th>15. 불합격사유</th>
-														<td>
-															<input type="text" name="notpass" value="" placeholder="입력하세요">
-														</td>
-													</tr>
-													
-													<tr>
-														<th>16. 비고</th>
-														<td>
-															<input type="text" name="note" value="" placeholder="입력하세요">
-														</td>
-													</tr>
-													
-													
-<!-- 													<tr> -->
-<!-- 														<th>9. 검수자</th> -->
-<%-- 														<td>${QcList.CHCKR_NM }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>10. 검수일</th> -->
-<%-- 														<td>${QcList.Chckr_dttm }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>11. 강도값</th> -->
-<%-- 														<td>${QcList.STRTH_VAL }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>12. 크기값</th> -->
-<%-- 														<td>${QcList.SZ_VAL }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>13. 색상값</th> -->
-<%-- 														<td>${QcList.Clrl_val }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>14. 품질값</th> -->
-<%-- 														<td>${QcList.Qlty_val }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>15. 불합격사유</th> -->
-<%-- 														<td>${QcList.Fail_caus_desc }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>16. 비고</th> -->
-<%-- 														<td>${QcList.Rmrk }</td> --%>
-<!-- 													</tr> -->
-												
-											</tbody>
-										</table>
-									
+										
 <!-- 										<div class="div_report_QA"> -->
 <!-- 											<div class="div_flex_2"> -->
 <!-- 											<div class="div_report_item"> -->
@@ -478,7 +354,7 @@
 									<!-- 빈 공간 -->
 								</div>
 								<button type="button" id="btn_report_confirm">
-									<a class="btn_text_color" href="./TestQA_main_park.html">확인</a>
+									<a class="btn_text_color" href="./TestQA_main_park.jsp">확인</a>
 								</button>
 
 								<div class="div_none">

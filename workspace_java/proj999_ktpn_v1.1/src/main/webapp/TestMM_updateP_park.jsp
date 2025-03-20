@@ -115,11 +115,11 @@
 												<form method="post" action="컨트롤러">
 
 													<td id="Mcode" class="material-td Mcode">셀렉트, 대신 기본값 -선택- -> 출고때 사용
-														<input type="text" value="${pList.FNSH_CODE }" readonly="readonly">${pList.FNSH_CODE }
+														<input type="text" value="${pList.Fnsh_code }" readonly="readonly">${pList.Fnsh_code }
 													</td>
 													
 													<td id="Mname" class="material-td">
-													 	<input type="text" value="${pList.FNSHD_ITEM_NM }" readonly="readonly">${pList.FNSHD_ITEM_NM }
+													 	<input type="text" value="${pList.Fnshd_item_nm }" readonly="readonly">${pList.Fnshd_item_nm }
 													 </td>
 													
 													<td id="Mea" class="material-td"><input type="text"
