@@ -171,7 +171,7 @@
 										<table class="material-table">
 											<thead>
 												<tr>
-<!-- 													<th scope="col" class="material-th">삭제체크</th> -->
+													<th scope="col" class="material-th">✅</th>
 													<th scope="col" class="material-th">원자재코드</th>
 													<th scope="col" class="material-th">원자재명</th>
 													<th scope="col" class="material-th">기준 수량</th>
@@ -183,12 +183,12 @@
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="Mdata" items="${materialList }">
+												<c:forEach var="Mdata" items="${MtableSelect }">
 
 													<tr>
 														<form method="post" action="imcon">
-															<td><input type="checkbox" name="deleteCheck"
-																value="Y"></td>
+															<td><input type="checkbox" name="undoCheck"
+																value="${Mdata.mtrl_cd }"></td>
 															
 															<td id="Mcode" class="material-td Mcode">
 																<input type="hidden" name="code" value="${Mdata.mtrl_cd }">
@@ -276,12 +276,13 @@
 										</div>
 
 									</div>
+							
 
 									<div id="show_table2" class="hide">
 										<table class="material-table product-table">
 											<thead>
 												<tr>
-<!-- 													<th scope="col" class="material-th product-th">삭제체크</th> -->
+													<th scope="col" class="material-th product-th">✅</th>
 													<th scope="col" class="material-th product-th">완제품코드</th>
 													<th scope="col" class="material-th product-th">완제품명</th>
 													<th scope="col" class="material-th product-th">수량</th>
@@ -290,15 +291,15 @@
 												</tr>
 											</thead>
 											<tbody>
-												<c:forEach var="Pdata" items="${productList }">
+												<c:forEach var="Pdata" items="${PtableSelect }">
 
 													<tr>
 													
 														<form method="post" action="impcon">
 														
 														
-															<td><input type="checkbox" name="deleteCheck"
-																value="Y"></td>
+															<td><input type="checkbox" name="undoCheck"
+																value="${Pdata.fnsh_code }"></td>
 															
 															<td id="Pcode" class="material-td Mcode product-td">
 																<input type="hidden" name="code" value="${Pdata.fnsh_code }">
@@ -378,6 +379,24 @@
 										</div>
 
 									</div>
+
+
+									<div>
+										<button>
+											원자재 추가 - 버튼을 누르면 숨겨졌던 입력창이 생긴다
+										</button>
+										
+										<div>
+											<form action="imcon" method="post">
+												<div	 flex>
+													
+												</div>
+											</form>
+										</div>
+									</div>
+
+
+
 
 									<div class="div_none">
 										<!-- 빈 공간 -->

@@ -99,11 +99,11 @@ public class TB_MR_1000HT_DAO {
 
 			// SQL 준비
 			// 원자재 로그 테이블에서 마지막에 입력한 잘못된 로그와 바로 이전 로그 찾기
-			String query =  " select a.* form ( ";
+			String query =  " select a.* from ( ";
 				   query += " select a.*, rownum as rn ";
 				   query += " from TB_MR_1000HT a ";
 				   query += " where a.MTRL_CD = ? ";
-				   query += " ordey by a.SN desc ) a ";
+				   query += " order by a.SN desc ) a ";
 				   query += " where a.rn = ? ";
 				   
 			PreparedStatement ps = con.prepareStatement(query);
@@ -229,7 +229,7 @@ public class TB_MR_1000HT_DAO {
 			// SQL 준비
 			// 원자재 로그 테이블에 데이터 수정
 			String query =  " update TB_MR_1000HT from ";
-				   query += " set Rmrk = ? ";
+				   query += " set RMRK = ? ";
 				   query += " where SN = ? and MTRL_CD = ? ";
 			
 			PreparedStatement ps = con.prepareStatement(query);

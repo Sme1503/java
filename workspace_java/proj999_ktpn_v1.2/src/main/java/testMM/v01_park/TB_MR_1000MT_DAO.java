@@ -52,7 +52,7 @@ public class TB_MR_1000MT_DAO {
 				dto.setStn_cnt(rs.getInt("STN_CNT"));
 				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
 				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
-				dto.setMtrl_loc_nm(rs.getString("MTRL_CD_NM"));
+				dto.setMtrl_loc_nm(rs.getString("MTRL_LOC_NM"));
 
 				list.add(dto);
 				System.out.println("조회 중");
@@ -106,7 +106,7 @@ public class TB_MR_1000MT_DAO {
 				dto.setStn_cnt(rs.getInt("STN_CNT"));
 				dto.setCrnt_aftr_cnt(rs.getInt("CRNT_AFTR_CNT"));
 				dto.setOrdr_rqrd_yn(rs.getString("ORDR_RQRD_YN"));
-				dto.setMtrl_loc_nm(rs.getString("MTRL_CD_NM"));
+				dto.setMtrl_loc_nm(rs.getString("MTRL_LOC_NM"));
 
 				list.add(dto);
 				System.out.println("조회 중");

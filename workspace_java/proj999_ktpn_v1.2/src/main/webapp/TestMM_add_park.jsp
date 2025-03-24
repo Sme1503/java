@@ -107,8 +107,8 @@
 
 									<!-- 입력추가 버튼을 누르면 나오는 input 예시 -->
 									<div class="flex_child new_input">
-										<div>
 											<form action="imcon" method="post">
+											<div class="flex_child">
 												<div class="item">
 													<!--                                     		원자재코드 선택하면 원자재명도 자동으로입력 
 												이미 추가된 원자재코드가 있으면 그 코드로는 새로운 추가 불가능하게 하기-->
@@ -161,7 +161,7 @@
 												<div class="item">
 													<select name="worker">
 														<c:forEach var="member" items="${mList }">
-															<option value="${member.MBR_NM }">${member.MBR_NM }</option>
+															<option value="${member.mbr_nm }">${member.mbr_nm }</option>
 														</c:forEach>
 													</select>
 												</div>
@@ -169,8 +169,8 @@
 												<div class="item">
 													<select name="warehouse">
 														<option value="warehouse1">M창고1</option>
-														<option value="warehouse2">M창고2</option>
-														<option value="warehouse3">M창고3</option>
+<!-- 														<option value="warehouse2">M창고2</option> -->
+<!-- 														<option value="warehouse3">M창고3</option> -->
 
 													</select>
 												</div class="item">
@@ -188,8 +188,10 @@
 													<input type="hidden" name="command" value="insert">
 													<input type="submit" value="추가">
 												</div>
+												
+											</div>
 											</form>
-										</div>
+											
 
 
 

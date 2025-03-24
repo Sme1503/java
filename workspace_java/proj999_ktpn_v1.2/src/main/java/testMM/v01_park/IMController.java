@@ -74,6 +74,7 @@ public class IMController extends HttpServlet {
 		TB_MR_1000HT_DAO MLogtable_dao = new TB_MR_1000HT_DAO(); // 원자재 로그 테이블 dao
 
 		List list = new ArrayList();
+		boolean check = false; // true면 로그 작동
 
 		String command = request.getParameter("command");
 		System.out.println("command : " + command);
@@ -91,7 +92,7 @@ public class IMController extends HttpServlet {
 			date = date.replace("-", ""); // - 제거
 			String note = request.getParameter("note");
 
-			int ex = 0;					// insert, update 확인하는 변수
+			int ex = 0; // insert, update 확인하는 변수
 
 			if ("i".equals(io)) { // 입고
 				list = Mtable_dao.selectCurrentM(code); // 원자재 현황 테이블에서 입력한 원자재코드의 데이터 조회
@@ -114,6 +115,10 @@ public class IMController extends HttpServlet {
 
 					System.out.println("입력한 데이터: " + Mtable_dto.toString());
 					
+					if (ex > 0) {
+						check = true;
+					}
+
 				} else { // 데이터가 있으면 update
 					Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 					System.out.println("수정 전 데이터: " + Mtable_dto.toString());
@@ -132,6 +137,10 @@ public class IMController extends HttpServlet {
 					ex = Mtable_dao.updateCurrentM(Mtable_dto);
 					System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
 					System.out.println("수정 후 데이터: " + Mtable_dto.toString());
+
+					if (ex > 0) {
+						check = true;
+					}
 				}
 
 			}
@@ -164,6 +173,10 @@ public class IMController extends HttpServlet {
 					} else if (Mtable_dto.getCrnt_aftr_cnt() >= 0) { // 현재 수량이 0보다 크면
 						ex = Mtable_dao.updateCurrentM(Mtable_dto);
 						System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
+
+						if (ex > 0) {
+							check = true;
+						}
 					} else { // 현재 수량이 0이면
 //						ex = Mtable_dao.deleteCurrentM(Mtable_dto);
 						// System.out.println("원자재 현황테이블에 " + ex + "행이 삭제되었습니다");
@@ -172,21 +185,23 @@ public class IMController extends HttpServlet {
 				}
 			}
 
-			MLogtable_dto.setMtrl_cd(Mtable_dto.getMtrl_cd());
-			MLogtable_dto.setMtrl_nm(Mtable_dto.getMtrl_nm());
-			MLogtable_dto.setStn_cnt(Mtable_dto.getStn_cnt());
-			MLogtable_dto.setCrnt_cnt(EA);
-			MLogtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt());
-			MLogtable_dto.setOrdr_rqrd_yn(Mtable_dto.getOrdr_rqrd_yn());
-			MLogtable_dto.setIob_se_cd(io);
-			MLogtable_dto.setWork_nm(worker);
-//			MLogtable_dto.setReg_dttm();
-			MLogtable_dto.setChng_dt(date);
-			MLogtable_dto.setRmrk(note);
-			MLogtable_dto.setMtrl_cd_nm(Mtable_dto.getMtrl_loc_nm());
+			if (check == true) { // check가 true면
+				MLogtable_dto.setMtrl_cd(Mtable_dto.getMtrl_cd());
+				MLogtable_dto.setMtrl_nm(Mtable_dto.getMtrl_nm());
+				MLogtable_dto.setStn_cnt(Mtable_dto.getStn_cnt());
+				MLogtable_dto.setCrnt_cnt(EA);
+				MLogtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt());
+				MLogtable_dto.setOrdr_rqrd_yn(Mtable_dto.getOrdr_rqrd_yn());
+				MLogtable_dto.setIob_se_cd(io);
+				MLogtable_dto.setWork_nm(worker);
+//				MLogtable_dto.setReg_dttm();
+				MLogtable_dto.setChng_dt(date);
+				MLogtable_dto.setRmrk(note);
+				MLogtable_dto.setMtrl_cd_nm(Mtable_dto.getMtrl_loc_nm());
 
-			ex = MLogtable_dao.insertMlog(MLogtable_dto);
-			System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
+				ex = MLogtable_dao.insertMlog(MLogtable_dto);
+				System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
+			}
 
 		} else if ("update".equals(command)) {
 
@@ -223,6 +238,10 @@ public class IMController extends HttpServlet {
 					ex = Mtable_dao.insertCurrentM(Mtable_dto);
 					System.out.println("원자재 현황테이블에 " + ex + "행이 삽입되었습니다");
 
+					if (ex > 0) {
+						check = true;
+					}
+
 				} else { // 데이터가 있으면 update
 					Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
 					System.out.println("수정 전" + Mtable_dto.toString());
@@ -241,6 +260,10 @@ public class IMController extends HttpServlet {
 
 					ex = Mtable_dao.updateCurrentM(Mtable_dto);
 					System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
+
+					if (ex > 0) {
+						check = true;
+					}
 				}
 
 			}
@@ -273,6 +296,10 @@ public class IMController extends HttpServlet {
 					} else if (Mtable_dto.getCrnt_aftr_cnt() >= 0) { // 현재 수량이 0이거나 0보다 크면
 						ex = Mtable_dao.updateCurrentM(Mtable_dto);
 						System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
+
+						if (ex > 0) {
+							check = true;
+						}
 					} else { // 현재 수량이 0이면
 //						ex = Mtable_dao.deleteCurrentM(Mtable_dto);
 						// System.out.println("원자재 현황테이블에 " + ex + "행이 삭제되었습니다");
@@ -280,29 +307,37 @@ public class IMController extends HttpServlet {
 
 				}
 			}
+			if (check == true) {
+				MLogtable_dto.setMtrl_cd(Mtable_dto.getMtrl_cd());
+				MLogtable_dto.setMtrl_nm(Mtable_dto.getMtrl_nm());
+				MLogtable_dto.setStn_cnt(Mtable_dto.getStn_cnt());
+				MLogtable_dto.setCrnt_cnt(EA);
+				MLogtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt());
+				MLogtable_dto.setOrdr_rqrd_yn(Mtable_dto.getOrdr_rqrd_yn());
+				MLogtable_dto.setIob_se_cd(io);
+				MLogtable_dto.setWork_nm(worker);
+//				MLogtable_dto.setReg_dttm();
+				MLogtable_dto.setChng_dt(date);
+				MLogtable_dto.setRmrk(note);
+				MLogtable_dto.setMtrl_cd_nm(Mtable_dto.getMtrl_loc_nm());
 
-			MLogtable_dto.setMtrl_cd(Mtable_dto.getMtrl_cd());
-			MLogtable_dto.setMtrl_nm(Mtable_dto.getMtrl_nm());
-			MLogtable_dto.setStn_cnt(Mtable_dto.getStn_cnt());
-			MLogtable_dto.setCrnt_cnt(EA);
-			MLogtable_dto.setCrnt_aftr_cnt(Mtable_dto.getCrnt_aftr_cnt());
-			MLogtable_dto.setOrdr_rqrd_yn(Mtable_dto.getOrdr_rqrd_yn());
-			MLogtable_dto.setIob_se_cd(io);
-			MLogtable_dto.setWork_nm(worker);
-//			MLogtable_dto.setReg_dttm();
-			MLogtable_dto.setChng_dt(date);
-			MLogtable_dto.setRmrk(note);
-			MLogtable_dto.setMtrl_cd_nm(Mtable_dto.getMtrl_loc_nm());
-
-			ex = MLogtable_dao.insertMlog(MLogtable_dto);
-			System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
-
-		} else if("undo".equals(command)) {			// 입력 취소 - 이전 데이터로 롤백
+				ex = MLogtable_dao.insertMlog(MLogtable_dto);
+				System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
+			}
 			
+			String url = "imcon";
+			response.sendRedirect(url);
+//			String url = "TestMM_main_park.jsp";
+
+			//request.getRequestDispatcher(url).forward(request, response);
+
+		} else if ("undo".equals(command)) { // 입력 취소 - 이전 데이터로 롤백
+
 			String code = request.getParameter("code");
-			
+			System.out.println("code : " + code);
+
 			int ex = 0;
-			
+
 //			Mtable_dto.setMtrl_cd(code);
 //			ex = Mtable_dao.deleteCurrentM(Mtable_dto);
 //			System.out.println("원자재 현황테이블에 " + ex + "행이 삭제되었습니다");
@@ -314,120 +349,120 @@ public class IMController extends HttpServlet {
 //
 //			ex = Mtable_dao.insertCurrentM(Mtable_dto);
 //			System.out.println("원자재 현황테이블에 " + ex + "행이 추가되었습니다");
-			
+
 			// 잘못 입력한 로그 찾기
 			list = MLogtable_dao.selectLastMLog(code, 1);
-			MLogtable_dto = (TB_MR_1000HT_DTO) list.get(0);
+			//System.out.println("잘못 입력한 로그 사이즈: " + list.size());
+			// code 값이 없어서 인덱스 아웃 오류 뜸
+			//MLogtable_dto = (TB_MR_1000HT_DTO) list.get(1);
 			MLogtable_dto.setRmrk("데이터 입력이 잘못되었음");
 			
+			System.out.println("잘못된 로그 : " + MLogtable_dto.toString());
+
 			// 잘못 입력한 로그의 비고 데이터 수정
 			ex = MLogtable_dao.updateMlog(MLogtable_dto);
-			
+
 			// 잘못 입력한 로그의 바로 이전 로그 찾기 - 정상 로그
 			list = MLogtable_dao.selectLastMLog(code, 2);
 //			Mtable_dto = (TB_MR_1000MT_DTO) list.get(0);
-			
+
 			MLogtable_dto = (TB_MR_1000HT_DTO) list.get(0);
 			MLogtable_dto.setRmrk("이전 로그로 롤백 ");
-			
+
 			Mtable_dto.setMtrl_cd(MLogtable_dto.getMtrl_cd());
 			Mtable_dto.setMtrl_nm(MLogtable_dto.getMtrl_nm());
 			Mtable_dto.setStn_cnt(MLogtable_dto.getStn_cnt());
 			Mtable_dto.setOrdr_rqrd_yn(MLogtable_dto.getOrdr_rqrd_yn());
 			Mtable_dto.setMtrl_loc_nm(MLogtable_dto.getMtrl_cd_nm());
 			Mtable_dto.setCrnt_aftr_cnt(MLogtable_dto.getCrnt_aftr_cnt());
-			
-			
+
 			System.out.println("잘못 입력된 로그 이전의 로그값- 정상 로그 : 원자재 현황부분 " + Mtable_dto.toString());
 			System.out.println("잘못 입력된 로그 이전의 로그값- 정상 로그 : 원자재 로그부분 " + MLogtable_dto.toString());
 
 			ex = Mtable_dao.updateCurrentM(Mtable_dto);
 			System.out.println("원자재 현황테이블에 " + ex + "행이 수정되었습니다");
-			
+
 			// 롤백하는 로그 데이터 다시 삽입하기
 			ex = MLogtable_dao.insertMlog(MLogtable_dto);
 			System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
-		} else if("mLog".equals(command)) {
-			
+		} else if ("mLog".equals(command)) {
+
 			list = MLogtable_dao.selectMLog();
-			
-			for(int i=0; i<list.size(); i++) {
+
+			for (int i = 0; i < list.size(); i++) {
 				MLogtable_dto = (TB_MR_1000HT_DTO) list.get(i);
-				
+
 				System.out.println("MLogtable_dto : " + MLogtable_dto.toString());
 				System.out.println();
 			}
-			
+
 			request.setAttribute("mLogList", list);
-			
+
 			String url = "TestMM_main_park_mLog.jsp";
 
 			request.getRequestDispatcher(url).forward(request, response);
-		} else if("move_update_Page".equals(command)) {
-			
+		} else if ("move_update_Page".equals(command)) {
+
 			// 작업자 list = 작업자dao.select;
 			// request.setAttribute("작업자 list", 작업자 list);
-			
+
 			String code = request.getParameter("code");
 			String name = request.getParameter("name");
-			
+
 			Mtable_dto.setMtrl_cd(code);
 			Mtable_dto.setMtrl_nm(name);
-			
+
 			list.add(Mtable_dto);
-			
+
 			request.setAttribute("mList", list);
-			
+
 			String url = "TestMM_main_park_mLog.jsp";
 
 			request.getRequestDispatcher(url).forward(request, response);
-		} else if("move_add_Page".equals(command)) {
-			
+		} else if ("move_add_Page".equals(command)) {
+
 			// 기준관리 list = 기준관리dao.select(원자재); >> 원자재코드와 원자재명이 있다
 			// request.setAttribute("기준관리 list", 기준관리 list);
 			DTO_MD_add_Kwak md_table_dto = new DTO_MD_add_Kwak();
 			DAO_MD_add_Kwak md_table_dao = new DAO_MD_add_Kwak();
 			String findname = "원자재";
-			//md_table_dao.select(findname);		// 원자재라는 설명이 있는 코드와 이름 찾기
-			
+			// md_table_dao.select(findname); // 원자재라는 설명이 있는 코드와 이름 찾기
+
 			List McodeList = new ArrayList();
-			McodeList = md_table_dao.selectAllMCode();		// 원자재코드 찾기
-			
-			for(int i=0; i<McodeList.size(); i++) {
+			McodeList = md_table_dao.selectAllMCode(); // 원자재코드 찾기
+
+			for (int i = 0; i < McodeList.size(); i++) {
 				md_table_dto = (DTO_MD_add_Kwak) McodeList.get(i);
-				
+
 				System.out.println("Mcode : " + md_table_dao.toString());
 				System.out.println();
 			}
-			
+
 			request.setAttribute("mcList", McodeList);
-			
+
 			// 작업자 list = 작업자dao.select;
 			// request.setAttribute("작업자 list", 작업자 list);
 //			testMember_DTO m_table_dto = new testMember_DTO();
 //			testMember_DAO m_table_dao = new testMember_DAO();
 			MemberDTO m_table_dto = new MemberDTO();
 			MemberDAO m_table_dao = new MemberDAO();
-			
+
 			List memberList = new ArrayList();
 			memberList = m_table_dao.selectMember();
-			
-			for(int i=0; i<memberList.size(); i++) {
+
+			for (int i = 0; i < memberList.size(); i++) {
 				m_table_dto = (MemberDTO) memberList.get(i);
-				
+
 				System.out.println("member : " + m_table_dto.toString());
 				System.out.println();
 			}
-			
+
 			request.setAttribute("mList", memberList);
-		
-			
+
 			String url = "TestMM_add_park.jsp";
 
 			request.getRequestDispatcher(url).forward(request, response);
 		}
-		
-		
 
 //		doGet(request, response);
 

@@ -4,6 +4,9 @@ select * from tb_md_1000mt;
 select * from tb_mr_1000mt;
 // 원자재 현황 테이블
 
+delete from tb_mr_1000mt;
+commit;
+
 insert into TB_MR_1000MT (MTRL_CD, MTRL_NM)select mt_mng_cd, mt_mng_nm from tb_md_1000mt where mt_mng_cd like 'M%';
 // 원자재 현황 테이블에 데이터 삽입
 // 기준관리에서 원자재코드랑 이름 가져오기 - 성공
@@ -153,6 +156,8 @@ select a.*
       ) a
  where a.rn = 2;
  
+commit;
+select * from TB_MR_1000MT; 
 select * from TB_FS_1000HT;
 select * from TB_QA_1100DT;
 select * from TB_QA_1000DT;
