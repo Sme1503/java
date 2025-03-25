@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Memberr.MemberDAO;
+import Memberr.MemberDTO;
+import tb_pr_1100mt.TB_PR_1100MTDAO;
+import tb_pr_1100mt.TB_PR_1100MTDTO;
+
 /**
  * Servlet implementation class QAController
  */
@@ -44,14 +49,14 @@ public class QAController extends HttpServlet {
 		
 		
 		
-		String code = request.getParameter("code");
-		
-		list = QCtable_dao.joinQCnPR(code);	// 조인한 결과 리스트
-		request.setAttribute("joinList", list);
-		
-		url = "TestQA_report_park_table_show.jsp";
-		
-		request.getRequestDispatcher(url).forward(request, response);
+//		String code = request.getParameter("code");
+//		
+//		list = QCtable_dao.joinQCnPR(code);	// 조인한 결과 리스트
+//		request.setAttribute("joinList", list);
+//		
+//		url = "TestQA_report_park_table_show.jsp";
+//		
+//		request.getRequestDispatcher(url).forward(request, response);
 		
 	}
 
@@ -165,12 +170,121 @@ public class QAController extends HttpServlet {
 			
 			
 		}
+		else if("move_add_page".equals(command)) {
+			
+			TB_PR_1100MTDTO p_table_dto = new TB_PR_1100MTDTO();
+			TB_PR_1100MTDAO p_table_dao = new TB_PR_1100MTDAO();
+
+			List PcodeList = new ArrayList();
+			// 생산이 완료된 생산코드 데이터
+			PcodeList = p_table_dao.selectTBPR_Y_List();
+
+			for (int i = 0; i < PcodeList.size(); i++) {
+				p_table_dto = (TB_PR_1100MTDTO) PcodeList.get(i);
+
+				System.out.println("생산이 완료된 생산코드 : " + p_table_dto.toString());
+				System.out.println();
+			}
+
+			request.setAttribute("pList", PcodeList);
+			
+			// 검수자
+			MemberDTO m_table_dto = new MemberDTO();
+			MemberDAO m_table_dao = new MemberDAO();
+
+			List memberList = new ArrayList();
+			memberList = m_table_dao.selectMember();
+
+			for (int i = 0; i < memberList.size(); i++) {
+				m_table_dto = (MemberDTO) memberList.get(i);
+
+				System.out.println("member : " + m_table_dto.toString());
+				System.out.println();
+			}
+			request.setAttribute("mList", memberList);
+			
+			
+			String url = "TestQA_report_park_table_add2.jsp";
+			request.getRequestDispatcher(url).forward(request, response);
+			
+		}
+		else if("move_update_page".equals(command)) {
+			
+			TB_PR_1100MTDTO p_table_dto = new TB_PR_1100MTDTO();
+			TB_PR_1100MTDAO p_table_dao = new TB_PR_1100MTDAO();
+
+			List PcodeList = new ArrayList();
+			// 생산이 완료된 생산코드 데이터
+			PcodeList = p_table_dao.selectTBPR_Y_List();
+
+			for (int i = 0; i < PcodeList.size(); i++) {
+				p_table_dto = (TB_PR_1100MTDTO) PcodeList.get(i);
+
+				System.out.println("생산이 완료된 생산코드 : " + p_table_dto.toString());
+				System.out.println();
+			}
+
+			request.setAttribute("pList", PcodeList);
+			
+			// 검수자
+			MemberDTO m_table_dto = new MemberDTO();
+			MemberDAO m_table_dao = new MemberDAO();
+
+			List memberList = new ArrayList();
+			memberList = m_table_dao.selectMember();
+
+			for (int i = 0; i < memberList.size(); i++) {
+				m_table_dto = (MemberDTO) memberList.get(i);
+
+				System.out.println("member : " + m_table_dto.toString());
+				System.out.println();
+			}
+			request.setAttribute("mList", memberList);
+			
+			
+			String url = "TestQA_report_park_table_update2.jsp";
+			request.getRequestDispatcher(url).forward(request, response);
+			
+		}
+		else if("move_show_page".equals(command)) {
+			
+			// 생산테이블과 품질테이블을 생산코드로 조인
+			String code = request.getParameter("code");
+			
+			TB_QA_1000DT_DTO Jointable_dto = new TB_QA_1000DT_DTO();
+			TB_QA_1100DT_DAO Jointable_dao = new TB_QA_1100DT_DAO();
+			
+			List joinList = new ArrayList();
+			
+			joinList = Jointable_dao.joinQCnPR(code);
+			
+			for (int i = 0; i < joinList.size(); i++) {
+				Jointable_dto = (TB_QA_1000DT_DTO) joinList.get(i);
+
+				System.out.println("조인 내용 : " + Jointable_dto.toString());
+				System.out.println();
+			}
+			request.setAttribute("QcList", joinList);
+			
+			
+			String url = "TestQA_report_park_table_show.jsp";
+			request.getRequestDispatcher(url).forward(request, response);
+			
+		}
+		else if("move_main_page".equals(command)) {
+			
+			// 품질 테이블 조회 List를 메인으로 보내기
+			list = QCtable_dao.selectQCreport();
+			String url = "TestQA_main_park2.jsp";
+
+			request.getRequestDispatcher(url).forward(request, response);
+		}
 		
-		String url = "qccon";
-		response.sendRedirect(url);
-		
-		
-		doGet(request, response);
+//		String url = "qccon";
+//		response.sendRedirect(url);
+//		
+//		
+//		doGet(request, response);
 	}
 
 }

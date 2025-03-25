@@ -164,8 +164,8 @@
 
       <Context docBase="proj5_todo" path="/proj5_todo" reloadable="true" source="org.eclipse.jst.jee.server:proj5_todo"/>
       <Context docBase="proj999_ktpn_v1.2" path="/projktpn" reloadable="true" source="org.eclipse.jst.jee.server:proj999_ktpn_v1.2"/>
-      <Context docBase="spring1_hello" path="/human" reloadable="true" source="org.eclipse.jst.jee.server:spring1_hello"/>
-      <Context docBase="spring2_ioc_di" path="/human2" reloadable="true" source="org.eclipse.jst.jee.server:spring2_ioc_di"/></Host>
+      
+      <Context docBase="spring3_model" path="/human3" reloadable="true" source="org.eclipse.jst.jee.server:spring3_model"/></Host>
     </Engine>
   </Service>
 </Server>

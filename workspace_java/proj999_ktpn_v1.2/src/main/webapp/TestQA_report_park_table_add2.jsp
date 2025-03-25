@@ -115,7 +115,7 @@
 
 														<td>
 															<select id="select1" name="Pcode" onchange="changeP()">
-																<c:forEach var="pcode" items="${pcodeList }">
+																<c:forEach var="pcode" items="${pList }">
 																	<option value="${pcode.PROD_CD }" 
 																			auto_icode = "${pcode.ITEM_CD }" 
 																			auto_iname = "${pcode.ITEM_NM }">
@@ -150,7 +150,7 @@
 														</td>
 
 														<td><select name="tester" required="required">
-																<c:forEach var="worker" items="${workerList }">
+																<c:forEach var="worker" items="${mList }">
 																	<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
 																</c:forEach>
 														</select></td>

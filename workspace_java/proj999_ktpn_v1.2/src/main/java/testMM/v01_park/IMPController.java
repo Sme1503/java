@@ -340,12 +340,12 @@ public class IMPController extends HttpServlet {
 			TB_PR_1100MTDAO p_table_dao = new TB_PR_1100MTDAO();
 
 			List PcodeList = new ArrayList();
-			PcodeList = p_table_dao.selectTBPRList();
+			PcodeList = p_table_dao.selectTBPR_Y_List();
 
 			for (int i = 0; i < PcodeList.size(); i++) {
 				p_table_dto = (TB_PR_1100MTDTO) PcodeList.get(i);
 
-				System.out.println("Mcode : " + p_table_dto.toString());
+				System.out.println("생산이 완료된 생산코드 : " + p_table_dto.toString());
 				System.out.println();
 			}
 

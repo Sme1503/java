@@ -92,7 +92,7 @@
 											<option value="QA_code1">생산코드</option>
 											<option value="QA_code2">품목코드</option>
 											<option value="QA_code3">품목명</option>
-<!-- 											<option value="QA_code4">최종결과</option> -->
+											<!-- 											<option value="QA_code4">최종결과</option> -->
 										</select> <input type="select" class="select">
 										<!-- <input class="select_day" id="select_QA_eve" type="date" value=""
                                                 max="2999-12-31" , min="1970-01-01"> -->
@@ -103,139 +103,147 @@
 
 									</form>
 
-									
-											
+
+
 									<div class="right_chi">
-									
+
 										<form action="qccon" method="post">
-											<button class="btn" type="submit" value="move_add_page" name="command">
-												추가
-											</button>
+											<button class="btn" type="submit" value="move_add_page"
+												name="command">추가</button>
 										</form>
-										
-<!-- 										<button class="btn" type="button"> -->
-<!-- 											<a href="./TestQA_report_park_table_add2.jsp">추가</a> -->
-<!-- 										</button> -->
-											
-										<button class="btn" type="submit" value="delete" name="command">
+
+										<!-- 										<button class="btn" type="button"> -->
+										<!-- 											<a href="./TestQA_report_park_table_add2.jsp">추가</a> -->
+										<!-- 										</button> -->
+
+										<button class="btn" type="submit" value="delete"
+											name="command">
 											<input type="hidden" name="command" value="delete">
-												삭제
+											삭제
 										</button>
 									</div>
-											
-									
+
+
 								</div>
 
 								<!-- <div class="div_none0"></div> -->
 								<div>
-									
+
 									<form method="post" action="qccon">
+										<div>
+											<table class="QA-table">
+												<thead>
+													<tr>
+
+														<th scope="col" class="QA-th">✔</th>
+														<th scope="col" class="QA-th">생산코드</th>
+														<th scope="col" class="QA-th">품목코드</th>
+														<th scope="col" class="QA-th">품목명</th>
+														<th scope="col" class="QA-th">강도값</th>
+														<th scope="col" class="QA-th">크기값</th>
+														<th scope="col" class="QA-th">색상값</th>
+														<th scope="col" class="QA-th">품질값</th>
+														<th scope="col" class="QA-th">검수자</th>
+													</tr>
+												</thead>
+
+												<tbody>
+
+													<c:forEach var="QCdata" items="${pList }">
+
+														<tr>
+
+
+															<td><input type="checkbox" name="delcode"
+																value="${QCdata.PROD_CD }"></td>
+
+															<!-- 													<form method="post" action="qccon"> -->
+
+															<td class="QA-td"><input type="hidden" name="code"
+																value="${QCdata.PROD_CD }"> <a
+																class="enter_reportPage"
+																href="./TestQA_report_park_table_show.jsp">
+																	${QCdata.PROD_CD } </a></td>
+
+															<td class="QA-td"><input type="hidden" name="code"
+																value="${QCdata.PROD_CD }"> ${QCdata.ITEM_CD }</td>
+
+															<td class="QA-td"><input type="hidden" name="name"
+																value="${QCdata.ITEM_NM }"> ${QCdata.ITEM_NM }</td>
+
+															<td class="QA-td"><input type="hidden" name="fiber"
+																value="${QCdata.STRTH_VAL }"> ${QCdata.STRTH_VAL }</td>
+
+															<td class="QA-td"><input type="hidden" name="size"
+																value="${QCdata.SZ_VAL }"> ${QCdata.SZ_VAL }</td>
+
+															<td class="QA-td"><input type="hidden" name="color"
+																value="${QCdata.Clrl_val }"> ${QCdata.Clrl_val }</td>
+
+															<td class="QA-td"><input type="hidden" name="erase"
+																value="${QCdata.Qlty_val }"> ${QCdata.Qlty_val }</td>
+
+															<td class="QA-td"><input type="hidden" name="tester"
+																value="${QCdata.CHCKR_NM }"> ${QCdata.CHCKR_NM }</td>
+
+															<td><input type="hidden" name="command"
+																value="update"> <input type="submit" value="수정">
+															</td>
+
+															<!--                                                 	</form> -->
+														</tr>
+
+
+													</c:forEach>
+
+												</tbody>
+											</table>
+										</div>
+
+									</form>
+									
 									<div>
-									<table class="QA-table">
-										<thead>
-											<tr>
-											
-												<th scope="col" class="QA-th">✔</th>
-												<th scope="col" class="QA-th">생산코드</th>
-												<th scope="col" class="QA-th">품목코드</th>
-												<th scope="col" class="QA-th">품목명</th>
-												<th scope="col" class="QA-th">강도값</th>
-												<th scope="col" class="QA-th">크기값</th>
-												<th scope="col" class="QA-th">색상값</th>
-												<th scope="col" class="QA-th">품질값</th>
-												<th scope="col" class="QA-th">검수자</th>
-											</tr>
-										</thead>
-
-										<tbody>
-											
-											<c:forEach var="QCdata" items="${pList }">
-
+										추가 버튼을 누르면 추가하는 입력창이 생긴다
+										
+										<table>
+											<tbody>
+												<tr>
+													<th>생산코드</th>
+													<th>품목코드</th>
+													<th>품목명</th>
+													<th>검수자</th>
+													<th>검수일</th>
+													<th>강도값</th>
+													<th>크기값</th>
+													<th>색상값</th>
+													<th>품질값</th>
+													<th>불합격사유</th>
+													<th>비고</th>
+												</tr>
+												
 												<tr>
 													
-
-														<td>
-															<input type="checkbox" name="delcode" value="${QCdata.PROD_CD }">
-														</td>
-														
-<!-- 													<form method="post" action="qccon"> -->
-														
-														<td class="QA-td">
-															<input type="hidden" name="code" value="${QCdata.PROD_CD }">
-															<a class="enter_reportPage" href="./TestQA_report_park_table_show.jsp">
-																${QCdata.PROD_CD }
-															</a>
-														</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="code" value="${QCdata.PROD_CD }">
-														${QCdata.ITEM_CD }</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="name" value="${QCdata.ITEM_NM }">
-														${QCdata.ITEM_NM }</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="fiber" value="${QCdata.STRTH_VAL }">
-														${QCdata.STRTH_VAL }</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="size" value="${QCdata.SZ_VAL }">
-														${QCdata.SZ_VAL }</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="color" value="${QCdata.Clrl_val }">
-														${QCdata.Clrl_val }</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="erase" value="${QCdata.Qlty_val }">
-														${QCdata.Qlty_val }</td>
-														
-														<td class="QA-td">
-														<input type="hidden" name="tester" value="${QCdata.CHCKR_NM }">
-														${QCdata.CHCKR_NM }</td>
-														
-														<td>
-															<input type="hidden" name="command" value="update">
-															<input type="submit" value="수정">
-														</td>
-
-<!--                                                 	</form> -->
 												</tr>
-
-
-											</c:forEach>
-											
-										</tbody>
-									</table>
-									</div>
-<!-- 										<input type="hidden" name="command" value="delete"> -->
-<!-- 										<input type="submit" value="삭제"> -->
+												
+											</tbody>
 										
-<!-- 										<div class="right"> -->
-											
-<!-- 											<div class="right_chi"> -->
-<!-- 												<button class="btn" type="button"> -->
-<!-- 													<a href="./TestQA_report_park_table_add2.jsp">추가</a> -->
-<!-- 												</button> -->
-											
-<!-- 												<button class="btn" type="submit" value="delete" name="command"> -->
-<!-- 													<input type="hidden" name="command" value="delete"> -->
-<!-- 													삭제 -->
-<!-- 												</button> -->
-<!-- 											</div> -->
-											
-<!-- 										</div> -->
-									</form>
+										</table>
+										
+										<button type="submit" name="command" value="insert">
+											추가
+										</button>
+										
+									</div>
+									
 								</div>
-								
-								
-								
+
+
+
 								<div class="div_none">
 									<!-- 빈 공간 -->
 								</div>
-								
-								
+
+
 
 								<!-- 페이지 번호 -->
 								<div class="flex_page">

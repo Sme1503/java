@@ -186,7 +186,30 @@ a {
 }
 
 
+.qtable {
+	border: 1px solid darkgrey;
+    width : 850px;
+    border-collapse: collapse;
+    /* margin: 0 1%; */
+    
+}
 
+thead {
+	background-color: #2f373a;
+    color: white;
+	border: 1px solid darkgrey;
+    height: 50px;
+    border-collapse: collapse;
+    
+    /* margin: 0 1%; */
+}
+
+.qtable td, th {
+	width: 25%;
+	border: 1px solid darkgrey;
+	text-align: center;
+	vertical-align: middle;
+}
 
 /* pc는 그대로 */
 

@@ -53,13 +53,13 @@ public class TB_QA_1100DT_DAO {
 				dto.setItem_cd(rs.getString("ITEM_CD"));
 				dto.setItem_nm(rs.getString("ITEM_NM"));
 				dto.setChckr_nm(rs.getString("CHCKR_NM"));
-				dto.setChckr_dttm(rs.getDate("Chckr_dttm"));
+				dto.setChckr_dttm(rs.getDate("CHCKR_DTTM"));
 				dto.setStrth_val(rs.getInt("STRTH_VAL"));
 				dto.setSz_val(rs.getInt("SZ_VAL"));
-				dto.setClrl_val(rs.getString("Clrl_val"));
-				dto.setQlty_val(rs.getInt("Qlty_val"));
-				dto.setFail_caus_desc(rs.getString("Fail_caus_desc"));
-				dto.setRmrk(rs.getString("Rmrk"));
+				dto.setClrl_val(rs.getString("CLRL_VAL"));
+				dto.setQlty_val(rs.getInt("QLTY_VAL"));
+				dto.setFail_caus_desc(rs.getString("FAIL_CAUS_DESC"));
+				dto.setRmrk(rs.getString("RMRK"));
 			
 				
 				list.add(dto);
@@ -97,7 +97,7 @@ public class TB_QA_1100DT_DAO {
 
 			// SQL 준비
 			// 생산 테이블에서 생산이 완료된 것들만 qa테이블에 데이터 삽입
-			String query =  " insert into TB_QA_1100DT (PROD_CD, ITEM_CD, ITEM_NM, CHCKR_NM, Chckr_dttm, STRTH_VAL, SZ_VAL, Clrl_val, Qlty_val, Fail_caus_desc, Rmrk) ";
+			String query =  " insert into TB_QA_1100DT (PROD_CD, ITEM_CD, ITEM_NM, CHCKR_NM, CHCKR_DTTM, STRTH_VAL, SZ_VAL, CLRL_VAL, QLTY_VAL, FAIL_CAUS_DESC, RMRK) ";
 				   query += " values (?, ?, ?, ?, sysdate, ?, ?, ?, ?, ?, ?) ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
@@ -154,8 +154,8 @@ public class TB_QA_1100DT_DAO {
 			// SQL 준비
 			// 생산 테이블에서 생산이 완료된 것들만 qa테이블에 데이터 수정
 			String query =  " update TB_QA_1100DT ";
-				   query += " set CHCKR_NM = ?, Chckr_dttm = ?, STRTH_VAL = ?, SZ_VAL = ?, ";
-				   query +=	" Clrl_val = ?, Qlty_val = ?, Fail_caus_desc = ?, Rmrk = ? ";
+				   query += " set CHCKR_NM = ?, CHCKR_DTTM = ?, STRTH_VAL = ?, SZ_VAL = ?, ";
+				   query +=	" CLRL_VAL = ?, QLTY_VAL = ?, FAIL_CAUS_DESC = ?, RMRK = ? ";
 				   query += " where PROD_CD = ? ";
 			
 			PreparedStatement ps = con.prepareStatement(query);			
@@ -259,7 +259,7 @@ public class TB_QA_1100DT_DAO {
 			// SQL 준비
 			// 조인해서 생산코드가 ?인 결과를 출력
 			String query =  " select pr.PROD_CD, pr.ITEM_CD, pr.ITEM_NM, pr.WORK_NM, pr.PROD_END_TIME, pr.INDC_QNTT, pr.PROD_QNTT, pr.DFC_RT, ";
-				   query += "        qa.CHCKR_NM, qa.Chckr_dttm, qa.STRTH_VAL, qa.SZ_VAL, qa.Clrl_val, qa.Qlty_val, qa.Fail_caus_desc, qa.Rmrk ";
+				   query += "        qa.CHCKR_NM, qa.CHCKR_DTTM, qa.STRTH_VAL, qa.SZ_VAL, qa.CLRL_VAL, qa.QLTY_VAL, qa.FAIL_CAUS_DESC, qa.RMRK ";
 				   query += "   from TB_QA_1100DT qa, TB_PR_1100MT pr ";
 				   query += "  where qa.PROD_CD = pr.PROD_CD ";
 				   query += "    and qa.PROD_CD = ? ";
@@ -288,13 +288,13 @@ public class TB_QA_1100DT_DAO {
 				dto.setProd_qntt(rs.getInt("PROD_QNTT"));
 				dto.setDfc_rt(rs.getInt("DFC_RT"));
 				dto.setChckr_nm(rs.getString("CHCKR_NM"));
-				dto.setChckr_dttm(rs.getDate("Chckr_dttm"));
+				dto.setChckr_dttm(rs.getDate("CHCKR_DTTM"));
 				dto.setStrth_val(rs.getInt("STRTH_VAL"));
 				dto.setSz_val(rs.getInt("SZ_VAL"));
-				dto.setClrl_val(rs.getString("Clrl_val"));
-				dto.setQlty_val(rs.getInt("Qlty_val"));
-				dto.setFail_caus_desc(rs.getString("Fail_caus_desc"));
-				dto.setRmrk(rs.getString("Rmrk"));
+				dto.setClrl_val(rs.getString("CLRL_VAL"));
+				dto.setQlty_val(rs.getInt("QLTY_VAL"));
+				dto.setFail_caus_desc(rs.getString("FAIL_CAUS_DESC"));
+				dto.setRmrk(rs.getString("RMRK"));
 			
 				
 				list.add(dto);

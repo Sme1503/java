@@ -80,46 +80,48 @@
 						<div class="margin">
 
 							<div class="tab-name-con">
-								<div class="tab-name">품질 테스트 입력</div>
+								<div class="tab-name">제품 리포트</div>
 							</div>
 
 							<div class="div_report_parent">
-								<div class="div_report_name">
-								</div>
+								<div class="div_report_name"></div>
 
 
 								<div class="t_con">
 									<form method="post" action="컨트롤러">
-									<div class="con_1">
-										
-										<table>
-											<thead>
-												<tr>
-													<th>항목</th>
-													<th>내용</th>
-													
-													<th>항목</th>
-													<th>내용</th>
-												</tr>
-											</thead>
+										<div class="con_1">
 
-											<tbody>
-		
-<!-- 													생산내용과 품질내용 합친 조인 테이블 - QcList -->
+											<table class="qtable">
+												<thead>
+													<tr class="qtable-tr1">
+														<th class="">항목</th>
+														<th class="">내용</th>
+
+														<th class="">항목</th>
+														<th class="">내용</th>
+													</tr>
+												</thead>
+
+												<tbody>
+
+													<!-- 													생산내용과 품질내용 합친 조인 테이블 - QcList -->
+
+
 													<tr>
 														<th>1. 생산코드</th>
 														<td>${QcList.PROD_CD }</td>
-														
+
 														<th>9. 검수자</th>
 														<td>${QcList.CHCKR_NM }</td>
 													</tr>
-													
+
 													<tr>
-														<th>2. 품목코드</th>
-														<td>${QcList.ITEM_CD }</td>
-														
+														<th class="qtable-th">2. 품목코드</th>
+														<td class="qtable-td">${QcList.ITEM_CD }</td>
+
 														<th>10. 검수일</th>
 														<td>${QcList.Chckr_dttm }<td>
+													
 													</tr>
 													
 													<tr>
@@ -211,7 +213,7 @@
 <!-- 														<div class="div_report_item_QA"> -->
 <!-- 															<input id="QA_tester" type="text" value="" -->
 <!-- 																placeholder="입력하시오" onchange="change()"> -->
-<!-- 														</div> -->
+															<!-- 														</div> -->
 <!-- 													</form> -->
 <!-- 												</div> -->
 
@@ -382,6 +384,7 @@
 	</div>
 
 
-</body>
+
+														</body>
 
 </html>
