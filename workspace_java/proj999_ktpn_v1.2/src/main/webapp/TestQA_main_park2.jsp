@@ -82,10 +82,10 @@
 								<div class="tab-name-con">
 									<div class="tab-name">제품 검사 목록</div>
 								</div>
-
+							<form action="qccon" method="post">
 								<div class="select_input_search-btn">
 
-									<form action="#">
+<!-- 									<form action="#"> -->
 
 										<select name="select_QA" id="select_QA">
 											<option value="all" selected="selected">전체</option>
@@ -101,26 +101,25 @@
 											type="submit" class="submit" value="검색">
 
 
-									</form>
+<!-- 									</form> -->
 
 
-
+								
 									<div class="right_chi">
 
-										<form action="qccon" method="post">
-											<button class="btn" type="submit" value="move_add_page"
-												name="command">추가</button>
-										</form>
 
-										<!-- 										<button class="btn" type="button"> -->
-										<!-- 											<a href="./TestQA_report_park_table_add2.jsp">추가</a> -->
-										<!-- 										</button> -->
-
-										<button class="btn" type="submit" value="delete"
-											name="command">
-											<input type="hidden" name="command" value="delete">
-											삭제
+										<button class="btn" type="button" value="move_add_page"
+											name="command">추가 - 버튼을 누르면 입력하는 창이 생김
 										</button>
+
+<!-- 										<form action="qccon" method="post"> -->
+											<button class="btn" type="submit" value="delete"
+												name="command">
+												<input type="hidden" name="command" value="delete">
+												삭제 - 체크박스에 체크하고 누르면 삭제
+											</button>
+<!-- 										</form> -->
+
 									</div>
 
 
@@ -129,7 +128,7 @@
 								<!-- <div class="div_none0"></div> -->
 								<div>
 
-									<form method="post" action="qccon">
+<!-- 									<form method="post" action="qccon"> -->
 										<div>
 											<table class="QA-table">
 												<thead>
@@ -144,6 +143,7 @@
 														<th scope="col" class="QA-th">색상값</th>
 														<th scope="col" class="QA-th">품질값</th>
 														<th scope="col" class="QA-th">검수자</th>
+														<th scope="col" class="QA-th">수정</th>
 													</tr>
 												</thead>
 
@@ -200,43 +200,168 @@
 											</table>
 										</div>
 
-									</form>
+<!-- 									</form> -->
 									
-									<div>
-										추가 버튼을 누르면 추가하는 입력창이 생긴다
-										
-										<table>
-											<tbody>
-												<tr>
-													<th>생산코드</th>
-													<th>품목코드</th>
-													<th>품목명</th>
-													<th>검수자</th>
-													<th>검수일</th>
-													<th>강도값</th>
-													<th>크기값</th>
-													<th>색상값</th>
-													<th>품질값</th>
-													<th>불합격사유</th>
-													<th>비고</th>
-												</tr>
-												
-												<tr>
-													
-												</tr>
-												
-											</tbody>
-										
-										</table>
-										
-										<button type="submit" name="command" value="insert">
-											추가
-										</button>
-										
-									</div>
 									
-								</div>
 
+									<div>
+										<div class="div_none1">
+<!-- 											안보임 -->
+										</div>
+										<div>
+										<table class="QA-table">
+											<tbody>
+												<tr class="QA-tr">
+													<th class="QA-th1">생산코드</th>
+													<th class="QA-th1">품목코드</th>
+													<th class="QA-th1">품목명</th>
+													<th class="QA-th1">검수자</th>
+													<th class="QA-th1">검수일</th>
+												</tr>
+
+												<tr>
+													<td class="QA-td"><select id="select1" name="Pcode"
+														onchange="changeP()">
+															<c:forEach var="pcode" items="${pList }">
+																<option value="${pcode.PROD_CD }"
+																	auto_icode="${pcode.ITEM_CD }"
+																	auto_iname="${pcode.ITEM_NM }">
+																	${pcode.PROD_CD }</option>
+															</c:forEach>
+													</select></td>
+
+													<script>
+														// 셀렉트 박스에서 선택한 옵션값 가져오기
+														function changeP() {
+															var select1 = document
+																	.getElementById('select1');
+															var select1_option = select1.options[select1.selectedIndex].value;
+
+															var auto_icode = select1_option
+																	.getAttribute('auto_icode');
+															document
+																	.getElementById('icode').value = auto_icode;
+
+															var auto_iname = select1_option
+																	.getAttribute('auto_iname');
+															document
+																	.getElementById('iname').value = auto_iname;
+														}
+													</script>
+
+													<td class="QA-td"><input type="text" id="icode"
+														name="code" value="" readonly="readonly"></td>
+
+													<td class="QA-td"><input type="text" id="iname"
+														name="name" value="" readonly="readonly"></td>
+
+													<td class="QA-td"><select name="tester"
+														required="required">
+															<c:forEach var="worker" items="${mList }">
+																<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
+															</c:forEach>
+													</select></td>
+
+
+													<td class="QA-td"><input type="date" name="date"
+														id="currentDate" required="required"></td>
+												</tr>
+
+												<tr>
+													<th class="QA-th1">강도값</th>
+													<th class="QA-th1">크기값</th>
+													<th class="QA-th1">색상값</th>
+													<th class="QA-th1">품질값</th>
+													<th class="QA-th1">불합격사유</th>
+												</tr>
+
+												<tr>
+
+
+													<td class="QA-td"><select name="fiber"
+														required="required">
+															<!-- <option value="fiber_select">선택</option> -->
+															<option value="fiber_1">1</option>
+															<option value="fiber_2">2</option>
+															<option value="fiber_3">3</option>
+															<option value="fiber_4">4</option>
+															<option value="fiber_5">5</option>
+															<option value="fiber_6">6</option>
+															<option value="fiber_7">7</option>
+															<option value="fiber_8">8</option>
+															<option value="fiber_9">9</option>
+															<option value="fiber_10" selected>10</option>
+													</select></td>
+
+													<td class="QA-td"><select name="size"
+														required="required">
+															<!-- <option value="size_select">선택</option> -->
+															<option value="size_1">1</option>
+															<option value="size_2">2</option>
+															<option value="size_3">3</option>
+															<option value="size_4">4</option>
+															<option value="size_5">5</option>
+															<option value="size_6">6</option>
+															<option value="size_7">7</option>
+															<option value="size_8">8</option>
+															<option value="size_9">9</option>
+															<option value="size_10" selected>10</option>
+													</select></td>
+
+													<td class="QA-td"><input name="color" type="color"
+														value="" placeholder="입력하세요"></td>
+
+													<td class="QA-td"><select name="erase"
+														required="required">
+															<!-- <option value="erase_select">선택</option> -->
+															<option value="erase_1">1</option>
+															<option value="erase_2">2</option>
+															<option value="erase_3">3</option>
+															<option value="erase_4">4</option>
+															<option value="erase_5">5</option>
+															<option value="erase_6">6</option>
+															<option value="erase_7">7</option>
+															<option value="erase_8">8</option>
+															<option value="erase_9">9</option>
+															<option value="erase_10" selected>10</option>
+													</select></td>
+
+													<td class="QA-td" colspan="1"><select name="notpass"
+														required="required">
+															<option value="선택" selected>선택</option>
+															<option value="외관불량">외관불량</option>
+															<option value="강도불량">강도불량</option>
+															<option value="색상불량">색상불량</option>
+															<option value="잘안지워짐">잘안지워짐</option>
+															<option value="옵션없음(비고에 입력)">옵션없음(비고에 입력)</option>
+													</select> <!-- 														<input type="text" name="notpass" value="" placeholder="입력하세요"> -->
+													</td>
+												</tr>
+
+												<tr>
+
+													<th class="QA-th1" colspan="5">비고</th>
+												</tr>
+
+												<tr>
+
+
+													<td class="QA-td" colspan="5"><input type="text"
+														name="note" value="" placeholder="입력하세요"></td>
+												</tr>
+
+											</tbody>
+
+										</table>
+										</div>
+
+										<button type="submit" name="command" value="insert">
+											확인 - 누르면 추가된다</button>
+
+									</div>
+
+								</div>
+							</form>
 
 
 								<div class="div_none">

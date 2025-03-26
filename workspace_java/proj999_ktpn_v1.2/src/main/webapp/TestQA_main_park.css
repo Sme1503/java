@@ -94,6 +94,10 @@ a {
     /* margin: 0 1%; */
 }
 
+.QA-tr {
+	width: 100%;
+}
+
 .QA-th {
     border: 1px solid darkgrey;
     width: 1000px;
@@ -101,7 +105,19 @@ a {
     color: white;
 }
 
+.QA-th1 {
+    border: 1px solid darkgrey;
+/*     width: 1000px; */
+    background-color: #2f373a;
+    color: white;
+}
+
+.QA-td input {
+	width: 90%;
+}
+
 .QA-td {
+	
     border: 1px solid darkgrey;
     width: 1000px;
     text-align: center;
@@ -120,6 +136,10 @@ a {
 
 .div_none {
     height: 100px;
+}
+
+.div_none1 {
+    height: 40px;
 }
 
 /* .div_none0 {
