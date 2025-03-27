@@ -33,7 +33,7 @@ public class TB_PR_1100MTDAO {
             ps.setInt(8, dto.getIndc_qntt());
             ps.setInt(9, dto.getProd_qntt());
             ps.setString(10, dto.getWork_nm());
-            ps.setString(11, dto.getDfc_rt());
+            ps.setInt(11, dto.getDfc_rt());
 
             // [SQL 실행] 및 [결과 확보]
             result = ps.executeUpdate();  // int에는 영향받은 줄의 수
@@ -105,7 +105,7 @@ public class TB_PR_1100MTDAO {
             // [SQL 준비]
             String query = "UPDATE TB_PR_1100MT SET "
                          + "MT_MNG_CD = ?, LIUN_NM = ?, ITEM_NM = ?, ITEM_CD = ?, PROD_STRT_TIME = ?, PROD_END_TIME = ?, "
-                         + "INDC_QNTT = ?, PROD_QNTT = ?, WORK_NM = ?, EQPM_OPRT_STTS_VAL = ?, PROD_END_YN = ? "
+                         + "INDC_QNTT = ?, PROD_QNTT = ?, WORK_NM = ?, EQPM_OPRT_STTS_VAL = ?, PROD_END_YN = ?, DFC_RT = ? "
                          + "WHERE PROD_CD = ?";
             PreparedStatement ps = con.prepareStatement(query);
             ps.setString(1, dto.getMt_mng_cd());
@@ -119,7 +119,8 @@ public class TB_PR_1100MTDAO {
             ps.setString(9, dto.getWork_nm());
             ps.setString(10, dto.getEqpm_oprt_stts_val());
             ps.setString(11, dto.getProd_end_yn());
-            ps.setString(12, dto.getProd_cd());
+            ps.setInt(12, dto.getDfc_rt());
+            ps.setString(13, dto.getProd_cd());
             
 
             // [SQL 실행] 및 [결과 확보]
