@@ -88,7 +88,7 @@ a {
 }
 
 .QA-table {
-    border: 1px solid darkgrey;
+/*     border: 1px solid darkgrey; */
     /* width: 1000px; */
     border-collapse: collapse;
     /* margin: 0 1%; */
@@ -115,6 +115,11 @@ a {
 .QA-td input {
 	width: 90%;
 }
+
+#currentDate {
+	width: 80%;
+}
+
 
 .QA-td {
 	

@@ -80,7 +80,7 @@
 						<div class="margin">
 
 							<div class="tab-name-con">
-								<div class="tab-name">품질 테스트 입력</div>
+								<div class="tab-name">품질 테스트 수정</div>
 							</div>
 
 							<div class="div_report_parent">
@@ -91,123 +91,26 @@
 								<div class="t_con">
 									<form method="post" action="컨트롤러">
 									<div class="con_1">
-										테이블 행렬 바꿔서 표현
+										
 										<table>
-											<thead>
-												<tr>
-													<th>항목</th>
-													<th>내용</th>
-												</tr>
-											</thead>
+											
 
 											<tbody>
 
 												
 													<tr>
-														<th>1. 생산코드</th>
+														<th>생산코드</th>
+														<th>품목코드</th>
+														<th>품목명</th>
+														<th>검수자</th>
+														<th>검수일</th>
+														
+													</tr>
+													
+													<tr>
 														<td>${QcList.PROD_CD }</td>
-													</tr>
-													
-													<tr>
-														<th>2. 품목코드</th>
 														<td>${QcList.ITEM_CD }</td>
-													</tr>
-													
-													<tr>
-														<th>3. 품목명</th>
 														<td>${QcList.ITEM_NM }</td>
-													</tr>
-													
-													<tr>
-														<th>4. 작업자</th>
-														<td>${QcList.WORK_NM }</td>
-													</tr>
-													
-													<tr>
-														<th>5. 생산완료시간</th>
-														<td>${QcList.PROD_END_TIME }</td>
-													</tr>
-													
-													<tr>
-														<th>6. 지시수량</th>
-														<td>${QcList.INDC_QNTT }</td>
-													</tr>
-													
-													<tr>
-														<th>7. 생산량</th>
-														<td>${QcList.PROD_QNTT }</td>
-													</tr>
-													
-													<tr>
-														<th>8. 불량률</th>
-														<td>${QcList.DFC_RT }</td>
-													</tr>
-												
-											</tbody>
-										</table>
-
-<!-- 										<div class="div_report_QA"> -->
-<!-- 											<div class="div_report_item"> -->
-<!-- 												<div class="div_report_menu"> -->
-<!-- 													<h3>항목</h3> -->
-<!-- 												</div> -->
-<!-- 												<div class="div_report_item_QA">1. 생산코드</div> -->
-<!-- 												<div class="div_report_item_QA">2. 품목코드</div> -->
-<!-- 												<div class="div_report_item_QA">3. 품목명</div> -->
-<!-- 												<div class="div_report_item_QA">4. 작업자</div> -->
-<!-- 												<div class="div_report_item_QA">5. 생산일</div> -->
-<!-- 												<div class="div_report_item_QA">6. 지시수량</div> -->
-<!-- 												<div class="div_report_item_QA">7. 생산량</div> -->
-<!-- 												<div class="div_report_item_QA">8. 불량률</div> -->
-<!-- 												<div class="div_report_item_QA">9. 검수자</div> -->
-
-
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-
-<!-- 										<div class="div_report_QA"> -->
-<!-- 											<div class="div_report_item"> -->
-<!-- 												<div class="div_report_menu"> -->
-<!-- 													<h3>내용</h3> -->
-<!-- 												</div> -->
-<!-- 												<div class="div_report_item_QA">aaa111</div> -->
-<!-- 												<div class="div_report_item_QA">aa-dd-cc</div> -->
-<!-- 												<div class="div_report_item_QA">싹싹지우개</div> -->
-<!-- 												<div class="div_report_item_QA">김철수</div> -->
-<!-- 												<div class="div_report_item_QA">2025-01-01</div> -->
-<!-- 												<div class="div_report_item_QA">100kg</div> -->
-<!-- 												<div class="div_report_item_QA">99.5kg</div> -->
-
-<!-- 												<div class="form_con"> -->
-<!-- 													<form action="./TestQA_main_park.html"> -->
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<input id="QA_tester" type="text" value="" -->
-<!-- 																placeholder="입력하시오" onchange="change()"> -->
-<!-- 														</div> -->
-<!-- 													</form> -->
-<!-- 												</div> -->
-
-<!-- 											</div> -->
-<!-- 										</div> -->
-									</div>
-
-
-									<div class="con_2">
-										테이블 행렬 바꿔서 표현
-										<table>
-											<thead>
-												<tr>
-													<th>항목</th>
-													<th>내용</th>
-												</tr>
-											</thead>
-
-											<tbody>
-
-												
-													<tr>
-														<th>9. 검수자</th>
 														<td>
 															<select name="worker" required="required">
                                     							<c:forEach var = "worker" items = "${workerList }">
@@ -215,255 +118,112 @@
                                     							</c:forEach>
                                     						</select>
 														</td>
-													</tr>
-													
-													<tr>
-														<th>10. 검수일</th>
 														<td>
 															<input type="date" id="currentDate" required="required">
 														</td>
+
 													</tr>
 													
 													<tr>
-														<th>11. 강도값</th>
-														<td>
-															<select name="fiber" required="required">
-																<!-- <option value="fiber_select">선택</option> -->
-																<option value="fiber_1">1</option>
-																<option value="fiber_2">2</option>
-																<option value="fiber_3">3</option>
-																<option value="fiber_4">4</option>
-																<option value="fiber_5">5</option>
-																<option value="fiber_6">6</option>
-																<option value="fiber_7">7</option>
-																<option value="fiber_8">8</option>
-																<option value="fiber_9">9</option>
-																<option value="fiber_10" selected>10</option>
-															</select>
-														</td>
+														<th class="QA-th1">강도값</th>
+														<th class="QA-th1">크기값</th>
+														<th class="QA-th1">색상값</th>
+														<th class="QA-th1">품질값</th>
+														<th class="QA-th1">불합격사유</th>
 													</tr>
 													
 													<tr>
-														<th>12. 크기값</th>
-														<td>
-															<select name="size" required="required">
-																<!-- <option value="size_select">선택</option> -->
-																<option value="size_1">1</option>
-																<option value="size_2">2</option>
-																<option value="size_3">3</option>
-																<option value="size_4">4</option>
-																<option value="size_5">5</option>
-																<option value="size_6">6</option>
-																<option value="size_7">7</option>
-																<option value="size_8">8</option>
-																<option value="size_9">9</option>
-																<option value="size_10" selected>10</option>
-															</select>
-														</td>
-													</tr>
-													
-													<tr>
-														<th>13. 색상값</th>
-														<td>
-															<input name="color" type="color" value="" placeholder="입력하세요">
-														</td>
-													</tr>
-													
-													<tr>
-														<th>14. 품질값</th>
-														<td>
-															<select name="erase" required="required">
-																<!-- <option value="erase_select">선택</option> -->
-																<option value="erase_1">1</option>
-																<option value="erase_2">2</option>
-																<option value="erase_3">3</option>
-																<option value="erase_4">4</option>
-																<option value="erase_5">5</option>
-																<option value="erase_6">6</option>
-																<option value="erase_7">7</option>
-																<option value="erase_8">8</option>
-																<option value="erase_9">9</option>
-																<option value="erase_10" selected>10</option>
-															</select>
-														</td>
-													</tr>
-													
-													<tr>
-														<th>15. 불합격사유</th>
-														<td>
-															<input type="text" name="notpass" value="" placeholder="입력하세요">
-														</td>
-													</tr>
-													
-													<tr>
-														<th>16. 비고</th>
-														<td>
-															<input type="text" name="note" value="" placeholder="입력하세요">
-														</td>
-													</tr>
-													
-													
-<!-- 													<tr> -->
-<!-- 														<th>9. 검수자</th> -->
-<%-- 														<td>${QcList.CHCKR_NM }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>10. 검수일</th> -->
-<%-- 														<td>${QcList.Chckr_dttm }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>11. 강도값</th> -->
-<%-- 														<td>${QcList.STRTH_VAL }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>12. 크기값</th> -->
-<%-- 														<td>${QcList.SZ_VAL }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>13. 색상값</th> -->
-<%-- 														<td>${QcList.Clrl_val }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>14. 품질값</th> -->
-<%-- 														<td>${QcList.Qlty_val }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>15. 불합격사유</th> -->
-<%-- 														<td>${QcList.Fail_caus_desc }</td> --%>
-<!-- 													</tr> -->
-													
-<!-- 													<tr> -->
-<!-- 														<th>16. 비고</th> -->
-<%-- 														<td>${QcList.Rmrk }</td> --%>
-<!-- 													</tr> -->
+
+
+													<td class="QA-td"><select name="fiber"
+														required="required">
+															<!-- <option value="fiber_select">선택</option> -->
+															<option value="fiber_1">1</option>
+															<option value="fiber_2">2</option>
+															<option value="fiber_3">3</option>
+															<option value="fiber_4">4</option>
+															<option value="fiber_5">5</option>
+															<option value="fiber_6">6</option>
+															<option value="fiber_7">7</option>
+															<option value="fiber_8">8</option>
+															<option value="fiber_9">9</option>
+															<option value="fiber_10" selected>10</option>
+													</select></td>
+
+													<td class="QA-td"><select name="size"
+														required="required">
+															<!-- <option value="size_select">선택</option> -->
+															<option value="size_1">1</option>
+															<option value="size_2">2</option>
+															<option value="size_3">3</option>
+															<option value="size_4">4</option>
+															<option value="size_5">5</option>
+															<option value="size_6">6</option>
+															<option value="size_7">7</option>
+															<option value="size_8">8</option>
+															<option value="size_9">9</option>
+															<option value="size_10" selected>10</option>
+													</select></td>
+
+													<td class="QA-td"><input name="color" type="color"
+														value="" placeholder="입력하세요"></td>
+
+													<td class="QA-td"><select name="erase"
+														required="required">
+															<!-- <option value="erase_select">선택</option> -->
+															<option value="erase_1">1</option>
+															<option value="erase_2">2</option>
+															<option value="erase_3">3</option>
+															<option value="erase_4">4</option>
+															<option value="erase_5">5</option>
+															<option value="erase_6">6</option>
+															<option value="erase_7">7</option>
+															<option value="erase_8">8</option>
+															<option value="erase_9">9</option>
+															<option value="erase_10" selected>10</option>
+													</select></td>
+
+													<td class="QA-td" colspan="1"><select name="notpass"
+														required="required">
+															<option value="선택" selected>선택</option>
+															<option value="외관불량">외관불량</option>
+															<option value="강도불량">강도불량</option>
+															<option value="색상불량">색상불량</option>
+															<option value="잘안지워짐">잘안지워짐</option>
+															<option value="옵션없음(비고에 입력)">옵션없음(비고에 입력)</option>
+													</select> <!-- 														<input type="text" name="notpass" value="" placeholder="입력하세요"> -->
+													</td>
+												</tr>
+												
+												<tr>
+
+													<th class="QA-th1" colspan="5">비고</th>
+												</tr>
+
+												<tr>
+
+
+													<td class="QA-td" colspan="5"><input type="text"
+														name="note" value="" placeholder="입력하세요"></td>
+												</tr>
 												
 											</tbody>
 										</table>
+
+
+									</div>
+	</form>
+
+									<div class="con_2">
 									
-<!-- 										<div class="div_report_QA"> -->
-<!-- 											<div class="div_flex_2"> -->
-<!-- 											<div class="div_report_item"> -->
-<!-- 												<div class="div_report_menu hide_menu"> -->
-<!-- 													<h3>항목</h3> -->
-<!-- 												</div> -->
-<!-- 												<div class="div_report_item_QA">9. 검수일</div> -->
-<!-- 												<div class="div_report_item_QA">10. 강도</div> -->
-<!-- 												<div class="div_report_item_QA">11. 크기</div> -->
-<!-- 												<div class="div_report_item_QA">12. 색상</div> -->
-<!-- 												<div class="div_report_item_QA">13. 잘지워지는 정도</div> -->
-<!-- 												<div class="div_report_item_QA">14. 최종 합격률</div> -->
-<!-- 												<div class="div_report_item_QA">15. 최종 불량률</div> -->
-<!-- 												<div class="div_report_item_QA">16. 불합격 사유</div> -->
+									
 
-<!-- 											</div> -->
-<!-- 										</div> -->
-<!-- 										<div class="div_report_QA"> -->
-<!-- 											<div class="div_report_item"> -->
-<!-- 												<div class="div_report_menu hide_menu"> -->
-<!-- 													<h3>내용</h3> -->
-<!-- 												</div> -->
-<!-- 												<div class="form_con"> -->
-<!-- 													<form action="./TestQA_main_park.html"> -->
-
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<input id="QA_day" type="date" value="" max="2999-12-31" -->
-<!-- 																, min="1970-01-01" required="required" -->
-<!-- 																onchange="change()"> -->
-<!-- 														</div> -->
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<select name="fiber" id="QA_fiber" required="required"> -->
-<!-- 																<option value="fiber_select">선택</option> -->
-<!-- 																<option value="fiber_1">1</option> -->
-<!-- 																<option value="fiber_2">2</option> -->
-<!-- 																<option value="fiber_3">3</option> -->
-<!-- 																<option value="fiber_4">4</option> -->
-<!-- 																<option value="fiber_5">5</option> -->
-<!-- 																<option value="fiber_6">6</option> -->
-<!-- 																<option value="fiber_7">7</option> -->
-<!-- 																<option value="fiber_8">8</option> -->
-<!-- 																<option value="fiber_9">9</option> -->
-<!-- 																<option value="fiber_10" selected>10</option> -->
-<!-- 															</select> -->
-<!-- 														</div> -->
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<select name="size" id="QA_size" required="required"> -->
-<!-- 																<option value="size_select">선택</option> -->
-<!-- 																<option value="size_1">1</option> -->
-<!-- 																<option value="size_2">2</option> -->
-<!-- 																<option value="size_3">3</option> -->
-<!-- 																<option value="size_4">4</option> -->
-<!-- 																<option value="size_5">5</option> -->
-<!-- 																<option value="size_6">6</option> -->
-<!-- 																<option value="size_7">7</option> -->
-<!-- 																<option value="size_8">8</option> -->
-<!-- 																<option value="size_9">9</option> -->
-<!-- 																<option value="size_10" selected>10</option> -->
-<!-- 															</select> -->
-<!-- 														</div> -->
-
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<input id="QA_color" type="text" value="" -->
-<!-- 																placeholder="입력하시오" onchange="change()"> -->
-<!-- 														</div> -->
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<select name="erase" id="QA_erase" required="required"> -->
-<!-- 																<option value="erase_select">선택</option> -->
-<!-- 																<option value="erase_1">1</option> -->
-<!-- 																<option value="erase_2">2</option> -->
-<!-- 																<option value="erase_3">3</option> -->
-<!-- 																<option value="erase_4">4</option> -->
-<!-- 																<option value="erase_5">5</option> -->
-<!-- 																<option value="erase_6">6</option> -->
-<!-- 																<option value="erase_7">7</option> -->
-<!-- 																<option value="erase_8">8</option> -->
-<!-- 																<option value="erase_9">9</option> -->
-<!-- 																<option value="erase_10" selected>10</option> -->
-<!-- 															</select> -->
-<!-- 														</div> -->
-
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<input id="QA_Pass" type="text" value="" -->
-<!-- 																placeholder="입력하시오" onchange="change()"> -->
-<!-- 														</div> -->
-
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<input id="QA_Defect" type="text" value="" -->
-<!-- 																placeholder="입력하시오" onchange="change()"> -->
-<!-- 														</div> -->
-
-<!-- 														<div class="div_report_item_QA"> -->
-<!-- 															<input id="QA_DefectReason" type="text" value="" -->
-<!-- 																placeholder="입력하시오" onchange="change()"> -->
-<!-- 														</div> -->
-													</form>
+												
 												</div>
 
 
 
-												<!-- <form action="./TestQA.html">
-                                        <input id="QA_tester" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_day" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_fiber" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_size" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_color" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_erase" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_etc" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        <input id="QA_result" type="text" value="" placeholder="입력하시오" onchange="change()">
-                                        <br>
-                                        </form> -->
+												
 											</div>
 										</div>
 									</div>

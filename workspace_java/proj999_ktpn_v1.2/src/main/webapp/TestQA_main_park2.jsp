@@ -273,6 +273,7 @@
 													<th class="QA-th1">색상값</th>
 													<th class="QA-th1">품질값</th>
 													<th class="QA-th1">불합격사유</th>
+													<th class="QA-th1" colspan="1">비고</th>
 												</tr>
 
 												<tr>
@@ -336,18 +337,20 @@
 															<option value="옵션없음(비고에 입력)">옵션없음(비고에 입력)</option>
 													</select> <!-- 														<input type="text" name="notpass" value="" placeholder="입력하세요"> -->
 													</td>
-												</tr>
-
-												<tr>
-
-													<th class="QA-th1" colspan="5">비고</th>
-												</tr>
-
-												<tr>
-
-
-													<td class="QA-td" colspan="5"><input type="text"
+													
+													<td class="QA-td" colspan="1"><input type="text"
 														name="note" value="" placeholder="입력하세요"></td>
+												</tr>
+
+												<tr>
+													
+													
+												</tr>
+
+												<tr>
+
+
+													
 												</tr>
 
 											</tbody>

@@ -829,7 +829,9 @@ commit;
 
 update todo set done = 'y' where todo_id = 4;
 
+select * from emp2;
 
+create table emp2 as select * from emp;
 
 
 
