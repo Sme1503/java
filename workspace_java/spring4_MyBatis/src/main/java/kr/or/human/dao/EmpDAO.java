@@ -6,5 +6,13 @@ import kr.or.human.dto.EmpDTO;
 
 public interface EmpDAO {
 	
-	List<EmpDTO> selectEmpList();
+	public List<EmpDTO> selectEmpList();
+
+	public EmpDTO selectOneEmp();
+	
+	public EmpDTO selectOneEmpno(int i);
+
+	public EmpDTO selectEmpno(EmpDTO dto);
+	
+	public int updateEmp(EmpDTO dto);
 }

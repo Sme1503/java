@@ -26,24 +26,24 @@
 <!-- 				<th>deptno</th> -->
 			</tr>
 
-			<c:if test="${not empty emplist }">
-			<c:forEach var="emp" items="${emplist }">
+			<c:if test="${not empty list }">
+			<c:forEach var="dto" items="${list }">
 
 				<tr>
-					<td> <a href="choiceempno?empno=${emp.empno }">${emp.empno }</a>
+					<td> <a href="detailEmp?empno=${dto.empno }">${dto.empno }</a>
 					</td>
-					<td>${emp.ename }</td>
-<%-- 					<td>${emp.job }</td> --%>
-<%-- 					<td>${emp.mgr }</td> --%>
-<%-- 					<td>${emp.hiredate }</td> --%>
-<%-- 					<td>${emp.sal }</td> --%>
-<%-- 					<td>${emp.comm }</td> --%>
-<%-- 					<td>${emp.deptno }</td> --%>
+					<td>${dto.ename }</td>
+<%-- 					<td>${dto.job }</td> --%>
+<%-- 					<td>${dto.mgr }</td> --%>
+<%-- 					<td>${dto.hiredate }</td> --%>
+<%-- 					<td>${dto.sal }</td> --%>
+<%-- 					<td>${dto.comm }</td> --%>
+<%-- 					<td>${dto.deptno }</td> --%>
 				</tr>
 			</c:forEach>
 			</c:if>
 			
-			<c:if test="${empty emplist }">
+			<c:if test="${empty list }">
 				<tr>
 					<td colspan = "2"> 조회 결과가 없습니다</td>
 				</tr>

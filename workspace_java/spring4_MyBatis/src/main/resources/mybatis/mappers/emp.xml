@@ -8,6 +8,52 @@
 		select * from emp2
 	</select>
 	
+	<select id="selectOneEmp" resultType="kr.or.human.dto.EmpDTO">
+		select * from emp2    <!-- 하나만 나와야하는데 여러개가 나올경우 너무많다는 에러가 뜬다 -->
+		where empno = 7788
+<!-- 		where empno = 8000    조회결과 나온게 없으면 null로 나온다 -->
+	</select>
 	
+<!-- 	<select id="selectOneEmpMap" resultType="java.util.HashMap"> -->
+	<select id="selectOneEmpMap" resultType="hashMap">
+		select * from emp2   
+		where empno = 7788
+	</select>
+
+<!-- 	<select id="selectEmpno" resultType="empDTO" parameterType="java.lang.Integer"> -->
+	<select id="selectEmpno" resultType="empDTO" parameterType="int">
+		select * from emp2   
+		where empno = #{_parameter}
+	</select>
+	
+	<select id="selectEmpno0" resultType="empDTO" parameterType="string">
+		select * from emp2   
+		where ename = #{_parameter}
+<!-- 		#{} : ''를 자동으로 붙여준다 
+			where ename = 'KING'
+			
+			${} : ''를 안붙인다
+			where ename = KING -> 그냥 문자가 된다
+			그래서 이렇게 쓴다
+			where ename = '${_parameter}'
+ 			-->
+	</select>
+	
+	<select id="selectEmpno2" resultType="empDTO" parameterType="empDTO">
+		select * from emp2   
+		where empno = #{empno}
+	</select>
+	
+	<update id="updateEmp" parameterType="empDTO">
+		update emp 
+		set ename = #{ename}, 
+			job = #{job},
+			mgr = #{mgr}, 
+			hiredate = #{hiredate}, 
+			sal = #{sal},
+			comm = #{comm}, 
+			deptno = #{deptno}
+		where empno = #{empno} 
+	</update>
 
 </mapper>
