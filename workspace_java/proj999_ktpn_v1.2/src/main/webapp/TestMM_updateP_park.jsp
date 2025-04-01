@@ -85,94 +85,90 @@
 								</div>
 
 								<!-- <div class="div_none"></div> -->
+								<form method="post" action="컨트롤러">
+									<div class="table_scroll">
+										<table class="material-table">
+											<thead>
+												<tr>
+													<th scope="col" class="material-th">생산코드</th>
+													<th scope="col" class="material-th">완제품코드</th>
+													<th scope="col" class="material-th">완제품명</th>
+													<th scope="col" class="material-th">입력 수량</th>
+													<th scope="col" class="material-th">입고/출고</th>
+													<th scope="col" class="material-th">작업자</th>
+													<th scope="col" class="material-th">위치</th>
+													<th scope="col" class="material-th">입력일</th>
+													<th scope="col" class="material-th">비고</th>
 
-								<div class="table_scroll">
-									<table class="material-table">
-										<thead>
-											<tr>
-												<th scope="col" class="material-th">생산코드</th>
-												<th scope="col" class="material-th">완제품코드</th>
-												<th scope="col" class="material-th">완제품명</th>
-												<th scope="col" class="material-th">입력 수량</th>
-												<th scope="col" class="material-th">입고/출고</th>
-												<th scope="col" class="material-th">작업자</th>
-												<th scope="col" class="material-th">위치</th>
-												<th scope="col" class="material-th">입력일</th>
-												<th scope="col" class="material-th">비고</th>
-												
-								
 
-											</tr>
-										</thead>
 
-										<tbody>
-<!-- 											완제품 테이블 값 pList -->
-											<c:forEach var="" items="">
+												</tr>
+											</thead>
 
-											</c:forEach>
+											<tbody>
+												<!-- 											완제품 테이블 값 pList -->
+				
+												<tr>
+													<td class="material-td Mcode">
+													</td>
 
-											<tr>
-												<form method="post" action="컨트롤러">
-
-													<td id="Mcode" class="material-td Mcode">셀렉트, 대신 기본값 -선택- -> 출고때 사용
+													<td id="Mcode" class="material-td Mcode">
 														<input type="text" value="${pList.Fnsh_code }" readonly="readonly">${pList.Fnsh_code }
 													</td>
-													
-													<td id="Mname" class="material-td">
-													 	<input type="text" value="${pList.Fnshd_item_nm }" readonly="readonly">${pList.Fnshd_item_nm }
-													 </td>
-													
+
+													<td id="Mname" class="material-td"><input type="text"
+														value="${pList.Fnshd_item_nm }" readonly="readonly">${pList.Fnshd_item_nm }
+													</td>
+
 													<td id="Mea" class="material-td"><input type="text"
 														name="newea" value="" placeholder="수량(EA) 입력"></td>
-													
-													<td id="" class="material-td">
-														<select name="inNout">
+
+													<td id="" class="material-td"><select name="inNout">
 															<option value="i">입고</option>
 															<option value="o">출고</option>
-														</select>
-													</td>
-													
-													<td id="" class="material-td">
-														<select name="worker">
-                                    						<c:forEach var = "member" items = "${memberList }">
-                                    							<option value="${member.MBR_NM }">${member.MBR_NM }</option>
-                                    						</c:forEach>
-                                    					</select>
-													</td>
-													
+													</select></td>
+
+													<td id="" class="material-td"><select name="worker">
+															<c:forEach var="member" items="${memberList }">
+																<option value="${member.MBR_NM }">${member.MBR_NM }</option>
+															</c:forEach>
+													</select></td>
+
+													<td id="Mloc" class="material-td"><select
+														name="warehouse">
+															<option value="warehouse1">P창고1</option>
+															<!--                                     						<option value="warehouse2">P창고2</option> -->
+															<!--                                     						<option value="warehouse3">P창고3</option> -->
+
+													</select></td>
+
 													<td id="Mloc" class="material-td">
-														<select name="warehouse">
-                                    						<option value="warehouse1">P창고1</option>
-                                    						<option value="warehouse2">P창고2</option>
-                                    						<option value="warehouse3">P창고3</option>
-                                    		
-                                    					</select>
-													</td>
-													
+														<input class="item" id="date" name="date" type="date" /></td>
+
 													<td id="Mloc" class="material-td">
-														<input class="item" id="date" name="date" type="date" />
-													</td>
-													
-													<td id="Mloc" class="material-td">
-														<input class="item note" type="text" name="note" value="" placeholder="입력" />
-													</td>
-													
-													<td>
-														<input type="hidden" name="command" value="update">
-														<input type="submit" value="확인">
-													</td>
-														
-												</form>
+														<input class="item note" type="text" name="note" value=""
+														placeholder="입력" /></td>
 
-
-											</tr>
-
-
-										</tbody>
-
-									</table>
-								</div>
-
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div>
+										<input type="hidden" name="command" value="update">
+										<input type="submit" value="확인">
+									</div>
+								</form>
+								
+<!-- 								원자재와 완제품의 입고와 출고 
+									
+									원자재 추가 => 최초 1회, 목록에 없을 때 목록에 추가- 입고만 가능
+									원자재 수정 => 목록에 있으면 입고, 출고 가능
+									
+									완제품 추가 => 최초 1회, 목록에 없을 때 목록에 추가- 입고만 가능
+									완제품 수정 => 목록에 있으면 입고, 출고 가능 - 
+													생산코드를 선택하면 완제품코드와 완제품명 수량이 같이 적용
+ -->
+								
 								<div class="div_none">
 									<!-- 빈 공간 -->
 								</div>

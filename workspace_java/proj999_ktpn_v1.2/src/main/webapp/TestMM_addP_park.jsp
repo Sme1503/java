@@ -108,7 +108,8 @@
                                     			<c:forEach var = "pcode" items = "${pList }">
                                     				<option value="${pcode.PROD_CD }"
                                     						auto_icode="${pcode.ITEM_CD }"
-                                    						auto_iname="${pcode.ITEM_NM }">
+                                    						auto_iname="${pcode.ITEM_NM }"
+                                    						auto_iea="${pcode.PROD_QNTT }">
                                     				${pcode.PROD_CD }
                                     				</option>
                                     			</c:forEach>
@@ -118,13 +119,16 @@
                                     			// 셀렉트 박스의 옵션을 선택하면 다른 인풋에 값이 들어가는 함수
                                     			function changePP() {
                                     				var select1 = document.getElementById('select1');
-                                    				var select1_option = select1.options[select1.selectedIndex].value;
+                                    				var select1_option = select1.options[select1.selectedIndex];
                                     				
                                     				var auto_icode = select1_option.getAttribute('auto_icode');
                                     				document.getElementById('icode').value = auto_icode;
                                     				
                                     				var auto_iname = select1_option.getAttribute('auto_iname');
                                     				document.getElementById('iname').value = auto_iname;
+                                    				
+                                    				var auto_iea = select1_option.getAttribute('auto_iea');
+                                    				document.querySelector('#iea').value = auto_iea;
                                     			}
                                     			
                                     		</script>
@@ -145,7 +149,7 @@
 <%--                                     			</c:forEach> --%>
 <!--                                     		</select> -->
                                     		
-                                 			<input class="item Mea" type="text" name="ea" value="${pcode.PROD_QNTT }" />${pcode.PROD_QNTT }
+                                 			<input class="item Mea" type="text" id="iea" name="ea" value="${pcode.PROD_QNTT }" />${pcode.PROD_QNTT }
                                  			
                                     		<select name="inNout">
                                     			<option value="i">입고</option>
@@ -160,8 +164,8 @@
                                     		
                                     		<select name="warehouse">
                                     			<option value="warehouse1">P창고1</option>
-                                    			<option value="warehouse2">P창고2</option>
-                                    			<option value="warehouse3">P창고3</option>
+<!--                                     			<option value="warehouse2">P창고2</option> -->
+<!--                                     			<option value="warehouse3">P창고3</option> -->
                                     		
                                     		</select>
                                     		

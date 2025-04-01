@@ -2,11 +2,7 @@ package kr.or.human.dto;
 import java.sql.Date;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
 
 // DTO : Data Transfer Object
 // VO : Value Object

@@ -15,4 +15,8 @@ public interface EmpDAO {
 	public EmpDTO selectEmpno(EmpDTO dto);
 	
 	public int updateEmp(EmpDTO dto);
+	
+	public int insertEmp(EmpDTO dto);
+
+	public int deleteEmp(EmpDTO dto);
 }

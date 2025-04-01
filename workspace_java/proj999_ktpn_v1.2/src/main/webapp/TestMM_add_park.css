@@ -68,6 +68,10 @@
    border: 1px solid darkgrey;
 }
 
+.item input {
+	width: 50%;
+}
+
 
 .div_btn_input_add {
    text-align: center;

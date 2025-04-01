@@ -85,88 +85,73 @@
 								</div>
 
 								<!-- <div class="div_none"></div> -->
+								<form method="post" action="imcon">
+									<div class="table_scroll">
+										<table class="material-table">
+											<thead>
+												<tr>
+													<th scope="col" class="material-th">원자재코드</th>
+													<th scope="col" class="material-th">원자재명</th>
+													<th scope="col" class="material-th">입력 수량</th>
+													<th scope="col" class="material-th">입고/출고</th>
+													<th scope="col" class="material-th">작업자</th>
+													<th scope="col" class="material-th">위치</th>
+													<th scope="col" class="material-th">입력일</th>
+													<th scope="col" class="material-th">비고</th>
 
-								<div class="table_scroll">
-									<table class="material-table">
-										<thead>
-											<tr>
-												<th scope="col" class="material-th">원자재코드</th>
-												<th scope="col" class="material-th">원자재명</th>
-												<th scope="col" class="material-th">입력 수량</th>
-												<th scope="col" class="material-th">입고/출고</th>
-												<th scope="col" class="material-th">작업자</th>
-												<th scope="col" class="material-th">위치</th>
-												<th scope="col" class="material-th">입력일</th>
-												<th scope="col" class="material-th">비고</th>
+												</tr>
+											</thead>
 
-											</tr>
-										</thead>
-
-										<tbody>
-											<!-- 											원자재테이블 조회한 값 = mList -->
-											<tr>
-												<form method="post" action="imcon">
-
-
-
+											<tbody>
+												<!-- 											원자재테이블 조회한 값 = mList -->
+												<tr>
 													<td id="Mcode" class="material-td Mcode"><input
 														type="text" name="mcode" value="${mList.mtrl_cd }"
 														readonly="readonly">${mList.mtrl_cd }</td>
 
 													<td id="Mname" class="material-td"><input type="text"
 														name="mname" value="${mList.mtrl_nm }" readonly="readonly">
-														${mList.mtrl_nm }
-													</td>
+														${mList.mtrl_nm }</td>
 
 													<td id="Mea" class="material-td"><input type="text"
 														name="newea" value="" placeholder="수량(EA) 입력"></td>
 
-													<td id="" class="material-td">
-														<select name="inNout">
+													<td id="" class="material-td"><select name="inNout">
 															<option value="i">입고</option>
 															<option value="o">출고</option>
-														</select>
-													</td>
-													
-													<td id="" class="material-td">
-														<select name="worker">
-                                    						<c:forEach var = "member" items = "${memberList }">
-                                    							<option value="${member.MBR_NM }">${member.MBR_NM }</option>
-                                    						</c:forEach>
-                                    					</select>
-													</td>
+													</select></td>
 
-													<td id="Mloc" class="material-td">
-														<select name="warehouse">
-                                    						<option value="warehouse1">M창고1</option>
-                                    						<option value="warehouse2">M창고2</option>
-                                    						<option value="warehouse3">M창고3</option>
-                                    		
-                                    					</select>
-													</td>
-													
-													<td id="Mloc" class="material-td">
-														<input class="item" id="date" name="date" type="date" />
-													</td>
-													
-													<td id="Mloc" class="material-td">
-														<input class="item note" type="text" name="note" value="" placeholder="입력" />
-													</td>
+													<td id="" class="material-td"><select name="worker">
+															<c:forEach var="member" items="${memberList }">
+																<option value="${member.MBR_NM }">${member.MBR_NM }</option>
+															</c:forEach>
+													</select></td>
 
-													<td><input type="hidden" name="command" value="update">
-														<input type="submit" value="확인">
-													</td>
+													<td id="Mloc" class="material-td"><select
+														name="warehouse">
+															<option value="warehouse1">M창고1</option>
+															<!--                                     						<option value="warehouse2">M창고2</option> -->
+															<!--                                     						<option value="warehouse3">M창고3</option> -->
 
-												</form>
+													</select></td>
 
+													<td id="Mloc" class="material-td"><input class="item"
+														id="date" name="date" type="date" /></td>
 
-											</tr>
+													<td id="Mloc" class="material-td"><input
+														class="item note" type="text" name="note" value=""
+														placeholder="입력" /></td>
+												</tr>
+											</tbody>
 
+										</table>
+									</div>
 
-										</tbody>
-
-									</table>
-								</div>
+									<div>
+										<input type="hidden" name="command" value="update"> 
+										<input type="submit" value="확인">
+									</div>
+								</form>
 
 								<div class="div_none">
 									<!-- 빈 공간 -->

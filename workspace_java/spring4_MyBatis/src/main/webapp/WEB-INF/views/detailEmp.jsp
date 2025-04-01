@@ -41,6 +41,12 @@
 
 	</table>
 	
-	<a href="modifyEmp?empno=${dto.empno }"><button type="button">수정</button></a>
+	<a href="modifyEmp_form?empno=${dto.empno }"><button type="button">수정하기-form</button></a>
+	<a href="modifyEmp?empno=${dto.empno }"><button type="button">수정하기-ajax</button></a>
+	
+	<form action="allEmp4" method="post">
+		<input id="empno" type="hidden" name="empno" value="${dto.empno }">
+		<input type="submit" value="삭제">
+	</form>
 </body>
 </html>

@@ -48,11 +48,27 @@ public class EmpServiceImpl implements EmpService {
 	}
 
 	@Override
-	public int getUpdateEmp(EmpDTO dto) {
+	public int modifyEmp(EmpDTO dto) {
 		
 		int i = empDAO.updateEmp(dto);
 		
 		return i;
+	}
+
+	@Override
+	public int insertEmp(EmpDTO dto) {
+		
+		int i = empDAO.insertEmp(dto);
+		
+		return 0;
+	}
+
+	@Override
+	public int deleteEmp(EmpDTO dto) {
+		
+		int i = empDAO.deleteEmp(dto);
+		
+		return 0;
 	}
 
 }
