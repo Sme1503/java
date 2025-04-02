@@ -60,7 +60,7 @@ public class EmpServiceImpl implements EmpService {
 		
 		int i = empDAO.insertEmp(dto);
 		
-		return 0;
+		return i;
 	}
 
 	@Override
@@ -68,7 +68,34 @@ public class EmpServiceImpl implements EmpService {
 		
 		int i = empDAO.deleteEmp(dto);
 		
-		return 0;
+		return i;
+	}
+
+	@Override
+	public List getSearch(String ename) {
+		
+		List list = empDAO.selectSearch(ename);
+		
+		return list;
+	}
+	
+	@Override
+	public List getEmpSearchList(EmpDTO dto) {
+		
+		if("ename".equals(dto.getType())) {
+			dto.setEname(dto.getKeyword());
+		} else if("sal".equals(dto.getType())) {
+			try {
+				int sal = Integer.parseInt(dto.getKeyword());				
+				dto.setSal(sal);
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		List list = empDAO.selectEmpSearchList(dto);
+		
+		return list;
 	}
 
 }

@@ -19,4 +19,11 @@ public interface EmpDAO {
 	public int insertEmp(EmpDTO dto);
 
 	public int deleteEmp(EmpDTO dto);
+	
+	public void getSeq();
+	
+	public List<EmpDTO> selectSearch(String ename);
+
+	public List<EmpDTO> selectEmpSearchList(EmpDTO dto);
+	
 }

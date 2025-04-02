@@ -65,5 +65,24 @@
 		delete from emp2
 		where empno = #{empno}
 	</delete>
+	
+	<select id="getSeq" resultType="int">
+		select seq_emp2.nextval from dual;
+	</select>
+	
+	<insert id="insertEmp2" parameterType="empDTO">
+		
+		<selectKey keyProperty="empno" resultType="int" order="BEFORE">
+			select seq_emp2.nextval from dual;
+		</selectKey>
+	
+		insert into emp2 (empno, ename, job, mgr, hiredate, sal, comm, deptno )
+		values (#{empno}, #{ename}, #{job}, #{mgr}, #{hiredate}, #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	<select id="search" resultType="empDTO" parameterType="String">
+		select * from emp2 
+		where upper(ename) like upper('%' || #{ename} || '%')
+	</select>
 
 </mapper>

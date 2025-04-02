@@ -259,5 +259,70 @@ public class EmpController {
 		return "redirect:allEmp";
 
 	}
+	
+	// joinEmp.jsp를 보여주는 메소드
+	@RequestMapping(value = "/joinEmp", method = RequestMethod.GET)
+	public String joinEmp() {
 
+		return "joinEmp";
+
+	}
+	
+	// 실제로 추가하는 메소드 ajax - fetch 사용
+	@ResponseBody
+	@RequestMapping(value = "/joinEmp", method = RequestMethod.POST)
+	public int joinEmpPost(
+			@RequestBody
+			EmpDTO empDTO
+	) {
+		System.out.println("empDTO: " + empDTO);
+		
+		int i = empService.insertEmp(empDTO);	
+		System.out.println("i : " + i);
+		
+		return i;
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String searchEmp(String ename) {
+
+		List list = empService.getSearch(ename);
+		System.out.println("list : " + list);
+		
+		return "allEmp";
+
+	}
+	
+	// 검색해서 나온 결과를 리턴하는 메소드
+	@RequestMapping(value = "/searchEmpList", method = RequestMethod.GET)
+	public String searchEmp1(Model model, EmpDTO dto) {
+		
+		System.out.println("dto : " + dto);
+		
+		List list = empService.getEmpSearchList(dto);
+		System.out.println("list : " + list);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("dto", dto);
+		
+		return "allEmp";
+	}
+	
+	// 검색해서 나온 결과를 리턴하는 메소드 - ajax
+	@ResponseBody
+	@RequestMapping(value = "/searchEmpList1", method = RequestMethod.GET)
+	public String searchEmp2(Model model, 
+			@RequestBody
+			EmpDTO dto) {
+		
+		System.out.println("dto : " + dto);
+		
+		List list = empService.getEmpSearchList(dto);
+		System.out.println("list : " + list);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("dto", dto);
+		
+		return "list";
+	}
 }

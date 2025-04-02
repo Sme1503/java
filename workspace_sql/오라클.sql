@@ -830,12 +830,23 @@ commit;
 update todo set done = 'y' where todo_id = 4;
 
 select * from emp2;
+rollback;
+delete from emp2 where hiredate is null;
 
 create table emp2 as select * from emp;
 
+create sequence seq_emp2
+start with 8000;
 
+select * from emp2 where ename like '%A%' or ename like '%a%';
+select * from emp2 where upper(ename) like '%A%';
+select * from emp2 where upper(ename) like upper('%a%');
+select * from emp2 where lower(ename) like '%a%';
+select * from emp2 where lower(ename) like lower('%A%');
 
+select * from emp2 where sal >= 3000;
 
+select * from emp2 where lower(ename) like lower('%A%') and lower(job) like lower('%A%');
 
 
 

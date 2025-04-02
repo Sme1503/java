@@ -19,4 +19,8 @@ public interface EmpService {
 	int insertEmp(EmpDTO dto);
 	
 	int deleteEmp(EmpDTO dto);
+	
+	List getSearch(String ename);
+
+	List getEmpSearchList(EmpDTO dto);
 }
