@@ -93,6 +93,16 @@ public class EmpServiceImpl implements EmpService {
 			}
 		}
 		
+		
+		int page = dto.getPage();
+		int viewCount = dto.getViewCount();
+		
+		int indexStart = (viewCount * (page -1)) + 1;
+		int indexEnd = page * viewCount;
+		
+		dto.setIndexStart(indexStart);
+		dto.setIndexEnd(indexEnd);
+		
 		List list = empDAO.selectEmpSearchList(dto);
 		
 		return list;

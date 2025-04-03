@@ -848,8 +848,19 @@ select * from emp2 where sal >= 3000;
 
 select * from emp2 where lower(ename) like lower('%A%') and lower(job) like lower('%A%');
 
+select * from emp2
+--where empno = 7566 or empno = 7698;
+where empno in (7566, 7698);
 
+select rnum, ename from (
+    select rownum as rnum, ename from (
+        select ename from emp2
+        order by ename
+    )
+) where rnum >= 7 and rnum <= 9;
 
+insert into emp2 select * from emp2;
+commit;
 
 
 

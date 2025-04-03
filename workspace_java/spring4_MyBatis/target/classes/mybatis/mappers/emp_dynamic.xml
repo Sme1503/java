@@ -14,13 +14,58 @@
 			<if test="sal != -1">
 				and sal <![CDATA[ >= ]]> #{sal}
 			</if>
-			<if test="type == ej">
+			<if test="job != null and job != '' ">
 				and upper(job) like upper('%' || #{keyword} || '%')
 			</if>
-			<if test="type != ename and keyword != null and keyword != '' ">
+			<if test="type == 'ename'and (keyword != null and keyword != '' )">
+				and upper(ename) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'job'and (keyword != null and keyword != '' )">
+				and upper(job) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'ej'and (keyword != null and keyword != '' )">
+				and upper(ename) like upper('%' || #{keyword} || '%')
 				and upper(job) like upper('%' || #{keyword} || '%')
 			</if>
 		</where>
+	</select>
+	
+	
+	<select id="choose" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+		
+		<choose>
+			<when test="ename != null and ename != '' ">
+				and upper(ename) like upper('%' || #{ename} || '%')
+			</when>
+			<when test="job != null and job != '' ">
+				and upper(job) like upper('%' || #{job} || '%')
+			</when>
+			<otherwise>
+				and deptno = 20
+			</otherwise>
+		</choose>
+
+	</select>
+	
+	<select id="foreach" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+<!-- 		where empno in (7566, 7698) -->
+		
+		<where>
+<!-- 			<foreach item="item" collection="empnos"  -->
+<!-- 				open="empno in (" separator="," close=")"> -->
+<!-- 					#{item} -->
+<!-- 			</foreach> -->
+			
+			
+			empno in	
+			<foreach item="item" collection="empnos" 
+				open="(" separator="," close=")">
+					#{item}
+			</foreach>
+		</where>
+		
 	</select>
 
 </mapper>

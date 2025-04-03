@@ -82,7 +82,7 @@
 
 							<div class="tab-name-con">
 								<div class="tab-name">재고 추가</div>
-								입력하는 창을 1줄로
+								입력하는 창을 2줄로
 							</div>
 
 							<div class="div_add">
@@ -90,59 +90,56 @@
 								<!-- <div class="div_none"></div> -->
 
 								<div id="input">
+									<form action="imcon" method="post">
 
-									<div class="flex_child">
+										<div class="flex_child">
 
-										<div class="item i_color">원자재코드</div>
-										<div class="item i_color">원자재이름</div>
-										<!--                                         <div class="item i_color">기준수량</div> -->
-										<div class="item i_color">입력수량</div>
-										<div class="item i_color">입고/출고</div>
-										<div class="item i_color">작업자</div>
-										<div class="item i_color">위치</div>
-										<div class="item i_color">입력일</div>
-										<div class="item i_color">비고</div>
-										<!--                                         <div class="item i_color">변동후 수량</div> -->
-										<!--                                         <div class="item i_color">변동일</div> -->
-									</div>
+											<div class="item i_color">원자재코드</div>
+											<div class="item i_color">원자재이름</div>
+											<!--                                         <div class="item i_color">기준수량</div> -->
+											<div class="item i_color">입력수량</div>
+											<div class="item i_color">입고/출고</div>
+										</div>
 
-									<!-- 입력추가 버튼을 누르면 나오는 input 예시 -->
-											<form action="imcon" method="post">
-									<div class="flex_child new_input">
-<!-- 											<div class="flex_child"> -->
+
+										<!-- 입력추가 버튼을 누르면 나오는 input 예시 -->
+<!-- 										<div class="flex_child new_input"> -->
+
+											<div class="flex_child">
 												<div class="item">
 													<!--                                     		원자재코드 선택하면 원자재명도 자동으로입력 
 												이미 추가된 원자재코드가 있으면 그 코드로는 새로운 추가 불가능하게 하기-->
 													<select id="select1" name="code" onchange="changeM()">
 														<c:forEach var="code" items="${mcList }">
 															<option value="${code.MT_MNG_CD }"
-																	auto_Mname ="${code.MT_MNG_NM }">
-																	${code.MT_MNG_CD }
-															</option>
+																auto_Mname="${code.MT_MNG_NM }">
+																${code.MT_MNG_CD }</option>
 														</c:forEach>
 													</select>
 												</div>
 
 												<script>
-													function changeM(){
-														var select1 = document.getElementById('select1');
+													function changeM() {
+														var select1 = document
+																.getElementById('select1');
 														var select1_option = select1.options[select1.selectedIndex];
-														
-														var auto_Mname = select1_option.getAttribute('auto_Mname');
-														document.getElementById('Mname').value = auto_Mname;
+
+														var auto_Mname = select1_option
+																.getAttribute('auto_Mname');
+														document
+																.getElementById('Mname').value = auto_Mname;
 													}
-													
-													
 												</script>
-												
+
 												<div class="item">
-													<input type="text" id="Mname" name="name" value="" readonly="readonly">
-													
-<!-- 													<select name="name"> -->
-<%-- 														<c:forEach var="code" items="${codeList }"> --%>
-<%-- 															<option value="${code.MT_MNG_NM }">${code.MT_MNG_NM }</option> --%>
-<%-- 														</c:forEach> --%>
-<!-- 													</select> -->
+													<input type="text" id="Mname" name="name" value=""
+														readonly="readonly">
+
+													<!-- 													<select name="name"> -->
+													<%-- 														<c:forEach var="code" items="${codeList }"> --%>
+													<%-- 															<option value="${code.MT_MNG_NM }">${code.MT_MNG_NM }</option> --%>
+													<%-- 														</c:forEach> --%>
+													<!-- 													</select> -->
 												</div>
 
 												<div class="item">
@@ -157,90 +154,109 @@
 														<option value="o">출고</option>
 													</select>
 												</div>
+											</div>
 
-
-												<div class="item">
-													<select name="worker">
-														<c:forEach var="member" items="${mList }">
-															<option value="${member.mbr_nm }">${member.mbr_nm }</option>
-														</c:forEach>
-													</select>
-												</div>
-
-												<div class="item">
-													<select name="warehouse">
-														<option value="warehouse1">M창고1</option>
-<!-- 														<option value="warehouse2">M창고2</option> -->
-<!-- 														<option value="warehouse3">M창고3</option> -->
-
-													</select>
-												</div class="item">
-
-												<div class="item">
-													<input class="item" id="date" name="date" type="date" />
-												</div>
-
-												<div class="item">
-													<input class="item note" type="text" name="note" value=""
-														placeholder="입력하세요" />
-												</div>
-
-												
-												
-<!-- 											</div> -->
+											<div class="flex_child">
+												<div class="item i_color">작업자</div>
+												<div class="item i_color">위치</div>
+												<div class="item i_color">입력일</div>
+												<div class="item i_color">비고</div>
+												<!--                                         <div class="item i_color">변동후 수량</div> -->
+												<!--                                         <div class="item i_color">변동일</div> -->
+											</div>
 											
-	
-									</div>
-									<div>
-													<input type="hidden" name="command" value="insert">
-													<input type="submit" value="추가">
-												</div>
-								</form>
+											<div class="flex_child">
+											<div class="item">
+												<select name="worker">
+													<c:forEach var="member" items="${mList }">
+														<option value="${member.mbr_nm }">${member.mbr_nm }</option>
+													</c:forEach>
+												</select>
+											</div>
+
+											<div class="item">
+												<select name="warehouse">
+													<option value="warehouse1">M창고1</option>
+													<!-- 														<option value="warehouse2">M창고2</option> -->
+													<!-- 														<option value="warehouse3">M창고3</option> -->
+
+												</select>
+											</div class="item">
+
+											<div class="item">
+												<input class="item" id="date" name="date" type="date" />
+											</div>
+
+											<div class="item">
+												<input class="item note" type="text" name="note" value=""
+													placeholder="입력하세요" />
+											</div>
+										</div>
 
 
 
-								</div>
 
-								<div class="div_btn">
 
-									<div class="div_none">
-										<!-- 빈 공간 -->
-									</div>
 
-									<!-- 추가 input을 만드는 버튼 -->
-									<div class="div_btn_input_add">
-										<button type="button" id="btn_input_add" class="btn_input_add">입력추가</button>
-									</div>
+<!-- 										</div> -->
+										<div>
+											<input type="hidden" name="command" value="insert"> <input
+												type="submit" value="추가">
+										</div>
 
-									<div class="div_none">
-										<!-- 빈 공간 -->
-									</div>
+									</form>
 
-									<!-- 확인 버튼 -->
-									<div class="div_btn_add_confirm">
-										<button type="button" id="btn_add_confirm">
-											<a class="btn_text_color" href="./TestMM_main_park.html">확인</a>
-										</button>
-									</div>
+
+
+
+
 								</div>
 
 
 
 
 							</div>
+
+							<div class="div_btn">
+
+								<div class="div_none">
+									<!-- 빈 공간 -->
+								</div>
+
+								<!-- 추가 input을 만드는 버튼 -->
+								<div class="div_btn_input_add">
+									<button type="button" id="btn_input_add" class="btn_input_add">입력추가</button>
+								</div>
+
+								<div class="div_none">
+									<!-- 빈 공간 -->
+								</div>
+
+								<!-- 확인 버튼 -->
+								<div class="div_btn_add_confirm">
+									<button type="button" id="btn_add_confirm">
+										<a class="btn_text_color" href="./TestMM_main_park.html">확인</a>
+									</button>
+								</div>
+							</div>
+
+
+
+
 						</div>
-
-
-
-
 					</div>
+
+
+
+
 				</div>
-
-
-
-
 			</div>
+
+
+
+
 		</div>
+	</div>
 	</div>
 	<!-- </div> -->
 	<!-- </body> -->

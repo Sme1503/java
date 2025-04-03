@@ -20,61 +20,69 @@
 			<option value="ename">ename</option>
 			<option value="sal">sal(이상)</option>
 			<option value="ej">ename + job</option>
-		</select> 
-		<input type="text" name="keyword" value="${dto.keyword}"> 
-		<input type="submit" value="찾기">
+		</select> <input type="text" name="keyword" value="${dto.keyword}"> <input
+			type="submit" value="찾기">
 	</form>
-	
+
 	<select id="select" name="type">
-			<option value="ename">ename</option>
-			<option value="sal">sal(이상)</option>
-			<option value="ej">ename + job</option>
-	</select> 
+		<option value="ename">ename</option>
+		<option value="sal">sal(이상)</option>
+		<option value="ej">ename + job</option>
+	</select>
 	<input id="keyword" type="text" name="keyword" value="${dto.keyword}">
 	<button type="button" id="btn_s">찾기-ajax</button>
 
 	<div id="div">
 
-		<table border="1px solid dark">
+		<form action="searchEmpList" method="get">
+			<input type="submit" value="선택된 것만 조회">
+			<table border="1px solid dark">
 
-			<tbody>
-
-				<tr>
-					<th>empno</th>
-					<th>ename</th>
-					<!-- 				<th>job</th> -->
-					<!-- 				<th>mgr</th> -->
-					<!-- 				<th>hiredate</th> -->
-					<th>sal</th>
-					<!-- 				<th>comm</th> -->
-					<!-- 				<th>deptno</th> -->
-				</tr>
-
-				<c:if test="${not empty list }">
-					<c:forEach var="dto" items="${list }">
-
-						<tr>
-							<td><a href="detailEmp?empno=${dto.empno }">${dto.empno }</a>
-							</td>
-							<td>${dto.ename }</td>
-							<%-- 					<td>${dto.job }</td> --%>
-							<%-- 					<td>${dto.mgr }</td> --%>
-							<%-- 					<td>${dto.hiredate }</td> --%>
-							<td>${dto.sal }</td>
-							<%-- 					<td>${dto.comm }</td> --%>
-							<%-- 					<td>${dto.deptno }</td> --%>
-						</tr>
-					</c:forEach>
-				</c:if>
-
-				<c:if test="${empty list }">
+				<thead>
+		
 					<tr>
-						<td colspan="3">조회 결과가 없습니다</td>
+						<th>선택</th>
+						<th>empno</th>
+						<th>ename</th>
+						<!-- 				<th>job</th> -->
+						<!-- 				<th>mgr</th> -->
+						<!-- 				<th>hiredate</th> -->
+						<th>sal</th>
+						<!-- 				<th>comm</th> -->
+						<!-- 				<th>deptno</th> -->
 					</tr>
-				</c:if>
-			</tbody>
+				</thead>
+				<tbody>
+					<c:if test="${not empty list }">
+						<c:forEach var="dto" items="${list }">
 
-		</table>
+							<tr>
+								<%-- id="id_${dto.empno }"	아이디를 여러개 만들어야한다면 이런 방식으로 --%>
+								<%-- '[id^=id_]'	자바스크립트에서 아이디를 찾을때는 이런 방식으로 --%>
+								<td><input type="checkbox" name="empnos"
+									value="${dto.empno }"></td>
+								<td><a href="detailEmp?empno=${dto.empno }">${dto.empno }</a>
+								</td>
+								<td>${dto.ename }</td>
+								<%-- 					<td>${dto.job }</td> --%>
+								<%-- 					<td>${dto.mgr }</td> --%>
+								<%-- 					<td>${dto.hiredate }</td> --%>
+								<td>${dto.sal }</td>
+								<%-- 					<td>${dto.comm }</td> --%>
+								<%-- 					<td>${dto.deptno }</td> --%>
+							</tr>
+						</c:forEach>
+					</c:if>
+
+					<c:if test="${empty list }">
+						<tr>
+							<td colspan="3">조회 결과가 없습니다</td>
+						</tr>
+					</c:if>
+				</tbody>
+
+			</table>
+		</form>
 	</div>
 	<a href="insertEmp"><button type="button">추가-insert</button></a>
 	<a href="joinEmp"><button type="button">추가-join</button></a>
@@ -121,14 +129,14 @@
 }
 </style>
 
-<!-- 		<div id="dim"> -->
-<!-- 			<div id="popup"> -->
-<!-- 				<div class="title">제목</div> -->
-<!-- 				<div class="content"> -->
-<!-- 					내용 <br> 내용 -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+	<!-- 		<div id="dim"> -->
+	<!-- 			<div id="popup"> -->
+	<!-- 				<div class="title">제목</div> -->
+	<!-- 				<div class="content"> -->
+	<!-- 					내용 <br> 내용 -->
+	<!-- 				</div> -->
+	<!-- 			</div> -->
+	<!-- 		</div> -->
 
 	<script>
 // 		document.querySelector('#btn').addEventListener('click', ()=> {
@@ -200,12 +208,20 @@
 				keyword : document.querySelector('#keyword').value
 			}
 			
+			let type = document.querySelector('#select').value
+			let keyword = document.querySelector('#keyword').value
 			console.log("param : ", param)
 			
 			const xhr = new XMLHttpRequest()
-			xhr.open('get', 'searchEmpList1')
-			xhr.setRequestHeader('Content-Type', 'application/json')
-			xhr.send(JSON.stringify(param));
+			
+			// get으로 보낼경우 쿼리스트링을 붙여야한다. json으로 보낼 수 없다.
+			xhr.open('get', 'searchEmpList1?type='+type+'&keyword='+keyword)
+			xhr.send();
+			
+// 			xhr.open('post', 'searchEmpList1')
+// 			xhr.setRequestHeader('Content-Type', 'application/json')
+// 			xhr.send(JSON.stringify(param));
+
 			xhr.onload = function() {
 				console.log(xhr.reponseText)
 				
@@ -237,15 +253,15 @@
 						html +=     `<td>\${dto.sal}</td>`
 						html +=     `</tr>`
 					}	
-						html +=` </tbody>`
+						html +=		`</tbody>`
 
-						html +=` </table>`
+						html +=		`</table>`
 					
 		 			div.innerHTML = html
 					console.log("html", html);
 					console.log("div", div);
 					
-		/*			html +=	`<c:if test="${not empty list }">`
+		<!-- /* 			html +=	`<c:if test="${not empty list }">`
 					html +=		`<c:forEach var="dto" items="${list }">`
 
 					html +=			`<tr>`
@@ -263,7 +279,7 @@
 					html +=		`<tr>`
 					html +=		`	<td colspan="3">조회 결과가 없습니다</td>`
 					html +=	`</tr>`
-					html +=	`</c:if>` */
+					html +=	`</c:if>`   */ -->
 					
 						
 					

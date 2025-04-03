@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.emp.page">
+
+	<select id="selectEmp" resultType="empDTO">
+	
+		select rnum, ename from (
+    		select rownum as rnum, ename from (
+        		select ename from emp2
+        		order by ename
+   			)
+		) 
+	<![CDATA[
+		 where rnum >= #{indexStart} and rnum <= #{indexEnd}		
+	]]>
+	
+		<where>
+			<if test="ename != null and ename != '' ">
+				and upper(ename) like upper('%' || #{ename} || '%')
+			</if>
+			<if test="sal != -1">
+				and sal <![CDATA[ >= ]]> #{sal}
+			</if>
+			<if test="job != null and job != '' ">
+				and upper(job) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'ename'and (keyword != null and keyword != '' )">
+				and upper(ename) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'job'and (keyword != null and keyword != '' )">
+				and upper(job) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'ej'and (keyword != null and keyword != '' )">
+				and upper(ename) like upper('%' || #{keyword} || '%')
+				and upper(job) like upper('%' || #{keyword} || '%')
+			</if>
+		</where>
+		
+	</select>
+
+</mapper>

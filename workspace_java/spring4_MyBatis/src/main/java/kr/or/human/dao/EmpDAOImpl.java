@@ -113,7 +113,8 @@ public class EmpDAOImpl implements EmpDAO {
 	@Override
 	public List<EmpDTO> selectEmpSearchList(EmpDTO dto) {
 		
-		List<EmpDTO> result = sqlSession.selectList("mapper.emp.dynamic.selectEmp", dto);
+//		List<EmpDTO> result = sqlSession.selectList("mapper.emp.dynamic.selectEmp", dto);
+		List<EmpDTO> result = sqlSession.selectList("mapper.emp.page.selectEmp", dto);
 		System.out.println("result : " + result);
 		
 		return result;
