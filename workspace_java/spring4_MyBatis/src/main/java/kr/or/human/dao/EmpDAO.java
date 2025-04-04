@@ -26,4 +26,6 @@ public interface EmpDAO {
 
 	public List<EmpDTO> selectEmpSearchList(EmpDTO dto);
 	
+	public int totalList();
+	
 }

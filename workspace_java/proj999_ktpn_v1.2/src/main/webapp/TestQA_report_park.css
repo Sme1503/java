@@ -177,6 +177,12 @@ a {
     text-align: center;
 }
 
+.qc-title P {
+	width : 52%;
+	margin: 0 auto;
+	text-align: left;
+}
+
 .right {
 	display: flex;
 }

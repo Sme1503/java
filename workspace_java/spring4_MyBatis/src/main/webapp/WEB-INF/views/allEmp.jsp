@@ -1,5 +1,9 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"  %>
+<%@ page import="kr.or.human.dto.*" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -33,7 +37,8 @@
 	<button type="button" id="btn_s">찾기-ajax</button>
 
 	<div id="div">
-
+		<section>
+		<article>
 		<form action="searchEmpList" method="get">
 			<input type="submit" value="선택된 것만 조회">
 			<table border="1px solid dark">
@@ -53,8 +58,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:if test="${not empty list }">
-						<c:forEach var="dto" items="${list }">
+					<c:if test="${not empty map.list }">
+						<c:forEach var="dto" items="${map.list }">
 
 							<tr>
 								<%-- id="id_${dto.empno }"	아이디를 여러개 만들어야한다면 이런 방식으로 --%>
@@ -74,7 +79,7 @@
 						</c:forEach>
 					</c:if>
 
-					<c:if test="${empty list }">
+					<c:if test="${empty map.list }">
 						<tr>
 							<td colspan="3">조회 결과가 없습니다</td>
 						</tr>
@@ -83,6 +88,65 @@
 
 			</table>
 		</form>
+		</article>
+		</section>
+		<style>
+			.bold {
+				font-weight: bold;
+			}
+		</style>
+		
+		<%
+			// model에 담은건 request에서 꺼낼 수 있다
+			Map map = (Map) request.getAttribute("map");
+			EmpDTO empDTO = (EmpDTO) request.getAttribute("dto");
+// 			System.out.println(map);
+			int total = (Integer) map.get("total");
+			if(total == 0) total = 1;
+			
+			int pageNo = empDTO.getPage();
+			int viewCount = empDTO.getViewCount();
+			
+			// 1401 / 10 = 140.1 올림해서 141
+			int lastPage = (int) Math.ceil((double) total / viewCount);
+			
+			int groupCount = 5;  // 한번에 보여줄 페이지 개수
+			int groupPosition = (int) Math.ceil((double) pageNo / groupCount);
+			int begin = ((groupPosition - 1) * groupCount) + 1;
+			int end = groupPosition * groupCount;
+			
+			if(end > lastPage) end = lastPage;
+		%>
+		
+		<c:if test="<%=begin == 1 %>">
+			[이전]
+		</c:if>
+		<c:if test="<%=begin != 1 %>">
+		
+			<a href="allEmp?page=<%=begin - 1 %>">[이전]</a>
+		</c:if>
+		
+		<c:forEach var="i" begin="<%=begin %>" end= "<%= end %>">
+			<c:if test="${i == dto.page }">
+			
+				<c:set var = "clazz" value="bold"/>
+			</c:if>
+			<c:if test="${ not (i == dto.page) }">
+			
+				<c:set var = "clazz" value=""/>
+			</c:if>
+			<a href="allEmp?page=${i }" class="${clazz }">${i }</a>			
+		</c:forEach>
+		
+		<c:if test="<%=end == lastPage %>">
+			[다음]
+		</c:if>
+		<c:if test="<%=end != lastPage %>">
+		
+			<a href="allEmp?page=<%=end + 1 %>">[다음]</a>
+		</c:if>
+		
+		
 	</div>
 	<a href="insertEmp"><button type="button">추가-insert</button></a>
 	<a href="joinEmp"><button type="button">추가-join</button></a>

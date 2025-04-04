@@ -1,5 +1,7 @@
 /* TestQA_main_park_html */
 
+*{margin:0; padding: 0; box-sizing: border-box; 
+}
 @media screen and (max-width : 800px) {
     .flex_page {
         position: relative;

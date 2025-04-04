@@ -108,67 +108,67 @@
 
 
 													<tr>
-														<th>1. 생산코드</th>
+														<th class="qc-title"> <p>1. 생산코드</p> </th>
 														<td>${QcList.PROD_CD }</td>
 
-														<th>9. 검수자</th>
+														<th class="qc-title">  <p>9. 검수자</p> </th>
 														<td>${QcList.CHCKR_NM }</td>
 													</tr>
 
 													<tr>
-														<th class="qtable-th">2. 품목코드</th>
+														<th class="qtable-th qc-title">  <p>2. 품목코드</p>   </th>
 														<td class="qtable-td">${QcList.ITEM_CD }</td>
 
-														<th>10. 검수일</th>
+														<th class="qc-title">  <p>10. 검수일</p> </th>
 														<td>${QcList.Chckr_dttm }
 														<td>
 													</tr>
 
 													<tr>
-														<th>3. 품목명</th>
+														<th class="qc-title">  <p>3. 품목명</p>  </th>
 														<td>${QcList.ITEM_NM }</td>
 
-														<th>11. 강도값</th>
+														<th class="qc-title">  <p>11. 강도값</p> </th>
 														<td>${QcList.STRTH_VAL }</td>
 													</tr>
 
 													<tr>
-														<th>4. 작업자</th>
+														<th class="qc-title"> <p>4. 작업자</p>   </th>
 														<td>${QcList.WORK_NM }</td>
 
-														<th>12. 크기값</th>
+														<th class="qc-title">  <p>12. 크기값</p>  </th>
 														<td>${QcList.SZ_VAL }</td>
 													</tr>
 
 													<tr>
-														<th>5. 생산완료시간</th>
+														<th class="qc-title">  <p>5. 생산완료시간</p>  </th>
 														<td>${QcList.PROD_END_TIME }</td>
 
-														<th>13. 색상값</th>
+														<th class="qc-title">  <p>13. 색상값</p>   </th>
 														<td>${QcList.Clrl_val }</td>
 													</tr>
 
 													<tr>
-														<th>6. 지시수량</th>
+														<th class="qc-title"> <p>6. 지시수량</p>   </th>
 														<td>${QcList.INDC_QNTT }</td>
 
-														<th>14. 품질값</th>
+														<th class="qc-title">   <p>14. 품질값</p>  </th>
 														<td>${QcList.Qlty_val }</td>
 													</tr>
 
 													<tr>
-														<th>7. 생산량</th>
+														<th class="qc-title">  <p>7. 생산량</p>   </th>
 														<td>${QcList.PROD_QNTT }</td>
 
-														<th>15. 불합격사유</th>
+														<th class="qc-title">  <p>15. 불합격사유</p>   </th>
 														<td>${QcList.Fail_caus_desc }</td>
 													</tr>
 
 													<tr>
-														<th>8. 불량률</th>
+														<th class="qc-title">  <p>8. 불량률</p>    </th>
 														<td>${QcList.DFC_RT }</td>
 
-														<th>16. 비고</th>
+														<th class="qc-title">   <p>16. 비고</p>   </th>
 														<td>${QcList.Rmrk }</td>
 													</tr>
 

@@ -1,12 +1,13 @@
 package kr.or.human.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.human.dao.EmpDAO;
-import kr.or.human.dao.EmpDAOImpl;
 import kr.or.human.dto.EmpDTO;
 
 @Service
@@ -80,7 +81,7 @@ public class EmpServiceImpl implements EmpService {
 	}
 	
 	@Override
-	public List getEmpSearchList(EmpDTO dto) {
+	public Map<String, Object> getEmpSearchList(EmpDTO dto) {
 		
 		if("ename".equals(dto.getType())) {
 			dto.setEname(dto.getKeyword());
@@ -93,7 +94,7 @@ public class EmpServiceImpl implements EmpService {
 			}
 		}
 		
-		
+		// 보여줄 시작, 끝 index 찾기
 		int page = dto.getPage();
 		int viewCount = dto.getViewCount();
 		
@@ -103,9 +104,17 @@ public class EmpServiceImpl implements EmpService {
 		dto.setIndexStart(indexStart);
 		dto.setIndexEnd(indexEnd);
 		
+		// 한 페이지의 내용만 있는 리스트
 		List list = empDAO.selectEmpSearchList(dto);
 		
-		return list;
+		// 전체 글 개수
+		int total = empDAO.totalList();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("total", total);
+		
+		return map;
 	}
 
 }

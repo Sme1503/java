@@ -76,6 +76,7 @@
 
                             <div class="tab-name-con">
                                 <div class="tab-name">재고 추가</div>
+                                1줄로
                             </div>
 
                             <div class="div_add">
@@ -102,7 +103,8 @@
                                     <!-- 입력추가 버튼을 누르면 나오는 input 예시 -->
                                      <div class="flex_child new_input">
                                     	<form action="impcon" method="post">
-                                    	
+                                    		<div class="flex_child">
+                                    		
                                     		<select id="select1" name="Pcode">
                                     			<option value="default" selected="selected">선택</option>
                                     			<c:forEach var = "pcode" items = "${pList }">
@@ -175,6 +177,7 @@
                                  			
                                  			<input type="hidden" name="command" value="insert">
 											<input type="submit" value="추가">
+                                    		</div>
                                     	</form>
                                  
                                  </div>

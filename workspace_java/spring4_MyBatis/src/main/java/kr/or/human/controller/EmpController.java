@@ -2,6 +2,9 @@ package kr.or.human.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -134,23 +137,32 @@ public class EmpController {
 	// 전체 emp목록을 allEmp.jsp에 보여주는 메소드
 	@RequestMapping(value = "/allEmp", method = RequestMethod.GET)
 	public String AllEmp(Model model,
-			EmpDTO dto
-			) {
+			@ModelAttribute
+			EmpDTO dto,
+			HttpServletRequest request
+	) {
 		
 		System.out.println(dto);
 		
-		int page = 3;
-		int viewCount = 3;
-		
-		dto.setPage(page);
-		dto.setViewCount(viewCount);
+//		int page = 1;
+//		String strPage =request.getParameter("page");
+//		if(strPage != null) {
+//			page = Integer.parseInt(strPage);
+//		}
+//		
+//		int viewCount = 3;
+//		
+//		dto.setPage(page);
+//		dto.setViewCount(viewCount);
 		
 		
 //		List<EmpDTO> list = empService.getEmpList();
-		List<EmpDTO> list = empService.getEmpSearchList(dto);
-		System.out.println("controller dto : " + list);
+		Map<String, Object> map = empService.getEmpSearchList(dto);
+//		System.out.println("controller dto : " + list);
 
-		model.addAttribute("list", list);
+//		model.addAttribute("list", list);
+		model.addAttribute("map", map);
+		model.addAttribute("dto", dto);
 
 		return "allEmp";
 	}
@@ -310,11 +322,11 @@ public class EmpController {
 		
 		System.out.println("dto : " + dto);
 		
-		List list = empService.getEmpSearchList(dto);
-		System.out.println("list : " + list);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("dto", dto);
+//		List list = empService.getEmpSearchList(dto);
+//		System.out.println("list : " + list);
+//		
+//		model.addAttribute("list", list);
+//		model.addAttribute("dto", dto);
 		
 		return "allEmp";
 	}
@@ -322,20 +334,20 @@ public class EmpController {
 	// 검색해서 나온 결과를 리턴하는 메소드 - ajax
 	// ajax - get : @requestBody 사용하면 안된다, json으로 받을 수 없음. @ModelAttribute이나 @RequestParam을 사용해야한다
 	// ajax - get이 아닌 메소드 : @requestBody를 사용해서 json으로 받아야한다
-	@ResponseBody
-	@RequestMapping(value = "/searchEmpList1")
-	public List searchEmp2(Model model, 
-			
-			EmpDTO dto) {
-		
-		System.out.println("dto : " + dto);
-		
-		List list = empService.getEmpSearchList(dto);
-		System.out.println("list : " + list);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("dto", dto);
-		
-		return list;
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/searchEmpList1")
+//	public List searchEmp2(Model model, 
+//			
+//			EmpDTO dto) {
+//		
+//		System.out.println("dto : " + dto);
+//		
+//		List list = empService.getEmpSearchList(dto);
+//		System.out.println("list : " + list);
+//		
+//		model.addAttribute("list", list);
+//		model.addAttribute("dto", dto);
+//		
+//		return list;
+//	}
 }

@@ -1,6 +1,7 @@
 package kr.or.human.service;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.or.human.dto.EmpDTO;
 
@@ -22,5 +23,5 @@ public interface EmpService {
 	
 	List getSearch(String ename);
 
-	List getEmpSearchList(EmpDTO dto);
+	Map<String, Object> getEmpSearchList(EmpDTO dto);
 }
