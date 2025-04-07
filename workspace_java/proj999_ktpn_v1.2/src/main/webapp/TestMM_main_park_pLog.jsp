@@ -116,14 +116,14 @@
 
 								</div>
 
-								
+
 
 								<div>
 									<div id="show_table1">
 										<table class="material-table">
 											<thead>
 												<tr>
-<!-- 													<th scope="col" class="material-th">삭제체크</th> -->
+													<!-- 													<th scope="col" class="material-th">삭제체크</th> -->
 													<th scope="col" class="material-th">번호</th>
 													<th scope="col" class="material-th">생산코드</th>
 													<th scope="col" class="material-th">완제품코드</th>
@@ -142,32 +142,30 @@
 												<c:forEach var="pLogdata" items="${plogList }">
 
 													<tr>
-														
-<!-- 															<td><input type="checkbox" name="deleteCheck" -->
-<!-- 																value="Y"></td> -->
-															<td id="PSN" class="material-td">${pLogdata.SN }</td>
-															<td id="Pcode" class="material-td Mcode">${pLogdata.PROD_CD }</td>
-															<td id="Pcode" class="material-td Mcode">${pLogdata.Fnsh_code }</td>
-															<td id="Pname" class="material-td">${pLogdata.Fnshd_item_nm }</td>
-															<td id="Psntea" class="material-td">${pLogdata.CRNT_CNT }</td>
-															<td id="Pcurea" class="material-td">${pLogdata.CRNT_AFTR_CNT }</td>
-<%-- 															<td id="Ploc" class="material-td">${pLogdata.IOB_SE_CD }</td> --%>
-															<td id="Ploc" class="material-td">
-																<c:choose>
-																	<c:when test="${pLogdata.IOB_SE_CD eq 'i'}">
+
+														<!-- 															<td><input type="checkbox" name="deleteCheck" -->
+														<!-- 																value="Y"></td> -->
+														<td id="PSN" class="material-td">${pLogdata.SN }</td>
+														<td id="Pcode" class="material-td Mcode">${pLogdata.PROD_CD }</td>
+														<td id="Pcode" class="material-td Mcode">${pLogdata.Fnsh_code }</td>
+														<td id="Pname" class="material-td">${pLogdata.Fnshd_item_nm }</td>
+														<td id="Psntea" class="material-td">${pLogdata.CRNT_CNT }</td>
+														<td id="Pcurea" class="material-td">${pLogdata.CRNT_AFTR_CNT }</td>
+														<%-- 															<td id="Ploc" class="material-td">${pLogdata.IOB_SE_CD }</td> --%>
+														<td id="Ploc" class="material-td"><c:choose>
+																<c:when test="${pLogdata.IOB_SE_CD eq 'i'}">
 																		입고
 																	</c:when>
-																	<c:when test="${pLogdata.IOB_SE_CD ne 'i'}">
+																<c:when test="${pLogdata.IOB_SE_CD ne 'i'}">
 																		출고
 																	</c:when>
-																</c:choose>
-															</td>
-															
-															<td id="Ploc" class="material-td">${pLogdata.WORK_NM }</td>
-															<td id="Ploc" class="material-td">${pLogdata.Fnshl_loc_nm }</td>
-															<td id="Ploc" class="material-td">${pLogdata.CHNG_DT }</td>
-															<td id="Ploc" class="material-td">${pLogdata.REG_DTTM }</td>
-															<td id="Ploc" class="material-td">${pLogdata.Rmrk }</td>
+															</c:choose></td>
+
+														<td id="Ploc" class="material-td">${pLogdata.WORK_NM }</td>
+														<td id="Ploc" class="material-td">${pLogdata.Fnshl_loc_nm }</td>
+														<td id="Ploc" class="material-td">${pLogdata.CHNG_DT }</td>
+														<td id="Ploc" class="material-td">${pLogdata.REG_DTTM }</td>
+														<td id="Ploc" class="material-td">${pLogdata.Rmrk }</td>
 													</tr>
 												</c:forEach>
 
@@ -179,20 +177,32 @@
 
 									</div>
 
-									
+
 
 									<div class="div_none">
 										<!-- 빈 공간 -->
 									</div>
 
-									<div class="div_button">
-										<button type="button" id="btn_main_add">
-											<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a>
-										</button>
-										
-									</div>
 
+									<form action="impcon" method="get">
 									
+										<div class="div_button">
+											<button type="sumbit" id="btn_main_add" name="" value="">
+												확인
+											</button>
+
+										</div>
+
+
+<!-- 										<div class="div_button"> -->
+<!-- 											<button type="button" id="btn_main_add"> -->
+<!-- 												<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a> -->
+<!-- 											</button> -->
+
+<!-- 										</div> -->
+
+									</form>
+
 									<!-- 페이지 번호 -->
 									<div class="flex_page">
 										<div class="item_page pre_page">

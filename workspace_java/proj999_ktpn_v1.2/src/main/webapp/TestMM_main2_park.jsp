@@ -257,8 +257,14 @@
 										
 										<div class="div_button">
 										<form method="post" action="imcon">
-											<button name="command" value="move_add_Page" type="submit" id="btn_main_add">
-												추가
+											<button name="command" value="move_add2_Page" type="submit" id="btn_main_add">
+												원자재 재고 추가
+											</button>
+										</form>
+										
+										<form method="post" action="impcon">
+											<button name="command" value="move_addP2_Page" type="submit" id="btn_main_add">
+												완제품 재고 추가
 											</button>
 										</form>
 										

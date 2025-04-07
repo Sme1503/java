@@ -49,7 +49,7 @@ public class IMController extends HttpServlet {
 		request.setAttribute("MtableSelect", MtableSelect);
 		request.setAttribute("PtableSelect", PtableSelect);
 
-		String url = "TestMM_main_park.jsp";
+		String url = "TestMM_main2_park.jsp";
 
 		request.getRequestDispatcher(url).forward(request, response);
 
@@ -142,7 +142,8 @@ public class IMController extends HttpServlet {
 						check = true;
 					}
 				}
-
+				
+				
 			}
 
 			else if ("o".equals(io)) { // 출고
@@ -183,6 +184,7 @@ public class IMController extends HttpServlet {
 					}
 
 				}
+//				doGet(request, response);
 			}
 
 			if (check == true) { // check가 true면
@@ -202,7 +204,9 @@ public class IMController extends HttpServlet {
 				ex = MLogtable_dao.insertMlog(MLogtable_dto);
 				System.out.println("원자재 로그테이블에 " + ex + "행이 삽입되었습니다");
 			}
-
+			
+			doGet(request, response);
+			
 		} else if ("update".equals(command)) {
 
 			String code = request.getParameter("code");
@@ -419,7 +423,7 @@ public class IMController extends HttpServlet {
 			String url = "TestMM_main_park_mLog.jsp";
 
 			request.getRequestDispatcher(url).forward(request, response);
-		} else if ("move_add_Page".equals(command)) {
+		} else if ("move_add2_Page".equals(command)) {
 
 			// 기준관리 list = 기준관리dao.select(원자재); >> 원자재코드와 원자재명이 있다
 			// request.setAttribute("기준관리 list", 기준관리 list);
@@ -459,9 +463,11 @@ public class IMController extends HttpServlet {
 
 			request.setAttribute("mList", memberList);
 
-			String url = "TestMM_add_park.jsp";
+			String url = "TestMM_add2_park.jsp";
 
 			request.getRequestDispatcher(url).forward(request, response);
+		} else if("move_main2_Page".equals(command)) {
+			
 		}
 
 //		doGet(request, response);

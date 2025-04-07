@@ -46,7 +46,7 @@ public class IMPController extends HttpServlet {
 		request.setAttribute("MtableSelect", MtableSelect);
 		request.setAttribute("PtableSelect", PtableSelect);
 
-		String url = "TestMM_main_park.jsp";
+		String url = "TestMM_main2_park.jsp";
 
 		request.getRequestDispatcher(url).forward(request, response);
 	}
@@ -77,12 +77,12 @@ public class IMPController extends HttpServlet {
 
 		if ("insert".equals(command)) {
 
-			String pcode = request.getParameter("pcode");
+			String pcode = request.getParameter("Pcode");
 			String code = request.getParameter("code");
 			String name = request.getParameter("name");
 			String ea = request.getParameter("ea");
 			int EA = Integer.parseInt(ea);
-			String io = request.getParameter("io");
+			String io = request.getParameter("inNout");
 			String worker = request.getParameter("worker");
 			String warehouse = request.getParameter("warehouse");
 			String date = request.getParameter("date");
@@ -174,7 +174,8 @@ public class IMPController extends HttpServlet {
 				ex = PLogtable_dao.insertPlog(PLogtable_dto);
 				System.out.println("완제품 로그테이블에 " + ex + "행이 삽입되었습니다");
 			}
-
+			
+			doGet(request, response);
 		} else if ("update".equals(command))
 
 		{
@@ -332,7 +333,7 @@ public class IMPController extends HttpServlet {
 
 			request.getRequestDispatcher(url).forward(request, response);
 
-		} else if ("move_addP_Page".equals(command)) {
+		} else if ("move_addP2_Page".equals(command)) {
 
 			// 생산코드list = 생산dao.select(생산이 완료된)
 			// request.setAttribute("생산코드 list", 생산코드 list)
@@ -370,7 +371,7 @@ public class IMPController extends HttpServlet {
 
 			request.setAttribute("mList", memberList);
 
-			String url = "TestMM_addP_park.jsp";
+			String url = "TestMM_addP2_park.jsp";
 
 			request.getRequestDispatcher(url).forward(request, response);
 		}

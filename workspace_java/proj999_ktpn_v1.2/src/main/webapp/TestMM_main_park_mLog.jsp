@@ -184,13 +184,25 @@
 									<div class="div_none">
 										<!-- 빈 공간 -->
 									</div>
-
+									
+									
+									<form action="imcon" method="get">
+									
 									<div class="div_button">
-										<button type="button" id="btn_main_add">
-											<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a>
+										<button type="submit" id="btn_main_add" name="command" value="move_main2_Page">
+											확인
 										</button>
 										
 									</div>
+									
+<!-- 									<div class="div_button"> -->
+<!-- 										<button type="button" id="btn_main_add"> -->
+<!-- 											<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a> -->
+<!-- 										</button> -->
+										
+<!-- 									</div> -->
+									
+									</form>
 
 									<!-- 자재코드 입력하면 자재명이 자동으로 입력
                                         수량은 기존에 있는것과 연동

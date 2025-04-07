@@ -103,13 +103,13 @@
 										<div class="flex_child">
 
 											<div class="item">
-												<select id="select1" name="Pcode">
+												<select id="select1" name="Pcode" onchange="changePP()">
 													<option value="default" selected="selected">선택</option>
 													<c:forEach var="pcode" items="${pList }">
-														<option value="${pcode.PROD_CD }"
-															auto_icode="${pcode.ITEM_CD }"
-															auto_iname="${pcode.ITEM_NM }"
-															auto_iea="${pcode.PROD_QNTT }">${pcode.PROD_CD }</option>
+														<option value="${pcode.prod_cd }"
+															auto_icode="${pcode.item_cd }"
+															auto_iname="${pcode.item_nm }"
+															auto_iea="${pcode.prod_qntt }">${pcode.prod_cd }</option>
 													</c:forEach>
 												</select>
 											</div>
@@ -122,20 +122,14 @@
 															.getElementById('select1');
 													var select1_option = select1.options[select1.selectedIndex];
 
-													var auto_icode = select1_option
-															.getAttribute('auto_icode');
-													document
-															.getElementById('icode').value = auto_icode;
+													var auto_icode = select1_option.getAttribute('auto_icode');
+													document.getElementById('icode').value = auto_icode;
 
-													var auto_iname = select1_option
-															.getAttribute('auto_iname');
-													document
-															.getElementById('iname').value = auto_iname;
-
-													var auto_iea = select1_option
-															.getAttribute('auto_iea');
-													document
-															.querySelector('#iea').value = auto_iea;
+													var auto_iname = select1_option.getAttribute('auto_iname');
+													document.getElementById('iname').value = auto_iname;
+															 			
+													var auto_iea = select1_option.getAttribute('auto_iea');
+													document.querySelector('#iea').value = auto_iea;
 												}
 											</script>
 
@@ -193,7 +187,7 @@
 											<div class="item">
 												<select name="worker">
 													<c:forEach var="member" items="${mList }">
-														<option value="${member.MBR_NM }">${member.MBR_NM }</option>
+														<option value="${member.mbr_nm }">${member.mbr_nm }</option>
 													</c:forEach>
 												</select>
 											</div>

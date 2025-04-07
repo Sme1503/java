@@ -79,7 +79,7 @@ public class QAController extends HttpServlet {
 		
 		if("insert".equals(command)) {
 			
-			String pcode = request.getParameter("pcode");
+			String pcode = request.getParameter("Pcode");
 			String code = request.getParameter("code");
 			String name = request.getParameter("name");
 			String tester = request.getParameter("tester");

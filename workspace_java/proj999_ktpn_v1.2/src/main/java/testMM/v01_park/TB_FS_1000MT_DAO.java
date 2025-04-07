@@ -141,8 +141,8 @@ public class TB_FS_1000MT_DAO {
 
 			// SQL 준비
 			// 완제품 현황 테이블에 데이터 삽입
-			String query =  " insert into TB_FS_1000MT ( Fnsh_code, Fnsh_nm, CRNT_AFTR_CNT, Fnsh_loc_nm ";
-				   query += " value (?, ?, ?, ?) ";
+			String query =  " insert into TB_FS_1000MT ( Fnsh_code, Fnsh_nm, CRNT_AFTR_CNT, Fnsh_loc_nm ) ";
+				   query += " values (?, ?, ?, ?) ";
 			
 			PreparedStatement ps = con.prepareStatement(query);
 			

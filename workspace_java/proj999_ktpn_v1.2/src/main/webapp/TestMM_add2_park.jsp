@@ -124,10 +124,9 @@
 																.getElementById('select1');
 														var select1_option = select1.options[select1.selectedIndex];
 
-														var auto_Mname = select1_option
-																.getAttribute('auto_Mname');
-														document
-																.getElementById('Mname').value = auto_Mname;
+														var auto_Mname = select1_option.getAttribute('auto_Mname');
+														
+														document.getElementById('Mname').value = auto_Mname;
 													}
 												</script>
 

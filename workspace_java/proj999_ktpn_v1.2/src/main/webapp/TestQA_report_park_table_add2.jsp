@@ -116,10 +116,10 @@
 														<td>
 															<select id="select1" name="Pcode" onchange="changeP()">
 																<c:forEach var="pcode" items="${pList }">
-																	<option value="${pcode.PROD_CD }" 
-																			auto_icode = "${pcode.ITEM_CD }" 
-																			auto_iname = "${pcode.ITEM_NM }">
-																		${pcode.PROD_CD }
+																	<option value="${pcode.prod_cd }" 
+																			auto_icode = "${pcode.item_cd }" 
+																			auto_iname = "${pcode.item_nm }">
+																		${pcode.prod_cd }
 																	</option>
 																</c:forEach>
 															</select>
@@ -130,7 +130,9 @@
 	                                                    	// 셀렉트 박스에서 선택한 옵션값 가져오기
 	                                                    	function changeP() {
 	                                                    		var select1 = document.getElementById('select1');
-	                                                    		var select1_option = select1.options[select1.selectedIndex].value;
+	                                                    		var select1_option = select1.options[select1.selectedIndex];
+// 	                                                    		var select1_option = select1.options[select1.selectedIndex].value;
+//																.value 쓰면 안된다
 	                                                    	
 	                                                    		var auto_icode = select1_option.getAttribute('auto_icode');
 	                                                    		document.getElementById('icode').value = auto_icode;
@@ -151,7 +153,7 @@
 
 														<td><select name="tester" required="required">
 																<c:forEach var="worker" items="${mList }">
-																	<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
+																	<option value="${worker.mbr_nm }">${worker.mbr_nm }</option>
 																</c:forEach>
 														</select></td>
 

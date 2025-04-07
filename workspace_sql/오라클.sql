@@ -926,6 +926,9 @@ start with mgr is null   -- 시작점
 connect by empno != 7788 and prior empno = mgr  -- 계층 간의 관계
 order siblings by empno;  -- 계층 순서 정의
 
+select count(*) from emp2;
+
+
 
 
 
