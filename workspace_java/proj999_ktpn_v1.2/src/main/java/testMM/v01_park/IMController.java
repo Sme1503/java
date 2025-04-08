@@ -35,7 +35,7 @@ public class IMController extends HttpServlet {
 		// TODO Auto-generated method stub
 		System.out.println("/imcon doGet실행");
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");

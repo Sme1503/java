@@ -928,7 +928,7 @@ order siblings by empno;  -- 계층 순서 정의
 
 select count(*) from emp2;
 
-
+SELECT * FROM EMP WHERE EMPNO = :empno;
 
 
 

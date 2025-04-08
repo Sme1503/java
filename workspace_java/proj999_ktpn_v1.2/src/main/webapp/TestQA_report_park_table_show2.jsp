@@ -109,67 +109,67 @@
 
 													<tr>
 														<th class="qc-title"> <p>1. 생산코드</p> </th>
-														<td>${QcList.PROD_CD }</td>
+														<td>${QcList.prod_cd }</td>
 
 														<th class="qc-title">  <p>9. 검수자</p> </th>
-														<td>${QcList.CHCKR_NM }</td>
+														<td>${QcList.chckr_nm }</td>
 													</tr>
 
 													<tr>
 														<th class="qtable-th qc-title">  <p>2. 품목코드</p>   </th>
-														<td class="qtable-td">${QcList.ITEM_CD }</td>
+														<td class="qtable-td">${QcList.item_cd }</td>
 
 														<th class="qc-title">  <p>10. 검수일</p> </th>
-														<td>${QcList.Chckr_dttm }
+														<td>${QcList.chckr_dttm }
 														<td>
 													</tr>
 
 													<tr>
 														<th class="qc-title">  <p>3. 품목명</p>  </th>
-														<td>${QcList.ITEM_NM }</td>
+														<td>${QcList.item_nm }</td>
 
 														<th class="qc-title">  <p>11. 강도값</p> </th>
-														<td>${QcList.STRTH_VAL }</td>
+														<td>${QcList.strth_val }</td>
 													</tr>
 
 													<tr>
 														<th class="qc-title"> <p>4. 작업자</p>   </th>
-														<td>${QcList.WORK_NM }</td>
+														<td>${QcList.work_nm }</td>
 
 														<th class="qc-title">  <p>12. 크기값</p>  </th>
-														<td>${QcList.SZ_VAL }</td>
+														<td>${QcList.sz_val }</td>
 													</tr>
 
 													<tr>
 														<th class="qc-title">  <p>5. 생산완료시간</p>  </th>
-														<td>${QcList.PROD_END_TIME }</td>
+														<td>${QcList.prod_end_time }</td>
 
 														<th class="qc-title">  <p>13. 색상값</p>   </th>
-														<td>${QcList.Clrl_val }</td>
+														<td>${QcList.clrl_val }</td>
 													</tr>
 
 													<tr>
 														<th class="qc-title"> <p>6. 지시수량</p>   </th>
-														<td>${QcList.INDC_QNTT }</td>
+														<td>${QcList.indc_qntt }</td>
 
 														<th class="qc-title">   <p>14. 품질값</p>  </th>
-														<td>${QcList.Qlty_val }</td>
+														<td>${QcList.qlty_val }</td>
 													</tr>
 
 													<tr>
 														<th class="qc-title">  <p>7. 생산량</p>   </th>
-														<td>${QcList.PROD_QNTT }</td>
+														<td>${QcList.prod_qntt }</td>
 
 														<th class="qc-title">  <p>15. 불합격사유</p>   </th>
-														<td>${QcList.Fail_caus_desc }</td>
+														<td>${QcList.fail_caus_desc }</td>
 													</tr>
 
 													<tr>
 														<th class="qc-title">  <p>8. 불량률</p>    </th>
-														<td>${QcList.DFC_RT }</td>
+														<td>${QcList.dfc_rt }</td>
 
 														<th class="qc-title">   <p>16. 비고</p>   </th>
-														<td>${QcList.Rmrk }</td>
+														<td>${QcList.rmrk }</td>
 													</tr>
 
 												</tbody>
@@ -183,7 +183,7 @@
 											</div>
 											
 											<button type="submit" id="btn_report_confirm" name="command" value="move_main_page">
-												"TestQA_main_park.jsp" 확인
+												"TestQA_main_park2.jsp" 확인
 											</button>
 											
 <!-- 											<button type="button" id="btn_report_confirm"> -->

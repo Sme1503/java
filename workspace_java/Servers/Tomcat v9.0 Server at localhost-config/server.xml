@@ -165,7 +165,7 @@
       
       <Context docBase="proj999_ktpn_v1.2" path="/projktpn" reloadable="true" source="org.eclipse.jst.jee.server:proj999_ktpn_v1.2"/>
       
-      <Context docBase="spring0_webtoon" path="/webtoon" reloadable="true" source="org.eclipse.jst.jee.server:spring0_webtoon"/><Context docBase="spring4_MyBatis" path="/human4" reloadable="false" source="org.eclipse.jst.jee.server:spring4_MyBatis"/><Context docBase="spring5_filter" path="/human5" reloadable="false" source="org.eclipse.jst.jee.server:spring5_filter"/></Host>
+      <Context docBase="spring5_filter" path="/human5" reloadable="false" source="org.eclipse.jst.jee.server:spring5_filter"/></Host>
     </Engine>
   </Service>
 </Server>

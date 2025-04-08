@@ -82,7 +82,7 @@
 								<div class="tab-name-con">
 									<div class="tab-name">제품 검사 목록</div>
 								</div>
-								<form action="qccon" method="post">
+<!-- 								<form action="qccon" method="post"> -->
 									<div class="select_input_search-btn">
 
 										<!-- 									<form action="#"> -->
@@ -148,42 +148,42 @@
 
 												<tbody>
 
-													<c:forEach var="QCdata" items="${pList }">
+													<c:forEach var="QCdata" items="${list }">
 
 														<tr>
 
 
 															<td><input type="checkbox" name="delcode"
-																value="${QCdata.PROD_CD }"></td>
+																value="${QCdata.prod_cd }"></td>
 
 															<!-- 													<form method="post" action="qccon"> -->
 
 															<td class="QA-td"><input type="hidden" name="code"
-																value="${QCdata.PROD_CD }"> <a
+																value="${QCdata.prod_cd }"> <a
 																class="enter_reportPage"
 																href="./TestQA_report_park_table_show.jsp">
-																	${QCdata.PROD_CD } </a></td>
+																	${QCdata.prod_cd } </a></td>
 
 															<td class="QA-td"><input type="hidden" name="code"
-																value="${QCdata.PROD_CD }"> ${QCdata.ITEM_CD }</td>
+																value="${QCdata.item_cd }"> ${QCdata.item_cd }</td>
 
 															<td class="QA-td"><input type="hidden" name="name"
-																value="${QCdata.ITEM_NM }"> ${QCdata.ITEM_NM }</td>
+																value="${QCdata.item_nm }"> ${QCdata.item_nm }</td>
 
 															<td class="QA-td"><input type="hidden" name="fiber"
-																value="${QCdata.STRTH_VAL }"> ${QCdata.STRTH_VAL }</td>
+																value="${QCdata.strth_val }"> ${QCdata.strth_val }</td>
 
 															<td class="QA-td"><input type="hidden" name="size"
-																value="${QCdata.SZ_VAL }"> ${QCdata.SZ_VAL }</td>
+																value="${QCdata.sz_val }"> ${QCdata.sz_val }</td>
 
 															<td class="QA-td"><input type="hidden" name="color"
-																value="${QCdata.Clrl_val }"> ${QCdata.Clrl_val }</td>
+																value="${QCdata.clrl_val }"> ${QCdata.clrl_val }</td>
 
 															<td class="QA-td"><input type="hidden" name="erase"
-																value="${QCdata.Qlty_val }"> ${QCdata.Qlty_val }</td>
+																value="${QCdata.qlty_val }"> ${QCdata.qlty_val }</td>
 
 															<td class="QA-td"><input type="hidden" name="tester"
-																value="${QCdata.CHCKR_NM }"> ${QCdata.CHCKR_NM }</td>
+																value="${QCdata.chckr_nm }"> ${QCdata.chckr_nm }</td>
 
 															<td><input type="hidden" name="command"
 																value="update"> <input type="submit" value="수정">
@@ -203,6 +203,7 @@
 
 
 
+											<form action="qccon" method="post">
 										<div>
 											<div class="div_none1">
 												<!-- 											안보임 -->
@@ -222,10 +223,10 @@
 															<td class="QA-td"><select id="select1" name="Pcode"
 																onchange="changeP()">
 																	<c:forEach var="pcode" items="${pList }">
-																		<option value="${pcode.PROD_CD }"
-																			auto_icode="${pcode.ITEM_CD }"
-																			auto_iname="${pcode.ITEM_NM }">
-																			${pcode.PROD_CD }</option>
+																		<option value="${pcode.prod_cd }"
+																			auto_icode="${pcode.item_cd }"
+																			auto_iname="${pcode.item_nm }">
+																			${pcode.prod_cd }</option>
 																	</c:forEach>
 															</select></td>
 
@@ -234,7 +235,7 @@
 																function changeP() {
 																	var select1 = document
 																			.getElementById('select1');
-																	var select1_option = select1.options[select1.selectedIndex].value;
+																	var select1_option = select1.options[select1.selectedIndex];
 
 																	var auto_icode = select1_option
 																			.getAttribute('auto_icode');
@@ -257,7 +258,7 @@
 															<td class="QA-td"><select name="tester"
 																required="required">
 																	<c:forEach var="worker" items="${mList }">
-																		<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
+																		<option value="${worker.mbr_nm }">${worker.mbr_nm }</option>
 																	</c:forEach>
 															</select></td>
 
@@ -293,31 +294,31 @@
 															<td class="QA-td"><select name="fiber"
 																required="required">
 																	<!-- <option value="fiber_select">선택</option> -->
-																	<option value="fiber_1">1</option>
-																	<option value="fiber_2">2</option>
-																	<option value="fiber_3">3</option>
-																	<option value="fiber_4">4</option>
-																	<option value="fiber_5">5</option>
-																	<option value="fiber_6">6</option>
-																	<option value="fiber_7">7</option>
-																	<option value="fiber_8">8</option>
-																	<option value="fiber_9">9</option>
-																	<option value="fiber_10" selected>10</option>
+																	<option value="1">1</option>
+																	<option value="2">2</option>
+																	<option value="3">3</option>
+																	<option value="4">4</option>
+																	<option value="5">5</option>
+																	<option value="6">6</option>
+																	<option value="7">7</option>
+																	<option value="8">8</option>
+																	<option value="9">9</option>
+																	<option value="10" selected>10</option>
 															</select></td>
 
 															<td class="QA-td"><select name="size"
 																required="required">
 																	<!-- <option value="size_select">선택</option> -->
-																	<option value="size_1">1</option>
-																	<option value="size_2">2</option>
-																	<option value="size_3">3</option>
-																	<option value="size_4">4</option>
-																	<option value="size_5">5</option>
-																	<option value="size_6">6</option>
-																	<option value="size_7">7</option>
-																	<option value="size_8">8</option>
-																	<option value="size_9">9</option>
-																	<option value="size_10" selected>10</option>
+																	<option value="1">1</option>
+																	<option value="2">2</option>
+																	<option value="3">3</option>
+																	<option value="4">4</option>
+																	<option value="5">5</option>
+																	<option value="6">6</option>
+																	<option value="7">7</option>
+																	<option value="8">8</option>
+																	<option value="9">9</option>
+																	<option value="10" selected>10</option>
 															</select></td>
 
 															<td class="QA-td"><input name="color" type="color"
@@ -326,16 +327,16 @@
 															<td class="QA-td"><select name="erase"
 																required="required">
 																	<!-- <option value="erase_select">선택</option> -->
-																	<option value="erase_1">1</option>
-																	<option value="erase_2">2</option>
-																	<option value="erase_3">3</option>
-																	<option value="erase_4">4</option>
-																	<option value="erase_5">5</option>
-																	<option value="erase_6">6</option>
-																	<option value="erase_7">7</option>
-																	<option value="erase_8">8</option>
-																	<option value="erase_9">9</option>
-																	<option value="erase_10" selected>10</option>
+																	<option value="1">1</option>
+																	<option value="2">2</option>
+																	<option value="3">3</option>
+																	<option value="4">4</option>
+																	<option value="5">5</option>
+																	<option value="6">6</option>
+																	<option value="7">7</option>
+																	<option value="8">8</option>
+																	<option value="9">9</option>
+																	<option value="10" selected>10</option>
 															</select></td>
 
 															<td class="QA-td" colspan="1"><select name="notpass"
@@ -360,9 +361,9 @@
 												확인 - 누르면 추가된다</button>
 
 										</div>
-
+									</form>
 									</div>
-								</form>
+<!-- 								</form> -->
 
 
 								<div class="div_none">
