@@ -80,6 +80,37 @@ public class QAController extends HttpServlet {
 
 		request.setAttribute("mList", memberList);
 		
+		String command = null;
+		String data_value = null;
+		String code = request.getParameter("code");
+		data_value = request.getParameter("data_value");
+		System.out.println("code : " + code);
+		System.out.println("data_value : " + data_value);
+		
+		if (data_value != null) {
+
+			// 생산테이블과 품질테이블을 생산코드로 조인
+
+			TB_QA_1000DT_DTO Jointable_dto = new TB_QA_1000DT_DTO();
+			TB_QA_1100DT_DAO Jointable_dao = new TB_QA_1100DT_DAO();
+
+			List joinList = new ArrayList();
+
+			joinList = Jointable_dao.joinQCnPR(code);
+
+			for (int i = 0; i < joinList.size(); i++) {
+				Jointable_dto = (TB_QA_1000DT_DTO) joinList.get(i);
+
+				System.out.println("조인 내용 : " + Jointable_dto.toString());
+				System.out.println();
+			}
+			request.setAttribute("QcList", joinList);
+
+			String url = "TestQA_report_park_table_show.jsp";
+			request.getRequestDispatcher(url).forward(request, response);
+
+		}
+		
 		
 		String url = "TestQA_main_park2.jsp";
 
