@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.tb_mr_1000ht">
+
+	<select id="selectMlog" resultType="tb_mr_1000ht" parameterType="tb_mr_1000ht">
+		select * from tb_mr_1000ht
+	</select>
+
+	<select id="selectLastMlog" resultType="tb_mr_1000ht" parameterType="tb_mr_1000ht">
+		select a.* from (
+			select a.*, rownum as rn
+			from TB_MR_1000HT a
+			where a.mtrl_cd = #{mtrl_cd}
+			order by a.sn desc ) a
+		where a.rn = #{숫자}
+	</select>
+	
+	<insert id="insertMlog" parameterType="tb_mr_1000ht">
+		insert into TB_MR_1000HT (sn, mtrl_cd, mtrl_nm, stn_cnt, crnt_cnt, ordr_rqrd_yn, iob_se_cd,
+				  work_nm, mtrl_cd_nm, rmrk, reg_dttm, crnt_aftr_cnt, chng_dt)
+		values (SQ_MR_1000HT.NEXTVAL, 
+				  #{mtrl_cd}, #{mtrl_nm}, #{stn_cnt}, #{crnt_cnt}, #{ordr_rqrd_yn}, #{iob_se_cd}, #{work_nm}, #{mtrl_cd_nm}, #{rmrk}, sysdate, #{crnt_aftr_cnt}, to_char(sysdate, 'yyyymmdd'))
+	</insert>
+	
+	<update id="updateMlog" parameterType="tb_mr_1000ht">
+		update TB_MR_1000HT from 
+		set rmrk = #{rmrk}
+		where sn = #{sn} and mtrl_cd = #{mtrl_cd} 
+	</update>
+
+</mapper>

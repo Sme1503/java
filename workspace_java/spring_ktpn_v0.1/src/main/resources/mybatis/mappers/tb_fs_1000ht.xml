@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.tb_fs_1000ht">
+
+	<select id="selectPlog" resultType="tb_fs_1000ht" parameterType="tb_fs_1000ht">
+		select * from tb_fs_1000ht
+	</select>
+
+	<select id="selectLastPlog" resultType="tb_fs_1000ht" parameterType="tb_fs_1000ht">
+		select a.* form (
+			select a.*, rownum as rn
+			from TB_FS_1000HT a
+			where a.fnsh_code = #{fnsh_code}
+			ordey by a.sn desc ) a
+		where a.rn = #{숫자} 
+	</select>
+	
+	<insert id="insertPlog" parameterType="tb_fs_1000ht">
+		insert into TB_FS_1000HT (sn, prod_cd,fnsh_code, fnshd_item_nm, crnt_cnt, iob_se_cd,
+			work_nm, fnshl_loc_nm, rmrk, reg_dttm, crnt_aftr_cnt, chng_dt)
+		values (SQ_FS_1000HT.NEXTVAL, 
+			 #{prod_cd}, #{fnsh_code}, #{fnshd_item_nm}, #{crnt_cnt}, #{iob_se_cd}, #{work_nm}, #{fnshl_loc_nm}, #{rmrk}, sysdate, #{crnt_aftr_cnt}, to_char(sysdate, 'yyyymmdd')) 
+	</insert>
+
+	<update id="updatePlog" parameterType="tb_fs_1000ht">
+		update TB_FS_1000HT
+		set rmrk = #{rmrk}
+		where sn = #{sn} and fnsh_code = #{fnsh_code}
+	</update>
+	
+</mapper>

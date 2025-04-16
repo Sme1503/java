@@ -4,7 +4,7 @@
 // 추가 알림
 const btn_main_add = document.getElementById('btn_main_add');
 
-btn_main_add.addEventListener('click', function () {
+/*btn_main_add.addEventListener('click', function () {
     console.log("동작함");
     //alert("추가 페이지로 넘어갑니다.");
 });
@@ -53,6 +53,7 @@ a_after.addEventListener('click', function () {
     console.log("동작함");
     //alert("다음 페이지로 넘어갑니다");
 });
+*/
 
 //페이지 표시
 const nums = document.querySelectorAll('.num')

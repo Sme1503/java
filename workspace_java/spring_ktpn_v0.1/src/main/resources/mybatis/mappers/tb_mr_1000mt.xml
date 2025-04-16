@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.tb_mr_1000mt">
+
+	<select id="selectMaterials" resultType="tb_mr_1000mt" parameterType="tb_mr_1000mt">
+		select * from tb_mr_1000mt
+	</select>
+
+	<select id="selectCurrentM" resultType="tb_mr_1000mt" parameterType="tb_mr_1000mt">
+		select * from TB_MR_1000MT where mtrl_cd like #{mtrl_cd}
+	</select>
+	
+	<insert id="insertCurrentM" parameterType="tb_mr_1000mt">
+		insert into TB_MR_1000MT (mtrl_cd, mtrl_nm, stn_cnt, ordr_rqrd_yn, 
+			 mtrl_loc_nm, crnt_aftr_cnt) 
+		values ( #{mtrl_cd}, #{mtrl_nm}, #{stn_cnt}, #{ordr_rqrd_yn}, #{mtrl_loc_nm}, #{crnt_aftr_cnt}) 
+	</insert>
+	
+	<update id="updateCurrentM" parameterType="tb_mr_1000mt">
+		update TB_MR_1000MT
+		set ordr_rqrd_yn = #{ordr_rqrd_yn}, mtrl_loc_nm = #{mtrl_loc_nm}, crnt_aftr_cnt = #{crnt_aftr_cnt} 
+		where mtrl_cd = #{mtrl_cd}
+	</update>
+	
+	<delete id="deleteCurrentM" parameterType="tb_mr_1000mt">
+		delete from TB_MR_1000MT
+		where mtrl_cd = #{mtrl_cd}
+	</delete>
+	
+</mapper>
