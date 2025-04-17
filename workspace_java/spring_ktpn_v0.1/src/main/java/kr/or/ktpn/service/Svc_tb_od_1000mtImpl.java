@@ -19,7 +19,7 @@ public class Svc_tb_od_1000mtImpl implements Svc_tb_od_1000mt {
 		
 		System.out.println("service_od_1000mt");
 		List list = tb_od_1000mt_dao.selectCompanyList();
-		System.out.println("list : " + list);
+		System.out.println("service list all : " + list);
 		
 		return list;
 	}

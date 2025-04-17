@@ -23,6 +23,8 @@ public class con_QC {
 	@Autowired
 	Svc_tb_qa_1100dt svc_qa_1100dt;
 	
+	// 문제 : 추가 할때 뒤로가기를 한다던가하면 같은 값이 또 입력되서 중복값이 생긴다
+	// 해결 : 테이블에 기본키 설정이 안되있었다. 기본키 설정할 것
 	
 	// 품질관리 목록 보여주는 메소드
 	@RequestMapping(value="/mainqc", method = RequestMethod.GET)
@@ -39,9 +41,11 @@ public class con_QC {
 	public String showJoin(Model model, String pcode) {
 		
 		System.out.println("pcode : " + pcode);
-		// 소문자로 인식해서 검색이 안된다 s0001 => S0001 대문자로 바꾸기
+		// 소문자로 인식해서 검색이 안된다 s0001 => S0001 대문자로 바꾸기 -> 완료
 		
 		List list = svc_qa_1100dt.getJoinQC(pcode);
+		System.out.println("list : " + list);
+		
 		model.addAttribute("QcList", list);
 		
 		return "TestQA_report_park_table_show2.tiles";

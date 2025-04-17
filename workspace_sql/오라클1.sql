@@ -212,4 +212,6 @@ select j.*
           qa.CHCKR_NM, qa.CHCKR_DTTM, qa.STRTH_VAL, qa.SZ_VAL, qa.CLRL_VAL, qa.QLTY_VAL, qa.FAIL_CAUS_DESC, qa.RMRK
    from TB_QA_1100DT qa, TB_PR_1100MT pr 
  where qa.PROD_CD = pr.PROD_CD
-   and qa.PROD_CD = 'S0001';
+   and qa.PROD_CD = upper('D0026');
+   
+select * from TB_MB_1000MT where MBR_SENM = '일반회원';

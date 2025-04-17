@@ -20,7 +20,7 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		System.out.println("service_qa_1100dt getSelectQC");
 		List list = tb_qa_1100dt_dao.selectQC();
-		System.out.println("list : " + list);
+		System.out.println("service list all : " + list);
 		
 		return list;
 	}
@@ -31,9 +31,9 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		System.out.println("service_qa_1100dt getInsertQC");
 		int i = tb_qa_1100dt_dao.insertQC(dto);
-		System.out.println("i : " + i);
+		System.out.println("service insert i : " + i);
 		
-		return 0;
+		return i;
 	}
 
 	@Override
@@ -42,9 +42,9 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		System.out.println("service_qa_1100dt getUpdateQC");
 		int i = tb_qa_1100dt_dao.updateQC(dto);
-		System.out.println("i : " + i);	
+		System.out.println("service update i : " + i);	
 		
-		return 0;
+		return i;
 	}
 
 	@Override
@@ -53,9 +53,9 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		System.out.println("service_qa_1100dt getDeleteQC");
 		int i = tb_qa_1100dt_dao.deleteQC(dto);
-		System.out.println("i : " + i);
+		System.out.println("service delete i : " + i);
 		
-		return 0;
+		return i;
 	}
 
 	@Override
@@ -64,9 +64,9 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		System.out.println("service_qa_1100dt getJoinQC");
 		List list = tb_qa_1100dt_dao.joinQC(pcode);
-		System.out.println("list : " + list);
+		System.out.println("service list join : " + list);
 		
-		return null;
+		return list;
 	}
 	
 }

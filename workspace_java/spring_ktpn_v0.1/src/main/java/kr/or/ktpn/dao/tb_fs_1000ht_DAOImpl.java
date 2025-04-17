@@ -6,6 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ktpn.dto.tb_fs_1000ht_DTO;
+
 @Repository
 public class tb_fs_1000ht_DAOImpl implements tb_fs_1000ht_DAO {
 
@@ -17,6 +19,36 @@ public class tb_fs_1000ht_DAOImpl implements tb_fs_1000ht_DAO {
 		// TODO Auto-generated method stub
 		
 		List result = sqlSession.selectList("mapper.tb_fs_1000ht.selectPlog");
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
+	@Override
+	public int insertPlog(tb_fs_1000ht_DTO dto) {
+		// TODO Auto-generated method stub
+		
+		int i = sqlSession.insert("mapper.tb_fs_1000ht.insertPlog", dto);
+		System.out.println("insert i : " + i);
+		
+		return i;
+	}
+
+	@Override
+	public int updatePlog(tb_fs_1000ht_DTO dto) {
+		// TODO Auto-generated method stub
+		
+		int i = sqlSession.update("mapper.tb_fs_1000ht.updatePlog", dto);
+		System.out.println("update i : " + i);
+		
+		return i;
+	}
+
+	@Override
+	public List selectLastPlog(tb_fs_1000ht_DTO dto) {
+		// TODO Auto-generated method stub
+		
+		List result = sqlSession.selectOne("mapper.tb_fs_1000ht.selectLastPlog", dto);
 		System.out.println("result : " + result);
 		
 		return result;

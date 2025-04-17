@@ -41,43 +41,16 @@
 						<div class="tab-name">제품 검사 목록</div>
 					</div>
 					<!-- 								<form action="qccon" method="post"> -->
-					<div class="select_input_search-btn">
-
-						<!-- 									<form action="#"> -->
-
-						<select name="select_QA" id="select_QA">
-							<option value="all" selected="selected">전체</option>
-							<option value="QA_code1">생산코드</option>
-							<option value="QA_code2">품목코드</option>
-							<option value="QA_code3">품목명</option>
-							<!-- 											<option value="QA_code4">최종결과</option> -->
-						</select> <input type="select" class="select">
-						<!-- <input class="select_day" id="select_QA_eve" type="date" value=""
-                                                max="2999-12-31" , min="1970-01-01"> -->
-						<input class="select_day" id="select_QA_today" type="date"
-							value="" max="2999-12-31" , min="1970-01-01"> <input
-							type="submit" class="submit" value="검색">
-
-
-						<!-- 									</form> -->
-
-
-
-						<div class="right_chi">
+					
+					<div class="right_chi">
 
 
 							<button class="btn" type="button" value="move_add_page"
 								name="command">추가 - 버튼을 누르면 입력하는 창이 생김</button>
 
 							<!-- 										<form action="qccon" method="post"> -->
-							<button class="btn" type="submit" value="delete" name="command">
-								<input type="hidden" name="command" value="delete"> 삭제 -
-								체크박스에 체크하고 누르면 삭제
-							</button>
+							
 							<!-- 										</form> -->
-
-						</div>
-
 
 					</div>
 
@@ -85,75 +58,7 @@
 					<div>
 
 						<!-- 									<form method="post" action="qccon"> -->
-						<div>
-							<table class="QA-table">
-								<thead>
-									<tr>
-
-										<th scope="col" class="QA-th">✔</th>
-										<th scope="col" class="QA-th">생산코드</th>
-										<th scope="col" class="QA-th">품목코드</th>
-										<th scope="col" class="QA-th">품목명</th>
-										<th scope="col" class="QA-th">강도값</th>
-										<th scope="col" class="QA-th">크기값</th>
-										<th scope="col" class="QA-th">색상값</th>
-										<th scope="col" class="QA-th">품질값</th>
-										<th scope="col" class="QA-th">검수자</th>
-										<th scope="col" class="QA-th">수정</th>
-									</tr>
-								</thead>
-
-								<tbody>
-
-									<c:forEach var="QCdata" items="${list }">
-
-										<tr>
-
-
-											<td><input type="checkbox" name="delcode"
-												value="${QCdata.prod_cd }"></td>
-
-											<!-- 													<form method="post" action="qccon"> -->
-
-											<td class="QA-td"><input type="hidden" name="code"
-												value="${QCdata.prod_cd }"> <a
-												class="enter_reportPage"
-												href="./TestQA_report_park_table_show2.jsp"
-												data-value="${QCdata.prod_cd }"> ${QCdata.prod_cd } </a></td>
-
-											<td class="QA-td"><input type="hidden" name="code"
-												value="${QCdata.item_cd }"> ${QCdata.item_cd }</td>
-
-											<td class="QA-td"><input type="hidden" name="name"
-												value="${QCdata.item_nm }"> ${QCdata.item_nm }</td>
-
-											<td class="QA-td"><input type="hidden" name="fiber"
-												value="${QCdata.strth_val }"> ${QCdata.strth_val }</td>
-
-											<td class="QA-td"><input type="hidden" name="size"
-												value="${QCdata.sz_val }"> ${QCdata.sz_val }</td>
-
-											<td class="QA-td"><input type="hidden" name="color"
-												value="${QCdata.clrl_val }"> ${QCdata.clrl_val }</td>
-
-											<td class="QA-td"><input type="hidden" name="erase"
-												value="${QCdata.qlty_val }"> ${QCdata.qlty_val }</td>
-
-											<td class="QA-td"><input type="hidden" name="tester"
-												value="${QCdata.chckr_nm }"> ${QCdata.chckr_nm }</td>
-
-											<td><input type="hidden" name="command" value="update">
-												<input type="submit" value="수정"></td>
-
-											<!--                                                 	</form> -->
-										</tr>
-
-
-									</c:forEach>
-
-								</tbody>
-							</table>
-						</div>
+						
 
 						<!-- 									</form> -->
 
@@ -317,6 +222,80 @@
 
 							</div>
 						</form>
+						
+						
+						<div>
+							<table class="QA-table">
+								<thead>
+									<tr>
+
+										<th scope="col" class="">✔</th>
+										<th scope="col" class="QA-th">생산코드</th>
+										<th scope="col" class="QA-th">품목코드</th>
+										<th scope="col" class="QA-th">품목명</th>
+										<th scope="col" class="QA-th">강도값</th>
+										<th scope="col" class="QA-th">크기값</th>
+										<th scope="col" class="QA-th">색상값</th>
+										<th scope="col" class="QA-th">품질값</th>
+										<th scope="col" class="QA-th">검수자</th>
+										<th scope="col" class="QA-th">수정</th>
+									</tr>
+								</thead>
+
+								<tbody>
+
+									<c:forEach var="QCdata" items="${list }">
+
+										<tr>
+
+
+											<td><input type="checkbox" name="delcode"
+												value="${QCdata.prod_cd }"></td>
+
+											<!-- 													<form method="post" action="qccon"> -->
+
+											<td class="QA-td"><input type="hidden" name="code"
+												value="${QCdata.prod_cd }"> <a
+												class="enter_reportPage"
+												href="showjoin?pcode=${QCdata.prod_cd }"
+												data-value="${QCdata.prod_cd }"> ${QCdata.prod_cd } </a></td>
+
+											<td class="QA-td"><input type="hidden" name="code"
+												value="${QCdata.item_cd }"> ${QCdata.item_cd }</td>
+
+											<td class="QA-td"><input type="hidden" name="name"
+												value="${QCdata.item_nm }"> ${QCdata.item_nm }</td>
+
+											<td class="QA-td"><input type="hidden" name="fiber"
+												value="${QCdata.strth_val }"> ${QCdata.strth_val }</td>
+
+											<td class="QA-td"><input type="hidden" name="size"
+												value="${QCdata.sz_val }"> ${QCdata.sz_val }</td>
+
+											<td class="QA-td"><input type="hidden" name="color"
+												value="${QCdata.clrl_val }"> ${QCdata.clrl_val }</td>
+
+											<td class="QA-td"><input type="hidden" name="erase"
+												value="${QCdata.qlty_val }"> ${QCdata.qlty_val }</td>
+
+											<td class="QA-td"><input type="hidden" name="tester"
+												value="${QCdata.chckr_nm }"> ${QCdata.chckr_nm }</td>
+
+											<td><input type="hidden" name="command" value="update">
+												<input type="submit" value="수정"></td>
+
+											<!--                                                 	</form> -->
+										</tr>
+
+
+									</c:forEach>
+
+								</tbody>
+							</table>
+						</div>
+						
+						
+						
 					</div>
 					<!-- 								</form> -->
 
@@ -344,6 +323,31 @@
 							<a id="a_after_page" href=""> 다음 > </a>
 						</div>
 					</div>
+					
+					<div class="select_input_search-btn">
+
+						<!-- 									<form action="#"> -->
+
+						<select name="select_QA" id="select_QA">
+							<option value="all" selected="selected">전체</option>
+							<option value="QA_code1">생산코드</option>
+							<option value="QA_code2">품목코드</option>
+							<option value="QA_code3">품목명</option>
+							<!-- 											<option value="QA_code4">최종결과</option> -->
+						</select> <input type="select" class="select">
+						<!-- <input class="select_day" id="select_QA_eve" type="date" value=""
+                                                max="2999-12-31" , min="1970-01-01"> -->
+						<input class="select_day" id="select_QA_today" type="date"
+							value="" max="2999-12-31" , min="1970-01-01"> <input
+							type="submit" class="submit" value="검색">
+
+
+						<!-- 									</form> -->
+
+
+
+					</div>
+					
 				</div>
 
 			</div>

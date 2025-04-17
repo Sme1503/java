@@ -21,7 +21,7 @@ public class tb_qa_1000dt_DTO {
 	private Date chckr_dttm; // 검수일시
 	private int strth_val; // 강도값
 	private int sz_val; // 크기값
-	private String Clrl_val; // 색상값
+	private String clrl_val; // 색상값
 	private int qlty_val; // 픔질값
 	private String fail_caus_desc; // 불합격사유내용
 	private String rmrk; // 비고

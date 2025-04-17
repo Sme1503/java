@@ -29,4 +29,28 @@
 		where mtrl_cd = #{mtrl_cd}
 	</delete>
 	
+	
+<!-- 	아래 sql 사용하는 메소드 만들기 -> 어느 DAO, Service에 만들어야함? 
+		회원정보테이블에 더미데이터 많이 만들기-->
+	
+<!-- 	기준관리에서 유형분류코드가 원자재인 기준관리코드와 기준관리명을 가져오는 sql -->
+	<select id="selectAllMCode" resultType="tb_md_1000mt">
+		select MT_MNG_CD, MT_MNG_NM from TB_MD_1000MT where TP_CLS_VAL = '원자재'
+	</select>
+	
+<!-- 	기준관리에서 유형분류코드가 완제품인 기준관리코드와 기준관리명을 가져오는 sql -->
+	<select id="selectAllPCode" resultType="tb_md_1000mt">
+		select MT_MNG_CD, MT_MNG_NM from TB_MD_1000MT where TP_CLS_VAL = '완제품'
+	</select>
+	
+<!-- 	회원정보에서 '일반회원'(작업자) 가져오는 sql -->
+	<select id="selectAllWorker" resultType="tb_mb_1000mt">
+		select * from TB_MB_1000MT where MBR_SENM = '일반회원'
+	</select>
+	
+<!-- 	생산에서 생산완료인 생산코드 가져오는 sql -->
+	<select id="selectFinishAllPCode" resultType="TAK_PR_1100MTDTO">
+		select * FROM TB_PR_1100MT where PROD_END_YN = 'Y'
+	</select>
+	
 </mapper>

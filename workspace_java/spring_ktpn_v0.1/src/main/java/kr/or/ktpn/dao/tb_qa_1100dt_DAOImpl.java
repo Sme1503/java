@@ -1,11 +1,13 @@
 package kr.or.ktpn.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.ktpn.dto.tb_qa_1000dt_DTO;
 import kr.or.ktpn.dto.tb_qa_1100dt_DTO;
 
 @Repository
@@ -58,9 +60,12 @@ public class tb_qa_1100dt_DAOImpl implements tb_qa_1100dt_DAO {
 	public List joinQC(String pcode) {
 		// TODO Auto-generated method stub
 		
-		List result = sqlSession.selectOne("mapper.tb_qa_1100dt.selectJoinQC", pcode);
+		tb_qa_1000dt_DTO result = sqlSession.selectOne("mapper.tb_qa_1100dt.selectJoinQC", pcode);
 		System.out.println("result : " + result);
 		
-		return result;
+		List list = new ArrayList();
+		list.add(result);
+		
+		return list;
 	}
 }
