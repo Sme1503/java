@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.ktpn.dto.tb_qa_1100dt_DTO;
+import kr.or.ktpn.service.Svc_member;
 import kr.or.ktpn.service.Svc_tb_qa_1000dt;
 import kr.or.ktpn.service.Svc_tb_qa_1100dt;
+import kr.or.ktpn.service.TAK_Svc_pr_1100mt;
 
 @Controller
 public class con_QC {
@@ -23,6 +25,13 @@ public class con_QC {
 	@Autowired
 	Svc_tb_qa_1100dt svc_qa_1100dt;
 	
+	
+	@Autowired
+	Svc_member svc_member;
+	
+	@Autowired
+	TAK_Svc_pr_1100mt tak_Svc_pr_1100mt;
+	
 	// 문제 : 추가 할때 뒤로가기를 한다던가하면 같은 값이 또 입력되서 중복값이 생긴다
 	// 해결 : 테이블에 기본키 설정이 안되있었다. 기본키 설정할 것
 	
@@ -32,6 +41,16 @@ public class con_QC {
 		
 		List list = svc_qa_1100dt.getSelectQC();
 		model.addAttribute("list", list);
+		
+		
+		// 작업자
+		List workerList = svc_member.getWorker();
+		
+		// 생산완료인 생산코드
+		List PcodeList = tak_Svc_pr_1100mt.getPcode();
+		
+		model.addAttribute("mList", workerList);
+		model.addAttribute("pList", PcodeList);
 		
 		return "TestQA_main_park2.tiles";
 	}
@@ -55,6 +74,8 @@ public class con_QC {
 	@RequestMapping(value="/addqc", method = RequestMethod.POST)
 	public String addQc(Model model, tb_qa_1100dt_DTO dto) {
 		
+		System.out.println("dto : " + dto);
+		
 		int i = svc_qa_1100dt.getInsertQC(dto);
 		
 //		return "TestQA_report_park_table_show2.tiles";
@@ -65,6 +86,8 @@ public class con_QC {
 	@RequestMapping(value="/updateqc", method = RequestMethod.POST)
 	public String updateQc(Model model, tb_qa_1100dt_DTO dto) {
 		
+		System.out.println("dto : " + dto);
+		
 		int i = svc_qa_1100dt.getUpdateQC(dto);
 		
 //		return "TestQA_report_park_table_show2.tiles";
@@ -74,6 +97,8 @@ public class con_QC {
 	// 품질관리에서 목록에 삭제하는 메소드
 	@RequestMapping(value="/deleteqc", method = RequestMethod.POST)
 	public String removeQc(Model model, tb_qa_1100dt_DTO dto) {
+		
+		System.out.println("dto : " + dto);
 		
 		int i = svc_qa_1100dt.getDeleteQC(dto);
 		

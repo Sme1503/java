@@ -30,6 +30,7 @@ public class Svc_tb_mr_1000htImpl implements Svc_tb_mr_1000ht {
 		// TODO Auto-generated method stub
 
 		System.out.println("service_mr_1000ht");
+		System.out.println("setvice dto : " + dto);
 		int i = tb_mr_1000ht_dao.insertMlog(dto);
 		System.out.println("service insert i : " + i);
 

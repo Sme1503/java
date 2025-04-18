@@ -28,7 +28,8 @@ public class tb_fs_1000ht_DAOImpl implements tb_fs_1000ht_DAO {
 	public int insertPlog(tb_fs_1000ht_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.insert("mapper.tb_fs_1000ht.insertPlog", dto);
+		int i = -1;
+		i = sqlSession.insert("mapper.tb_fs_1000ht.insertPlog", dto);
 		System.out.println("insert i : " + i);
 		
 		return i;
@@ -38,7 +39,8 @@ public class tb_fs_1000ht_DAOImpl implements tb_fs_1000ht_DAO {
 	public int updatePlog(tb_fs_1000ht_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.update("mapper.tb_fs_1000ht.updatePlog", dto);
+		int i = -1;
+		i = sqlSession.update("mapper.tb_fs_1000ht.updatePlog", dto);
 		System.out.println("update i : " + i);
 		
 		return i;

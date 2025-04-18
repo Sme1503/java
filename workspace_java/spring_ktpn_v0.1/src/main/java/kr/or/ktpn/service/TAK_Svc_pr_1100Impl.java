@@ -20,6 +20,22 @@ public class TAK_Svc_pr_1100Impl implements TAK_Svc_pr_1100mt {
 		System.out.println("PR_1100MTSVC : "+PR_1100MTSVC);
 		return PR_1100MTSVC;
 	}
+
+	
+	
+	
+	
+	// 생산완료인 생산코드 가져오는 메소드
+	@Override
+	public List getPcode() {
+		// TODO Auto-generated method stub
+		
+		System.out.println("service pr_1100mt");
+		List list = tb_pr_1100MTDAO.selectPcode();
+		System.out.println("list : " + list);
+		
+		return list;
+	}
 	
 	
 }

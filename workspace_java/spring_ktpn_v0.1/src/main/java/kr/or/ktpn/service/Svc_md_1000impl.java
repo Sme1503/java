@@ -39,4 +39,32 @@ public class Svc_md_1000impl implements Svc_md_1000mt {
 	    	return countUpdate;
 	    }
 	    
+	    
+	    
+	    
+	    // 원자재 코드, 원자재명 가져오는 메소드
+		@Override
+		public List getMcodeList() {
+			// TODO Auto-generated method stub
+			
+			System.out.println("service md_1000mt");
+			List list = mdDAO.selectMcodeList();
+			System.out.println("list : " + list);
+		
+			return list;
+		}
+		
+		
+		// 완제품 코드, 완제품명 가져오는 메소드
+		@Override
+		public List getPcodeList() {
+			// TODO Auto-generated method stub
+			
+			System.out.println("service md_1000mt");
+			List list = mdDAO.selectPcodeList();
+			System.out.println("list : " + list);
+		
+			return list;
+		}
+	    
 }

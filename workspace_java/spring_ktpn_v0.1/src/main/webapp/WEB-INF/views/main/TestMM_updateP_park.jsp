@@ -42,7 +42,7 @@
 					</div>
 
 					<!-- <div class="div_none"></div> -->
-					<form method="post" action="컨트롤러">
+					<form method="post" action="updatep2">
 						<div class="table_scroll">
 							<table class="material-table">
 								<thead>
@@ -69,29 +69,29 @@
 										<td class="material-td Mcode"></td>
 
 										<td id="Mcode" class="material-td Mcode"><input
-											type="text" value="${pList.Fnsh_code }" readonly="readonly">${pList.Fnsh_code }
+											type="text" name="fnsh_code" value="${pList.fnsh_code }" readonly="readonly">
 										</td>
 
 										<td id="Mname" class="material-td"><input type="text"
-											value="${pList.Fnshd_item_nm }" readonly="readonly">${pList.Fnshd_item_nm }
+											name="fnshd_item_nm" value="${pList.fnshd_item_nm }" readonly="readonly">
 										</td>
 
 										<td id="Mea" class="material-td"><input type="text"
-											name="newea" value="" placeholder="수량(EA) 입력"></td>
+											name="crnt_cnt" value="" placeholder="수량(EA) 입력"></td>
 
-										<td id="" class="material-td"><select name="inNout">
+										<td id="" class="material-td"><select name="iob_se_cd">
 												<option value="i">입고</option>
 												<option value="o">출고</option>
 										</select></td>
 
-										<td id="" class="material-td"><select name="worker">
+										<td id="" class="material-td"><select name="work_nm">
 												<c:forEach var="member" items="${memberList }">
-													<option value="${member.MBR_NM }">${member.MBR_NM }</option>
+													<option value="${member.mbr_nm }">${member.mbr_nm }</option>
 												</c:forEach>
 										</select></td>
 
 										<td id="Mloc" class="material-td"><select
-											name="warehouse">
+											name="fnshl_loc_nm">
 												<option value="warehouse1">P창고1</option>
 												<!--                                     						<option value="warehouse2">P창고2</option> -->
 												<!--                                     						<option value="warehouse3">P창고3</option> -->
@@ -99,10 +99,10 @@
 										</select></td>
 
 										<td id="Mloc" class="material-td"><input class="item"
-											id="date" name="date" type="date" /></td>
+											id="date" name="chng_dt" type="date" /></td>
 
 										<td id="Mloc" class="material-td"><input
-											class="item note" type="text" name="note" value=""
+											class="item note" type="text" name="rmrk" value=""
 											placeholder="입력" /></td>
 
 									</tr>

@@ -23,4 +23,20 @@ public class TAK_PR_1100MTDAOImpl implements TAK_PR_1100MTDAO {
 		return PR_1100MTDAO;
 	}
 
+	
+	
+	
+	
+	
+	// 생산완료인 생산코드 가져오는 메소드
+	@Override
+	public List selectPcode() {
+		// TODO Auto-generated method stub
+		
+		List result = sqlSession.selectList("mapper.tb_mr_1000mt.selectFinishAllPCode");
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
 }

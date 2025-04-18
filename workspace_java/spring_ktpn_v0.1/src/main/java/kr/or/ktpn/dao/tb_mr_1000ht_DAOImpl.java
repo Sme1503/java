@@ -28,7 +28,10 @@ public class tb_mr_1000ht_DAOImpl implements tb_mr_1000ht_DAO {
 	public int insertMlog(tb_mr_1000ht_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.insert("mapper.tb_mr_1000ht.insertMlog");
+		System.out.println("dao dto : " + dto);
+		
+		int i = -1;
+		i = sqlSession.insert("mapper.tb_mr_1000ht.insertMlog", dto);
 		System.out.println("insert i : " + i);
 		
 		return i;
@@ -38,7 +41,8 @@ public class tb_mr_1000ht_DAOImpl implements tb_mr_1000ht_DAO {
 	public int updateMlog(tb_mr_1000ht_DTO dto) {
 		// TODO Auto-generated method stub
 
-		int i = sqlSession.update("mapper.tb_mr_1000ht.updateMlog");
+		int i = -1;
+		i = sqlSession.update("mapper.tb_mr_1000ht.updateMlog", dto);
 		System.out.println("update i : " + i);
 		
 		return i;

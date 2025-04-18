@@ -47,7 +47,7 @@
 						<!-- <div class="div_none"></div> -->
 
 						<div id="input">
-							<form action="impcon" method="post">
+							<form action="addp2" method="post">
 								<div class="flex_child">
 
 									<div class="item i_color">생산코드</div>
@@ -60,7 +60,7 @@
 								<div class="flex_child">
 
 									<div class="item">
-										<select id="select1" name="Pcode" onchange="changePP()">
+										<select id="select1" name="prod_cd" onchange="changePP()">
 											<option value="default" selected="selected">선택</option>
 											<c:forEach var="pcode" items="${pList }">
 												<option value="${pcode.prod_cd }"
@@ -95,11 +95,11 @@
 
 									<div class="item">
 
-										<input class="item" type="text" id="icode" name="code"
+										<input class="item" type="text" id="icode" name="fnsh_code"
 											value="" readonly="readonly">
 									</div>
 									<div class="item">
-										<input class="item" type="text" id="iname" name="name"
+										<input class="item" type="text" id="iname" name="fnshd_item_nm"
 											value="" readonly="readonly">
 									</div>
 
@@ -117,11 +117,11 @@
 									<!--                                     		</select> -->
 
 									<div class="item">
-										<input class="item Mea" type="text" id="iea" name="ea"
+										<input class="item Mea" type="text" id="iea" name="crnt_cnt"
 											value="" readonly="readonly" />
 									</div>
 									<div class="item">
-										<select name="inNout">
+										<select name="iob_se_cd">
 											<option value="i">입고</option>
 											<option value="o">출고</option>
 										</select>
@@ -145,7 +145,7 @@
 								<div class="flex_child">
 
 									<div class="item">
-										<select name="worker">
+										<select name="work_nm">
 											<c:forEach var="member" items="${mList }">
 												<option value="${member.mbr_nm }">${member.mbr_nm }</option>
 											</c:forEach>
@@ -153,7 +153,7 @@
 									</div>
 
 									<div class="item">
-										<select name="warehouse">
+										<select name="fnshl_loc_nm">
 											<option value="warehouse1">P창고1</option>
 											<!--                                     			<option value="warehouse2">P창고2</option> -->
 											<!--                                     			<option value="warehouse3">P창고3</option> -->
@@ -162,11 +162,11 @@
 									</div>
 
 									<div class="item">
-										<input class="item" id="date" name="date" type="date" />
+										<input class="item" id="date" name="chng_dt" type="date" />
 									</div>
 
 									<div class="item">
-										<input class="item note" type="text" name="note" value=""
+										<input class="item note" type="text" name="rmrk" value=""
 											placeholder="입력" />
 									</div>
 

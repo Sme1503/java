@@ -19,7 +19,7 @@
 	
 	<update id="updateCurrentP" parameterType="tb_fs_1000mt">
 		update TB_FS_1000MT 
-		set crnt_aftr_cnt = #{crnt_aftr_cnt} and fnsh_loc_nm = #{fnsh_loc_nm}
+		set crnt_aftr_cnt = #{crnt_aftr_cnt}, fnsh_loc_nm = #{fnsh_loc_nm}
 		where fnsh_code = #{fnsh_code} 
 	</update>
 	

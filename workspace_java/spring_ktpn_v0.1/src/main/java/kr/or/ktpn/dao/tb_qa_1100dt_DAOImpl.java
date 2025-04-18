@@ -30,7 +30,8 @@ public class tb_qa_1100dt_DAOImpl implements tb_qa_1100dt_DAO {
 	public int insertQC(tb_qa_1100dt_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.insert("mapper.tb_qa_1100dt.insertQCreport", dto);
+		int i = -1;
+		i = sqlSession.insert("mapper.tb_qa_1100dt.insertQCreport", dto);
 		System.out.println("insert i : " + i);
 		
 		return i;
@@ -40,7 +41,8 @@ public class tb_qa_1100dt_DAOImpl implements tb_qa_1100dt_DAO {
 	public int updateQC(tb_qa_1100dt_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.update("mapper.tb_qa_1100dt.updateQCreport", dto);
+		int i = -1;
+		i = sqlSession.update("mapper.tb_qa_1100dt.updateQCreport", dto);
 		System.out.println("update i : " + i);
 		
 		return i;
@@ -50,7 +52,8 @@ public class tb_qa_1100dt_DAOImpl implements tb_qa_1100dt_DAO {
 	public int deleteQC(tb_qa_1100dt_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.delete("mapper.tb_qa_1100dt.deleteQCreport", dto);
+		int i = -1;
+		i = sqlSession.delete("mapper.tb_qa_1100dt.deleteQCreport", dto);
 		System.out.println("delete i : " + i);
 		
 		return i;

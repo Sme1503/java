@@ -47,7 +47,7 @@
 								<!-- <div class="div_none"></div> -->
 
 								<div id="input">
-									<form action="imcon" method="post">
+									<form action="addm2" method="post">
 
 										<div class="flex_child">
 
@@ -66,7 +66,7 @@
 												<div class="item">
 													<!--                                     		원자재코드 선택하면 원자재명도 자동으로입력 
 												이미 추가된 원자재코드가 있으면 그 코드로는 새로운 추가 불가능하게 하기-->
-													<select id="select1" name="code" onchange="changeM()">
+													<select id="select1" name="mtrl_cd" onchange="changeM()">
 														<c:forEach var="code" items="${mcList }">
 															<option value="${code.MT_MNG_CD }"
 																auto_Mname="${code.MT_MNG_NM }">
@@ -88,7 +88,7 @@
 												</script>
 
 												<div class="item">
-													<input type="text" id="Mname" name="name" value=""
+													<input type="text" id="Mname" name="mtrl_nm" value=""
 														readonly="readonly">
 
 													<!-- 													<select name="name"> -->
@@ -99,13 +99,13 @@
 												</div>
 
 												<div class="item">
-													<input class="item Mea" type="text" name="ea" value=""
+													<input class="item Mea" type="text" name="crnt_cnt" value=""
 														placeholder="수량(EA) 입력" />
 
 												</div>
 
 												<div class="item">
-													<select name="inNout">
+													<select name="iob_se_cd">
 														<option value="i">입고</option>
 														<option value="o">출고</option>
 													</select>
@@ -123,7 +123,7 @@
 											
 											<div class="flex_child">
 											<div class="item">
-												<select name="worker">
+												<select name="work_nm">
 													<c:forEach var="member" items="${mList }">
 														<option value="${member.mbr_nm }">${member.mbr_nm }</option>
 													</c:forEach>
@@ -131,7 +131,7 @@
 											</div>
 
 											<div class="item">
-												<select name="warehouse">
+												<select name="mtrl_cd_nm">
 													<option value="warehouse1">M창고1</option>
 													<!-- 														<option value="warehouse2">M창고2</option> -->
 													<!-- 														<option value="warehouse3">M창고3</option> -->
@@ -140,11 +140,11 @@
 											</div class="item">
 
 											<div class="item">
-												<input class="item" id="date" name="date" type="date" />
+												<input class="item" id="date" name="chng_dt" type="date" />
 											</div>
 
 											<div class="item">
-												<input class="item note" type="text" name="note" value=""
+												<input class="item note" type="text" name="rmrk" value=""
 													placeholder="입력하세요" />
 											</div>
 										</div>

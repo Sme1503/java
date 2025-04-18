@@ -215,3 +215,18 @@ select j.*
    and qa.PROD_CD = upper('D0026');
    
 select * from TB_MB_1000MT where MBR_SENM = '일반회원';
+
+
+// 테이블 정리 - 기본키 설정
+// 품질 테이블
+select * from TB_QA_1100DT;
+delete from TB_QA_1100DT;
+commit;
+alter table TB_QA_1100DT add constraint prod_cd_pk primary key(prod_cd);
+
+select * from TB_MD_1000MT;
+select MT_MNG_CD, MT_MNG_NM from TB_MD_1000MT where TP_CLS_VAL = '원자재';
+
+select * from tb_mr_1000mt;
+
+select * FROM TB_PR_1100MT where PROD_END_YN = 'Y';

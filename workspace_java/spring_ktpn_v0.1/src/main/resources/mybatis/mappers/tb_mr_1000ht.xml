@@ -19,9 +19,9 @@
 	
 	<insert id="insertMlog" parameterType="tb_mr_1000ht">
 		insert into TB_MR_1000HT (sn, mtrl_cd, mtrl_nm, stn_cnt, crnt_cnt, ordr_rqrd_yn, iob_se_cd,
-				  work_nm, mtrl_cd_nm, rmrk, reg_dttm, crnt_aftr_cnt, chng_dt)
-		values (SQ_MR_1000HT.NEXTVAL, 
-				  #{mtrl_cd}, #{mtrl_nm}, #{stn_cnt}, #{crnt_cnt}, #{ordr_rqrd_yn}, #{iob_se_cd}, #{work_nm}, #{mtrl_cd_nm}, #{rmrk}, sysdate, #{crnt_aftr_cnt}, to_char(sysdate, 'yyyymmdd'))
+			work_nm, mtrl_cd_nm, rmrk, reg_dttm, crnt_aftr_cnt, chng_dt)
+		values (SQ_MR_1000HT.NEXTVAL, #{mtrl_cd}, #{mtrl_nm}, #{stn_cnt}, #{crnt_cnt}, #{ordr_rqrd_yn}, #{iob_se_cd}, 
+			#{work_nm}, #{mtrl_cd_nm}, #{rmrk}, sysdate, #{crnt_aftr_cnt}, to_char(sysdate, 'yyyymmdd'))
 	</insert>
 	
 	<update id="updateMlog" parameterType="tb_mr_1000ht">

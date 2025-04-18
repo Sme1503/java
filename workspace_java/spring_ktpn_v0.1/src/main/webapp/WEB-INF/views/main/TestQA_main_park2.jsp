@@ -64,7 +64,7 @@
 
 
 
-						<form action="qccon" method="post">
+						<form action="addqc" method="post">
 							<div>
 								<div class="div_none1">
 									<!-- 											안보임 -->
@@ -81,7 +81,7 @@
 											</tr>
 
 											<tr>
-												<td class="QA-td"><select id="select1" name="Pcode"
+												<td class="QA-td"><select id="select1" name="prod_cd"
 													onchange="changeP()">
 														<c:forEach var="pcode" items="${pList }">
 															<option value="${pcode.prod_cd }"
@@ -110,12 +110,12 @@
 												</script>
 
 												<td class="QA-td"><input type="text" id="icode"
-													name="code" value="" readonly="readonly"></td>
+													name="item_cd" value="" readonly="readonly"></td>
 
 												<td class="QA-td"><input type="text" id="iname"
-													name="name" value="" readonly="readonly"></td>
+													name="item_nm" value="" readonly="readonly"></td>
 
-												<td class="QA-td"><select name="tester"
+												<td class="QA-td"><select name="chckr_nm"
 													required="required">
 														<c:forEach var="worker" items="${mList }">
 															<option value="${worker.mbr_nm }">${worker.mbr_nm }</option>
@@ -123,7 +123,7 @@
 												</select></td>
 
 
-												<td class="QA-td"><input type="date" name="date"
+												<td class="QA-td"><input type="date" name="chckr_dttm"
 													id="currentDate" required="required"></td>
 											</tr>
 
@@ -151,7 +151,7 @@
 											<tr>
 
 
-												<td class="QA-td"><select name="fiber"
+												<td class="QA-td"><select name="strth_val"
 													required="required">
 														<!-- <option value="fiber_select">선택</option> -->
 														<option value="1">1</option>
@@ -166,7 +166,7 @@
 														<option value="10" selected>10</option>
 												</select></td>
 
-												<td class="QA-td"><select name="size"
+												<td class="QA-td"><select name="sz_val"
 													required="required">
 														<!-- <option value="size_select">선택</option> -->
 														<option value="1">1</option>
@@ -181,10 +181,10 @@
 														<option value="10" selected>10</option>
 												</select></td>
 
-												<td class="QA-td"><input name="color" type="color"
+												<td class="QA-td"><input name="clrl_val" type="color"
 													value="" placeholder="입력하세요"></td>
 
-												<td class="QA-td"><select name="erase"
+												<td class="QA-td"><select name="qlty_val"
 													required="required">
 														<!-- <option value="erase_select">선택</option> -->
 														<option value="1">1</option>
@@ -199,7 +199,7 @@
 														<option value="10" selected>10</option>
 												</select></td>
 
-												<td class="QA-td" colspan="1"><select name="notpass"
+												<td class="QA-td" colspan="1"><select name="fail_caus_desc"
 													required="required">
 														<option value="선택" selected>선택</option>
 														<option value="외관불량">외관불량</option>
@@ -211,7 +211,7 @@
 												</td>
 
 												<td class="QA-td" colspan="1"><input type="text"
-													name="note" value="" placeholder="입력하세요"></td>
+													name="rmrk" value="" placeholder="입력하세요"></td>
 										</tbody>
 
 									</table>

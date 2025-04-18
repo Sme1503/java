@@ -12,5 +12,15 @@ public interface DAO_md_1000mt {
 	public int insertEmp(DTO_md_1000mt dto);
 	public int updateMd(DTO_md_1000mt dto) ;
 	public int delMd(DTO_md_1000mt dto);
+
+	
+	
+	
+	// 완제품 코드, 완제품명 가져오는 메소드
+	public List selectMcodeList();
+	
+	// 완제품 코드, 완제품명 가져오는 메소드
+	public List selectPcodeList();
+
 	
 }

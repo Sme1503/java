@@ -38,7 +38,8 @@ public class tb_mr_1000mt_DAOImpl implements tb_mr_1000mt_DAO {
 	public int insertMaterials(tb_mr_1000mt_DTO dto) {
 		// TODO Auto-generated method stub
 
-		int i = sqlSession.insert("mapper.tb_mr_1000mt.insertCurrentM", dto);
+		int i = -1;
+		i = sqlSession.insert("mapper.tb_mr_1000mt.insertCurrentM", dto);
 		System.out.println("insert i : " + i);
 		
 		return i;
@@ -48,7 +49,8 @@ public class tb_mr_1000mt_DAOImpl implements tb_mr_1000mt_DAO {
 	public int updateMaterials(tb_mr_1000mt_DTO dto) {
 		// TODO Auto-generated method stub
 		
-		int i = sqlSession.update("mapper.tb_mr_1000mt.updateCurrentM", dto);
+		int i = -1;
+		i = sqlSession.update("mapper.tb_mr_1000mt.updateCurrentM", dto);
 		System.out.println("update i : " + i);
 		
 		return i;
@@ -58,7 +60,8 @@ public class tb_mr_1000mt_DAOImpl implements tb_mr_1000mt_DAO {
 	public int deleteMaterials(tb_mr_1000mt_DTO dto) {
 		// TODO Auto-generated method stub
 
-		int i = sqlSession.delete("mapper.tb_mr_1000mt.deleteCurrentM", dto);
+		int i = -1;
+		i = sqlSession.delete("mapper.tb_mr_1000mt.deleteCurrentM", dto);
 		System.out.println("delete i : " + i);
 		
 		return i;
