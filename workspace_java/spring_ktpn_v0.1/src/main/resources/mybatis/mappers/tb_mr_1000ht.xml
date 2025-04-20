@@ -14,7 +14,7 @@
 			from TB_MR_1000HT a
 			where a.mtrl_cd = #{mtrl_cd}
 			order by a.sn desc ) a
-		where a.rn = #{숫자}
+		where a.rn = #{findlognum}
 	</select>
 	
 	<insert id="insertMlog" parameterType="tb_mr_1000ht">

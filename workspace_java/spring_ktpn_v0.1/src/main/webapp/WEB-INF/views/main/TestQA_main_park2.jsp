@@ -224,6 +224,7 @@
 						</form>
 						
 						
+						<form action="deleteqc" method="post">
 						<div>
 							<table class="QA-table">
 								<thead>
@@ -293,6 +294,13 @@
 								</tbody>
 							</table>
 						</div>
+						
+						<div>
+							<button type="submit" name="command" value="delete">
+								삭제
+							</button>
+						</div>
+					</form>
 						
 						
 						

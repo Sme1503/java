@@ -21,4 +21,6 @@ public class tb_fs_1000ht_DTO {
 	private String fnshl_loc_nm; // 완제품위치명
 	private String rmrk; // 비고
 	private Date reg_dttm; // 입력일시
+	
+	private int findlognum; // 잘못된 로그찾는 변수
 }

@@ -52,7 +52,7 @@ public class tb_mr_1000ht_DAOImpl implements tb_mr_1000ht_DAO {
 	public List selectLastMlog(tb_mr_1000ht_DTO dto) {
 		// TODO Auto-generated method stub
 
-		List result = sqlSession.selectOne("mapper.tb_mr_1000ht.selectLastMlog", dto);
+		List result = sqlSession.selectList("mapper.tb_mr_1000ht.selectLastMlog", dto);
 		System.out.println("result : " + result);
 		
 		return result;

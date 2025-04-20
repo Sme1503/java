@@ -77,18 +77,40 @@ public class con_QC {
 		System.out.println("dto : " + dto);
 		
 		int i = svc_qa_1100dt.getInsertQC(dto);
+		System.out.println("QC테이블에 " + i + "행이 삽입되었습니다");
 		
 //		return "TestQA_report_park_table_show2.tiles";
 		return "redirect: mainqc";
 	}
 	
+	// 품질관리에서 수정 페이지로 이동하는 메소드
+		@RequestMapping(value="/updateqc", method = RequestMethod.POST)
+		public String updateQc(Model model, tb_qa_1100dt_DTO dto) {
+			
+			List list = svc_qa_1100dt.getSelectQC();
+			model.addAttribute("list", list);
+			
+			
+			// 작업자
+			List workerList = svc_member.getWorker();
+			
+			// 생산완료인 생산코드
+			List PcodeList = tak_Svc_pr_1100mt.getPcode();
+			
+			model.addAttribute("mList", workerList);
+			model.addAttribute("pList", PcodeList);
+			
+			return "TestQA_report_park_table_update2.tiles";
+		}
+	
 	// 품질관리에서 목록에 수정하는 메소드
-	@RequestMapping(value="/updateqc", method = RequestMethod.POST)
-	public String updateQc(Model model, tb_qa_1100dt_DTO dto) {
+	@RequestMapping(value="/updateqc1", method = RequestMethod.POST)
+	public String updateQc1(Model model, tb_qa_1100dt_DTO dto) {
 		
 		System.out.println("dto : " + dto);
 		
 		int i = svc_qa_1100dt.getUpdateQC(dto);
+		System.out.println("QC테이블에 " + i + "행이 수정되었습니다");
 		
 //		return "TestQA_report_park_table_show2.tiles";
 		return "redirect: mainqc";
@@ -96,11 +118,22 @@ public class con_QC {
 	
 	// 품질관리에서 목록에 삭제하는 메소드
 	@RequestMapping(value="/deleteqc", method = RequestMethod.POST)
-	public String removeQc(Model model, tb_qa_1100dt_DTO dto) {
+	public String removeQc(tb_qa_1100dt_DTO dto, String[] delcode) {
 		
-		System.out.println("dto : " + dto);
+		//System.out.println("delcode : " + delcode);
+		System.out.println("delcode.length : " + delcode.length);
 		
-		int i = svc_qa_1100dt.getDeleteQC(dto);
+		int cnt = 0;
+		for(int j=0; j<delcode.length; j++) {
+			
+			dto.setProd_cd(delcode[j]);
+			System.out.println("dto : " + dto);
+			int i = svc_qa_1100dt.getDeleteQC(dto);
+			cnt++;
+		}
+		
+		System.out.println("QC테이블에 " + cnt + "행이 삭제되었습니다");
+
 		
 //		return "TestQA_report_park_table_show2.tiles";
 		return "redirect: mainqc";

@@ -22,4 +22,6 @@ public class tb_mr_1000ht_DTO {
 	private String mtrl_cd_nm; // 원자재위치명
 	private String rmrk; // 비고
 	private Date reg_dttm; // 입력일시
+	
+	private int findlognum; // 잘못된 로그찾는 변수
 }

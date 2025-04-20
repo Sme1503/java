@@ -14,7 +14,7 @@
 			from TB_FS_1000HT a
 			where a.fnsh_code = #{fnsh_code}
 			ordey by a.sn desc ) a
-		where a.rn = #{숫자} 
+		where a.rn = #{findlognum} 
 	</select>
 	
 	<insert id="insertPlog" parameterType="tb_fs_1000ht">
