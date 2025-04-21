@@ -13,6 +13,7 @@ import kr.or.ktpn.dto.tb_fs_1000ht_DTO;
 import kr.or.ktpn.dto.tb_fs_1000mt_DTO;
 import kr.or.ktpn.dto.tb_mr_1000ht_DTO;
 import kr.or.ktpn.dto.tb_mr_1000mt_DTO;
+import kr.or.ktpn.service.KW_Svc_mb_1000mt;
 import kr.or.ktpn.service.Svc_md_1000mt;
 import kr.or.ktpn.service.Svc_member;
 import kr.or.ktpn.service.Svc_tb_fs_1000ht;
@@ -44,9 +45,10 @@ public class con_PMm {
 	
 	
 	
-	// 임시 멤버 서비스
+	//멤버 서비스
 	@Autowired
-	Svc_member svc_member;
+	KW_Svc_mb_1000mt svc_mb_1000mt;
+	//Svc_member svc_member;
 	
 	@Autowired
 	Svc_md_1000mt svc_md_1000mt;
@@ -117,7 +119,7 @@ public class con_PMm {
 	public String addM1(Model model) {
 		
 		// 작업자
-		List workerList = svc_member.getWorker();
+		List workerList = svc_mb_1000mt.getWorker();
 		
 		// 기준관리 - 원자재 코드, 원자재명
 		List McodeList = svc_md_1000mt.getMcodeList();
@@ -167,6 +169,7 @@ public class con_PMm {
 				mdto = (tb_mr_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터 : " + mdto);
 				
+				mdto.setMtrl_nm(mlogdto.getMtrl_nm());
 				mdto.setCrnt_aftr_cnt(mdto.getCrnt_aftr_cnt() + mlogdto.getCrnt_cnt());
 				mdto.setMtrl_loc_nm(mlogdto.getMtrl_cd_nm());
 				
@@ -197,6 +200,8 @@ public class con_PMm {
 			} else {
 				mdto = (tb_mr_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터 : " + mdto);
+				
+				mdto.setMtrl_nm(mlogdto.getMtrl_nm());
 				mdto.setCrnt_aftr_cnt(mdto.getCrnt_aftr_cnt() - mlogdto.getCrnt_cnt());
 				mdto.setMtrl_loc_nm(mlogdto.getMtrl_cd_nm());
 			
@@ -246,7 +251,7 @@ public class con_PMm {
 		System.out.println("mcode : " + mcode);
 		
 		// 작업자
-		List workerList = svc_member.getWorker();
+		List workerList = svc_mb_1000mt.getWorker();
 			
 		// 수정할 리스트
 		List materials = svc_mr_1000mt.getMaterials(mcode);
@@ -303,6 +308,7 @@ public class con_PMm {
 				mdto = (tb_mr_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터 : " + mdto);
 				
+				mdto.setMtrl_nm(mlogdto.getMtrl_nm());
 				mdto.setCrnt_aftr_cnt(mdto.getCrnt_aftr_cnt() + mlogdto.getCrnt_cnt());
 				mdto.setMtrl_loc_nm(mlogdto.getMtrl_cd_nm());
 				
@@ -333,6 +339,8 @@ public class con_PMm {
 			} else {
 				mdto = (tb_mr_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터 : " + mdto);
+				
+				mdto.setMtrl_nm(mlogdto.getMtrl_nm());
 				mdto.setCrnt_aftr_cnt(mdto.getCrnt_aftr_cnt() - mlogdto.getCrnt_cnt());
 				mdto.setMtrl_loc_nm(mlogdto.getMtrl_cd_nm());
 			
@@ -382,7 +390,7 @@ public class con_PMm {
 	public String addP1(Model model) {
 			
 		// 작업자
-		List workerList = svc_member.getWorker();
+		List workerList = svc_mb_1000mt.getWorker();
 			
 		// 생산 - 생산코드, 완제품 코드, 완제품명
 		List PcodeList = tak_Svc_pr_1100mt.getPcode();
@@ -424,6 +432,7 @@ public class con_PMm {
 				pdto = (tb_fs_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터: " + pdto);
 
+				pdto.setFnsh_nm(plogdto.getFnshd_item_nm());
 				pdto.setCrnt_aftr_cnt(pdto.getCrnt_aftr_cnt() + plogdto.getCrnt_cnt());
 				pdto.setFnsh_loc_nm(plogdto.getFnshl_loc_nm());
 				
@@ -446,6 +455,7 @@ public class con_PMm {
 				pdto = (tb_fs_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터: " + pdto);
 
+				pdto.setFnsh_nm(plogdto.getFnshd_item_nm());
 				pdto.setCrnt_aftr_cnt(pdto.getCrnt_aftr_cnt() - plogdto.getCrnt_cnt());
 				pdto.setFnsh_loc_nm(plogdto.getFnshl_loc_nm());
 				
@@ -488,7 +498,7 @@ public class con_PMm {
 	public String updateP1(Model model, String code) {
 				
 		// 작업자
-		List workerList = svc_member.getWorker();
+		List workerList = svc_mb_1000mt.getWorker();
 				
 		// 생산 - 생산코드, 완제품 코드, 완제품명
 //		List PcodeList = svc_fs_1000mt;
@@ -530,6 +540,7 @@ public class con_PMm {
 				pdto = (tb_fs_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터: " + pdto);
 
+				pdto.setFnsh_nm(plogdto.getFnshd_item_nm());
 				pdto.setCrnt_aftr_cnt(pdto.getCrnt_aftr_cnt() + plogdto.getCrnt_cnt());
 				pdto.setFnsh_loc_nm(plogdto.getFnshl_loc_nm());
 				
@@ -552,6 +563,7 @@ public class con_PMm {
 				pdto = (tb_fs_1000mt_DTO) list.get(0);
 				System.out.println("수정 전 데이터: " + pdto);
 
+				pdto.setFnsh_nm(plogdto.getFnshd_item_nm());
 				pdto.setCrnt_aftr_cnt(pdto.getCrnt_aftr_cnt() - plogdto.getCrnt_cnt());
 				pdto.setFnsh_loc_nm(plogdto.getFnshl_loc_nm());
 				
@@ -614,16 +626,16 @@ public class con_PMm {
 
 	// 원자재 현황 입력취소(undo), 원자재로그 수정, 원자재로그 추가하는 메소드
 	@RequestMapping(value = "/undom", method = RequestMethod.POST)
-	public String undoM(String code) {
+	public String undoM(String undoCheck) {
 		
-		System.out.println("Mcode : " + code);
+		System.out.println("Mcode : " + undoCheck);
 		
 		int i = 0;
 		tb_mr_1000ht_DTO dto = new tb_mr_1000ht_DTO();
 		tb_mr_1000mt_DTO mdto = new tb_mr_1000mt_DTO();
 		
 		// 잘못 입력한 로그의 원자재code 
-		dto.setMtrl_cd(code);
+		dto.setMtrl_cd(undoCheck);
 		// 마지막 로그 
 		dto.setFindlognum(1);
 		
@@ -637,11 +649,11 @@ public class con_PMm {
 		i = svc_mr_1000ht.updateMlog(dto);
 		
 		// dto 초기화
-		dto = null;
+		//dto = null;
 		System.out.println("dto : " + dto);
 		
 		// 잘못 입력한 로그의 원자재code
-		dto.setMtrl_cd(code);
+		dto.setMtrl_cd(undoCheck);
 		// 마지막 로그의 바로 전 로그
 		dto.setFindlognum(2);
 		
@@ -695,16 +707,16 @@ public class con_PMm {
 
 	// 완제품 현황 입력취소(undo), 완제품로그 수정, 완제품로그 추가하는 메소드
 	@RequestMapping(value = "/undop", method = RequestMethod.POST)
-	public String undoP(String code) {
+	public String undoP(String undoCheck) {
 
-		System.out.println("Pcode : " + code);
+		System.out.println("Pcode : " + undoCheck);
 		
 		int i = 0;
 		tb_fs_1000ht_DTO dto = new tb_fs_1000ht_DTO();
 		tb_fs_1000mt_DTO pdto = new tb_fs_1000mt_DTO();
 		
 		// 잘못 입력한 로그의 완제품code
-		dto.setFnsh_code(code);
+		dto.setFnsh_code(undoCheck);
 		// 마지막 로그
 		dto.setFindlognum(1);
 		
@@ -717,11 +729,11 @@ public class con_PMm {
 		i = svc_fs_1000ht.updatePlog(dto);
 		
 		// dto 초기화
-		dto = null;
+		//dto = null;
 		System.out.println("dto : " + dto);
 		
 		// 잘못 입력한 로그의 완제품code
-		dto.setFnsh_code(code);
+		dto.setFnsh_code(undoCheck);
 		// 마지막 로그의 바로 전 로그
 		dto.setFindlognum(2);
 		

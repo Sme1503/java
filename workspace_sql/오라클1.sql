@@ -230,3 +230,67 @@ select MT_MNG_CD, MT_MNG_NM from TB_MD_1000MT where TP_CLS_VAL = '원자재';
 select * from tb_mr_1000mt;
 
 select * FROM TB_PR_1100MT where PROD_END_YN = 'Y';
+
+
+// 거래처 테이블 더미데이터 넣기
+select * from tb_od_1000mt;
+rollback;
+delete from tb_od_1000mt;
+commit;
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), 'HT염화', '김철수', '010-1234-1234', '염화비닐', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd'));
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), 'SH황', '김영희', '010-1123-1564', '황', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd')); 
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), '고무GOMU', '조무고', '010-9123-6445', '고무', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd'));
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), 'GARUstone', '박도루', '010-7823-1479', '고운 속돌가루', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd'));
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), 'sicKwaterOil', '최유식', '010-2934-1991', '식물성 기름', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd'));
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), 'Pla플라', '이수라', '010-1731-1791', '플라스틱', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd'));
+
+insert into TB_OD_1000MT 
+values ( 'T'||LPAD(sq_od_1000mt.NEXTVAL, 4, '0'), 'GASO레이트', '석가이', '010-1731-1791', '프탈레이트계 가소제', to_char(sysdate, 'yyyymmdd'), to_char(sysdate, 'yyyymmdd'));
+
+update TB_OD_1000MT
+set tel_no = '010-1856-9941'
+where mngr_nm = '석가이';
+
+// 기준관리 테이블 원자재 더미데이터 넣기
+select * from tb_md_1000mt where tp_cls_val = '원자재';
+
+update tb_md_1000mt
+set mt_mng_nm = '황'
+where mt_mng_cd = 'M0005';
+
+update tb_md_1000mt
+set mt_mng_nm = '고무'
+where mt_mng_cd = 'M0025';
+
+update tb_md_1000mt
+set mt_mng_nm = '식물성 기름'
+where mt_mng_cd = 'M0029';
+
+commit;
+
+INSERT INTO TB_MD_1000MT 
+      (MT_MNG_NM, MT_MNG_CD, MT_MNG_DESC, TP_CLS_VAL, USE_YN, REG_DT, MOD_DT, IMG_PATH_ADR)
+VALUES ('속돌가루', 'M'||LPAD(SQ_MD_1000MT_M.NEXTVAL, 4, '0'), '지우개원료', '원자재', 'Y', TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'YYYYMMDD'), null);
+
+INSERT INTO TB_MD_1000MT 
+      (MT_MNG_NM, MT_MNG_CD, MT_MNG_DESC, TP_CLS_VAL, USE_YN, REG_DT, MOD_DT, IMG_PATH_ADR)
+VALUES ('플라스틱', 'M'||LPAD(SQ_MD_1000MT_M.NEXTVAL, 4, '0'), '지우개원료', '원자재', 'Y', TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'YYYYMMDD'), null);
+
+INSERT INTO TB_MD_1000MT 
+      (MT_MNG_NM, MT_MNG_CD, MT_MNG_DESC, TP_CLS_VAL, USE_YN, REG_DT, MOD_DT, IMG_PATH_ADR)
+VALUES ('가소제', 'M'||LPAD(SQ_MD_1000MT_M.NEXTVAL, 4, '0'), '지우개원료', '원자재', 'Y', TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'YYYYMMDD'), null);
+
+
+select * from tb_mr_1000mt;

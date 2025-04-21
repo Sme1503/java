@@ -20,7 +20,7 @@
 	
 	<update id="updateCurrentM" parameterType="tb_mr_1000mt">
 		update TB_MR_1000MT
-		set ordr_rqrd_yn = #{ordr_rqrd_yn}, mtrl_loc_nm = #{mtrl_loc_nm}, crnt_aftr_cnt = #{crnt_aftr_cnt} 
+		set mtrl_nm = #{mtrl_nm}, ordr_rqrd_yn = #{ordr_rqrd_yn}, mtrl_loc_nm = #{mtrl_loc_nm}, crnt_aftr_cnt = #{crnt_aftr_cnt} 
 		where mtrl_cd = #{mtrl_cd}
 	</update>
 	

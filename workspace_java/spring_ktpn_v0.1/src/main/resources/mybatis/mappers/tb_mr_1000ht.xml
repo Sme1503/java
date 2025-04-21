@@ -25,7 +25,7 @@
 	</insert>
 	
 	<update id="updateMlog" parameterType="tb_mr_1000ht">
-		update TB_MR_1000HT from 
+		update TB_MR_1000HT 
 		set rmrk = #{rmrk}
 		where sn = #{sn} and mtrl_cd = #{mtrl_cd} 
 	</update>

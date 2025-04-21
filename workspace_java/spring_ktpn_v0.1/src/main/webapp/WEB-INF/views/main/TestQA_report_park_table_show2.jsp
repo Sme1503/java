@@ -141,7 +141,7 @@
 
 											<tr>
 												<th class="qc-title">
-													<p>7. 생산량</p>
+													<p>7. 생산수량</p>
 												</th>
 												<td>${QcList[0].prod_qntt }</td>
 
@@ -153,7 +153,7 @@
 
 											<tr>
 												<th class="qc-title">
-													<p>8. 불량률</p>
+													<p>8. 불량률(%)</p>
 												</th>
 												<td>${QcList[0].dfc_rt }</td>
 

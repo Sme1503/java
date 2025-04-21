@@ -121,6 +121,7 @@
                                     -->
 
 					<div>
+					<form method="post" action="undom">
 						<div id="show_table1">
 							<table class="material-table">
 								<thead>
@@ -140,7 +141,7 @@
 									<c:forEach var="Mdata" items="${MtableSelect }">
 
 										<tr>
-											<form method="post" action="imcon">
+											
 												<td><input type="checkbox" name="undoCheck"
 													value="${Mdata.mtrl_cd }"></td>
 
@@ -191,27 +192,27 @@
 							</div>
 
 							<div class="div_form_order">
-								<form method="post" action="imcon">
+								
 									<input type="hidden" name="command" value="undo">
 									<!-- 											<input type="submit" value="거래처"> -->
 
 
 									<button type="submit" class="btn_main_order btn_text_color">
 										입력취소(undo)</button>
-								</form>
+								
 							</div>
 
 
 							<div class="div_button">
-								<form method="post" action="imcon">
+<!-- 								<form method="post" action="imcon"> -->
 									<button name="command" value="move_add2_Page" type="submit"
 										id="btn_main_add">원자재 재고 추가</button>
-								</form>
+<!-- 								</form> -->
 
-								<form method="post" action="impcon">
+<!-- 								<form method="post" action="impcon"> -->
 									<button name="command" value="move_addP2_Page" type="submit"
 										id="btn_main_add">완제품 재고 추가</button>
-								</form>
+<!-- 								</form> -->
 
 
 
@@ -227,8 +228,9 @@
 							</div>
 
 						</div>
-
-
+					</form>
+					
+					<form method="post" action="undop">
 						<div id="show_table2" class="hide">
 							<table class="material-table product-table">
 								<thead>
@@ -246,7 +248,6 @@
 
 										<tr>
 
-											<form method="post" action="impcon">
 
 
 												<td><input type="checkbox" name="undoCheck"
@@ -274,7 +275,7 @@
 													<!-- 																<a class="btn_text_color" --> <!-- 																	href="./TestMM_update_park.jsp">수정</a> -->
 													<!-- 															</button> --></td>
 
-											</form>
+											
 										</tr>
 									</c:forEach>
 
@@ -289,23 +290,23 @@
 
 							<div class="div_form_order">
 
-								<form method="post" action="impcon">
+<!-- 								<form method="post" action="impcon"> -->
 									<input type="hidden" name="command" value="undo">
 									<!-- 												<input type="submit" value="거래처"> -->
 
 
 									<button type="submit" class="btn_main_order btn_text_color">
 										입력취소(undo)</button>
-								</form>
+<!-- 								</form> -->
 							</div>
 
 
 							<div class="div_button">
 
-								<form method="post" action="impcon">
+<!-- 								<form method="post" action="impcon"> -->
 									<button name="command" value="move_addP_Page" type="submit"
 										id="btn_main_add">추가</button>
-								</form>
+<!-- 								</form> -->
 
 								<!-- 										<button type="button" id="btn_main_add"> -->
 								<!-- 											<a class="btn_text_color" href="TestMM_add_park.jsp">추가</a> -->
@@ -319,7 +320,7 @@
 							</div>
 
 						</div>
-
+					</form>
 
 						<div>
 							<button>원자재 추가 - 버튼을 누르면 숨겨졌던 입력창이 생긴다</button>

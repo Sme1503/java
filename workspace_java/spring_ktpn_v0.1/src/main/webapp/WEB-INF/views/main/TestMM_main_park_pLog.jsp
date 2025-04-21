@@ -78,7 +78,7 @@
 
 					<div>
 						<div id="show_table1">
-							<table class="material-table">
+							<table class="material-table table_sticky">
 								<thead>
 									<tr>
 										<!-- 													<th scope="col" class="material-th">삭제체크</th> -->

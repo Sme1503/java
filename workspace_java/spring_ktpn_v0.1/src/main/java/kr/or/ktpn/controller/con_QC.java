@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.or.ktpn.dto.tb_qa_1100dt_DTO;
+import kr.or.ktpn.service.KW_Svc_mb_1000mt;
 import kr.or.ktpn.service.Svc_member;
 import kr.or.ktpn.service.Svc_tb_qa_1000dt;
 import kr.or.ktpn.service.Svc_tb_qa_1100dt;
@@ -27,7 +28,8 @@ public class con_QC {
 	
 	
 	@Autowired
-	Svc_member svc_member;
+	KW_Svc_mb_1000mt svc_mb_1000mt;
+	//Svc_member svc_member;
 	
 	@Autowired
 	TAK_Svc_pr_1100mt tak_Svc_pr_1100mt;
@@ -44,7 +46,7 @@ public class con_QC {
 		
 		
 		// 작업자
-		List workerList = svc_member.getWorker();
+		List workerList = svc_mb_1000mt.getWorker();
 		
 		// 생산완료인 생산코드
 		List PcodeList = tak_Svc_pr_1100mt.getPcode();
@@ -92,7 +94,7 @@ public class con_QC {
 			
 			
 			// 작업자
-			List workerList = svc_member.getWorker();
+			List workerList = svc_mb_1000mt.getWorker();
 			
 			// 생산완료인 생산코드
 			List PcodeList = tak_Svc_pr_1100mt.getPcode();
