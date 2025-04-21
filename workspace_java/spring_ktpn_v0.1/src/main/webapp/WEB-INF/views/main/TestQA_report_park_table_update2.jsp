@@ -47,7 +47,7 @@
 
 
 						<div class="t_con">
-							<form method="post" action="컨트롤러">
+							<form method="post" action="updateqc1">
 								<div class="con_1">
 
 									<div>
@@ -63,13 +63,13 @@
 												</tr>
 
 												<tr>
-													<td class="QA-td">${QcList.PROD_CD }</td>
-													<td class="QA-td">${QcList.ITEM_CD }</td>
-													<td class="QA-td">${QcList.ITEM_NM }</td>
+													<td class="QA-td">${dto.prod_cd }</td>
+													<td class="QA-td">${dto.item_cd }</td>
+													<td class="QA-td">${dto.item_nm }</td>
 													<td class="QA-td"><select name="worker"
 														required="required">
-															<c:forEach var="worker" items="${workerList }">
-																<option value="${worker.MBR_NM }">${worker.MBR_NM }</option>
+															<c:forEach var="worker" items="${mList }">
+																<option value="${worker.mbr_nm }">${worker.mbr_nm }</option>
 															</c:forEach>
 													</select></td>
 													<td class="QA-td"><input type="date" id="currentDate"
@@ -189,7 +189,7 @@
 				<!-- 빈 공간 -->
 			</div>
 			<button type="button" id="btn_report_confirm">
-				<a class="btn_text_color" href="./TestQA_main_park.html">확인</a>
+				<a class="btn_text_color" href="./TestQA_main_park2.html">확인</a>
 			</button>
 
 			<div class="div_none">

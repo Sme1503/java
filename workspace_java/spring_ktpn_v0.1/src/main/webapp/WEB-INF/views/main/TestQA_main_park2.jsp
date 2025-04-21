@@ -255,35 +255,41 @@
 
 											<!-- 													<form method="post" action="qccon"> -->
 
-											<td class="QA-td"><input type="hidden" name="code"
+											<td class="QA-td"><input id="pcode" type="hidden" name="pcode"
 												value="${QCdata.prod_cd }"> <a
 												class="enter_reportPage"
 												href="showjoin?pcode=${QCdata.prod_cd }"
 												data-value="${QCdata.prod_cd }"> ${QCdata.prod_cd } </a></td>
 
-											<td class="QA-td"><input type="hidden" name="code"
+											<td class="QA-td"><input id="icode" type="hidden" name="icode"
 												value="${QCdata.item_cd }"> ${QCdata.item_cd }</td>
 
-											<td class="QA-td"><input type="hidden" name="name"
+											<td class="QA-td"><input id="iname" type="hidden" name="iname"
 												value="${QCdata.item_nm }"> ${QCdata.item_nm }</td>
 
-											<td class="QA-td"><input type="hidden" name="fiber"
+											<td class="QA-td"><input id="fiber" type="hidden" name="fiber"
 												value="${QCdata.strth_val }"> ${QCdata.strth_val }</td>
 
-											<td class="QA-td"><input type="hidden" name="size"
+											<td class="QA-td"><input id="size" type="hidden" name="size"
 												value="${QCdata.sz_val }"> ${QCdata.sz_val }</td>
 
-											<td class="QA-td"><input type="hidden" name="color"
+											<td class="QA-td"><input id="color" type="hidden" name="color"
 												value="${QCdata.clrl_val }"> ${QCdata.clrl_val }</td>
 
-											<td class="QA-td"><input type="hidden" name="erase"
+											<td class="QA-td"><input id="erase" type="hidden" name="erase"
 												value="${QCdata.qlty_val }"> ${QCdata.qlty_val }</td>
 
-											<td class="QA-td"><input type="hidden" name="tester"
+											<td class="QA-td"><input id="tester" type="hidden" name="tester"
 												value="${QCdata.chckr_nm }"> ${QCdata.chckr_nm }</td>
 
-											<td><input type="hidden" name="command" value="update">
-												<input type="submit" value="수정"></td>
+											<td>
+<!-- 											<input type="hidden" name="command" value="update"> -->
+<!-- 												<input type="submit" value="수정"> -->
+												<button class="update_btn" type="button" name="command" value="update">
+													수정
+												</button>
+												
+												</td>
 
 											<!--                                                 	</form> -->
 										</tr>
@@ -302,7 +308,46 @@
 						</div>
 					</form>
 						
+					<script>
+						// 수정페이지로 이동하는 js
+						// 문제 - icode, iname의 값을 못 가져온다 
+						// 문제 - param을 전송 못함
 						
+						const update_btn = document.querySelector('.update_btn');
+						console.log("update_btn.value : " , update_btn.value);
+						
+						update_btn.addEventListener('click', function() {
+							
+							let param = {
+									prod_cd : document.querySelector('#pcode').value,
+									item_cd : document.querySelector('#icode').value,
+									item_nm : document.querySelector('#iname').value,
+									strth_val : document.querySelector('#fiber').value,
+									sz_val : document.querySelector('#size').value,
+									clrl_val : document.querySelector('#color').value,
+									qlty_val : document.querySelector('#erase').value,
+									chckr_nm : document.querySelector('#tester').value
+							}
+							
+							console.log("param : ", param);
+							
+							const xhr = new XMLHttpRequest();
+							xhr.open('post', 'updateqc');
+// 							xhr.setRequestHeader('Content-Type', 'application/json')
+							xhr.send(paramData);
+//							xhr.send(JSON.stringify(paramData));
+							console.log("데이터 보냄");
+// 							xhr.onload = function() {
+// 								if(xhr.responseText == '1'){
+// 									alert('수정 성공');
+// 									location.href='allEmp';
+// 								} else {
+// 									alert('수정 실패');
+// 								}
+// 							}
+						})
+					
+					</script>
 						
 					</div>
 					<!-- 								</form> -->

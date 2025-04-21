@@ -45,14 +45,16 @@ public class con_PMm {
 	
 	
 	
-	//멤버 서비스
+	// 멤버 서비스
 	@Autowired
 	KW_Svc_mb_1000mt svc_mb_1000mt;
 	//Svc_member svc_member;
 	
+	// 기준관리 서비스
 	@Autowired
 	Svc_md_1000mt svc_md_1000mt;
 	
+	// 생산 서비스
 	@Autowired
 	TAK_Svc_pr_1100mt tak_Svc_pr_1100mt;
 	

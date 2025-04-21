@@ -27,10 +27,12 @@ public class con_QC {
 	Svc_tb_qa_1100dt svc_qa_1100dt;
 	
 	
+	// 멤버 서비스
 	@Autowired
 	KW_Svc_mb_1000mt svc_mb_1000mt;
 	//Svc_member svc_member;
 	
+	// 생산 서비스
 	@Autowired
 	TAK_Svc_pr_1100mt tak_Svc_pr_1100mt;
 	
@@ -89,18 +91,20 @@ public class con_QC {
 		@RequestMapping(value="/updateqc", method = RequestMethod.POST)
 		public String updateQc(Model model, tb_qa_1100dt_DTO dto) {
 			
-			List list = svc_qa_1100dt.getSelectQC();
-			model.addAttribute("list", list);
+			//List list = svc_qa_1100dt.getSelectQC();
+			//model.addAttribute("list", list);
 			
+			System.out.println("수정 할 데이터 dto : " + dto);
+			model.addAttribute("dto", dto);
 			
 			// 작업자
 			List workerList = svc_mb_1000mt.getWorker();
 			
 			// 생산완료인 생산코드
-			List PcodeList = tak_Svc_pr_1100mt.getPcode();
+			//List PcodeList = tak_Svc_pr_1100mt.getPcode();
 			
 			model.addAttribute("mList", workerList);
-			model.addAttribute("pList", PcodeList);
+			//model.addAttribute("pList", PcodeList);
 			
 			return "TestQA_report_park_table_update2.tiles";
 		}
