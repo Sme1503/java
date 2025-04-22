@@ -50,7 +50,12 @@
 	
 <!-- 	생산에서 생산완료인 생산코드 가져오는 sql -->
 	<select id="selectFinishAllPCode" resultType="TAK_PR_1100MTDTO">
-		select * FROM TB_PR_1100MT where PROD_END_YN = 'Y'
+		select * from TB_PR_1100MT where PROD_END_YN = 'Y'
+	</select>
+	
+<!-- 	생산에서 완제품코드가 x이고 생산완료인 생산코드 가져오는 sql -->
+	<select id="selectFinishAllPCodeFcode" resultType="TAK_PR_1100MTDTO" parameterType="String">
+		select * from TB_PR_1100MT where PROD_END_YN = 'Y' and ITEM_CD = #{item_cd}
 	</select>
 	
 </mapper>

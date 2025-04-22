@@ -173,28 +173,28 @@
 
 							</div>
 
-							<div class="div_btn">
+<!-- 							<div class="div_btn"> -->
 
-								<div class="div_none">
-									<!-- 빈 공간 -->
-								</div>
+<!-- 								<div class="div_none"> -->
+<!-- 									빈 공간 -->
+<!-- 								</div> -->
 
-								<!-- 추가 input을 만드는 버튼 -->
-								<div class="div_btn_input_add">
-									<button type="button" id="btn_input_add" class="btn_input_add">입력추가</button>
-								</div>
+<!-- 								추가 input을 만드는 버튼 -->
+<!-- 								<div class="div_btn_input_add"> -->
+<!-- 									<button type="button" id="btn_input_add" class="btn_input_add">입력추가</button> -->
+<!-- 								</div> -->
 
-								<div class="div_none">
-									<!-- 빈 공간 -->
-								</div>
+<!-- 								<div class="div_none"> -->
+<!-- 									빈 공간 -->
+<!-- 								</div> -->
 
-								<!-- 확인 버튼 -->
-								<div class="div_btn_add_confirm">
-									<button type="button" id="btn_add_confirm">
-										<a class="btn_text_color" href="./TestMM_main_park.html">확인</a>
-									</button>
-								</div>
-							</div>
+<!-- 								확인 버튼 -->
+<!-- 								<div class="div_btn_add_confirm"> -->
+<!-- 									<button type="button" id="btn_add_confirm"> -->
+<!-- 										<a class="btn_text_color" href="./TestMM_main_park.html">확인</a> -->
+<!-- 									</button> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 
 						</div>
 					</div>

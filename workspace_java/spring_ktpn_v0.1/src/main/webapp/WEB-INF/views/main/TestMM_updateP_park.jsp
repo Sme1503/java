@@ -66,18 +66,38 @@
 									<!-- 											완제품 테이블 값 pList -->
 
 									<tr>
-										<td class="material-td Mcode"></td>
+										<td class="material-td Mcode">
+											<select id="select" name="prod_cd" onchange="changeEA()">
+												<option value="default" selected="selected">선택</option>
+												<c:forEach var="pcode" items="${pList }">
+													<option value="${pcode.prod_cd }"
+														auto_iea="${pcode.prod_qntt }">${pcode.prod_cd }</option>
+												</c:forEach>
+											</select>
+										</td>
+										
+										<script>
+											// 생산코드를 선택하면 수량도 자동으로 입력
+											function changeEA() {
+												var select = document.querySelector('#select');
+												var select_option = select.options[select.selectedIndex];
+										
+												var auto_iea = select_option.getAttribute('auto_iea');
+												document.querySelector('#fpea').value = auto_iea;
+											}
+											
+										</script>
 
 										<td id="Mcode" class="material-td Mcode"><input
-											type="text" name="fnsh_code" value="${pList.fnsh_code }" readonly="readonly">
+											type="text" name="fnsh_code" value="${dto.fnsh_code }" readonly="readonly">
 										</td>
 
 										<td id="Mname" class="material-td"><input type="text"
-											name="fnshd_item_nm" value="${pList.fnshd_item_nm }" readonly="readonly">
+											name="fnshd_item_nm" value="${dto.fnsh_nm }" readonly="readonly">
 										</td>
 
-										<td id="Mea" class="material-td"><input type="text"
-											name="crnt_cnt" value="" placeholder="수량(EA) 입력"></td>
+										<td id="Mea" class="material-td"><input id="fpea" type="text"
+											name="crnt_cnt" value="" readonly="readonly"></td>
 
 										<td id="" class="material-td"><select name="iob_se_cd">
 												<option value="i">입고</option>
@@ -85,7 +105,7 @@
 										</select></td>
 
 										<td id="" class="material-td"><select name="work_nm">
-												<c:forEach var="member" items="${memberList }">
+												<c:forEach var="member" items="${mList }">
 													<option value="${member.mbr_nm }">${member.mbr_nm }</option>
 												</c:forEach>
 										</select></td>
@@ -125,15 +145,15 @@
 													생산코드를 선택하면 완제품코드와 완제품명 수량이 같이 적용
  -->
 
-					<div class="div_none">
-						<!-- 빈 공간 -->
-					</div>
+<!-- 					<div class="div_none"> -->
+<!-- 						빈 공간 -->
+<!-- 					</div> -->
 
-					<div class="div_button">
-						<button type="button" id="btn_update_confirm">
-							<a class="btn_text_color" href="./TestMM_main_park.html">확인</a>
-						</button>
-					</div>
+<!-- 					<div class="div_button"> -->
+<!-- 						<button type="button" id="btn_update_confirm"> -->
+<!-- 							<a class="btn_text_color" href="./TestMM_main_park.html">확인</a> -->
+<!-- 						</button> -->
+<!-- 					</div> -->
 				</div>
 
 			</div>

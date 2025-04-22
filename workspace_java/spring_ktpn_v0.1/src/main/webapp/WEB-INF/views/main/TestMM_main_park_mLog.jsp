@@ -142,7 +142,7 @@
 						</div>
 
 
-						<form action="imcon" method="get">
+						<form action="mainmp" method="get">
 
 							<div class="div_button">
 								<button type="submit" id="btn_main_add" name="command"

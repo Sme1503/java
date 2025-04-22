@@ -30,8 +30,19 @@ public class TAK_Svc_pr_1100Impl implements TAK_Svc_pr_1100mt {
 	public List getPcode() {
 		// TODO Auto-generated method stub
 		
-		System.out.println("service pr_1100mt");
+		System.out.println("service pr_1100mt selectPcode");
 		List list = tb_pr_1100MTDAO.selectPcode();
+		System.out.println("list : " + list);
+		
+		return list;
+	}
+
+	@Override
+	public List getPFcode(String fcode) {
+		// TODO Auto-generated method stub
+
+		System.out.println("service pr_1100mt selectPFcode");
+		List list = tb_pr_1100MTDAO.selectPFcode(fcode);
 		System.out.println("list : " + list);
 		
 		return list;

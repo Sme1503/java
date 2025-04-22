@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ktpn.dto.tb_fs_1000ht_DTO;
 import kr.or.ktpn.dto.tb_fs_1000mt_DTO;
@@ -259,6 +261,7 @@ public class con_PMm {
 		List materials = svc_mr_1000mt.getMaterials(mcode);
 		System.out.println("materials : " + materials);
 
+		// 수정할 dto
 		tb_mr_1000mt_DTO dto = new tb_mr_1000mt_DTO();
 		dto = (tb_mr_1000mt_DTO) materials.get(0);
 		System.out.println("dto : " + dto);
@@ -272,7 +275,7 @@ public class con_PMm {
 	}
 		
 	// 원자재 현황 수정, 원자재로그 추가하는 메소드 - 테스트 페이지
-	@RequestMapping(value = "/updatem2", method = RequestMethod.GET)
+	@RequestMapping(value = "/updatem2", method = RequestMethod.POST)
 	public String updateM2(tb_mr_1000ht_DTO mlogdto) {
 			
 		List list = new ArrayList();
@@ -497,22 +500,31 @@ public class con_PMm {
 	
 	// 테스트 페이지(완제품수정) - 작업자, 생산완료인 완제품 코드, 완제품명 보여주는 메소드
 	@RequestMapping(value = "/updatep1", method = RequestMethod.GET)
-	public String updateP1(Model model, String pcode) {
+	public String updateP1(Model model, String fcode) {
 				
+		System.out.println("fcode : " + fcode);
+		
 		// 작업자
 		List workerList = svc_mb_1000mt.getWorker();
 				
-		// 생산 - 생산코드, 완제품 코드, 완제품명
-//		List PcodeList = svc_fs_1000mt;
+		// 생산 - 완제품코드가 fcode인 생산이 완료된 생산코드
+		List PFcodeList = tak_Svc_pr_1100mt.getPFcode(fcode);
+		
+		// 선택한 완제품코드
+		List fpList = svc_fs_1000mt.getProducts(fcode);
+		System.out.println("fpList : " + fpList);
+		tb_fs_1000mt_DTO dto = (tb_fs_1000mt_DTO) fpList.get(0);
+		System.out.println("dto : " + dto);
 			
 		model.addAttribute("mList", workerList);
-//		model.addAttribute("pList", PcodeList);
+		model.addAttribute("pList", PFcodeList);
+		model.addAttribute("dto", dto);
 
 		return "TestMM_updateP_park.tiles";
 	}
 		
 	// 생산완료인 완제품 현황 수정, 완제품로그 추가하는 메소드 - 테스트 페이지
-	@RequestMapping(value = "/updatep2", method = RequestMethod.GET)
+	@RequestMapping(value = "/updatep2", method = RequestMethod.POST)
 	public String updateP2(tb_fs_1000ht_DTO plogdto) {
 				
 		List list = new ArrayList();
@@ -627,10 +639,15 @@ public class con_PMm {
 	}
 
 	// 원자재 현황 입력취소(undo), 원자재로그 수정, 원자재로그 추가하는 메소드
+	@ResponseBody
 	@RequestMapping(value = "/undom", method = RequestMethod.POST)
-	public String undoM(String undoCheck) {
+	public int undoM(
+			@RequestBody
+			String undoCheck) {
 		
+		undoCheck = undoCheck.substring(1, 6);
 		System.out.println("Mcode : " + undoCheck);
+		System.out.println("Mcode.length : " + undoCheck.length());
 		
 		int i = 0;
 		tb_mr_1000ht_DTO dto = new tb_mr_1000ht_DTO();
@@ -641,6 +658,7 @@ public class con_PMm {
 		// 마지막 로그 
 		dto.setFindlognum(1);
 		
+		System.out.println("dto : " + dto);
 		// 마지막 로그 찾기
 		List list = svc_mr_1000ht.getLastMlog(dto);
 		System.out.println("잘못 입력한 데이터 로그 : " + list.get(0));
@@ -683,7 +701,8 @@ public class con_PMm {
 		i = svc_mr_1000ht.insertMlog(dto);
 		System.out.println("원자재 로그테이블에 " + i + "행이 삽입되었습니다");
 		
-		return "redirect: mainmp";
+		return i;
+		//return "redirect: mainmp";
 	}
 
 	// 원자재 현황 삭제, 원자재로그 추가하는 메소드
@@ -708,10 +727,15 @@ public class con_PMm {
 	}
 
 	// 완제품 현황 입력취소(undo), 완제품로그 수정, 완제품로그 추가하는 메소드
+	@ResponseBody
 	@RequestMapping(value = "/undop", method = RequestMethod.POST)
-	public String undoP(String undoCheck) {
-
-		System.out.println("Pcode : " + undoCheck);
+	public String undoP(
+			@RequestBody
+			String undoCheck) {
+		
+		undoCheck = undoCheck.substring(1, 6);
+		System.out.println("fcode : " + undoCheck);
+		System.out.println("fcode.length : " + undoCheck.length());
 		
 		int i = 0;
 		tb_fs_1000ht_DTO dto = new tb_fs_1000ht_DTO();
@@ -722,6 +746,7 @@ public class con_PMm {
 		// 마지막 로그
 		dto.setFindlognum(1);
 		
+		System.out.println("dto : " + dto);
 		List list = svc_fs_1000ht.getLastPlog(dto);
 		System.out.println("잘못 입력한 데이터 로그 : " + list.get(0));
 

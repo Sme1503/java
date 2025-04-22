@@ -142,7 +142,7 @@
 						</div>
 
 
-						<form action="impcon" method="get">
+						<form action="mainmp" method="get">
 
 							<div class="div_button">
 								<button type="sumbit" id="btn_main_add" name="" value="">

@@ -110,15 +110,15 @@
 						</div>
 					</form>
 
-					<div class="div_none">
-						<!-- 빈 공간 -->
-					</div>
+<!-- 					<div class="div_none"> -->
+<!-- 						빈 공간 -->
+<!-- 					</div> -->
 
-					<div class="div_button">
-						<button type="button" id="btn_update_confirm">
-							<a class="btn_text_color" href="./TestMM_main_park.html">확인</a>
-						</button>
-					</div>
+<!-- 					<div class="div_button"> -->
+<!-- 						<button type="button" id="btn_update_confirm"> -->
+<!-- 							<a class="btn_text_color" href="./TestMM_main_park.html">확인</a> -->
+<!-- 						</button> -->
+<!-- 					</div> -->
 				</div>
 
 			</div>

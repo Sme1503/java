@@ -39,4 +39,14 @@ public class TAK_PR_1100MTDAOImpl implements TAK_PR_1100MTDAO {
 		return result;
 	}
 
+	@Override
+	public List selectPFcode(String fcode) {
+		// TODO Auto-generated method stub
+
+		List result = sqlSession.selectList("mapper.tb_mr_1000mt.selectFinishAllPCodeFcode", fcode);
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
 }

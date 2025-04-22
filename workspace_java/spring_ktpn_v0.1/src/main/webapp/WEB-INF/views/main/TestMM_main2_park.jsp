@@ -284,7 +284,7 @@
 <!-- 													<input type="submit" value="수정">  -->
 													
 													<form action="updatep1" method="get">
-														<button type="submit" name="pcode" value="${Pdata.fnsh_code }">
+														<button type="submit" name="fcode" value="${Pdata.fnsh_code }">
 															수정
 														</button>
 													</form>
@@ -415,12 +415,74 @@
 	})*/
 	
 	// ajax로 입력취소 기능구현
+	// 원자재 입력취소
+	const btn_undom = document.querySelector('#btn_undom');
+	
+	btn_undom.addEventListener('click', function() {
+		
+		let checkboxes = document.querySelectorAll('.checkboxx');
+		let undoCheck;
+		for(let i = 0; i<checkboxes.length; i++) {
+			if(checkboxes[i].checked) {
+			
+				undoCheck = checkboxes[i].value;
+				
+			}
+		}
+		console.log("undoCheck : ", undoCheck);
+		
+		
+		const xhr = new XMLHttpRequest();
+		xhr.open('post', 'undom');
+		xhr.setRequestHeader('Content-Type', 'application/json')
+		//xhr.send(delcode);
+		xhr.send(JSON.stringify(undoCheck));
+		console.log("데이터 보냄");
+		
+		xhr.onload = function() {
+			if(xhr.responseText != 0){
+				alert('입력취소 성공');
+				location.href='mainmp';
+			} else {
+				alert('입력취소 실패');
+			}
+		}
+	})
+	
+	
+	// 완제품 입력취소
 	const btn_undop = document.querySelector('#btn_undop');
 	
 	btn_undop.addEventListener('click', function() {
 		
+		let checkboxes = document.querySelectorAll('.checkboxx');
+		let undoCheck;
+		for(let i = 0; i<checkboxes.length; i++) {
+			if(checkboxes[i].checked) {
+			
+				undoCheck = checkboxes[i].value;
+				
+			}
+		}
+		console.log("undoCheck : ", undoCheck);
+		
+		
+		const xhr = new XMLHttpRequest();
+		xhr.open('post', 'undop');
+		xhr.setRequestHeader('Content-Type', 'application/json')
+		//xhr.send(delcode);
+		xhr.send(JSON.stringify(undoCheck));
+		console.log("데이터 보냄");
+		
+		xhr.onload = function() {
+			if(xhr.responseText != 0){
+				alert('입력취소 성공');
+				location.href='mainmp';
+			} else {
+				alert('입력취소 실패');
+			}
+		}
 	})
-	
 </script>
 
 </html>
