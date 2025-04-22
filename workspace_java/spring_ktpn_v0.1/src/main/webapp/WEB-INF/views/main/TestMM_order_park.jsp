@@ -72,7 +72,7 @@
 
 						<div class="div_button">
 							<button type="button" id="btn_order_confirm">
-								<a class="btn_text_color" href="TestMM_main_park.jsp">확인</a>
+								<a class="btn_text_color" href="mainmp">확인</a>
 							</button>
 						</div>
 

@@ -15,4 +15,6 @@ public interface tb_qa_1100dt_DAO {
 	public int deleteQC(tb_qa_1100dt_DTO dto);
 	
 	public List joinQC(String pcode);
+	
+	public tb_qa_1100dt_DTO selectQCone(String code);
 }

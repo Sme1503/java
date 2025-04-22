@@ -47,7 +47,7 @@
 
 
 						<div class="t_con">
-							<form method="post" action="컨트롤러">
+							<form method="get" action="mainqc">
 								<div class="con_1">
 
 									<table class="qtable">
@@ -124,7 +124,7 @@
 												<th class="qc-title">
 													<p>13. 색상값</p>
 												</th>
-												<td>${QcList[0].clrl_val }</td>
+												<td><div class="QA-td-color1" style="background-color: ${QcList[0].clrl_val }"></div>&nbsp;${QcList[0].clrl_val }</td>
 											</tr>
 
 											<tr>
@@ -153,7 +153,7 @@
 
 											<tr>
 												<th class="qc-title">
-													<p>8. 불량률(%)</p>
+													<p>8. 불량수량</p>
 												</th>
 												<td>${QcList[0].dfc_rt }</td>
 
@@ -174,7 +174,7 @@
 									</div>
 
 									<button type="submit" id="btn_report_confirm" name="command"
-										value="move_main_page">"TestQA_main_park2.jsp" 확인</button>
+										value="move_main_page">확인</button>
 
 									<!-- 											<button type="button" id="btn_report_confirm"> -->
 									<!-- 												<a class="btn_text_color" href="./TestQA_main_park.jsp">확인</a> -->

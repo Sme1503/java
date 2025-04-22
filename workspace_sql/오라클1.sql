@@ -292,5 +292,6 @@ INSERT INTO TB_MD_1000MT
       (MT_MNG_NM, MT_MNG_CD, MT_MNG_DESC, TP_CLS_VAL, USE_YN, REG_DT, MOD_DT, IMG_PATH_ADR)
 VALUES ('가소제', 'M'||LPAD(SQ_MD_1000MT_M.NEXTVAL, 4, '0'), '지우개원료', '원자재', 'Y', TO_CHAR(SYSDATE, 'YYYYMMDD'), TO_CHAR(SYSDATE, 'YYYYMMDD'), null);
 
-
 select * from tb_mr_1000mt;
+select * from tb_fs_1000mt;
+select * from tb_qa_1100dt;

@@ -71,4 +71,14 @@ public class tb_qa_1100dt_DAOImpl implements tb_qa_1100dt_DAO {
 		
 		return list;
 	}
+
+	@Override
+	public tb_qa_1100dt_DTO selectQCone(String code) {
+		// TODO Auto-generated method stub
+		
+		tb_qa_1100dt_DTO result = sqlSession.selectOne("mapper.tb_qa_1100dt.selectQCone", code);
+		System.out.println("result : " + result);
+		
+		return result;
+	}
 }

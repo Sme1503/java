@@ -86,7 +86,7 @@
 
 										<td id="Mloc" class="material-td"><select
 											name="mtrl_cd_nm">
-												<option value="warehouse1">M창고1</option>
+												<option value="M창고1">M창고1</option>
 												<!--                                     						<option value="warehouse2">M창고2</option> -->
 												<!--                                     						<option value="warehouse3">M창고3</option> -->
 

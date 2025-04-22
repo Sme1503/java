@@ -154,7 +154,7 @@
 
 									<div class="item">
 										<select name="fnshl_loc_nm">
-											<option value="warehouse1">P창고1</option>
+											<option value="P창고1">P창고1</option>
 											<!--                                     			<option value="warehouse2">P창고2</option> -->
 											<!--                                     			<option value="warehouse3">P창고3</option> -->
 

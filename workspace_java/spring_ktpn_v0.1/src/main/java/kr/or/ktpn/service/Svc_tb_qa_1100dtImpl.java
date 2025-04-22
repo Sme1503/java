@@ -68,5 +68,16 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		return list;
 	}
+
+	@Override
+	public tb_qa_1100dt_DTO getSelectQCone(String code) {
+		// TODO Auto-generated method stub
+
+		System.out.println("service_qa_1100dt getSelectQCone");
+		tb_qa_1100dt_DTO dto = tb_qa_1100dt_dao.selectQCone(code);
+		System.out.println("service dto : " + dto);
+		
+		return dto;
+	}
 	
 }

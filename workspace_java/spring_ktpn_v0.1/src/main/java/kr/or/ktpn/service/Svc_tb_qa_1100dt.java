@@ -15,4 +15,6 @@ public interface Svc_tb_qa_1100dt {
 	public int getDeleteQC(tb_qa_1100dt_DTO dto);
 	
 	public List getJoinQC(String pcode);
+	
+	public tb_qa_1100dt_DTO getSelectQCone(String code);
 }

@@ -130,6 +130,11 @@ a {
     text-align: center;
 }
 
+.QA-td-color {
+	
+	height: 20px;
+}
+
 .flex_page {
     display: flex;
     justify-content: space-around;

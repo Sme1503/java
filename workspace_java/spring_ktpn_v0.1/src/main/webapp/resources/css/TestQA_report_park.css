@@ -194,7 +194,7 @@ a {
 
 .qtable {
 	border: 1px solid darkgrey;
-    width : 910px;
+    width : 77vw;
     border-collapse: collapse;
     /* margin: 0 1%; */
     
@@ -215,6 +215,12 @@ thead {
 	border: 1px solid darkgrey;
 	text-align: center;
 	vertical-align: middle;
+}
+
+.QA-td-color1 {
+	display: inline-block;
+	height: 18px;
+	width: 18px
 }
 
 /* pc는 그대로 */

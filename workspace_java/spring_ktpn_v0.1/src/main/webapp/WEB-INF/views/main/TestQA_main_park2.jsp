@@ -217,14 +217,15 @@
 									</table>
 								</div>
 
-								<button type="submit" name="command" value="insert">확인
-									- 누르면 추가된다</button>
+								<button type="submit" name="command" value="insert">
+									추가하기
+								</button>
 
 							</div>
 						</form>
 						
 						
-						<form action="deleteqc" method="post">
+<!-- 						<form action="deleteqc" method="post"> -->
 						<div>
 							<table class="QA-table">
 								<thead>
@@ -250,7 +251,7 @@
 										<tr>
 
 
-											<td><input type="checkbox" name="delcode"
+											<td><input type="checkbox" class="checkboxx" id="updatecode_${QCdata.prod_cd }" name="delcode"
 												value="${QCdata.prod_cd }"></td>
 
 											<!-- 													<form method="post" action="qccon"> -->
@@ -274,7 +275,10 @@
 												value="${QCdata.sz_val }"> ${QCdata.sz_val }</td>
 
 											<td class="QA-td"><input id="color" type="hidden" name="color"
-												value="${QCdata.clrl_val }"> ${QCdata.clrl_val }</td>
+												value="${QCdata.clrl_val }">
+												<div class="QA-td-color" style="background-color: ${QCdata.clrl_val }"></div>
+												
+												 ${QCdata.clrl_val }</td>
 
 											<td class="QA-td"><input id="erase" type="hidden" name="erase"
 												value="${QCdata.qlty_val }"> ${QCdata.qlty_val }</td>
@@ -285,9 +289,11 @@
 											<td>
 <!-- 											<input type="hidden" name="command" value="update"> -->
 <!-- 												<input type="submit" value="수정"> -->
-												<button class="update_btn" type="button" name="command" value="update">
+												<form action="updateqc" method="post">
+												<button class="update_btn" type="submit" name="updateCode" value="${QCdata.prod_cd }">
 													수정
 												</button>
+												</form>
 												
 												</td>
 
@@ -302,18 +308,54 @@
 						</div>
 						
 						<div>
-							<button type="submit" name="command" value="delete">
+							<button id="btn_del" type="button" name="command" value="delete">
 								삭제
 							</button>
 						</div>
-					</form>
-						
+<!-- 					</form> -->
+<!-- 						<div> -->
+<!-- 							<button id="btnbb" type="button" name="command" value="update"> -->
+<!-- 								수정2 -->
+<!-- 							</button> -->
+<!-- 						</div> -->
 					<script>
 						// 수정페이지로 이동하는 js
 						// 문제 - icode, iname의 값을 못 가져온다 
 						// 문제 - param을 전송 못함
+						// 수정버튼 여러개 중 하나만 작동
+						//  -> 수정버튼을 하나로 만들고 체크박스로 체크한 데이터받기
 						
-						const update_btn = document.querySelector('.update_btn');
+						// 테이블 밖에 있는 수정 버튼
+						/*const btnbb = document.querySelector('#btnbb');
+						btnbb.addEventListener('click', function() {
+							
+// 							let checkbox = document.querySelector('[id^=updatecode_]');
+							let checkboxes = document.querySelectorAll('.checkboxx');
+							let updateCode;
+							for(let i = 0; i<checkboxes.length; i++) {
+								if(checkboxes[i].checked) {
+								
+									updateCode = checkboxes[i].value;
+									console.log("updateCode : ", updateCode);
+								}
+							}
+							
+							
+							const xhr = new XMLHttpRequest();
+							xhr.open('post', 'updateqc');
+							xhr.send(updateCode);
+							console.log("데이터 보냄");
+							
+							xhr.onload = function() {
+								console.log("xhr.responseText", xhr.responseText);
+								location.href=xhr.responseText;
+							}
+						})*/
+						
+						
+						
+						// 테이블에 있는 수정 버튼
+						/*const update_btn = document.querySelector('.update_btn');
 						console.log("update_btn.value : " , update_btn.value);
 						
 						update_btn.addEventListener('click', function() {
@@ -345,8 +387,42 @@
 // 									alert('수정 실패');
 // 								}
 // 							}
-						})
+						})*/
 					
+						// ajax로 데이터 삭제하기
+						const btn_del = document.querySelector('#btn_del');
+						
+						btn_del.addEventListener('click', function() {
+						
+							let checkboxes = document.querySelectorAll('.checkboxx');
+							let delcode = new Array();
+							for(let i = 0; i<checkboxes.length; i++) {
+								if(checkboxes[i].checked) {
+								
+									delcode[i] = checkboxes[i].value;
+									//console.log("delcode : ", delCode);
+								}
+							}
+							console.log("delcode : ", delcode);
+							
+							
+							const xhr = new XMLHttpRequest();
+							xhr.open('post', 'deleteqc');
+ 							xhr.setRequestHeader('Content-Type', 'application/json')
+							//xhr.send(delcode);
+							xhr.send(JSON.stringify(delcode));
+							console.log("데이터 보냄");
+							
+							xhr.onload = function() {
+								if(xhr.responseText != 0){
+									alert('삭제 성공');
+									location.href='mainqc';
+								} else {
+									alert('삭제 실패');
+								}
+							}
+						})
+						
 					</script>
 						
 					</div>

@@ -497,7 +497,7 @@ public class con_PMm {
 	
 	// 테스트 페이지(완제품수정) - 작업자, 생산완료인 완제품 코드, 완제품명 보여주는 메소드
 	@RequestMapping(value = "/updatep1", method = RequestMethod.GET)
-	public String updateP1(Model model, String code) {
+	public String updateP1(Model model, String pcode) {
 				
 		// 작업자
 		List workerList = svc_mb_1000mt.getWorker();

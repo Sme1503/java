@@ -121,7 +121,7 @@
                                     -->
 
 					<div>
-					<form method="post" action="undom">
+<!-- 					<form method="post" action="undom"> -->
 						<div id="show_table1">
 							<table class="material-table">
 								<thead>
@@ -142,7 +142,7 @@
 
 										<tr>
 											
-												<td><input type="checkbox" name="undoCheck"
+												<td><input class="checkboxx" type="checkbox" name="undoCheck"
 													value="${Mdata.mtrl_cd }"></td>
 
 												<td id="Mcode" class="material-td Mcode"><input
@@ -175,8 +175,10 @@
 													<!-- 																	<a class="btn_text_color" --> <!-- 																		href="./TestMM_update_park.jsp">수정</a> -->
 													<!-- 																</button> -->
 
-													<button name="command" value="move_update_Page"
-														type="submit" class="btn_main_update">수정</button>
+													<form action="updatem1" method="get">													
+														<button name="mcode" value="${Mdata.mtrl_cd }"
+															type="submit" class="btn_main_update">수정</button>
+													</form>
 												</td>
 											</form>
 										</tr>
@@ -197,7 +199,7 @@
 									<!-- 											<input type="submit" value="거래처"> -->
 
 
-									<button type="submit" class="btn_main_order btn_text_color">
+									<button id="btn_undom" type="button" class="btn_main_order btn_text_color">
 										입력취소(undo)</button>
 								
 							</div>
@@ -205,13 +207,21 @@
 
 							<div class="div_button">
 <!-- 								<form method="post" action="imcon"> -->
-									<button name="command" value="move_add2_Page" type="submit"
-										id="btn_main_add">원자재 재고 추가</button>
+									<a href="addm1">
+									<button name="command" value="move_add2_Page" type="button"
+										id="btn_main_addm">원자재 추가</button>
+									</a>
 <!-- 								</form> -->
 
+<!-- 									<a href="updatem1"> -->
+<!-- 									<button name="command" value="move_update2_Page" type="button" -->
+<!-- 										id="btn_main_updatem">원자재 수정</button> -->
+<!-- 									</a> -->
+									
+										
 <!-- 								<form method="post" action="impcon"> -->
-									<button name="command" value="move_addP2_Page" type="submit"
-										id="btn_main_add">완제품 재고 추가</button>
+<!-- 									<button name="command" value="move_addP2_Page" type="submit" -->
+<!-- 										id="btn_main_add">완제품 재고 추가</button> -->
 <!-- 								</form> -->
 
 
@@ -228,9 +238,9 @@
 							</div>
 
 						</div>
-					</form>
+<!-- 					</form> -->
 					
-					<form method="post" action="undop">
+<!-- 					<form method="post" action="undop"> -->
 						<div id="show_table2" class="hide">
 							<table class="material-table product-table">
 								<thead>
@@ -250,7 +260,7 @@
 
 
 
-												<td><input type="checkbox" name="undoCheck"
+												<td><input class="checkboxx" type="checkbox" name="undoCheck"
 													value="${Pdata.fnsh_code }"></td>
 
 												<td id="Pcode" class="material-td Mcode product-td"><input
@@ -269,9 +279,18 @@
 													type="hidden" name="code" value="${Pdata.fnsh_loc_nm }">
 													${Pdata.fnsh_loc_nm }</td>
 
-												<td id="Mbutton" class="material-td product-td"><input
-													type="hidden" name="command" value="move_updateP_Page">
-													<input type="submit" value="수정"> <!-- 															<button type="button" class="btn_main_update"> -->
+												<td id="Mbutton" class="material-td product-td">
+<!-- 													<input type="hidden" name="command" value="move_updateP_Page"> -->
+<!-- 													<input type="submit" value="수정">  -->
+													
+													<form action="updatep1" method="get">
+														<button type="submit" name="pcode" value="${Pdata.fnsh_code }">
+															수정
+														</button>
+													</form>
+													
+													
+													<!-- 															<button type="button" class="btn_main_update"> -->
 													<!-- 																<a class="btn_text_color" --> <!-- 																	href="./TestMM_update_park.jsp">수정</a> -->
 													<!-- 															</button> --></td>
 
@@ -295,7 +314,7 @@
 									<!-- 												<input type="submit" value="거래처"> -->
 
 
-									<button type="submit" class="btn_main_order btn_text_color">
+									<button id="btn_undop" type="button" class="btn_main_order btn_text_color">
 										입력취소(undo)</button>
 <!-- 								</form> -->
 							</div>
@@ -304,9 +323,14 @@
 							<div class="div_button">
 
 <!-- 								<form method="post" action="impcon"> -->
-									<button name="command" value="move_addP_Page" type="submit"
-										id="btn_main_add">추가</button>
+									<a href="addp1">
+									<button name="command" value="move_addP_Page" type="button"
+										id="btn_main_addp">완제품 추가</button>
+									</a>
 <!-- 								</form> -->
+									
+<!-- 									<button name="command" value="move_updateP_Page" type="button" -->
+<!-- 										id="btn_main_updatep">완제품 수정</button> -->
 
 								<!-- 										<button type="button" id="btn_main_add"> -->
 								<!-- 											<a class="btn_text_color" href="TestMM_add_park.jsp">추가</a> -->
@@ -320,10 +344,10 @@
 							</div>
 
 						</div>
-					</form>
+<!-- 					</form> -->
 
 						<div>
-							<button>원자재 추가 - 버튼을 누르면 숨겨졌던 입력창이 생긴다</button>
+<!-- 							<button>원자재 추가 - 버튼을 누르면 숨겨졌던 입력창이 생긴다</button> -->
 
 							<div>
 								<form action="imcon" method="post">
@@ -373,5 +397,30 @@
 	</div>
 
 </body>
+
+<script>
+	
+	//const btn_add = document.querySelector('#btn_main_add')
+	
+	/*btn_add.addEventListener('click', function() {
+		
+		const xhr = new XMLHttpRequest();
+		xhr.open('get', 'addm1');
+		
+		
+		xhr.onload = function() {
+			console.log("xhr.responseText", xhr.responseText);
+			location.href=xhr.responseText;
+		}
+	})*/
+	
+	// ajax로 입력취소 기능구현
+	const btn_undop = document.querySelector('#btn_undop');
+	
+	btn_undop.addEventListener('click', function() {
+		
+	})
+	
+</script>
 
 </html>

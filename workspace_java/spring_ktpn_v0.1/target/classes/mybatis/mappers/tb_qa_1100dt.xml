@@ -8,13 +8,18 @@
 		select * from tb_qa_1100dt
 	</select>
 
+	<select id="selectQCone" resultType="tb_qa_1100dt" parameterType="tb_qa_1100dt">
+		select * from tb_qa_1100dt
+		where PROD_CD = #{prod_cd}
+	</select>
+
 	<insert id="insertQCreport" parameterType="tb_qa_1100dt">
 		insert into TB_QA_1100DT (PROD_CD, ITEM_CD, ITEM_NM, CHCKR_NM, CHCKR_DTTM, STRTH_VAL, SZ_VAL, CLRL_VAL, QLTY_VAL, FAIL_CAUS_DESC, RMRK)
 		values (#{prod_cd}, #{item_cd}, #{item_nm}, #{chckr_nm}, sysdate, #{strth_val}, #{sz_val}, #{clrl_val}, #{qlty_val}, #{fail_caus_desc}, #{rmrk}) 
 	</insert>
 	
 	<update id="updateQCreport" parameterType="tb_qa_1100dt">
-		update TB_QA_1100DT ";
+		update TB_QA_1100DT
 		set CHCKR_NM = #{chckr_nm}, CHCKR_DTTM = #{chckr_dttm}, STRTH_VAL = #{strth_val}, SZ_VAL = #{sz_val},
 			CLRL_VAL = #{clrl_val}, QLTY_VAL = #{qlty_val}, FAIL_CAUS_DESC = #{fail_caus_desc}, RMRK = #{rmrk}
 		where PROD_CD = #{prod_cd}
