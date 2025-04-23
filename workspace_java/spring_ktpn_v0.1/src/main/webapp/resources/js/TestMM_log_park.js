@@ -68,6 +68,9 @@ for(let i =0; i< nums.length; i++){
 }*/
 
 
+// 현재 날짜가 바로 반영
+document.getElementById('select_MM_today').value = new Date().toISOString().substring(0, 10);
+
 let select_table1 = document.querySelector('.select_table1');
 const show_table2 = document.querySelector('#show_table2');
 const show_table1 = document.querySelector('#show_table1');
@@ -89,8 +92,6 @@ select_table2.addEventListener('click', function(){
    
 })
 
-// 현재 날짜가 바로 반영
-document.getElementById('select_MM_today').value = new Date().toISOString().substring(0, 10);
 
 // jquery
 $(document).ready(function () {

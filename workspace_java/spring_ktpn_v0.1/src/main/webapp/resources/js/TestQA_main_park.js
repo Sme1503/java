@@ -18,7 +18,7 @@ enter_reportPage.forEach((element) => {
 
 
 // 이전 페이지 알림
-const a_before_page = document.getElementById('a_before_page');
+/*const a_before_page = document.getElementById('a_before_page');
 
 a_before_page.addEventListener('click', function() {
     console.log("동작함");
@@ -45,8 +45,9 @@ for(let i =0; i<nums.length; i++){
             e.target.classList.add('bold');
         }
     })
-}
+}*/
 
 
 // 현재 날짜가 바로 반영
-document.getElementById('select_QA_today').value = new Date().toISOString().substring(0, 10);
+//document.getElementById('select_QA_today').value = new Date().toISOString().substring(0, 10);
+document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);

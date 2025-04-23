@@ -20,7 +20,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js"
 	integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
 	crossorigin="anonymous"></script>
-<script src="resources/js/TestMM_main_park.js" defer></script>
+<script src="resources/js/TestMM_log_park.js" defer></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
 <script src="resources/js/layOut_kwak.js"></script>

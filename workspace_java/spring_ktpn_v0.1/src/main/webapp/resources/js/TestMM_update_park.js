@@ -5,3 +5,6 @@
 btn_update_confirm.addEventListener('click', function() {
     alert("수정되었습니다.");
 });*/
+
+// 현재 날짜가 바로 반영
+document.getElementById('date').value = new Date().toISOString().substring(0, 10);

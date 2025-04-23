@@ -16,6 +16,9 @@
 
 // }) //메뉴 열었다 닫았다 하기<끝>
 
+// 현재 날짜가 바로 반영
+document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+
 
 // 입력추가 버튼을 누르면 동작하는 이벤트
 const btn_input_add = document.getElementById('btn_input_add');

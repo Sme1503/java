@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -12,8 +13,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <!-- 여기에 대시보드 css 파일옮기기 -->
-<link rel="stylesheet" href="resources/css/layOut_kwak.css" type="text/css">
-<link rel="stylesheet" href="resources/css/TestMM_main_park.css" type="text/css">
+<link rel="stylesheet" href="resources/css/layOut_kwak.css"
+	type="text/css">
+<link rel="stylesheet" href="resources/css/TestMM_main_park.css"
+	type="text/css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -63,15 +66,15 @@
 								<option value="Fcode">완제품코드</option>
 								<option value="Fname">완제품명</option>
 								<option value="EA">수량</option>
-<!-- 								<option value="Morder">주문필요</option> -->
-<!-- 								<option value="Mloc">재고위치</option> -->
-							</select> 
-							<input type="text" class="select" name="keyword" value="${dto.keyword }">
+								<!-- 								<option value="Morder">주문필요</option> -->
+								<!-- 								<option value="Mloc">재고위치</option> -->
+							</select> <input type="text" class="select" name="keyword"
+								value="${dto.keyword }">
 							<!-- <input class="select_day" id="select_MM_eve" type="date" value=""
                                                 max="2999-12-31" , min="1970-01-01"> -->
-<!-- 							<input class="select_day" id="select_MM_today" type="date" -->
-<!-- 								value="" max="2999-12-31" , min="1970-01-01">  -->
-								<input type="submit" class="submit" value="검색">
+							<!-- 							<input class="select_day" id="select_MM_today" type="date" -->
+							<!-- 								value="" max="2999-12-31" , min="1970-01-01">  -->
+							<input type="submit" class="submit" value="검색">
 
 						</form>
 
@@ -125,12 +128,13 @@
                                     -->
 
 					<div>
-<!-- 					<form method="post" action="undom"> -->
+						<!-- 					<form method="post" action="undom"> -->
 						<div id="show_table1">
 							<table class="material-table">
 								<thead>
 									<tr>
-										<th scope="col" class="material-th">✅</th>
+										<th scope="col"
+											style="border: 1px solid darkgrey; background-color: #2f373a; color: white;">✅</th>
 										<th scope="col" class="material-th">원자재코드</th>
 										<th scope="col" class="material-th">원자재명</th>
 										<th scope="col" class="material-th">기준 수량</th>
@@ -145,45 +149,46 @@
 									<c:forEach var="Mdata" items="${MtableSelect }">
 
 										<tr>
-											
-												<td><input class="checkboxx" type="checkbox" name="undoCheck"
-													value="${Mdata.mtrl_cd }"></td>
 
-												<td id="Mcode" class="material-td Mcode"><input
-													type="hidden" name="code" value="${Mdata.mtrl_cd }">
-													${Mdata.mtrl_cd }</td>
+											<td style="border: 1px solid darkgrey;"><input
+												class="checkboxx" type="radio" name="undoCheck"
+												value="${Mdata.mtrl_cd }"></td>
 
-												<td id="Mname" class="material-td"><input type="hidden"
-													name="name" value="${Mdata.mtrl_nm }">
-													${Mdata.mtrl_nm }</td>
+											<td id="Mcode" class="material-td Mcode"><input
+												type="hidden" name="code" value="${Mdata.mtrl_cd }">
+												${Mdata.mtrl_cd }</td>
 
-												<td id="Msntea" class="material-td"><input
-													type="hidden" name="sntea" value="${Mdata.stn_cnt }">
-													${Mdata.stn_cnt }</td>
+											<td id="Mname" class="material-td"><input type="hidden"
+												name="name" value="${Mdata.mtrl_nm }">
+												${Mdata.mtrl_nm }</td>
 
-												<td id="Mcurea" class="material-td"><input
-													type="hidden" name="ea" value="${Mdata.crnt_aftr_cnt }">
-													${Mdata.crnt_aftr_cnt }</td>
+											<td id="Msntea" class="material-td"><input type="hidden"
+												name="sntea" value="${Mdata.stn_cnt }">
+												${Mdata.stn_cnt }</td>
 
-												<td id="Morder" class="material-td"><input
-													type="hidden" name="order" value="${Mdata.ordr_rqrd_yn }">
-													${Mdata.ordr_rqrd_yn }</td>
+											<td id="Mcurea" class="material-td"><input type="hidden"
+												name="ea" value="${Mdata.crnt_aftr_cnt }">
+												${Mdata.crnt_aftr_cnt }</td>
 
-												<td id="Mloc" class="material-td"><input type="hidden"
-													name="loc" value="${Mdata.mtrl_loc_nm }">
-													${Mdata.mtrl_loc_nm }</td>
+											<td id="Morder" class="material-td"><input type="hidden"
+												name="order" value="${Mdata.ordr_rqrd_yn }">
+												${Mdata.ordr_rqrd_yn }</td>
 
-												<td id="Mbutton" class="material-td">
-													<!-- 																<input type="hidden" name="command" value="update">  -->
-													<!-- 																<input type="submit" value="수정"> --> <!-- 																<button type="button" class="btn_main_update"> -->
-													<!-- 																	<a class="btn_text_color" --> <!-- 																		href="./TestMM_update_park.jsp">수정</a> -->
-													<!-- 																</button> -->
+											<td id="Mloc" class="material-td"><input type="hidden"
+												name="loc" value="${Mdata.mtrl_loc_nm }">
+												${Mdata.mtrl_loc_nm }</td>
 
-													<form action="updatem1" method="get">													
-														<button name="mcode" value="${Mdata.mtrl_cd }"
-															type="submit" class="btn_main_update">수정</button>
-													</form>
-												</td>
+											<td id="Mbutton" class="material-td">
+												<!-- 																<input type="hidden" name="command" value="update">  -->
+												<!-- 																<input type="submit" value="수정"> --> <!-- 																<button type="button" class="btn_main_update"> -->
+												<!-- 																	<a class="btn_text_color" --> <!-- 																		href="./TestMM_update_park.jsp">수정</a> -->
+												<!-- 																</button> -->
+
+												<form action="updatem1" method="get">
+													<button name="mcode" value="${Mdata.mtrl_cd }"
+														type="submit" class="btn_main_update">수정</button>
+												</form>
+											</td>
 											</form>
 										</tr>
 									</c:forEach>
@@ -198,35 +203,35 @@
 							</div>
 
 							<div class="div_form_order">
-								
-									<input type="hidden" name="command" value="undo">
-									<!-- 											<input type="submit" value="거래처"> -->
+
+								<input type="hidden" name="command" value="undo">
+								<!-- 											<input type="submit" value="거래처"> -->
 
 
-									<button id="btn_undom" type="button" class="btn_main_order btn_text_color">
-										입력취소(undo)</button>
-								
+								<button id="btn_undom" type="button"
+									class="btn_main_order btn_text_color">입력취소(undo)</button>
+
 							</div>
 
 
 							<div class="div_button">
-<!-- 								<form method="post" action="imcon"> -->
-									<a href="addm1">
+								<!-- 								<form method="post" action="imcon"> -->
+								<a href="addm1">
 									<button name="command" value="move_add2_Page" type="button"
 										id="btn_main_addm">원자재 추가</button>
-									</a>
-<!-- 								</form> -->
+								</a>
+								<!-- 								</form> -->
 
-<!-- 									<a href="updatem1"> -->
-<!-- 									<button name="command" value="move_update2_Page" type="button" -->
-<!-- 										id="btn_main_updatem">원자재 수정</button> -->
-<!-- 									</a> -->
-									
-										
-<!-- 								<form method="post" action="impcon"> -->
-<!-- 									<button name="command" value="move_addP2_Page" type="submit" -->
-<!-- 										id="btn_main_add">완제품 재고 추가</button> -->
-<!-- 								</form> -->
+								<!-- 									<a href="updatem1"> -->
+								<!-- 									<button name="command" value="move_update2_Page" type="button" -->
+								<!-- 										id="btn_main_updatem">원자재 수정</button> -->
+								<!-- 									</a> -->
+
+
+								<!-- 								<form method="post" action="impcon"> -->
+								<!-- 									<button name="command" value="move_addP2_Page" type="submit" -->
+								<!-- 										id="btn_main_add">완제품 재고 추가</button> -->
+								<!-- 								</form> -->
 
 
 
@@ -241,15 +246,66 @@
 
 							</div>
 
+							<%
+							// 페이지 파라미터 처리
+							int currentPage = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+							int pageSize = 10;
+							int startRow = (currentPage - 1) * pageSize;
+							int endRow = startRow + pageSize;
+
+							List<?> fullList = (List<?>) request.getAttribute("MtableSelect");
+							int totalCount = fullList != null ? fullList.size() : 0;
+							int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+							List<?> pagedList = fullList != null
+									? fullList.subList(Math.min(startRow, totalCount), Math.min(endRow, totalCount))
+									: null;
+
+							request.setAttribute("pagedList", pagedList);
+							request.setAttribute("currentPage", currentPage);
+							request.setAttribute("totalPage", totalPage);
+							%>
+
+							<div class="page-num-con">
+								<div class="page-num">
+									<!-- 이전 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage > 1}">
+											<a href="?page=${currentPage - 1}" class="page pre-page">이전</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page pre-page disabled">이전</span>
+										</c:otherwise>
+									</c:choose>
+
+									<!-- 페이지 번호 -->
+									<c:forEach begin="1" end="${totalPage}" var="i">
+										<a href="?page=${i}"
+											class="num <c:if test='${i == currentPage}'>bold</c:if>">${i}</a>
+									</c:forEach>
+
+									<!-- 다음 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage < totalPage}">
+											<a href="?page=${currentPage + 1}" class="page next-page">다음</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page next-page disabled">다음</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
+							</div>
+
 						</div>
-<!-- 					</form> -->
-					
-<!-- 					<form method="post" action="undop"> -->
+						<!-- 					</form> -->
+
+						<!-- 					<form method="post" action="undop"> -->
 						<div id="show_table2" class="hide">
 							<table class="material-table product-table">
 								<thead>
 									<tr>
-										<th scope="col" class="material-th product-th">✅</th>
+										<th scope="col"
+											style="border: 1px solid darkgrey; background-color: #2f373a; color: white;">✅</th>
 										<th scope="col" class="material-th product-th">완제품코드</th>
 										<th scope="col" class="material-th product-th">완제품명</th>
 										<th scope="col" class="material-th product-th">수량</th>
@@ -264,41 +320,39 @@
 
 
 
-												<td><input class="checkboxx" type="checkbox" name="undoCheck"
-													value="${Pdata.fnsh_code }"></td>
+											<td style="border: 1px solid darkgrey"><input
+												class="checkboxx" type="radio" name="undoCheck"
+												value="${Pdata.fnsh_code }"></td>
 
-												<td id="Pcode" class="material-td Mcode product-td"><input
-													type="hidden" name="code" value="${Pdata.fnsh_code }">
-													${Pdata.fnsh_code }</td>
+											<td id="Pcode" class="material-td Mcode product-td"><input
+												type="hidden" name="code" value="${Pdata.fnsh_code }">
+												${Pdata.fnsh_code }</td>
 
-												<td id="Pname" class="material-td product-td"><input
-													type="hidden" name="code" value="${Pdata.fnsh_nm }">
-													${Pdata.fnsh_nm }</td>
+											<td id="Pname" class="material-td product-td"><input
+												type="hidden" name="code" value="${Pdata.fnsh_nm }">
+												${Pdata.fnsh_nm }</td>
 
-												<td id="Pcurea" class="material-td product-td"><input
-													type="hidden" name="code" value="${Pdata.crnt_aftr_cnt }">
-													${Pdata.crnt_aftr_cnt }</td>
+											<td id="Pcurea" class="material-td product-td"><input
+												type="hidden" name="code" value="${Pdata.crnt_aftr_cnt }">
+												${Pdata.crnt_aftr_cnt }</td>
 
-												<td id="Ploc" class="material-td product-td"><input
-													type="hidden" name="code" value="${Pdata.fnsh_loc_nm }">
-													${Pdata.fnsh_loc_nm }</td>
+											<td id="Ploc" class="material-td product-td"><input
+												type="hidden" name="code" value="${Pdata.fnsh_loc_nm }">
+												${Pdata.fnsh_loc_nm }</td>
 
-												<td id="Mbutton" class="material-td product-td">
-<!-- 													<input type="hidden" name="command" value="move_updateP_Page"> -->
-<!-- 													<input type="submit" value="수정">  -->
-													
-													<form action="updatep1" method="get">
-														<button type="submit" name="fcode" value="${Pdata.fnsh_code }">
-															수정
-														</button>
-													</form>
-													
-													
-													<!-- 															<button type="button" class="btn_main_update"> -->
-													<!-- 																<a class="btn_text_color" --> <!-- 																	href="./TestMM_update_park.jsp">수정</a> -->
-													<!-- 															</button> --></td>
+											<td id="Mbutton" class="material-td product-td">
+												<!-- 													<input type="hidden" name="command" value="move_updateP_Page"> -->
+												<!-- 													<input type="submit" value="수정">  -->
 
-											
+												<form action="updatep1" method="get">
+													<button type="submit" name="fcode"
+														value="${Pdata.fnsh_code }">수정</button>
+												</form> <!-- 															<button type="button" class="btn_main_update"> -->
+												<!-- 																<a class="btn_text_color" --> <!-- 																	href="./TestMM_update_park.jsp">수정</a> -->
+												<!-- 															</button> -->
+											</td>
+
+
 										</tr>
 									</c:forEach>
 
@@ -313,28 +367,28 @@
 
 							<div class="div_form_order">
 
-<!-- 								<form method="post" action="impcon"> -->
-									<input type="hidden" name="command" value="undo">
-									<!-- 												<input type="submit" value="거래처"> -->
+								<!-- 								<form method="post" action="impcon"> -->
+								<input type="hidden" name="command" value="undo">
+								<!-- 												<input type="submit" value="거래처"> -->
 
 
-									<button id="btn_undop" type="button" class="btn_main_order btn_text_color">
-										입력취소(undo)</button>
-<!-- 								</form> -->
+								<button id="btn_undop" type="button"
+									class="btn_main_order btn_text_color">입력취소(undo)</button>
+								<!-- 								</form> -->
 							</div>
 
 
 							<div class="div_button">
 
-<!-- 								<form method="post" action="impcon"> -->
-									<a href="addp1">
+								<!-- 								<form method="post" action="impcon"> -->
+								<a href="addp1">
 									<button name="command" value="move_addP_Page" type="button"
 										id="btn_main_addp">완제품 추가</button>
-									</a>
-<!-- 								</form> -->
-									
-<!-- 									<button name="command" value="move_updateP_Page" type="button" -->
-<!-- 										id="btn_main_updatep">완제품 수정</button> -->
+								</a>
+								<!-- 								</form> -->
+
+								<!-- 									<button name="command" value="move_updateP_Page" type="button" -->
+								<!-- 										id="btn_main_updatep">완제품 수정</button> -->
 
 								<!-- 										<button type="button" id="btn_main_add"> -->
 								<!-- 											<a class="btn_text_color" href="TestMM_add_park.jsp">추가</a> -->
@@ -347,25 +401,58 @@
 
 							</div>
 
-						</div>
-<!-- 					</form> -->
+							<%
+							// 페이지 파라미터 처리
+							int currentPage1 = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+							int pageSize1 = 10;
+							int startRow1 = (currentPage1 - 1) * pageSize1;
+							int endRow1 = startRow1 + pageSize1;
 
-						<div>
-<!-- 							<button>원자재 추가 - 버튼을 누르면 숨겨졌던 입력창이 생긴다</button> -->
+							List<?> fullList1 = (List<?>) request.getAttribute("PtableSelect");
+							int totalCount1 = fullList1 != null ? fullList1.size() : 0;
+							int totalPage1 = (int) Math.ceil((double) totalCount1 / pageSize1);
 
-							<div>
-								<form action="imcon" method="post">
-									<div flex></div>
-								</form>
+							List<?> pagedList1 = fullList1 != null
+									? fullList1.subList(Math.min(startRow1, totalCount1), Math.min(endRow1, totalCount1))
+									: null;
+
+							request.setAttribute("pagedList1", pagedList1);
+							request.setAttribute("currentPage1", currentPage1);
+							request.setAttribute("totalPage1", totalPage1);
+							%>
+
+							<div class="page-num-con">
+								<div class="page-num">
+									<!-- 이전 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage1 > 1}">
+											<a href="?page=${currentPage1 - 1}" class="page pre-page">이전</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page pre-page disabled">이전</span>
+										</c:otherwise>
+									</c:choose>
+
+									<!-- 페이지 번호 -->
+									<c:forEach begin="1" end="${totalPage1}" var="i">
+										<a href="?page=${i}"
+											class="num <c:if test='${i == currentPage1}'>bold</c:if>">${i}</a>
+									</c:forEach>
+
+									<!-- 다음 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage1 < totalPage1}">
+											<a href="?page=${currentPage1 + 1}" class="page next-page">다음</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page next-page disabled">다음</span>
+										</c:otherwise>
+									</c:choose>
+								</div>
 							</div>
+
 						</div>
-
-
-
-
-						<div class="div_none">
-							<!-- 빈 공간 -->
-						</div>
+						<!-- 					</form> -->
 
 
 						<!-- 자재코드 입력하면 자재명이 자동으로 입력
@@ -375,21 +462,21 @@
 						<!-- 히스토리 항목 추가 -->
 
 						<!-- 페이지 번호 -->
-						<div class="flex_page">
-							<div class="item_page pre_page">
-								<a id="a_before" href=""> < 이전 </a>
-							</div>
+						<!-- 						<div class="flex_page"> -->
+						<!-- 							<div class="item_page pre_page"> -->
+						<!-- 								<a id="a_before" href=""> < 이전 </a> -->
+						<!-- 							</div> -->
 
-							<div class="item_page">
-								<a class="num bold" href="">1</a> <a class="num" href="">2</a> <a
-									class="num" href="">3</a> <a class="num" href="">4</a> <a
-									class="num" href="">5</a>
-							</div>
+						<!-- 							<div class="item_page"> -->
+						<!-- 								<a class="num bold" href="">1</a> <a class="num" href="">2</a> <a -->
+						<!-- 									class="num" href="">3</a> <a class="num" href="">4</a> <a -->
+						<!-- 									class="num" href="">5</a> -->
+						<!-- 							</div> -->
 
-							<div class="item_page next_page">
-								<a id="a_after" href=""> 다음 > </a>
-							</div>
-						</div>
+						<!-- 							<div class="item_page next_page"> -->
+						<!-- 								<a id="a_after" href=""> 다음 > </a> -->
+						<!-- 							</div> -->
+						<!-- 						</div> -->
 
 					</div>
 				</div>
@@ -403,9 +490,8 @@
 </body>
 
 <script>
-	
 	//const btn_add = document.querySelector('#btn_main_add')
-	
+
 	/*btn_add.addEventListener('click', function() {
 		
 		const xhr = new XMLHttpRequest();
@@ -417,71 +503,68 @@
 			location.href=xhr.responseText;
 		}
 	})*/
-	
+
 	// ajax로 입력취소 기능구현
 	// 원자재 입력취소
 	const btn_undom = document.querySelector('#btn_undom');
-	
+
 	btn_undom.addEventListener('click', function() {
-		
+
 		let checkboxes = document.querySelectorAll('.checkboxx');
 		let undoCheck;
-		for(let i = 0; i<checkboxes.length; i++) {
-			if(checkboxes[i].checked) {
-			
+		for (let i = 0; i < checkboxes.length; i++) {
+			if (checkboxes[i].checked) {
+
 				undoCheck = checkboxes[i].value;
-				
+
 			}
 		}
 		console.log("undoCheck : ", undoCheck);
-		
-		
+
 		const xhr = new XMLHttpRequest();
 		xhr.open('post', 'undom');
 		xhr.setRequestHeader('Content-Type', 'application/json')
 		//xhr.send(delcode);
 		xhr.send(JSON.stringify(undoCheck));
 		console.log("데이터 보냄");
-		
+
 		xhr.onload = function() {
-			if(xhr.responseText == 1){
+			if (xhr.responseText == 1) {
 				alert('입력취소 성공');
-				location.href='mainmp';
+				location.href = 'mainmp';
 			} else {
 				alert('입력취소 실패');
 			}
 		}
 	})
-	
-	
+
 	// 완제품 입력취소
 	const btn_undop = document.querySelector('#btn_undop');
-	
+
 	btn_undop.addEventListener('click', function() {
-		
+
 		let checkboxes = document.querySelectorAll('.checkboxx');
 		let undoCheck;
-		for(let i = 0; i<checkboxes.length; i++) {
-			if(checkboxes[i].checked) {
-			
+		for (let i = 0; i < checkboxes.length; i++) {
+			if (checkboxes[i].checked) {
+
 				undoCheck = checkboxes[i].value;
-				
+
 			}
 		}
 		console.log("undoCheck : ", undoCheck);
-		
-		
+
 		const xhr = new XMLHttpRequest();
 		xhr.open('post', 'undop');
 		xhr.setRequestHeader('Content-Type', 'application/json')
 		//xhr.send(delcode);
 		xhr.send(JSON.stringify(undoCheck));
 		console.log("데이터 보냄");
-		
+
 		xhr.onload = function() {
-			if(xhr.responseText == 1){
+			if (xhr.responseText == 1) {
 				alert('입력취소 성공');
-				location.href='mainmp';
+				location.href = 'mainmp';
 			} else {
 				alert('입력취소 실패');
 			}
