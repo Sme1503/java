@@ -14,4 +14,6 @@ public interface tb_mr_1000ht_DAO {
 	
 	public List selectLastMlog(tb_mr_1000ht_DTO dto);
 	
+	public List selectMlogSearchList(tb_mr_1000ht_DTO dto);
+	
 }

@@ -55,4 +55,14 @@ public class tb_fs_1000ht_DAOImpl implements tb_fs_1000ht_DAO {
 		
 		return result;
 	}
+
+	@Override
+	public List selectPlogSearchList(tb_fs_1000ht_DTO dto) {
+		// TODO Auto-generated method stub
+
+		List result = sqlSession.selectList("mapper.tb_fs_1000ht.selectPlog", dto);
+		System.out.println("result : " + result);
+		
+		return result;
+	}
 }

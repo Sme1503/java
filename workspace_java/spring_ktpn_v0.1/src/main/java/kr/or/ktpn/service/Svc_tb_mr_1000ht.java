@@ -13,4 +13,6 @@ public interface Svc_tb_mr_1000ht {
 	public int updateMlog(tb_mr_1000ht_DTO dto);
 	
 	public List getLastMlog(tb_mr_1000ht_DTO dto);
+	
+	public List testSearchMlog(tb_mr_1000ht_DTO dto);
 }

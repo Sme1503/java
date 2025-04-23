@@ -17,4 +17,6 @@ public interface Svc_tb_qa_1100dt {
 	public List getJoinQC(String pcode);
 	
 	public tb_qa_1100dt_DTO getSelectQCone(String code);
+	
+	public List testSearchQCList(tb_qa_1100dt_DTO dto);
 }

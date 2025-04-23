@@ -13,4 +13,6 @@ public interface tb_fs_1000ht_DAO {
 	public int updatePlog(tb_fs_1000ht_DTO dto);
 	
 	public List selectLastPlog(tb_fs_1000ht_DTO dto);
+	
+	public List selectPlogSearchList(tb_fs_1000ht_DTO dto);
 }

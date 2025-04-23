@@ -15,4 +15,6 @@ public interface Svc_tb_fs_1000mt {
 	public int updateProducts(tb_fs_1000mt_DTO dto);
 	
 	public int deleteProducts(tb_fs_1000mt_DTO dto);
+	
+	public List testgetProductSearchList(tb_fs_1000mt_DTO dto);
 }

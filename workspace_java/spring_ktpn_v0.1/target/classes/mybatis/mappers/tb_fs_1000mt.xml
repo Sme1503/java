@@ -6,6 +6,18 @@
 
 	<select id="selectProducts" resultType="tb_fs_1000mt" parameterType="tb_fs_1000mt">
 		select * from tb_fs_1000mt
+		
+		<where>
+			<if test="type == 'Fcode' and (keyword != null and keyword != '') ">
+				and upper(fnsh_code) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Fname' and (keyword != null and keyword != '') ">
+				and upper(fnsh_nm) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'EA' and (keyword != null and keyword != '') ">
+				and crnt_aftr_cnt <![CDATA[ >= ]]> #{crnt_aftr_cnt}
+			</if>
+		</where>
 	</select>
 
 	<select id="selectCurrentP" resultType="tb_fs_1000mt" parameterType="String">

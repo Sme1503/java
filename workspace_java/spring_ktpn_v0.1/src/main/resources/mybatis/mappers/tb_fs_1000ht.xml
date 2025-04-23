@@ -6,19 +6,49 @@
 
 	<select id="selectPlog" resultType="tb_fs_1000ht" parameterType="tb_fs_1000ht">
 		select * from tb_fs_1000ht
+		
+		<where>
+			<if test="type == 'Pcode' and (keyword != null and keyword != '') ">
+				and upper(prod_cd) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Fcode' and (keyword != null and keyword != '') ">
+				and upper(fnsh_code) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Fname' and (keyword != null and keyword != '') ">
+				and upper(fnshd_item_nm) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'EA' and (keyword != null and keyword != '') ">
+				and crnt_aftr_cnt <![CDATA[ >= ]]> #{crnt_aftr_cnt}
+			</if>
+		</where>
+		
 	</select>
 
 	<select id="selectLastPlog" resultType="tb_fs_1000ht" parameterType="tb_fs_1000ht">
 		select a.* from (
-			select a.*, rownum as rn
-			from TB_FS_1000HT a
-			where a.fnsh_code = #{fnsh_code}
-			order by a.sn desc ) a
-		where a.rn = #{findlognum} 
+        	select a.*, rownum as rn
+          	from (select to_number(SN) AS SN
+                                      , FNSH_CODE
+                                      , FNSHD_ITEM_NM
+                                      , CRNT_CNT
+                                      , IOB_SE_CD
+                                      , WORK_NM
+                                      , FNSHL_LOC_NM
+                                      , RMRK
+                                      , REG_DTTM
+                                      , CRNT_AFTR_CNT
+                                      , CHNG_DT
+                                      , PROD_CD
+                 from TB_FS_1000HT
+                 order by to_number(SN) desc
+                 ) a
+           where a.FNSH_CODE = #{fnsh_code}
+                       ) a
+       where a.rn = #{findlognum}
 	</select>
 	
 	<insert id="insertPlog" parameterType="tb_fs_1000ht">
-		insert into TB_FS_1000HT (sn, prod_cd,fnsh_code, fnshd_item_nm, crnt_cnt, iob_se_cd,
+		insert into TB_FS_1000HT (sn, prod_cd, fnsh_code, fnshd_item_nm, crnt_cnt, iob_se_cd,
 			work_nm, fnshl_loc_nm, rmrk, reg_dttm, crnt_aftr_cnt, chng_dt)
 		values (SQ_FS_1000HT.NEXTVAL, 
 			 #{prod_cd}, #{fnsh_code}, #{fnshd_item_nm}, #{crnt_cnt}, #{iob_se_cd}, #{work_nm}, #{fnshl_loc_nm}, #{rmrk}, sysdate, #{crnt_aftr_cnt}, to_char(sysdate, 'yyyymmdd')) 

@@ -71,4 +71,14 @@ public class tb_fs_1000mt_DAOImpl implements tb_fs_1000mt_DAO {
 		return i;
 	}
 
+	@Override
+	public List selectProductsSearchList(tb_fs_1000mt_DTO dto) {
+		// TODO Auto-generated method stub
+
+		List result = sqlSession.selectList("mapper.tb_fs_1000mt.selectProducts", dto);
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
 }

@@ -2,6 +2,7 @@ package kr.or.ktpn.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -71,6 +72,20 @@ public class con_PMm {
 
 		return "TestMM_order_park.tiles";
 	}
+	
+	// 검색한 완제품 로그 보여주는 메소드
+	@RequestMapping(value = "/searchplog", method = RequestMethod.GET)
+	public String searchPlog(Model model, tb_fs_1000ht_DTO dto) {
+
+		System.out.println("type : " + dto.getType());
+		System.out.println("keyword : " + dto.getKeyword());
+		
+		List list = svc_fs_1000ht.testSearchPlog(dto);
+		model.addAttribute("plogList", list);
+		model.addAttribute("dto", dto);
+		
+		return "TestMM_main_park_pLog.tiles";
+	}
 
 	// 완제품 로그 보여주는 메소드
 	@RequestMapping(value = "/plog", method = RequestMethod.GET)
@@ -80,6 +95,20 @@ public class con_PMm {
 		model.addAttribute("plogList", list);
 
 		return "TestMM_main_park_pLog.tiles";
+	}
+	
+	// 검색한 원자재 로그 보여주는 메소드
+	@RequestMapping(value = "/searchmlog", method = RequestMethod.GET)
+	public String searchMlog(Model model, tb_mr_1000ht_DTO dto) {
+
+		System.out.println("type : " + dto.getType());
+		System.out.println("keyword : " + dto.getKeyword());
+		
+		List list = svc_mr_1000ht.testSearchMlog(dto);
+		model.addAttribute("mLogList", list);
+		model.addAttribute("dto", dto);
+		
+		return "TestMM_main_park_mLog.tiles";
 	}
 
 	// 원자재 로그 보여주는 메소드
@@ -91,19 +120,52 @@ public class con_PMm {
 
 		return "TestMM_main_park_mLog.tiles";
 	}
+	
+	// 검색한 원자재, 완제품 목록 보여주는 메소드
+	@RequestMapping(value = "/searchList", method = RequestMethod.GET)
+	public String searchM_P(tb_mr_1000mt_DTO dto, 
+							 tb_fs_1000mt_DTO dto1,
+							 Model model) {
 
-	// 원자재, 완제품 목록, 기준관리(원자재코드), 작업자, 생산코드 보여주는 메소드
+		
+		
+		System.out.println("type : " + dto.getType());
+		System.out.println("keyword : " + dto.getKeyword());
+		
+		System.out.println("type : " + dto1.getType());
+		System.out.println("keyword : " + dto1.getKeyword());
+		
+		List list1 = svc_mr_1000mt.testgetMataterialSearchList(dto);
+		//Map<String, Object> map = svc_mr_1000mt.getMataterialSearchList(dto);
+			
+			
+		//dto = (tb_mr_1000mt_DTO) list1.get(0);
+
+		List list2 = svc_fs_1000mt.testgetProductSearchList(dto1);
+
+		model.addAttribute("MtableSelect", list1);
+		model.addAttribute("dto", dto);
+		model.addAttribute("PtableSelect", list2);
+
+		return "TestMM_main2_park.tiles";
+	}
+
+	// 원자재, 완제품 목록 보여주는 메소드
 	@RequestMapping(value = "/mainmp", method = RequestMethod.GET)
 	public String showM_P(tb_mr_1000mt_DTO dto, Model model) {
 
+		//Map<String, Object> map
+		
 		List list1 = svc_mr_1000mt.getMaterials();
-
-		dto = (tb_mr_1000mt_DTO) list1.get(0);
+		//List list1 = svc_mr_1000mt.getMataterialSearchList(dto);
+		
+		
+		//dto = (tb_mr_1000mt_DTO) list1.get(0);
 
 		List list2 = svc_fs_1000mt.getProducts();
 
 		model.addAttribute("MtableSelect", list1);
-		model.addAttribute("dto", dto);
+		//model.addAttribute("dto", dto);
 		model.addAttribute("PtableSelect", list2);
 
 		return "TestMM_main2_park.tiles";
@@ -729,7 +791,7 @@ public class con_PMm {
 	// 완제품 현황 입력취소(undo), 완제품로그 수정, 완제품로그 추가하는 메소드
 	@ResponseBody
 	@RequestMapping(value = "/undop", method = RequestMethod.POST)
-	public String undoP(
+	public int undoP(
 			@RequestBody
 			String undoCheck) {
 		
@@ -787,7 +849,8 @@ public class con_PMm {
 		System.out.println("완제품 로그테이블에 " + i + "행이 삽입되었습니다");
 		
 		
-		return "redirect: mainmp";
+		//return "redirect: mainmp";
+		return i;
 	}
 
 	// 완제품재 현황 삭제, 완제품로그 추가하는 메소드

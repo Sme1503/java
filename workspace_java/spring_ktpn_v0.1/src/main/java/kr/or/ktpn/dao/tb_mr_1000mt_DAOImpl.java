@@ -66,4 +66,24 @@ public class tb_mr_1000mt_DAOImpl implements tb_mr_1000mt_DAO {
 		
 		return i;
 	}
+
+	@Override
+	public List selectMaterialsSearchList(tb_mr_1000mt_DTO dto) {
+		// TODO Auto-generated method stub
+
+		List result = sqlSession.selectList("mapper.tb_mr_1000mt.selectMaterials", dto);
+		System.out.println("result : " + result);
+		
+		return result;
+	}
+
+	@Override
+	public int totalMaterials() {
+		// TODO Auto-generated method stub
+		
+		int result = sqlSession.selectOne("mapper.tb_mr_1000mt.totalMaterials");
+		System.out.println("count = " + result);
+		
+		return result;
+	}
 }

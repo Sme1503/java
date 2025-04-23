@@ -47,22 +47,24 @@
 
 					<!-- 원자재 테이블과 완제품 테이블 구분 -->
 					<div class="select_table">
-						<div class="select_table1">원자재</div>
+						<div class="select_table1">완제품 로그</div>
 
-						<div class="select_table2">완제품</div>
+<!-- 						<div class="select_table2">완제품</div> -->
 					</div>
 
 					<div class="select_input_search-btn">
 
-						<form action="#">
+						<form action="searchplog" method="get">
 
-							<select name="select_MM" id="select_MM">
+							<select name="type" id="select_MM">
 								<option value="all" selected="selected">전체</option>
-								<option value="Mcode">자재코드</option>
-								<option value="Mname">자재명</option>
-								<option value="Morder">주문필요</option>
-								<option value="Mloc">재고위치</option>
-							</select> <input type="select" class="select">
+								<option value="Pcode">생산코드</option>
+								<option value="Fcode">완제품코드</option>
+								<option value="Fname">완제품명</option>
+								<option value="EA">수량</option>
+<!-- 								<option value="Morder">주문필요</option> -->
+<!-- 								<option value="Mloc">재고위치</option> -->
+							</select> <input type="text" class="select" name="keyword" value="${dto.keyword }">
 							<!-- <input class="select_day" id="select_MM_eve" type="date" value=""
                                                 max="2999-12-31" , min="1970-01-01"> -->
 							<input class="select_day" id="select_MM_today" type="date"

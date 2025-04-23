@@ -58,4 +58,29 @@ public class Svc_tb_mr_1000htImpl implements Svc_tb_mr_1000ht {
 
 		return list;
 	}
+
+	@Override
+	public List testSearchMlog(tb_mr_1000ht_DTO dto) {
+		// TODO Auto-generated method stub
+
+		
+		if ("Mcode".equals(dto.getType())) {
+			dto.setMtrl_cd(dto.getKeyword());
+		} else if ("Mname".equals(dto.getType())) {
+			dto.setMtrl_nm(dto.getKeyword());
+		} else if ("EA".equals(dto.getType())) {
+			try {
+				int ea = Integer.parseInt(dto.getKeyword());
+				dto.setCrnt_aftr_cnt(ea);
+				System.out.println("dto.crnt_aftr_cnt" + dto.getCrnt_aftr_cnt());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		List list = tb_mr_1000ht_dao.selectMlogSearchList(dto);
+		
+		return list;
+	}
 }

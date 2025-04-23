@@ -131,7 +131,8 @@ a {
 }
 
 .QA-td-color {
-	
+	margin: auto;
+	width: 60px;
 	height: 20px;
 }
 
@@ -197,4 +198,40 @@ a {
 
 .btn a {
 	color: white;
+}
+
+.pre-page,.next-page{
+    width: 30%;
+}
+
+.page-num{
+    /* border: 5px solid purple; */
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    height: 50px;
+    align-items: center;
+    min-width: 300px;
+}
+.page{
+    border: 1px solid darkgrey;
+    height: 60%;
+    width: 58%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+.page-number{
+    width: 30%;
+
+}
+.page-num-con{
+    /* border: 1px solid darkblue; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
 }

@@ -17,4 +17,6 @@ public interface tb_qa_1100dt_DAO {
 	public List joinQC(String pcode);
 	
 	public tb_qa_1100dt_DTO selectQCone(String code);
+	
+	public List selectSearchQCList(tb_qa_1100dt_DTO dto);
 }

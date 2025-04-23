@@ -24,4 +24,13 @@ public class tb_mr_1000ht_DTO {
 	private Date reg_dttm; // 입력일시
 	
 	private int findlognum; // 잘못된 로그찾는 변수
+	
+	
+	private String type;		// 검색할 타입
+	private String keyword;		// 검색할 키워드
+	
+	private int page = 1;		// 현재 페이지
+	private int viewCount = 10;	// 페이지당 보여줄 수 countPerPage rowPerPage
+	private int indexStart;
+	private int indexEnd;
 }

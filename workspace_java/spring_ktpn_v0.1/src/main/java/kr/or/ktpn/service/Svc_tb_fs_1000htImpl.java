@@ -58,4 +58,29 @@ public class Svc_tb_fs_1000htImpl implements Svc_tb_fs_1000ht{
 		return list;
 	}
 
+	@Override
+	public List testSearchPlog(tb_fs_1000ht_DTO dto) {
+		// TODO Auto-generated method stub
+		
+		if ("Fcode".equals(dto.getType())) {
+			dto.setFnsh_code(dto.getKeyword());
+		} else if ("Fname".equals(dto.getType())) {
+			dto.setFnshd_item_nm(dto.getKeyword());
+		} else if ("EA".equals(dto.getType())) {
+			try {
+				int ea = Integer.parseInt(dto.getKeyword());
+				dto.setCrnt_aftr_cnt(ea);
+				System.out.println("dto.crnt_aftr_cnt" + dto.getCrnt_aftr_cnt());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else if ("Pcode".equals(dto.getType())) {
+			dto.setProd_cd(dto.getKeyword());
+		}
+		
+		List list = tb_fs_1000ht_dao.selectPlogSearchList(dto);
+		
+		return list;
+	}
+
 }

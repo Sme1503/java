@@ -20,4 +20,13 @@ public class tb_qa_1100dt_DTO {
 	private int qlty_val; // 픔질값
 	private String fail_caus_desc; // 불합격사유내용
 	private String rmrk; // 비고
+	
+	
+	private String type;		// 검색할 타입
+	private String keyword;		// 검색할 키워드
+	
+	private int page = 1;		// 현재 페이지
+	private int viewCount = 10;	// 페이지당 보여줄 수 countPerPage rowPerPage
+	private int indexStart;
+	private int indexEnd;
 }

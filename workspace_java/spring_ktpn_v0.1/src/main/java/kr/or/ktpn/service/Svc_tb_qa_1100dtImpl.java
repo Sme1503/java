@@ -79,5 +79,22 @@ public class Svc_tb_qa_1100dtImpl implements Svc_tb_qa_1100dt {
 		
 		return dto;
 	}
+
+	@Override
+	public List testSearchQCList(tb_qa_1100dt_DTO dto) {
+		// TODO Auto-generated method stub
+		
+		if ("Fcode".equals(dto.getType())) {
+			dto.setItem_cd(dto.getKeyword());
+		} else if ("Fname".equals(dto.getType())) {
+			dto.setItem_nm(dto.getKeyword());
+		} else if ("Pcode".equals(dto.getType())) {
+			dto.setProd_cd(dto.getKeyword());
+		}
+		
+		List list = tb_qa_1100dt_dao.selectSearchQCList(dto);
+		
+		return list;
+	}
 	
 }

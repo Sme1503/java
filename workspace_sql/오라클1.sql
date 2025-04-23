@@ -156,6 +156,11 @@ select a.*
       ) a
  where a.rn = 2;
  
+ select a.*, rownum as rn
+          from TB_MR_1000HT a
+         where a.MTRL_CD = 'M0004'
+        order by a.sn desc;
+ 
 commit;
 select * from TB_MR_1000MT; 
 select * from TB_FS_1000HT;
@@ -295,3 +300,116 @@ VALUES ('가소제', 'M'||LPAD(SQ_MD_1000MT_M.NEXTVAL, 4, '0'), '지우개원료
 select * from tb_mr_1000mt;
 select * from tb_fs_1000mt;
 select * from tb_qa_1100dt;
+
+// 완제품 로그 테이블에서 마지막 로그 찾기
+select a.*
+  from (
+        select a.*, rownum as rn
+          from TB_FS_1000HT a
+         where a.FNSH_CODE = 'P0033'
+        order by a.sn desc
+      ) a
+ where a.rn = 2;
+
+select * from tb_fs_1000ht;
+
+// 정상 코드 - sn이 varchar라서 100,10의 자리 숫자순으로 정렬된다
+select a.*, rownum as rn
+          from TB_FS_1000HT a
+         where a.FNSH_CODE = 'P0033'
+        order by a.sn desc;
+
+// 이상한 코드 - sn이 varchar인데 number인거처럼 작동한다 -?
+select a.*, rownum as rn
+          from TB_MR_1000HT a
+         where a.MTRL_CD = 'M0004'
+        order by a.sn desc
+
+// 정상화로 가는 코드
+select a.*, rownum as rn
+          from (select SN
+                        FNSH_CODE
+                        FNSHD_ITEM_NM
+                        CRNT_CNT
+                        IOB_SE_CD
+                        WORK_NM
+                        FNSHL_LOC_NM
+                        RMRK
+                        REG_DTTM
+                        CRNT_AFTR_CNT
+                        CHNG_DT
+                        PROD_CD
+          
+          
+          from TB_FS_1000HT a
+         where a.FNSH_CODE = 'P0033'
+        order by a.sn desc;
+
+// 정상코드 - SN의 ROWNUM이 역순으로 나온다
+select a.*, rownum as rn
+  from (select to_number(SN) AS SN
+             , FNSH_CODE
+             , FNSHD_ITEM_NM
+             , CRNT_CNT
+             , IOB_SE_CD
+             , WORK_NM
+             , FNSHL_LOC_NM
+             , RMRK
+             , REG_DTTM
+             , CRNT_AFTR_CNT
+             , CHNG_DT
+             , PROD_CD
+          from TB_FS_1000HT
+         
+        ) a
+ where a.FNSH_CODE = 'P0033'
+ order by SN desc;
+
+// 정상 코드 - 역순 SN의 ROWNUM이 나온다
+select a.*, rownum as rn
+  from (select to_number(SN) AS SN
+             , FNSH_CODE
+             , FNSHD_ITEM_NM
+             , CRNT_CNT
+             , IOB_SE_CD
+             , WORK_NM
+             , FNSHL_LOC_NM
+             , RMRK
+             , REG_DTTM
+             , CRNT_AFTR_CNT
+             , CHNG_DT
+             , PROD_CD
+          from TB_FS_1000HT
+          order by to_number(SN) desc
+        ) a
+ where a.FNSH_CODE = 'P0033';
+
+
+// 완제품 로그 테이블 마지막 로그 찾기 - 마지막 a.rn의 값이 2면 마지막 바로 전 로그가 나온다
+select a.*
+  from (
+      --  select a.*, rownum as rn
+      --    from TB_MR_1000HT a
+      --   where a.MTRL_CD = 'M0004'
+      --  order by a.sn desc
+        
+        select a.*, rownum as rn
+          from (select to_number(SN) AS SN
+                                      , FNSH_CODE
+                                      , FNSHD_ITEM_NM
+                                      , CRNT_CNT
+                                      , IOB_SE_CD
+                                      , WORK_NM
+                                      , FNSHL_LOC_NM
+                                      , RMRK
+                                      , REG_DTTM
+                                      , CRNT_AFTR_CNT
+                                      , CHNG_DT
+                                      , PROD_CD
+                 from TB_FS_1000HT
+                 order by to_number(SN) desc
+               ) a
+         where a.FNSH_CODE = 'P0033'
+      ) a
+ where a.rn = 1;
+

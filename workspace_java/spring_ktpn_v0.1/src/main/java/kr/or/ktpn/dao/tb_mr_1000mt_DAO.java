@@ -15,4 +15,8 @@ public interface tb_mr_1000mt_DAO {
 	public int updateMaterials(tb_mr_1000mt_DTO dto);
 	
 	public int deleteMaterials(tb_mr_1000mt_DTO dto);
+	
+	public List selectMaterialsSearchList(tb_mr_1000mt_DTO dto);
+	
+	public int totalMaterials();
 }

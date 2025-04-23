@@ -81,4 +81,14 @@ public class tb_qa_1100dt_DAOImpl implements tb_qa_1100dt_DAO {
 		
 		return result;
 	}
+
+	@Override
+	public List selectSearchQCList(tb_qa_1100dt_DTO dto) {
+		// TODO Auto-generated method stub
+
+		List result = sqlSession.selectList("mapper.tb_qa_1100dt.selectQC", dto);
+		System.out.println("result : " + result);
+		
+		return result;
+	}
 }

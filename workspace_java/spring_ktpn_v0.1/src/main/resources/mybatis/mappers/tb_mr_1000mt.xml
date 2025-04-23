@@ -6,6 +6,32 @@
 
 	<select id="selectMaterials" resultType="tb_mr_1000mt" parameterType="tb_mr_1000mt">
 		select * from tb_mr_1000mt
+		
+		<where>
+<!-- 			<if test="Mcode != null and Mcode != '' "> -->
+<!-- 				and upper(mtrl_cd) like upper('%' || #{mtrl_cd} || '%') -->
+<!-- 			</if> -->
+<!-- 			<if test="Mname != null and Mname != '' "> -->
+<!-- 				and upper(mtrl_nm) like upper('%' || #{mtrl_nm} || '%') -->
+<!-- 			</if> -->
+<!-- 			<if test="EA != -1"> -->
+<!-- 				and crnt_aftr_cnt <![CDATA[ >= ]]> #{crnt_aftr_cnt} -->
+<!-- 			</if> -->
+			<if test="type == 'Mcode' and (keyword != null and keyword != '') ">
+				and upper(mtrl_cd) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Mname' and (keyword != null and keyword != '') ">
+				and upper(mtrl_nm) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'EA' and (keyword != null and keyword != '') ">
+				and crnt_aftr_cnt <![CDATA[ >= ]]> #{crnt_aftr_cnt}
+			</if>
+		</where>
+	</select>
+<!-- 	</select> -->
+	
+	<select id="totalMaterials" resultType="int">
+		select count(*) from tb_mr_1000mt
 	</select>
 
 	<select id="selectCurrentM" resultType="tb_mr_1000mt" parameterType="tb_mr_1000mt">

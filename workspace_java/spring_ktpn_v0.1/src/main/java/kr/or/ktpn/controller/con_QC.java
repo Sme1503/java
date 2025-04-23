@@ -40,6 +40,30 @@ public class con_QC {
 	// 문제 : 추가 할때 뒤로가기를 한다던가하면 같은 값이 또 입력되서 중복값이 생긴다
 	// 해결 : 테이블에 기본키 설정이 안되있었다. 기본키 설정할 것
 
+	// 검색한 품질관리 목록 보여주는 메소드
+	@RequestMapping(value = "/searchqc", method = RequestMethod.GET)
+	public String searchQc(Model model, tb_qa_1100dt_DTO dto) {
+
+		System.out.println("type : " + dto.getType());
+		System.out.println("keyword : " + dto.getKeyword());
+		
+		List list = svc_qa_1100dt.testSearchQCList(dto);
+		model.addAttribute("list", list);
+		model.addAttribute("dto", dto);
+		
+
+		// 작업자
+		List workerList = svc_mb_1000mt.getWorker();
+
+		// 생산완료인 생산코드
+		List PcodeList = tak_Svc_pr_1100mt.getPcode();
+
+		model.addAttribute("mList", workerList);
+		model.addAttribute("pList", PcodeList);
+
+		return "TestQA_main_park2.tiles";
+	}
+	
 	// 품질관리 목록 보여주는 메소드
 	@RequestMapping(value = "/mainqc", method = RequestMethod.GET)
 	public String showQc(Model model) {

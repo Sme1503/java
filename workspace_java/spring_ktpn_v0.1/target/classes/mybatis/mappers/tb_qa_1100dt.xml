@@ -6,6 +6,19 @@
 
 	<select id="selectQC" resultType="tb_qa_1100dt" parameterType="tb_qa_1100dt">
 		select * from tb_qa_1100dt
+		
+		<where>
+			<if test="type == 'Pcode' and (keyword != null and keyword != '') ">
+				and upper(prod_cd) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Fcode' and (keyword != null and keyword != '') ">
+				and upper(item_cd) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Fname' and (keyword != null and keyword != '') ">
+				and upper(item_nm) like upper('%' || #{keyword} || '%')
+			</if>
+		</where>
+		
 	</select>
 
 	<select id="selectQCone" resultType="tb_qa_1100dt" parameterType="tb_qa_1100dt">

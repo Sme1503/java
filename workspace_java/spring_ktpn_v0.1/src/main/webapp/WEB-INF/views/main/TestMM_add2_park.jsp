@@ -39,7 +39,7 @@
 
 							<div class="tab-name-con">
 								<div class="tab-name">재고 추가</div>
-								입력하는 창을 2줄로
+								
 							</div>
 
 							<div class="div_add">

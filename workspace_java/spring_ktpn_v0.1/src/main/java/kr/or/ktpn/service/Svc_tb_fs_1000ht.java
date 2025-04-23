@@ -13,4 +13,6 @@ public interface Svc_tb_fs_1000ht {
 	public int updatePlog(tb_fs_1000ht_DTO dto);
 	
 	public List getLastPlog(tb_fs_1000ht_DTO dto);
+	
+	public List testSearchPlog(tb_fs_1000ht_DTO dto);
 }

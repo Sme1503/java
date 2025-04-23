@@ -13,4 +13,13 @@ public class tb_mr_1000mt_DTO {
 	private int crnt_aftr_cnt; // 변동 후 수량
 	private String ordr_rqrd_yn; // 주문필요여부
 	private String mtrl_loc_nm; // 원자재위치
+	
+	
+	private String type;		// 검색할 타입
+	private String keyword;		// 검색할 키워드
+	
+	private int page = 1;		// 현재 페이지
+	private int viewCount = 10;	// 페이지당 보여줄 수 countPerPage rowPerPage
+	private int indexStart;
+	private int indexEnd;
 }
