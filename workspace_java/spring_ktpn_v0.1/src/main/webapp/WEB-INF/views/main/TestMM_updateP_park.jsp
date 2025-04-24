@@ -130,8 +130,8 @@
 							</table>
 						</div>
 						<div>
-							<input type="hidden" name="command" value="update"> <input
-								type="submit" value="확인">
+							<input type="hidden" name="command" value="update"> 
+							<input class="btn" type="submit" value="확인">
 						</div>
 					</form>
 

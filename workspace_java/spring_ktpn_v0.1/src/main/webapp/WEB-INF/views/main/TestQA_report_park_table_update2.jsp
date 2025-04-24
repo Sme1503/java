@@ -235,7 +235,7 @@
 <!-- 										<input type="hidden" value="update" name="command"> <input -->
 <!-- 											type="submit" value="수정하기"> -->
 
-										<button type="submit" name="command" value="update">수정하기</button>
+										<button class="btn" type="submit" name="command" value="update">수정하기</button>
 									</div>
 
 								</div>

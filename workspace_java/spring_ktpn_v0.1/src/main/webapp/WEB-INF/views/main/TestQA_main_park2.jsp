@@ -58,7 +58,9 @@
 					<!-- 					</div> -->
 
 					<details>
-						<summary></summary>
+						<summary>
+							
+						</summary>
 
 
 
@@ -225,7 +227,7 @@
 										</table>
 									</div>
 
-									<button type="submit" name="command" value="insert">
+									<button class="btn" type="submit" name="command" value="insert">
 										추가하기</button>
 
 								</div>
@@ -352,7 +354,7 @@
 											<!-- 											<input type="hidden" name="command" value="update"> -->
 											<!-- 												<input type="submit" value="수정"> -->
 											<form action="updateqc" method="post">
-												<button class="update_btn" type="submit" name="updateCode"
+												<button class="update_btn btn" type="submit" name="updateCode"
 													value="${QCdata.prod_cd }">수정</button>
 											</form>
 
@@ -369,7 +371,7 @@
 					</div>
 
 					<div>
-						<button id="btn_del" type="button" name="command" value="delete">
+						<button class="btn" id="btn_del" type="button" name="command" value="delete">
 							삭제</button>
 					</div>
 					<!-- 					</form> -->

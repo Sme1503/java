@@ -238,7 +238,7 @@
 							<div class="div_button">
 								<!-- 								<form method="post" action="imcon"> -->
 								<a href="addm1">
-									<button name="command" value="move_add2_Page" type="button"
+									<button class="btn_main_order" name="command" value="move_add2_Page" type="button"
 										id="btn_main_addm">원자재 추가</button>
 								</a>
 								<!-- 								</form> -->
@@ -369,7 +369,7 @@
 												<!-- 													<input type="submit" value="수정">  -->
 
 												<form action="updatep1" method="get">
-													<button type="submit" name="fcode"
+													<button class="btn_main_update" type="submit" name="fcode"
 														value="${Pdata.fnsh_code }">수정</button>
 												</form> <!-- 															<button type="button" class="btn_main_update"> -->
 												<!-- 																<a class="btn_text_color" --> <!-- 																	href="./TestMM_update_park.jsp">수정</a> -->
@@ -406,7 +406,7 @@
 
 								<!-- 								<form method="post" action="impcon"> -->
 								<a href="addp1">
-									<button name="command" value="move_addP_Page" type="button"
+									<button class="btn_main_order" name="command" value="move_addP_Page" type="button"
 										id="btn_main_addp">완제품 추가</button>
 								</a>
 								<!-- 								</form> -->

@@ -100,7 +100,11 @@ a {
    color: white;
 }
 
-
+.btn {
+	background-color: #2f373a;
+    color: white;
+    height: 25px;
+}
 
 /* 크기별 사이즈
 mobile 최대 767px 

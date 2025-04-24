@@ -89,3 +89,9 @@ a {
 .btn_text_color {
     color: white;
 }
+
+.btn {
+	background-color: #2f373a;
+    color: white;
+    height: 25px;
+}

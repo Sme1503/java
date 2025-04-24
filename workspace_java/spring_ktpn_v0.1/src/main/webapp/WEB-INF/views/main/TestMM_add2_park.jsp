@@ -156,8 +156,8 @@
 
 <!-- 										</div> -->
 										<div>
-											<input type="hidden" name="command" value="insert"> <input
-												type="submit" value="추가">
+											<input type="hidden" name="command" value="insert"> 
+											<input class="btn" type="submit" value="추가">
 										</div>
 
 									</form>
