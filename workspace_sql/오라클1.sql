@@ -413,3 +413,14 @@ select a.*
       ) a
  where a.rn = 1;
 
+
+// 멤버 테이블에 데이터 넣기
+select * from tb_mb_1000mt;
+
+insert into tb_mb_1000mt values ('test1', 'test1', '박초코', 'N', sysdate, sysdate, '일반회원');
+insert into tb_mb_1000mt values ('test2', 'test2', '김마리', 'N', sysdate, sysdate, '일반회원');
+insert into tb_mb_1000mt values ('test3', 'test3', '나환장', 'N', sysdate, sysdate, '일반회원');
+insert into tb_mb_1000mt values ('test4', 'test4', '최가추', 'N', sysdate, sysdate, '일반회원');
+insert into tb_mb_1000mt values ('test6', 'test5', '이승행', 'N', sysdate, sysdate, '일반회원');
+
+commit;

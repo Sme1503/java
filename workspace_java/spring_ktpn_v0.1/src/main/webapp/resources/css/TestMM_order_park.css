@@ -80,3 +80,74 @@ a {
 .btn_text_color {
     color: white;
 }
+
+.select_input_search-btn {
+    display: flex;
+    /* margin: 1%; */
+}
+
+#select_MM {
+    background-color: #2f373a;
+    color: white;
+    height: 25px;
+}
+
+.select {
+    /* background-color: #2f373a;
+    color: white; */
+    height: 21px;
+}
+
+.submit {
+    background-color: #2f373a;
+    color: white;
+    height: 25px;
+}
+
+.select_day {
+    height: 25px;
+    /* background-color: #2f373a;
+    color: white; */
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.pre-page,.next-page{
+    width: 30%;
+}
+
+.page-num{
+    /* border: 5px solid purple; */
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    height: 50px;
+    align-items: center;
+    min-width: 300px;
+}
+
+.page{
+    border: 1px solid darkgrey;
+    height: 60%;
+    width: 58%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+.page-number{
+    width: 30%;
+
+}
+
+.page-num-con{
+    /* border: 1px solid darkblue; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    flex-wrap: wrap;
+}

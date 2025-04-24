@@ -14,4 +14,13 @@ public class tb_od_1000mt_DTO {
 	private String trn_itm_item_nm; // 거래품목명
 	private String reg_dt; // 입력일자
 	private String mod_dt; // 수정일자
+	
+	
+	private String type;		// 검색할 타입
+	private String keyword;		// 검색할 키워드
+	
+	private int page = 1;		// 현재 페이지
+	private int viewCount = 10;	// 페이지당 보여줄 수 countPerPage rowPerPage
+	private int indexStart;
+	private int indexEnd;
 }

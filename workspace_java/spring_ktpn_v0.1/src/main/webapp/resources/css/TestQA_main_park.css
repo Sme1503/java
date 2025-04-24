@@ -200,6 +200,10 @@ a {
 	color: white;
 }
 
+.pre-page,.next-page{
+    width: 30%;
+}
+
 .page-num{
     /* border: 5px solid purple; */
     display: flex;
@@ -233,4 +237,17 @@ a {
     text-align: center;
     align-content: center;
     flex-wrap: wrap;
+}
+
+details {
+	width: 100%;
+	margin: 5px 0 10px;
+}
+
+summary::marker {
+	content: "+ 추가";
+}
+
+details[open] summary::marker {
+	content: "▲ 닫기";
 }

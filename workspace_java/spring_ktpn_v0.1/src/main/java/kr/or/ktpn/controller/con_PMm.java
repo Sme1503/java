@@ -16,6 +16,7 @@ import kr.or.ktpn.dto.tb_fs_1000ht_DTO;
 import kr.or.ktpn.dto.tb_fs_1000mt_DTO;
 import kr.or.ktpn.dto.tb_mr_1000ht_DTO;
 import kr.or.ktpn.dto.tb_mr_1000mt_DTO;
+import kr.or.ktpn.dto.tb_od_1000mt_DTO;
 import kr.or.ktpn.service.KW_Svc_mb_1000mt;
 import kr.or.ktpn.service.Svc_md_1000mt;
 import kr.or.ktpn.service.Svc_member;
@@ -62,6 +63,19 @@ public class con_PMm {
 	TAK_Svc_pr_1100mt tak_Svc_pr_1100mt;
 	
 
+	// 검색한 거래처 보여주는 메소드
+		@RequestMapping(value = "/searchorder", method = RequestMethod.GET)
+		public String searchCompany(Model model, tb_od_1000mt_DTO dto) {
+
+			System.out.println("type : " + dto.getType());
+			System.out.println("keyword : " + dto.getKeyword());
+			
+			List list = svc_od_1000mt.testSearchCompanyList(dto);
+			model.addAttribute("companyList", list);
+			model.addAttribute("dto", dto);
+
+			return "TestMM_order_park.tiles";
+		}
 	
 	// 거래처 보여주는 메소드
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
@@ -75,10 +89,15 @@ public class con_PMm {
 	
 	// 검색한 완제품 로그 보여주는 메소드
 	@RequestMapping(value = "/searchplog", method = RequestMethod.GET)
-	public String searchPlog(Model model, tb_fs_1000ht_DTO dto) {
+	public String searchPlog(Model model, tb_fs_1000ht_DTO dto, String Pday) {
 
 		System.out.println("type : " + dto.getType());
 		System.out.println("keyword : " + dto.getKeyword());
+		System.err.println("Pday : " + Pday);
+		Pday = Pday.replace("-", "");
+		System.err.println("Pday : " + Pday);
+		dto.setChng_dt(Pday);
+		System.out.println("dto.Chng_dt : " + dto.getChng_dt());
 		
 		List list = svc_fs_1000ht.testSearchPlog(dto);
 		model.addAttribute("plogList", list);
@@ -99,10 +118,15 @@ public class con_PMm {
 	
 	// 검색한 원자재 로그 보여주는 메소드
 	@RequestMapping(value = "/searchmlog", method = RequestMethod.GET)
-	public String searchMlog(Model model, tb_mr_1000ht_DTO dto) {
+	public String searchMlog(Model model, tb_mr_1000ht_DTO dto, String Mday) {
 
 		System.out.println("type : " + dto.getType());
 		System.out.println("keyword : " + dto.getKeyword());
+		System.err.println("Mday : " + Mday);
+		Mday = Mday.replace("-", "");
+		System.err.println("Mday : " + Mday);
+		dto.setChng_dt(Mday);
+		System.out.println("dto.Chng_dt : " + dto.getChng_dt());
 		
 		List list = svc_mr_1000ht.testSearchMlog(dto);
 		model.addAttribute("mLogList", list);

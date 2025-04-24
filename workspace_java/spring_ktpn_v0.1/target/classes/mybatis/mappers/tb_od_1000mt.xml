@@ -6,6 +6,18 @@
 
 	<select id="selectCompany" resultType="tb_od_1000mt" parameterType="tb_od_1000mt">
 		select * from tb_od_1000mt
+		
+		<where>
+			<if test="type == 'Ccode' and (keyword != null and keyword != '') ">
+				and upper(cstmr_code) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'Cname' and (keyword != null and keyword != '') ">
+				and upper(cmp_nm) like upper('%' || #{keyword} || '%')
+			</if>
+			<if test="type == 'TPname' and (keyword != null and keyword != '') ">
+				and upper(trn_itm_item_nm) like upper('%' || #{keyword} || '%')
+			</if>
+		</where>
 	</select>
 
 	<insert id="insertCompany" parameterType="tb_od_1000mt">

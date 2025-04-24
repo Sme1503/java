@@ -45,20 +45,20 @@
 					</div>
 					<!-- 								<form action="qccon" method="post"> -->
 
-					<div class="right_chi">
+					<!-- 					<div class="right_chi"> -->
 
 
-						<button class="btn" type="button" value="move_add_page"
-							name="command">추가 - 버튼을 누르면 입력하는 창이 생김</button>
+					<!-- 						<button class="btn" type="button" value="move_add_page" -->
+					<!-- 							name="command">추가 - 버튼을 누르면 입력하는 창이 생김</button> -->
 
-						<!-- 										<form action="qccon" method="post"> -->
+					<!-- 																<form action="qccon" method="post"> -->
 
-						<!-- 										</form> -->
+					<!-- 																</form> -->
 
-					</div>
+					<!-- 					</div> -->
 
 					<details>
-						<summary>추가</summary>
+						<summary></summary>
 
 
 
@@ -74,9 +74,9 @@
 
 							<form action="addqc" method="post">
 								<div>
-									<div class="div_none1">
-										<!-- 											안보임 -->
-									</div>
+									<!-- 									<div class="div_none1"> -->
+									<!-- 																					안보임 -->
+									<!-- 									</div> -->
 									<div>
 										<table class="QA-table">
 											<tbody>
@@ -141,7 +141,6 @@
 									</div>
 
 									<div class="div_none2"></div>
-
 
 									<div>
 
@@ -231,6 +230,7 @@
 
 								</div>
 							</form>
+						</div>
 					</details>
 
 					<div class="select_input_search-btn">
@@ -256,13 +256,35 @@
 
 					</div>
 
+					<%
+					// 페이지 파라미터 처리
+					int currentPage = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+					int pageSize = 10;
+					int startRow = (currentPage - 1) * pageSize;
+					int endRow = startRow + pageSize;
+
+					List<?> fullList = (List<?>) request.getAttribute("list");
+					int totalCount = fullList != null ? fullList.size() : 0;
+					int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+					List<?> pagedList = fullList != null
+							? fullList.subList(Math.min(startRow, totalCount), Math.min(endRow, totalCount))
+							: null;
+
+					request.setAttribute("pagedList", pagedList);
+					request.setAttribute("currentPage", currentPage);
+					request.setAttribute("totalPage", totalPage);
+					%>
+
+
 					<!-- 						<form action="deleteqc" method="post"> -->
 					<div>
 						<table class="QA-table">
 							<thead>
 								<tr>
 
-									<th scope="col" style="border: 1px solid darkgrey;background-color: #2f373a;color: white;">✔</th>
+									<th scope="col"
+										style="border: 1px solid darkgrey; background-color: #2f373a; color: white;">✔</th>
 									<th scope="col" class="QA-th">생산코드</th>
 									<th scope="col" class="QA-th">품목코드</th>
 									<th scope="col" class="QA-th">품목명</th>
@@ -277,13 +299,13 @@
 
 							<tbody>
 
-								<c:forEach var="QCdata" items="${list }">
+								<c:forEach var="QCdata" items="${pagedList }">
 
 									<tr>
 
 
-										<td style="border: 1px solid darkgrey;">
-											<input type="checkbox" class="checkboxx"
+										<td style="border: 1px solid darkgrey;"><input
+											type="checkbox" class="checkboxx"
 											id="updatecode_${QCdata.prod_cd }" name="delcode"
 											value="${QCdata.prod_cd }"></td>
 
@@ -461,31 +483,41 @@
 						})
 					</script>
 
-					<%
-					// 페이지 파라미터 처리
-					int currentPage = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-					int pageSize = 10;
-					int startRow = (currentPage - 1) * pageSize;
-					int endRow = startRow + pageSize;
 
-					List<?> fullList = (List<?>) request.getAttribute("list");
-					int totalCount = fullList != null ? fullList.size() : 0;
-					int totalPage = (int) Math.ceil((double) totalCount / pageSize);
-
-					List<?> pagedList = fullList != null ? fullList.subList(Math.min(startRow, totalCount), Math.min(endRow, totalCount))
-							: null;
-
-					request.setAttribute("pagedList", pagedList);
-					request.setAttribute("currentPage", currentPage);
-					request.setAttribute("totalPage", totalPage);
-					%>
 
 					<div class="page-num-con">
 						<div class="page-num">
 							<!-- 이전 버튼 -->
-							<c:choose>
+							<!-- <c:choose>
 								<c:when test="${currentPage > 1}">
 									<a href="?page=${currentPage - 1}" class="page pre-page">이전</a>
+								</c:when>
+								<c:otherwise>
+									<span class="page pre-page disabled">이전</span>
+								</c:otherwise>
+							</c:choose> -->
+
+							<!-- 페이지 번호 -->
+							<!-- <c:forEach begin="1" end="${totalPage}" var="i">
+								<a href="?page=${i}"
+									class="num <c:if test='${i == currentPage}'>bold</c:if>">${i}</a>
+							</c:forEach> -->
+
+							<!-- 다음 버튼 -->
+							<!-- <c:choose>
+								<c:when test="${currentPage < totalPage}">
+									<a href="?page=${currentPage + 1}" class="page next-page">다음</a>
+								</c:when>
+								<c:otherwise>
+									<span class="page next-page disabled">다음</span>
+								</c:otherwise>
+							</c:choose> -->
+
+
+							<!-- 이전 버튼 -->
+							<c:choose>
+								<c:when test="${currentPage > 1}">
+									<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${currentPage - 1}" class="page pre-page">이전</a>
 								</c:when>
 								<c:otherwise>
 									<span class="page pre-page disabled">이전</span>
@@ -494,19 +526,21 @@
 
 							<!-- 페이지 번호 -->
 							<c:forEach begin="1" end="${totalPage}" var="i">
-								<a href="?page=${i}"
+								<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${i}"
 									class="num <c:if test='${i == currentPage}'>bold</c:if>">${i}</a>
 							</c:forEach>
 
 							<!-- 다음 버튼 -->
 							<c:choose>
 								<c:when test="${currentPage < totalPage}">
-									<a href="?page=${currentPage + 1}" class="page next-page">다음</a>
+									<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${currentPage + 1}" class="page next-page">다음</a>
 								</c:when>
 								<c:otherwise>
 									<span class="page next-page disabled">다음</span>
 								</c:otherwise>
 							</c:choose>
+
+
 						</div>
 
 
@@ -545,8 +579,6 @@
 			</div>
 
 		</div>
-	</div>
-
 	</div>
 
 </body>

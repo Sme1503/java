@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -62,13 +63,14 @@
 								<option value="Fcode">완제품코드</option>
 								<option value="Fname">완제품명</option>
 								<option value="EA">수량</option>
+								<option value="day">변동일</option>
 <!-- 								<option value="Morder">주문필요</option> -->
 <!-- 								<option value="Mloc">재고위치</option> -->
 							</select> <input type="text" class="select" name="keyword" value="${dto.keyword }">
 							<!-- <input class="select_day" id="select_MM_eve" type="date" value=""
                                                 max="2999-12-31" , min="1970-01-01"> -->
 							<input class="select_day" id="select_MM_today" type="date"
-								value="" max="2999-12-31" , min="1970-01-01"> <input
+								name="Pday" value="" max="2999-12-31" , min="1970-01-01"> <input
 								type="submit" class="submit" value="검색">
 
 
@@ -76,7 +78,25 @@
 
 					</div>
 
+					<%
+							// 페이지 파라미터 처리
+							int currentPage = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+							int pageSize = 10;
+							int startRow = (currentPage - 1) * pageSize;
+							int endRow = startRow + pageSize;
 
+							List<?> fullList = (List<?>) request.getAttribute("plogList");
+							int totalCount = fullList != null ? fullList.size() : 0;
+							int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+							List<?> pagedList = fullList != null
+									? fullList.subList(Math.min(startRow, totalCount), Math.min(endRow, totalCount))
+									: null;
+
+							request.setAttribute("pagedList", pagedList);
+							request.setAttribute("currentPage", currentPage);
+							request.setAttribute("totalPage", totalPage);
+							%>
 
 					<div>
 						<div id="show_table1">
@@ -99,7 +119,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="pLogdata" items="${plogList }">
+									<c:forEach var="pLogdata" items="${pagedList }">
 
 										<tr>
 
@@ -135,14 +155,7 @@
 							</table>
 
 
-						</div>
-
-
-
-						<div class="div_none">
-							<!-- 빈 공간 -->
-						</div>
-
+						
 
 						<form action="mainmp" method="get">
 
@@ -161,25 +174,87 @@
 							<!-- 										</div> -->
 
 						</form>
-
+						
+                        </div>
 						<!-- 페이지 번호 -->
-						<div class="flex_page">
-							<div class="item_page pre_page">
-								<a id="a_before" href=""> < 이전 </a>
-							</div>
+						
+							<div class="page-num-con">
+								<div class="page-num">
+									<!-- 이전 버튼 -->
+									<!-- <c:choose>
+										<c:when test="${currentPage > 1}">
+											<a href="?page=${currentPage - 1}" class="page pre-page">이전</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page pre-page disabled">이전</span>
+										</c:otherwise>
+									</c:choose> -->
 
-							<div class="item_page">
-								<a class="num bold" href="">1</a> <a class="num" href="">2</a> <a
-									class="num" href="">3</a> <a class="num" href="">4</a> <a
-									class="num" href="">5</a>
-							</div>
+									<!-- 페이지 번호 -->
+									<!-- <c:forEach begin="1" end="${totalPage}" var="i">
+										<a href="?page=${i}"
+											class="num <c:if test='${i == currentPage}'>bold</c:if>">${i}</a>
+									</c:forEach> -->
 
-							<div class="item_page next_page">
-								<a id="a_after" href=""> 다음 > </a>
+									<!-- 다음 버튼 -->
+									<!-- <c:choose>
+										<c:when test="${currentPage < totalPage}">
+											<a href="?page=${currentPage + 1}" class="page next-page">다음</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page next-page disabled">다음</span>
+										</c:otherwise>
+									</c:choose> -->
+									
+									
+									
+									<!-- 이전 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage > 1}">
+											<a href="?type=${dto.type }&keyword=${dto.keyword }&Pday=${param.Pday }&page=${currentPage - 1}" class="page pre-page">이전</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page pre-page disabled">이전</span>
+										</c:otherwise>
+									</c:choose>
+
+									<!-- 페이지 번호 -->
+									<c:forEach begin="1" end="${totalPage}" var="i">
+										<a href="?type=${dto.type }&keyword=${dto.keyword }&Pday=${param.Pday }&page=${i}"
+											class="num <c:if test='${i == currentPage}'>bold</c:if>">${i}</a>
+									</c:forEach>
+
+									<!-- 다음 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage < totalPage}">
+											<a href="?type=${dto.type }&keyword=${dto.keyword }&Pday=${param.Pday }&page=${currentPage + 1}" class="page next-page">다음</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page next-page disabled">다음</span>
+										</c:otherwise>
+									</c:choose>
+									
+								</div>
 							</div>
-						</div>
+						
+<!-- 						<div class="flex_page"> -->
+<!-- 							<div class="item_page pre_page"> -->
+<!-- 								<a id="a_before" href=""> < 이전 </a> -->
+<!-- 							</div> -->
+
+<!-- 							<div class="item_page"> -->
+<!-- 								<a class="num bold" href="">1</a> <a class="num" href="">2</a> <a -->
+<!-- 									class="num" href="">3</a> <a class="num" href="">4</a> <a -->
+<!-- 									class="num" href="">5</a> -->
+<!-- 							</div> -->
+
+<!-- 							<div class="item_page next_page"> -->
+<!-- 								<a id="a_after" href=""> 다음 > </a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 
 					</div>
+					
 				</div>
 
 			</div>

@@ -17,6 +17,9 @@
 			<if test="type == 'EA' and (keyword != null and keyword != '') ">
 				and crnt_aftr_cnt <![CDATA[ >= ]]> #{crnt_aftr_cnt}
 			</if>
+			<if test="type == 'day' and (chng_dt != null and chng_dt != '') ">
+				and upper(chng_dt) like upper('%' || #{chng_dt} || '%')
+			</if>
 		
 		</where>
 		

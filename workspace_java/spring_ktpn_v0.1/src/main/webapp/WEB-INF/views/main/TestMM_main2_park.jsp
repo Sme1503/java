@@ -127,6 +127,27 @@
                                              aa-dd-cc   싹싹지우개   1000 ... ...  
                                     -->
 
+					
+					<%
+							// 페이지 파라미터 처리
+							int currentPage = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+							int pageSize = 10;
+							int startRow = (currentPage - 1) * pageSize;
+							int endRow = startRow + pageSize;
+
+							List<?> fullList = (List<?>) request.getAttribute("MtableSelect");
+							int totalCount = fullList != null ? fullList.size() : 0;
+							int totalPage = (int) Math.ceil((double) totalCount / pageSize);
+
+							List<?> pagedList = fullList != null
+									? fullList.subList(Math.min(startRow, totalCount), Math.min(endRow, totalCount))
+									: null;
+
+							request.setAttribute("pagedList", pagedList);
+							request.setAttribute("currentPage", currentPage);
+							request.setAttribute("totalPage", totalPage);
+							%>
+
 					<div>
 						<!-- 					<form method="post" action="undom"> -->
 						<div id="show_table1">
@@ -146,7 +167,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="Mdata" items="${MtableSelect }">
+									<c:forEach var="Mdata" items="${pagedList }">
 
 										<tr>
 
@@ -189,7 +210,7 @@
 														type="submit" class="btn_main_update">수정</button>
 												</form>
 											</td>
-											</form>
+											
 										</tr>
 									</c:forEach>
 
@@ -246,32 +267,14 @@
 
 							</div>
 
-							<%
-							// 페이지 파라미터 처리
-							int currentPage = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-							int pageSize = 10;
-							int startRow = (currentPage - 1) * pageSize;
-							int endRow = startRow + pageSize;
-
-							List<?> fullList = (List<?>) request.getAttribute("MtableSelect");
-							int totalCount = fullList != null ? fullList.size() : 0;
-							int totalPage = (int) Math.ceil((double) totalCount / pageSize);
-
-							List<?> pagedList = fullList != null
-									? fullList.subList(Math.min(startRow, totalCount), Math.min(endRow, totalCount))
-									: null;
-
-							request.setAttribute("pagedList", pagedList);
-							request.setAttribute("currentPage", currentPage);
-							request.setAttribute("totalPage", totalPage);
-							%>
+							
 
 							<div class="page-num-con">
 								<div class="page-num">
 									<!-- 이전 버튼 -->
 									<c:choose>
 										<c:when test="${currentPage > 1}">
-											<a href="?page=${currentPage - 1}" class="page pre-page">이전</a>
+											<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${currentPage - 1}" class="page pre-page">이전</a>
 										</c:when>
 										<c:otherwise>
 											<span class="page pre-page disabled">이전</span>
@@ -280,14 +283,14 @@
 
 									<!-- 페이지 번호 -->
 									<c:forEach begin="1" end="${totalPage}" var="i">
-										<a href="?page=${i}"
+										<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${i}"
 											class="num <c:if test='${i == currentPage}'>bold</c:if>">${i}</a>
 									</c:forEach>
 
 									<!-- 다음 버튼 -->
 									<c:choose>
 										<c:when test="${currentPage < totalPage}">
-											<a href="?page=${currentPage + 1}" class="page next-page">다음</a>
+											<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${currentPage + 1}" class="page next-page">다음</a>
 										</c:when>
 										<c:otherwise>
 											<span class="page next-page disabled">다음</span>
@@ -298,6 +301,27 @@
 
 						</div>
 						<!-- 					</form> -->
+
+						
+						<%
+							// 페이지 파라미터 처리
+							int currentPage1 = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
+							int pageSize1 = 10;
+							int startRow1 = (currentPage1 - 1) * pageSize1;
+							int endRow1 = startRow1 + pageSize1;
+
+							List<?> fullList1 = (List<?>) request.getAttribute("PtableSelect");
+							int totalCount1 = fullList1 != null ? fullList1.size() : 0;
+							int totalPage1 = (int) Math.ceil((double) totalCount1 / pageSize1);
+
+							List<?> pagedList1 = fullList1 != null
+									? fullList1.subList(Math.min(startRow1, totalCount1), Math.min(endRow1, totalCount1))
+									: null;
+
+							request.setAttribute("pagedList1", pagedList1);
+							request.setAttribute("currentPage1", currentPage1);
+							request.setAttribute("totalPage1", totalPage1);
+							%>
 
 						<!-- 					<form method="post" action="undop"> -->
 						<div id="show_table2" class="hide">
@@ -314,7 +338,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="Pdata" items="${PtableSelect }">
+									<c:forEach var="Pdata" items="${pagedList1 }">
 
 										<tr>
 
@@ -401,32 +425,43 @@
 
 							</div>
 
-							<%
-							// 페이지 파라미터 처리
-							int currentPage1 = request.getParameter("page") == null ? 1 : Integer.parseInt(request.getParameter("page"));
-							int pageSize1 = 10;
-							int startRow1 = (currentPage1 - 1) * pageSize1;
-							int endRow1 = startRow1 + pageSize1;
-
-							List<?> fullList1 = (List<?>) request.getAttribute("PtableSelect");
-							int totalCount1 = fullList1 != null ? fullList1.size() : 0;
-							int totalPage1 = (int) Math.ceil((double) totalCount1 / pageSize1);
-
-							List<?> pagedList1 = fullList1 != null
-									? fullList1.subList(Math.min(startRow1, totalCount1), Math.min(endRow1, totalCount1))
-									: null;
-
-							request.setAttribute("pagedList1", pagedList1);
-							request.setAttribute("currentPage1", currentPage1);
-							request.setAttribute("totalPage1", totalPage1);
-							%>
+							
 
 							<div class="page-num-con">
 								<div class="page-num">
 									<!-- 이전 버튼 -->
-									<c:choose>
+									<!--<c:choose>
 										<c:when test="${currentPage1 > 1}">
 											<a href="?page=${currentPage1 - 1}" class="page pre-page">이전</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page pre-page disabled">이전</span>
+										</c:otherwise>
+									</c:choose> -->
+
+									<!-- 페이지 번호 -->
+									<!-- <c:forEach begin="1" end="${totalPage1}" var="i">
+										<a href="?page=${i}"
+											class="num <c:if test='${i == currentPage1}'>bold</c:if>">${i}</a>
+									</c:forEach> -->
+
+									<!-- 다음 버튼 -->
+									<!-- <c:choose>
+										<c:when test="${currentPage1 < totalPage1}">
+											<a href="?page=${currentPage1 + 1}" class="page next-page">다음</a>
+										</c:when>
+										<c:otherwise>
+											<span class="page next-page disabled">다음</span>
+										</c:otherwise>
+									</c:choose> -->
+									
+									
+									
+									
+									<!-- 이전 버튼 -->
+									<c:choose>
+										<c:when test="${currentPage1 > 1}">
+											<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${currentPage1 - 1}" class="page pre-page">이전</a>
 										</c:when>
 										<c:otherwise>
 											<span class="page pre-page disabled">이전</span>
@@ -435,14 +470,14 @@
 
 									<!-- 페이지 번호 -->
 									<c:forEach begin="1" end="${totalPage1}" var="i">
-										<a href="?page=${i}"
+										<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${i}"
 											class="num <c:if test='${i == currentPage1}'>bold</c:if>">${i}</a>
 									</c:forEach>
 
 									<!-- 다음 버튼 -->
 									<c:choose>
 										<c:when test="${currentPage1 < totalPage1}">
-											<a href="?page=${currentPage1 + 1}" class="page next-page">다음</a>
+											<a href="?type=${dto.type }&keyword=${dto.keyword }&page=${currentPage1 + 1}" class="page next-page">다음</a>
 										</c:when>
 										<c:otherwise>
 											<span class="page next-page disabled">다음</span>
