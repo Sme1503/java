@@ -28,6 +28,11 @@ public class TAK_PR_1100MTDAOImpl implements TAK_PR_1100MTDAO {
 	
 	
 	
+	
+	
+	
+	
+	
 	// 생산완료인 생산코드 가져오는 메소드
 	@Override
 	public List selectPcode() {
@@ -39,6 +44,7 @@ public class TAK_PR_1100MTDAOImpl implements TAK_PR_1100MTDAO {
 		return result;
 	}
 
+	// 완제품코드가 x이고 생산완료인 생산코드 가져오는 메소드
 	@Override
 	public List selectPFcode(String fcode) {
 		// TODO Auto-generated method stub

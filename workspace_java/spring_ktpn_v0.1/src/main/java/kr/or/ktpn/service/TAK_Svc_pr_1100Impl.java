@@ -25,6 +25,11 @@ public class TAK_Svc_pr_1100Impl implements TAK_Svc_pr_1100mt {
 	
 	
 	
+	
+	
+	
+	
+	
 	// 생산완료인 생산코드 가져오는 메소드
 	@Override
 	public List getPcode() {
@@ -37,6 +42,7 @@ public class TAK_Svc_pr_1100Impl implements TAK_Svc_pr_1100mt {
 		return list;
 	}
 
+	// 완제품코드가 x이고 생산이 완료된 생산코드 가져오는 메소드
 	@Override
 	public List getPFcode(String fcode) {
 		// TODO Auto-generated method stub

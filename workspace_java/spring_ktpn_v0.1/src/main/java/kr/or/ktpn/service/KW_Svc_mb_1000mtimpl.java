@@ -21,6 +21,11 @@ public class KW_Svc_mb_1000mtimpl implements KW_Svc_mb_1000mt {
 	}
 
 	
+	
+	
+	
+	
+	// 작업자(일반회원) 가져오는 메소드
 	@Override
 	public List getWorker() {
 		// TODO Auto-generated method stub

@@ -12,6 +12,11 @@ public interface Svc_md_1000mt {
 	public int modMd(DTO_md_1000mt dto);
 	public int delMd(DTO_md_1000mt dto);
 
+	
+	
+	
+	
+	
 	// 원자재 코드, 원자재명 가져오는 메소드
 	public List getMcodeList();
 	

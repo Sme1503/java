@@ -16,7 +16,9 @@ public interface DAO_md_1000mt {
 	
 	
 	
-	// 완제품 코드, 완제품명 가져오는 메소드
+	
+	
+	// 원자재 코드, 원자재명 가져오는 메소드
 	public List selectMcodeList();
 	
 	// 완제품 코드, 완제품명 가져오는 메소드

@@ -9,5 +9,9 @@ public interface KW_Svc_mb_1000mt {
 	public List<KW_DTO_MB_1000MT> getMemberlist();
 	
 	
+	
+	
+	
+	// 작업자(일반회원) 가져오는 메소드
 	public List getWorker();
 }
