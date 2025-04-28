@@ -424,3 +424,6 @@ insert into tb_mb_1000mt values ('test4', 'test4', '최가추', 'N', sysdate, sy
 insert into tb_mb_1000mt values ('test6', 'test5', '이승행', 'N', sysdate, sysdate, '일반회원');
 
 commit;
+
+select * from tb_fs_1000mt;
+delete from tb_fs_1000mt where fnsh_code = 'P0001';
