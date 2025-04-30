@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.rt_1000mt">
+
+<select id="selectRt" resultType="kr.or.ktpn.dto.DTO_rt_1000mt" parameterType="kr.or.ktpn.dto.DTO_rt_1000mt">
+    SELECT *  
+      FROM tb_rt_1000mt
+    <where>
+        AND USE_YN = 'Y'
+        <if test="rt_cd != null and rt_cd != ''">
+           AND RT_CD= #{rt_cd}
+        </if>
+        
+         <if test="categories != null and categories != '전체' and key != null and key != ''">
+         
+         	<if test= "categories == '공정코드'">
+        		AND UPPER(RT_CD) LIKE '%' || UPPER(#{key}) || '%'
+        	</if>
+         	<if test= "categories == '공정명'">
+        		AND RT_NM LIKE '%' || #{key} || '%'
+        	</if>
+         	<if test= "categories == '품목코드'">
+        		AND UPPER(ITEM_CD) LIKE '%' || UPPER(#{key}) || '%'
+        	</if>
+         
+         </if>
+        ORDER BY REG_DT DESC
+    </where>
+</select>
+<select id="selectDesc" resultType="kr.or.ktpn.dto.DTO_rt_desc" parameterType="kr.or.ktpn.dto.DTO_rt_desc">
+    SELECT a.*  
+      FROM tb_ad_1100mt a
+     where 1=1
+       and RT_CD = #{rt_cd}
+     order by a.sn
+</select>
+
+<select id="addRt" 
+        resultType="kr.or.ktpn.dto.DTO_md_1000mt" 
+        parameterType="kr.or.ktpn.dto.DTO_md_1000mt">
+    SELECT A.*
+      FROM TB_MD_1000MT A,
+           TB_RT_1000MT B
+     WHERE A.USE_YN = 'Y'
+       AND A.MT_MNG_CD = B.RT_CD(+)
+       AND B.RT_CD IS NULL
+       AND A.MT_MNG_CD LIKE 'R%'
+</select>
+
+<insert id="insertRt"  parameterType="kr.or.ktpn.dto.DTO_rt_1000mt">
+
+INSERT INTO TB_RT_1000MT (RT_CD,RT_NM,ITEM_CD,RT_DESC,REG_DT,MOD_DT, USE_YN)
+VALUES (#{rt_cd},#{rt_nm},#{item_cd},#{rt_desc},TO_CHAR(SYSDATE,'YYYYMMDD'),TO_CHAR(SYSDATE,'YYYYMMDD'), 'Y')
+
+</insert>
+
+<update id="updateRt" parameterType="kr.or.ktpn.dto.DTO_rt_desc">
+  MERGE INTO TB_AD_1100MT tgt
+    USING (
+      SELECT
+        #{rt_cd}    AS RT_CD,
+        #{rt_desc}  AS RT_DESC,
+        #{sn}       AS SN
+      FROM dual
+    ) src
+    ON (tgt.SN = src.SN)
+  WHEN MATCHED THEN
+    UPDATE SET tgt.RT_DESC = src.RT_DESC
+  WHEN NOT MATCHED THEN
+    INSERT (RT_CD, SN, RT_DESC)
+    VALUES (src.RT_CD, SQ_TB_AD_1000MT_SN.NEXTVAL, src.RT_DESC)
+</update>
+
+
+<insert id="insertRt2" parameterType="map">
+      INSERT INTO TB_AD_1100MT
+        (SN, RT_CD, RT_DESC)
+      VALUES
+        (
+          SQ_TB_AD_1000MT_SN.NEXTVAL,
+          #{rt_cd},
+          #{rt_desc}
+        )
+</insert>
+
+
+<delete id="delRt" parameterType="kr.or.ktpn.dto.DTO_rt_desc">
+      delete from TB_AD_1100MT where sn = #{sn}
+</delete> 
+	
+</mapper>
+
+
+
+
